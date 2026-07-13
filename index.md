@@ -43,6 +43,7 @@ updated: 2026-07-09T09:58:13Z
 
 ## Journal
 - [[journal/2026-07-09-multi-agent-wiki-compound]] — Compound session log
+- [[journal/2026-07-13-second-brain-integration-session]] — Second brain full stack integration (v5.1.1, MiMo, scripts, vault restructure)
 
 ## Projects
 - [[projects/AI-Second-Brain]] — Multi-agent AI setup project

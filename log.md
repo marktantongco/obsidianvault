@@ -27,3 +27,7 @@ title: Query Log
 - [2026-07-09T18:36:00Z] CONFIG copyq saved vault=/home/x1/obsidian-vaults/AI-Second-Brain/.wiki/config/copyq/
 - [2026-07-09T19:12:00Z] EXPORT session=/home/x1/session-export-20260709-191219.json size=901KB
 - [2026-07-09T10:44:46Z] INGEST mode=raw pages_updated=4 pages_created=0 source="_raw/*.md"
+- [2026-07-13T13:30:00Z] CAPTURE type=session page="journal/2026-07-13-second-brain-integration-session.md" title="Second Brain Integration — Full Stack Session"
+- [2026-07-13T13:45:00Z] RESTRUCTURE vault_folders="01_WORK,02_KNOWLEDGE,03_LEARNING,04_RELATIONSHIP,05_OBSERVABILITY,06_STATE"
+- [2026-07-13T13:50:00Z] SCRIPTS created="lifeos_client.py,hermes_router.py,hermes,poznote_pipeline.py,poznote_watch.sh"
+- [2026-07-13T13:55:00Z] CONFIG updated="obsidian-git/data.json (hermes author, rebase), sync-strategy.md, AGENTS.md (numbered paths, confidence/source fields)"
