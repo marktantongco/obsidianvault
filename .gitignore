@@ -1,0 +1,32 @@
+# Obsidian workspace state (regenerated per device)
+workspace.json
+workspace-mobile.json
+workspace.json.backup
+workspace-mobile.json.backup
+
+# Trash
+.trash/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Plugin cache (local state, not vault content)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspace.json.backup
+.obsidian/workspace-mobile.json.backup
+
+# Local encryption keys
+.obsidian/plugins/*/data.json
+!/.obsidian/plugins/obsidian-git/data.json
+
+# Temporary / staging
+_raw/_staging/
+_staging/
+
+# Build artifacts
+*.pyc
+__pycache__/
+.venv/

@@ -1,0 +1,23 @@
+{
+  "switcher:open": [
+    { "modifiers": ["Mod"], "key": "o" }
+  ],
+  "command-palette:open": [
+    { "modifiers": ["Mod", "Shift"], "key": "p" }
+  ],
+  "daily-notes": [
+    { "modifiers": ["Mod"], "key": "d" }
+  ],
+  "templates:insert-template": [
+    { "modifiers": ["Mod", "Shift"], "key": "t" }
+  ],
+  "graph:open": [
+    { "modifiers": ["Mod", "Shift"], "key": "g" }
+  ],
+  "search": [
+    { "modifiers": ["Mod"], "key": "f" }
+  ],
+  "editor:toggle-checklist-status": [
+    { "modifiers": ["Mod"], "key": "Enter" }
+  ]
+}

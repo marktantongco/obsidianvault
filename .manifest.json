@@ -1,0 +1,342 @@
+{
+  "version": "2026.7.2",
+  "vault": "/home/x1/obsidianvault",
+  "created": "2026-07-09T10:31:00Z",
+  "last_updated": "2026-07-09T10:44:47Z",
+  "sources": {
+    "/home/x1/Downloads/@ai/free-china-proxy-research.md": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 14189,
+      "modified_at": "2026-07-08T12:04:28Z",
+      "content_hash": "770d01e66d3c1e5eef36d772402b9e0aac1e4e2bed87ad327eacfb23b7a14272",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:13.589203+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "/home/x1/Downloads/@ai/ai-skills-consolidated-framework.md": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 32844,
+      "modified_at": "2026-07-08T12:04:28Z",
+      "content_hash": "d24659306fe093909767a471b29ad4e52be9eb57dbe5cf97feb6367a50f906c1",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:13.722675+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "/home/x1/Downloads/@ai/consolidated-framework_SKILL.md": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 7017,
+      "modified_at": "2026-07-08T12:04:28Z",
+      "content_hash": "9b67a934610f60d0646014dd4ab8e33d5d68390c52d05be992054baee4468657",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:13.852861+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "/home/x1/Downloads/@ai/obsidian-claude-code-memory-framework.md": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 11329,
+      "modified_at": "2026-07-08T12:04:28Z",
+      "content_hash": "76d409561432c38b8b93fe61ccc8dabc1b177a30a69b241e28c720a502401262",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:13.990644+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "/home/x1/Downloads/@ai/combined proxy billing prompt.txt": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 5924,
+      "modified_at": "2026-07-08T12:04:28Z",
+      "content_hash": "292657aa0415186d90bf70ba9eb47c7a15f6350de2764262aa876c081e066998",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:14.125107+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "/home/x1/Downloads/@ai/antigravity proxy.txt": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 15650,
+      "modified_at": "2026-07-08T12:04:28Z",
+      "content_hash": "941fed421e3af7f6595761022d76949fb4c80739c60b17f5cf2aa14163b37e2d",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:14.256027+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "/home/x1/Downloads/@ai/ui-ux-pro-max-v7-SKILL.md": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 113095,
+      "modified_at": "2026-05-02T00:23:18Z",
+      "content_hash": "49ed2c902ad3a80316bad05bb85b1a5af2899880b2b0396b4e54a028890f9b39",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:14.395636+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "/home/x1/Downloads/@ai/gumroad-pipeline-SKILL.md": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 14217,
+      "modified_at": "2026-04-15T19:24:22Z",
+      "content_hash": "8e0eec1c055447644f095cff33b832370535ece77ea0b709720d9cbb2b0cf1cf",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": [
+        "concepts/Obsidian Wiki.md",
+        "concepts/multi-agent-obsidian-wiki-synergy.md"
+      ],
+      "last_ingested": "2026-07-09T09:58:14.526184+00:00",
+      "pages_produced": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md"
+      ]
+    },
+    "conversation:2026-07-09": {
+      "ingested_at": "2026-07-09T09:58:13Z",
+      "size_bytes": 0,
+      "modified_at": "2026-07-09T09:58:13Z",
+      "content_hash": "sha256:conversation",
+      "source_type": "session_transcript",
+      "project": "AI-Second-Brain",
+      "pages_created": [
+        "skills/free-china-proxy-ops.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/multi-agent-vault-wiring.md",
+        "entities/Owl-Agent.md",
+        "entities/GPaste.md",
+        "entities/CopyQ.md",
+        "entities/SiliconFlow.md",
+        "entities/Zhipu-GLM.md",
+        "entities/DeepSeek.md",
+        "references/free-china-proxy-research.md",
+        "references/ai-skills-consolidated-framework.md",
+        "references/obsidian-claude-memory-framework.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md",
+        "journal/2026-07-09-multi-agent-wiki-compound.md"
+      ],
+      "pages_updated": []
+    },
+    "agent:grok-session _raw promote 2026-07-09": {
+      "ingested_at": "2026-07-09T10:44:47Z",
+      "size_bytes": 0,
+      "modified_at": "2026-07-09T10:44:47Z",
+      "content_hash": "sha256:raw-promote",
+      "source_type": "session_transcript",
+      "project": "AI-Second-Brain",
+      "pages_created": [],
+      "pages_updated": [
+        "skills/multi-agent-vault-wiring.md",
+        "skills/gpaste-gnome-wayland.md",
+        "skills/free-china-proxy-ops.md",
+        "synthesis/agentic-stack-obsidian-wiki-performance.md"
+      ]
+    }
+  },
+  "stats": {
+    "total_sources_ingested": 10,
+    "total_pages": 47,
+    "total_projects": 2,
+    "last_full_rebuild": null
+  }
+}

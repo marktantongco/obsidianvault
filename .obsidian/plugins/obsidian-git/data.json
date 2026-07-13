@@ -1,0 +1,22 @@
+{
+  "autoSaveMessage": "vault-sync",
+  "autoPullMessage": "vault-pull",
+  "autoPullOnBoot": true,
+  "pullBeforePush": true,
+  "autoPullInterval": 15,
+  "autoSaveInterval": 5,
+  "commitMessage": "{{date}} auto-sync",
+  "commitDateFormat": "YYYY-MM-DD HH:mm",
+  "autoCommitMessage": "[Poznote] {{date}} auto-commit",
+  "commitBody": "",
+  "commitAuthor": "Hermes <hermes@secondbrain.local>",
+  "mergeStrategy": "rebase",
+  "disablePush": false,
+  "pullStrategy": "rebase",
+  "pushOnBackup": false,
+  "backupRootDirectory": "_backups",
+  "disablePopups": false,
+  "listChangedFilesInMessageBody": true,
+  "updateSubmodules": false,
+  "syncOnBoot": true
+}

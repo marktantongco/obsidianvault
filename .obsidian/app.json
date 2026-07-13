@@ -1,0 +1,20 @@
+{
+  "interfaceFontSize": 14,
+  "themeTransitions": true,
+  "strictLineBreaks": false,
+  "showFrontmatter": false,
+  "defaultViewMode": "preview",
+  "livePreview": true,
+  "showLineNumber": true,
+  "spellcheck": true,
+  "readableLineLength": true,
+  "strictMode": false,
+  "attachmentFolderPath": "_attachments",
+  "newFileLocation": "current",
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "alwaysUpdateLinks": true,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showIndentGuide": true
+}
