@@ -4,5 +4,6 @@
   "templater-obsidian",
   "obsidian-kanban",
   "obsidian-tasks-plugin",
-  "obsidian-excalidraw-plugin"
+  "obsidian-excalidraw-plugin",
+  "obsidian-git"
 ]

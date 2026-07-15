@@ -2,7 +2,7 @@
   "version": "2026.7.2",
   "vault": "/home/x1/obsidianvault",
   "created": "2026-07-09T10:31:00Z",
-  "last_updated": "2026-07-09T10:44:47Z",
+  "last_updated": "2026-07-14T02:50:00Z",
   "sources": {
     "/home/x1/Downloads/@ai/free-china-proxy-research.md": {
       "ingested_at": "2026-07-09T09:58:13Z",
@@ -331,11 +331,26 @@
         "skills/free-china-proxy-ops.md",
         "synthesis/agentic-stack-obsidian-wiki-performance.md"
       ]
+    },
+    "_raw/2026-07-14-session-state-tool-installs.md": {
+      "ingested_at": "2026-07-14T02:50:00Z",
+      "size_bytes": 3142,
+      "modified_at": "2026-07-14T02:45:00Z",
+      "content_hash": "sha256:7faf596e3b491a146cd558c1a2f9a5160c57e7a45f38b1a63b83310f17e910e1",
+      "source_type": "document",
+      "project": null,
+      "pages_created": [
+        "concepts/FreeHive.md",
+        "journal/2026-07-14-system-admin-tool-installs.md"
+      ],
+      "pages_updated": [
+        "concepts/MCP Servers.md"
+      ]
     }
   },
   "stats": {
-    "total_sources_ingested": 10,
-    "total_pages": 47,
+    "total_sources_ingested": 11,
+    "total_pages": 50,
     "total_projects": 2,
     "last_full_rebuild": null
   }

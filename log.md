@@ -31,3 +31,5 @@ title: Query Log
 - [2026-07-13T13:45:00Z] RESTRUCTURE vault_folders="01_WORK,02_KNOWLEDGE,03_LEARNING,04_RELATIONSHIP,05_OBSERVABILITY,06_STATE"
 - [2026-07-13T13:50:00Z] SCRIPTS created="lifeos_client.py,hermes_router.py,hermes,poznote_pipeline.py,poznote_watch.sh"
 - [2026-07-13T13:55:00Z] CONFIG updated="obsidian-git/data.json (hermes author, rebase), sync-strategy.md, AGENTS.md (numbered paths, confidence/source fields)"
+- [2026-07-14T02:50:00Z] INGEST mode=raw pages_created=2 pages_updated=1 source="_raw/2026-07-14-session-state-tool-installs.md"
+- [2026-07-14T04:06:00Z] CAPTURE type=synthesis page="synthesis/opencode-freehive-integration.md" title="OpenCode FreeHive Integration"
