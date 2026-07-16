@@ -1,0 +1,188 @@
+{
+  "concepts/AI Agents.md": {
+    "sha": "941671fb7e314fcd8a6c736a942f58ea28ab75cf",
+    "title": "AI Agents",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/Claude Code.md": {
+    "sha": "04f6bb3db68d012055762b3fc2ace77c2f958303",
+    "title": "Claude Code",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/Development Workflow.md": {
+    "sha": "4b923f6d29665eb73c79811b7dbe269f5301cef3",
+    "title": "Development Workflow",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/FreeHive.md": {
+    "sha": "857cad9c34b26d5f8f8db22931577493f524ca0e",
+    "title": "FreeHive",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/Grok.md": {
+    "sha": "f8352f04af9a4b5e11118c945c586cd3b47f3a02",
+    "title": "Grok",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/Hermes Agent.md": {
+    "sha": "e1ffb0c7780a0832d2492803c735ac3400eaa513",
+    "title": "Hermes Agent",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/MCP Servers.md": {
+    "sha": "383c466fa8e5ed5090b3c37ae51b9f7bf3f95121",
+    "title": "MCP Servers",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/MiMo Code.md": {
+    "sha": "67299293cb4d44130626988a814099127ec00181",
+    "title": "MiMo Code",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/Obsidian Wiki.md": {
+    "sha": "fdb0ab29288799a1cff5c296e8878bd6b16247ee",
+    "title": "Obsidian Wiki",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/OpenAI Codex.md": {
+    "sha": "afdede7d90bb798716eaacdf005d9f8ebb270e99",
+    "title": "OpenAI Codex",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/OpenCode.md": {
+    "sha": "31706acb2084a980cfed96415be720223fa62bd2",
+    "title": "OpenCode",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "concepts/multi-agent-obsidian-wiki-synergy.md": {
+    "sha": "7e9c9d294e53622abd29a947e0a6d7a70b82e334",
+    "title": "Multi-Agent Obsidian Wiki Synergy",
+    "summary": "How Ar9av/obsidian-wiki, the shared vault, and every CLI agent share one brain via config + symlinks.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "entities/CopyQ.md": {
+    "sha": "9d7ae49edfbb8c6365b06506783224dd71b5c92a",
+    "title": "CopyQ",
+    "summary": "Qt clipboard manager; installed but autostart disabled in favor of GPaste",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "entities/DeepSeek.md": {
+    "sha": "83e98ac3c757466a8076c1c5a5d61082736c6506",
+    "title": "DeepSeek",
+    "summary": "China LLM provider with competitive API pricing and international reach",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "entities/GPaste.md": {
+    "sha": "ba16d1c2e02fbfe826441c7a5d26a50e35d0ef3e",
+    "title": "GPaste",
+    "summary": "GNOME clipboard manager (gpaste-2) preferred over CopyQ on Wayland",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "entities/Owl-Agent.md": {
+    "sha": "c7b1a7844f7f223a236a9ea8f75026ff5e18523c",
+    "title": "Owl-Agent",
+    "summary": "Resilient proxy client under ~/.owl-agent with CN pool and RequestsWrapper",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "entities/SiliconFlow.md": {
+    "sha": "7b9df335e09d5e7de7fa6d653387e7100f3ac644",
+    "title": "SiliconFlow",
+    "summary": "China AI inference hub with free small models and OpenAI-compatible API",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "entities/Zhipu-GLM.md": {
+    "sha": "2913857a5d32692f9131c52d23df8d1ddc3ca329",
+    "title": "Zhipu-GLM",
+    "summary": "Zhipu AI GLM APIs including permanent free Flash tiers",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "journal/2026-07-09-multi-agent-wiki-compound.md": {
+    "sha": "9b5db07f67c6a3c94afa727daaf78235dc91c404",
+    "title": "Session 2026-07-09 Multi-Agent Wiki Compound",
+    "summary": "Setup refresh, @ai ingest, multi-agent capture; history sources empty on disk.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "journal/2026-07-13-second-brain-integration-session.md": {
+    "sha": "bd0d7cd891d6be7fe657ac127febdd93de2f7fe8",
+    "title": "2026-07-13-second-brain-integration-session",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "journal/2026-07-14-system-admin-tool-installs.md": {
+    "sha": "6431392e0cafd4630d1d3dc5f234d865783cda1d",
+    "title": "2026-07-14-system-admin-tool-installs",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "projects/AI-Second-Brain.md": {
+    "sha": "2a31d76b27e8dd5b8ae42d8496eb4ce85ce414be",
+    "title": "AI-Second-Brain",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "projects/Cross-Agent-Workflow-Test.md": {
+    "sha": "73932eaca97f0ba4e197a167bd0d429f29038fd0",
+    "title": "Cross-Agent Workflow Test",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "references/ai-skills-consolidated-framework.md": {
+    "sha": "6eb4a4b35624db0d725ec0b2a1f47ab1ad77eb76",
+    "title": "AI Skills Consolidated Framework (source)",
+    "summary": "Deduped catalog of ~67 agent skills across 8 domains plus 5-layer routing taxonomy.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "references/free-china-proxy-research.md": {
+    "sha": "1eb08061717907e521e50a79e84eb2a9b47b1b59",
+    "title": "Free China Proxy Research (source)",
+    "summary": "Source research on free CN proxies for GLM/MiniMax/DeepSeek; hybrid free+paid recommendation.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "references/obsidian-claude-memory-framework.md": {
+    "sha": "aff8119978cda1c3b62e39040357d9c1bf2031b4",
+    "title": "Obsidian + Claude Memory Framework (source)",
+    "summary": "Karpathy-style wiki protocol for Claude Code — raw immutable layer, wiki compile layer, CLAUDE.md schema.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "skills/free-china-proxy-ops.md": {
+    "sha": "8009692444bbd28e7c19a517f06d31648fa5a099",
+    "title": "Free China Proxy Operations",
+    "summary": "Hybrid free China proxy ops for China AI APIs — direct-first, CN-only pool, real-host health (401=OK).",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "skills/gpaste-gnome-wayland.md": {
+    "sha": "091b673ff0a9f074cd20c926225cf2934e58c23b",
+    "title": "GPaste on GNOME Wayland",
+    "summary": "Install and dock-pin GPaste on Ubuntu GNOME Wayland; custom Super+Shift+V; disable CopyQ.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "skills/multi-agent-vault-wiring.md": {
+    "sha": "200dbc4bdf75a14edbc171ce0f92037a943e0c55",
+    "title": "Multi-Agent Vault Wiring",
+    "summary": "Point every CLI agent skill tree and AGENTS bootstrap at one Obsidian vault via config + symlinks.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "synthesis/agentic-stack-obsidian-wiki-performance.md": {
+    "sha": "d02ca1fb684b6c5ff0ecc85603f995f0ed7cc23f",
+    "title": "Agentic-Stack + Obsidian-Wiki System Performance",
+    "summary": "Plumbing is A− (shared vault, 12 agents, 36 skills); knowledge fill was early until this compound pass.",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "synthesis/opencode-freehive-integration.md": {
+    "sha": "f527988a2de015771fdab09d6d4e407abc3bed4f",
+    "title": "opencode-freehive-integration",
+    "summary": "",
+    "mtime": "2026-07-16T13:28:36.859Z"
+  }
+}
