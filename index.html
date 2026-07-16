@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obsidian Wiki Reader</title>
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Marked.js (Markdown Parser) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      --font-family: 'Outfit', sans-serif;
+      --font-family-mono: 'JetBrains Mono', monospace;
+      --pico-background-color: #0A0A0A;
+      --pico-card-background-color: #141414;
+      --pico-border-color: #2A2A2A;
+      --pico-color: #FAFAFA;
+      --pico-muted-color: #A0A0A0;
+      --pico-primary: #3B82F6;
+      --pico-primary-hover: #60A5FA;
+    }
+    
+    body {
+      font-family: var(--font-family);
+      background-color: var(--pico-background-color);
+      color: var(--pico-color);
+    }
+    
+    main.container {
+      max-width: 900px;
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    header {
+      border-bottom: 1px solid var(--pico-border-color);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--pico-border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .nav-tabs button {
+      background: none;
+      border: none;
+      color: var(--pico-muted-color);
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tabs button.active {
+      color: var(--pico-color);
+      background-color: var(--pico-card-background-color);
+      box-shadow: 0 0 0 1px var(--pico-border-color);
+    }
+
+    .wiki-content {
+      background-color: var(--pico-card-background-color);
+      border: 1px solid var(--pico-border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      min-height: 400px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Convert Obsidian Wikilinks to clean buttons */
+    .wikilink {
+      color: var(--pico-primary);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 600;
+      border-bottom: 1px dashed var(--pico-primary);
+      transition: color 0.2s;
+    }
+
+    .wikilink:hover {
+      color: var(--pico-primary-hover);
+      border-bottom: 1px solid var(--pico-primary-hover);
+    }
+
+    .back-btn {
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      color: var(--pico-muted-color);
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    
+    .back-btn:hover {
+      color: var(--pico-color);
+    }
+
+    pre code {
+      font-family: var(--font-family-mono);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><strong>🧠 Second Brain</strong></li>
+        </ul>
+        <ul>
+          <li><a href="https://github.com/marktantongco/obsidianvault" target="_blank" class="secondary">GitHub Repo</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="nav-tabs">
+      <button id="tab-index" class="active" onclick="switchTab('index')">Wiki Index</button>
+      <button id="tab-hot" onclick="switchTab('hot')">Hot Cache</button>
+    </div>
+
+    <div id="back-container" style="display: none;">
+      <button class="back-btn" onclick="goBack()">← Back to Index</button>
+    </div>
+
+    <article class="wiki-content" id="render-target">
+      <div aria-busy="true">Loading your second brain...</div>
+    </article>
+  </main>
+
+  <script>
+    let historyStack = [];
+    let currentTab = 'index';
+
+    // Configure marked to clean and transform Obsidian Wikilinks
+    const renderer = new marked.Renderer();
+    
+    // Custom link renderer to catch custom wikilink syntax
+    function parseWikilinks(text) {
+      // Matches [[path/to/file|Display Name]] or [[path/to/file]]
+      return text.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (match, path, display) => {
+        const displayName = display ? display.trim() : path.trim().split('/').pop();
+        const targetPath = path.trim();
+        return `<span class="wikilink" onclick="loadPage('${targetPath}')">${displayName}</span>`;
+      });
+    }
+
+    async function fetchMarkdown(url) {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`Failed to load: ${url}`);
+      let text = await resp.text();
+      // Remove frontmatter
+      text = text.replace(/^---\s*\n([\s\S]*?)\n---\s*\n/, '');
+      return text;
+    }
+
+    async function loadPage(pagePath) {
+      const target = document.getElementById('render-target');
+      target.innerHTML = '<div aria-busy="true">Loading page...</div>';
+      
+      // Handle special root level links like log, hot, AGENTS
+      let url = `./${pagePath}.md`;
+      if (!pagePath.includes('/')) {
+        url = `./${pagePath}.md`;
+      }
+
+      try {
+        const md = await fetchMarkdown(url);
+        // Track history for back button
+        if (historyStack.length === 0 || historyStack[historyStack.length - 1] !== pagePath) {
+          historyStack.push(pagePath);
+        }
+        
+        document.getElementById('back-container').style.display = 'block';
+        
+        // Render markdown and parse wikilinks in the html output
+        const rawHtml = await marked.parse(md);
+        target.innerHTML = parseWikilinks(rawHtml);
+      } catch (err) {
+        target.innerHTML = `
+          <h3>Page Not Found</h3>
+          <p>Could not load page: <code>${pagePath}</code></p>
+          <p>It may not be compiled or ingested yet.</p>
+        `;
+      }
+    }
+
+    function goBack() {
+      historyStack.pop(); // Remove current
+      if (historyStack.length > 0) {
+        const prev = historyStack[historyStack.length - 1];
+        loadPage(prev);
+      } else {
+        document.getElementById('back-container').style.display = 'none';
+        switchTab(currentTab);
+      }
+    }
+
+    async function switchTab(tab) {
+      currentTab = tab;
+      historyStack = [];
+      document.getElementById('back-container').style.display = 'none';
+      
+      const target = document.getElementById('render-target');
+      target.innerHTML = '<div aria-busy="true">Loading...</div>';
+      
+      document.getElementById('tab-index').className = tab === 'index' ? 'active' : '';
+      document.getElementById('tab-hot').className = tab === 'hot' ? 'active' : '';
+
+      try {
+        const file = tab === 'index' ? './index.md' : './hot.md';
+        const md = await fetchMarkdown(file);
+        const rawHtml = await marked.parse(md);
+        target.innerHTML = parseWikilinks(rawHtml);
+      } catch (err) {
+        target.innerHTML = `<h3>Error</h3><p>Could not load ${tab}.md. Make sure the edge update has run.</p>`;
+      }
+    }
+
+    // Initial load
+    switchTab('index');
+  </script>
+</body>
+</html>
