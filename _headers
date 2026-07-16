@@ -1,0 +1,8 @@
+# Cache static markdown files and index/hot pages at the Cloudflare Edge
+/*.md
+  Cache-Control: public, max-age=600, stale-while-revalidate=3600
+  Access-Control-Allow-Origin: *
+
+/index.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=1800
+  Access-Control-Allow-Origin: *
