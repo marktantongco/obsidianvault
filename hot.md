@@ -1,18 +1,18 @@
 ---
 title: Hot Cache
-updated: 2026-07-18T03:53:06Z
+updated: 2026-07-18T03:53:20.899Z
 ---
 
 # Hot Cache
 
 ## Recent Activity
-- 2026-07-15 [[AGENTS|AGENTS]] — Updated note.
-- 2026-07-15 [[_raw/2026-07-13-opencode-free-model-config|2026-07-13-opencode-free-model-config]] — Updated note.
-- 2026-07-15 [[_raw/_archived/2026-07-14-session-state-tool-installs|Session State - MCP Cleanup and AI Tool Installations]] — Removed tokensave/codegraph MCPs (777MB freed), installed FreeHive, lifeos-cli, p2d-duck, ai-wanderer, free-claude-code, and LifeOS skill. Fixed apt mirror. GDM Wayland fix in progress.
-- 2026-07-15 [[journal/2026-07-14-system-admin-tool-installs|2026-07-14-system-admin-tool-installs]] — Updated note.
-- 2026-07-15 [[synthesis/opencode-freehive-integration|opencode-freehive-integration]] — Updated note.
-- 2026-07-15 [[concepts/FreeHive|FreeHive]] — Updated note.
-- 2026-07-15 [[concepts/MCP Servers|MCP Servers]] — Updated note.
-- 2026-07-13 [[journal/2026-07-13-second-brain-integration-session|2026-07-13-second-brain-integration-session]] — Updated note.
-- 2026-07-13 [[PLUGIN-SETUP|Plugin Setup Guide]] — Updated note.
-- 2026-07-13 [[ERROR-LOG|Error Log]] — Updated note.
+- 2026-07-16 [[concepts/AI Agents|AI Agents]] — 
+- 2026-07-16 [[concepts/Claude Code|Claude Code]] — 
+- 2026-07-16 [[concepts/Development Workflow|Development Workflow]] — 
+- 2026-07-16 [[concepts/FreeHive|FreeHive]] — 
+- 2026-07-16 [[concepts/Grok|Grok]] — 
+- 2026-07-16 [[concepts/Hermes Agent|Hermes Agent]] — 
+- 2026-07-16 [[concepts/MCP Servers|MCP Servers]] — 
+- 2026-07-16 [[concepts/MiMo Code|MiMo Code]] — 
+- 2026-07-16 [[concepts/Obsidian Wiki|Obsidian Wiki]] — 
+- 2026-07-16 [[concepts/OpenAI Codex|OpenAI Codex]] — 
