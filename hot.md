@@ -1,18 +1,17 @@
 ---
 title: Hot Cache
-updated: 2026-07-18T12:56:51.542Z
+updated: 2026-07-18T12:57:47.564Z
 ---
 
 # Hot Cache
 
 ## Recent Activity
-- 2026-07-16 [[concepts/AI Agents|AI Agents]] — 
-- 2026-07-16 [[concepts/Claude Code|Claude Code]] — 
-- 2026-07-16 [[concepts/Development Workflow|Development Workflow]] — 
-- 2026-07-16 [[concepts/FreeHive|FreeHive]] — 
-- 2026-07-16 [[concepts/Grok|Grok]] — 
-- 2026-07-16 [[concepts/Hermes Agent|Hermes Agent]] — 
-- 2026-07-16 [[concepts/MCP Servers|MCP Servers]] — 
-- 2026-07-16 [[concepts/MiMo Code|MiMo Code]] — 
-- 2026-07-16 [[concepts/Obsidian Wiki|Obsidian Wiki]] — 
-- 2026-07-16 [[concepts/OpenAI Codex|OpenAI Codex]] — 
+* AI Agents are connected to Development Workflow through integration with tools like Hermes Agent and MCP Servers.
+* Claude Code and MiMo Code are related to AI-powered coding concepts, similar to OpenAI Codex.
+* FreeHive and Grok are linked to knowledge management and information retrieval, complementing the Obsidian Wiki.
+* Hermes Agent and MCP Servers facilitate communication and workflow automation, enhancing the Development Workflow.
+* Obsidian Wiki serves as a central knowledge hub, incorporating concepts from AI Agents, Claude Code, and OpenAI Codex.
+
+## Key Takeaways
+- Knowledge is compiled dynamically on Cloudflare edge.
+- Vault references are maintained via git webhook cron trigger.
