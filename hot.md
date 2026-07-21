@@ -1,6 +1,6 @@
 ---
 title: Hot Cache
-updated: 2026-07-21T10:12:39.616Z
+updated: 2026-07-21T10:13:22.855Z
 ---
 
 # Hot Cache
