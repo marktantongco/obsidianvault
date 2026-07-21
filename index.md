@@ -1,13 +1,11 @@
 ---
 title: Wiki Index
-updated: 2026-07-21T17:34:15.736Z
-lifecycle: active
-tier: core
+updated: 2026-07-21T23:42:10.502Z
 ---
 
 # Wiki Index
 
-*Last updated: 2026-07-21T17:34:15.736Z*
+*Last updated: 2026-07-21T23:42:10.502Z*
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
@@ -66,12 +64,8 @@ tier: core
 
 ## Projects
 - [[projects/agent-version-tracker|Agent Version Tracker]]
-- [[projects/AI-Second-Brain|AI-Second-Brain]]
+- [[projects/AI-Second-Brain|AI Second Brain]]
 - [[projects/Cross-Agent-Workflow-Test|Cross-Agent Workflow Test]]
 
 ## Special
 - [[hot]] · [[log]] · [[AGENTS]]
-
-## _raw / Inbox
-- [[_raw/2026-07-09-multi-agent-setup-gotchas|Multi-Agent Setup Gotchas]] — GitHub rate limiting, PEP 668, git-remote-https, Hermes Python compatibility
-- [[_raw/2026-07-13-opencode-free-model-config|OpenCode Free Model Config]] — Free-tier model configuration for OpenCode agents

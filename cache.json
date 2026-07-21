@@ -1,9 +1,9 @@
 {
   "concepts/AI Agents.md": {
-    "sha": "941671fb7e314fcd8a6c736a942f58ea28ab75cf",
+    "sha": "7770ebb78afb6e6a3411c1fd5a59e20b2a7c4330",
     "title": "AI Agents",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/Antigravity Agent.md": {
     "sha": "a75d2d78fad8a5859de95e1201b4f41df6103590",
@@ -12,16 +12,16 @@
     "mtime": "2026-07-21T08:09:14.140Z"
   },
   "concepts/Claude Code.md": {
-    "sha": "04f6bb3db68d012055762b3fc2ace77c2f958303",
+    "sha": "2e755fd9ed4b6a72ce51513100d1264a2cbfac42",
     "title": "Claude Code",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/Development Workflow.md": {
-    "sha": "4b923f6d29665eb73c79811b7dbe269f5301cef3",
+    "sha": "ebdf14332c87b1f2459fecdeca37401ca1f80ea8",
     "title": "Development Workflow",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/FreeHive.md": {
     "sha": "857cad9c34b26d5f8f8db22931577493f524ca0e",
@@ -30,16 +30,16 @@
     "mtime": "2026-07-16T13:28:36.859Z"
   },
   "concepts/Grok.md": {
-    "sha": "f8352f04af9a4b5e11118c945c586cd3b47f3a02",
+    "sha": "326540d1704356149d38fdd600605012d295db4c",
     "title": "Grok",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/Hermes Agent.md": {
-    "sha": "e1ffb0c7780a0832d2492803c735ac3400eaa513",
+    "sha": "db70638ca420de3be8b19266513532e69f0d60a6",
     "title": "Hermes Agent",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/LifeOS Algorithm.md": {
     "sha": "aa21b6771586fe79df72ce044d32a66cf5d232ed",
@@ -48,34 +48,34 @@
     "mtime": "2026-07-21T08:09:14.140Z"
   },
   "concepts/MCP Servers.md": {
-    "sha": "383c466fa8e5ed5090b3c37ae51b9f7bf3f95121",
+    "sha": "6194accae0310200e03a99709f5af109576ea3b2",
     "title": "MCP Servers",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/MiMo Code.md": {
-    "sha": "67299293cb4d44130626988a814099127ec00181",
+    "sha": "01ed5435e633e1bde5e7f53abd45f58ea326f6bc",
     "title": "MiMo Code",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/Obsidian Wiki.md": {
-    "sha": "fdb0ab29288799a1cff5c296e8878bd6b16247ee",
+    "sha": "df37c56163e23c5559782221b263ad2cf6d70ce0",
     "title": "Obsidian Wiki",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/OpenAI Codex.md": {
-    "sha": "afdede7d90bb798716eaacdf005d9f8ebb270e99",
+    "sha": "a45cac3c73e7480c27b2e6d3bf82ed0c0eb8fcf8",
     "title": "OpenAI Codex",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/OpenCode.md": {
-    "sha": "31706acb2084a980cfed96415be720223fa62bd2",
+    "sha": "4ad4136c5d3ecf2b909faf2a3af11263814ce038",
     "title": "OpenCode",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/agentic-stack.md": {
     "sha": "2dc3889087b4511c7335333166cc5b2ce2c44103",
@@ -174,40 +174,40 @@
     "mtime": "2026-07-16T13:28:36.859Z"
   },
   "journal/2026-07-13-second-brain-integration-session.md": {
-    "sha": "bd0d7cd891d6be7fe657ac127febdd93de2f7fe8",
+    "sha": "f99433eefea9110af6bd6d694b87e463ffb10592",
     "title": "2026-07-13-second-brain-integration-session",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "journal/2026-07-14-system-admin-tool-installs.md": {
-    "sha": "6431392e0cafd4630d1d3dc5f234d865783cda1d",
+    "sha": "396dc60e50c57e7a81408cefa581b6229769494c",
     "title": "2026-07-14-system-admin-tool-installs",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "journal/2026-07-21-freebuff-vault-enrichment-session.md": {
-    "sha": "b965e3fb2131d7d34b26be6c413bda60765382ca",
+    "sha": "8aeb87f14d860ab6393910ed7c173c05142fdd93",
     "title": "2026-07-21-freebuff-vault-enrichment-session",
     "summary": "",
-    "mtime": "2026-07-21T08:09:14.140Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "projects/AI-Second-Brain.md": {
-    "sha": "2a31d76b27e8dd5b8ae42d8496eb4ce85ce414be",
-    "title": "AI-Second-Brain",
+    "sha": "9856e4bce291cc88f7c9a11f61523228805abfe3",
+    "title": "AI Second Brain",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "projects/Cross-Agent-Workflow-Test.md": {
-    "sha": "0082fd9c8b39e88b7c6d0bc2e44dfbe861f49962",
+    "sha": "2bbf9f11dc75c424433669eb1d90102d4071496a",
     "title": "Cross-Agent Workflow Test",
     "summary": "",
-    "mtime": "2026-07-21T08:09:14.140Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "projects/agent-version-tracker.md": {
-    "sha": "45a94cc2478045034c67aebb67519043bf03d29e",
+    "sha": "e9fc2bef88f301003bfecef7e48a554b0fb6a33c",
     "title": "Agent Version Tracker",
     "summary": "",
-    "mtime": "2026-07-21T08:09:14.140Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   },
   "references/ai-skills-consolidated-framework.md": {
     "sha": "6eb4a4b35624db0d725ec0b2a1f47ab1ad77eb76",
@@ -270,9 +270,9 @@
     "mtime": "2026-07-16T13:28:36.859Z"
   },
   "synthesis/opencode-freehive-integration.md": {
-    "sha": "f527988a2de015771fdab09d6d4e407abc3bed4f",
+    "sha": "2c9d7a0395712bcdc34fbf4b16c1870677721536",
     "title": "opencode-freehive-integration",
     "summary": "",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-21T23:42:10.502Z"
   }
 }
