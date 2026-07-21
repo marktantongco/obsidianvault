@@ -72,6 +72,6 @@ This indicates preference for models that are:
 - Fallback chains still include paid models as last resort
 
 ## Related
-- [[OpenCode Configuration]]
-- [[AI Agent System]]
-- [[Cost Optimization Strategies]]
+- OpenCode Configuration
+- AI Agent System
+- Cost Optimization Strategies

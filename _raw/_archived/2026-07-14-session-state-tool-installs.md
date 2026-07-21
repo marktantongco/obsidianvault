@@ -50,6 +50,6 @@ Docker was stopped and disabled via `sudo systemctl disable docker`. Now inactiv
 
 ## Related
 
-- [[opencode-mcp-management]]
-- [[ubuntu-sources-mirror]]
-- [[gdm-wayland-intel-skylake]]
+- opencode-mcp-management
+- ubuntu-sources-mirror
+- gdm-wayland-intel-skylake

@@ -3,7 +3,7 @@ title: WORK — Active Tasks & Projects
 bucket: WORK
 path: 01_WORK/
 purpose: Active tasks, project notes, sprints
-tags: [bucket, work, tasks]
+tags: [work, tasks, projects]
 lifecycle: active
 tier: core
 ---

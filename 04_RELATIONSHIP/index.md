@@ -3,7 +3,7 @@ title: RELATIONSHIP — People, Orgs & Meetings
 bucket: RELATIONSHIP
 path: 04_RELATIONSHIP/
 purpose: People, orgs, meeting notes
-tags: [bucket, relationships, people]
+tags: [relationships, people, contacts]
 lifecycle: draft
 tier: supporting
 ---
