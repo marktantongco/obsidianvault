@@ -1,18 +1,16 @@
 ---
 title: Hot Cache
-updated: 2026-07-21T14:25:10.707Z
+updated: 2026-07-21T14:26:03.957Z
 ---
 
 # Hot Cache
 
 ## Recent Activity
-- 2026-07-21 [[concepts/Antigravity Agent|Antigravity Agent]] — 
-- 2026-07-21 [[concepts/LifeOS Algorithm|LifeOS Algorithm]] — 
-- 2026-07-21 [[concepts/agentic-stack|agentic-stack]] — 
-- 2026-07-21 [[concepts/oh-my-openagent|oh-my-openagent]] — 
-- 2026-07-21 [[concepts/poznote-pipeline|Poznote Capture Pipeline]] — 
-- 2026-07-21 [[concepts/system-prompt-v5-1-1|System Prompt v5.1.1]] — 
-- 2026-07-21 [[entities/CopyQ|CopyQ]] — 
-- 2026-07-21 [[entities/DeepSeek|DeepSeek]] — 
-- 2026-07-21 [[entities/GPaste|GPaste]] — 
-- 2026-07-21 [[entities/Owl-Agent|Owl-Agent]] — 
+* Antigravity Agent, LifeOS Algorithm, and agentic-stack are interconnected concepts, with the agentic-stack potentially utilizing the Antigravity Agent and LifeOS Algorithm.
+* oh-my-openagent and Poznote Capture Pipeline are related to the agentic-stack, suggesting a workflow or tooling connection.
+* System Prompt v5.1.1 is likely a key component or interface for the agentic-stack and related concepts.
+* CopyQ, DeepSeek, GPaste, and Owl-Agent are entities that may be integrated with or influenced by the agentic-stack and its associated concepts.
+
+## Key Takeaways
+- Knowledge is compiled dynamically on Cloudflare edge.
+- Vault references are maintained via git webhook cron trigger.
