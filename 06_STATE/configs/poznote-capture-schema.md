@@ -1,3 +1,17 @@
+---
+title: Poznote Capture Schema
+category: state
+tags:
+  - poznote
+  - schema
+  - capture
+  - pipeline
+summary: "Frontmatter schema and field definitions for the Poznote capture pipeline. Defines required/optional fields, classification rules, and file naming conventions."
+lifecycle: active
+tier: core
+created: 2026-07-09
+---
+
 # Poznote Capture Format
 
 ## Markdown Frontmatter Schema

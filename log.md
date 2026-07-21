@@ -1,5 +1,7 @@
 ---
 title: Query Log
+lifecycle: active
+tier: supporting
 ---
 - [Tue, 21 Jul 2026 17:34:15 GMT] DAILY-UPDATE (Cloudflare Edge Sync trigger completed index & hot.md update)
 - [Tue, 21 Jul 2026 17:28:44 GMT] DAILY-UPDATE (Cloudflare Edge Sync trigger completed index & hot.md update)
@@ -691,21 +693,47 @@ title: Query Log
 
 - [2026-07-09T12:50:00Z] QUERY query="What is the current state of my AI setup?" result_pages=5 mode=normal escalated=false
 
+lifecycle: active
+tier: supporting
 ---
 
-*Entries are appended automatically by wiki-query skill.*
-- [2026-07-09T09:46:48Z] SETUP multi-agent vault wiring repo=/home/x1/ai-workspace/obsidian-wiki vault=/home/x1/obsidianvault
-- [2026-07-09T09:58:13Z] SETUP vault="/home/x1/obsidianvault" package=2026.7.2 doctor=pass
-- [2026-07-09T09:58:13Z] INGEST source="/home/x1/Downloads/@ai" pages_created=15 pages_updated=2 mode=append
-- [2026-07-09T09:58:13Z] CAPTURE type=synthesis page="synthesis/agentic-stack-obsidian-wiki-performance.md"
-- [2026-07-09T09:58:13Z] CAPTURE type=session page="journal/2026-07-09-multi-agent-wiki-compound.md"
-- [2026-07-09T09:58:13Z] STATUS history_claude=0 history_codex=0
-- [2026-07-09T18:36:00Z] CONFIG copyq saved vault=/home/x1/obsidian-vaults/AI-Second-Brain/.wiki/config/copyq/
-- [2026-07-09T19:12:00Z] EXPORT session=/home/x1/session-export-20260709-191219.json size=901KB
-- [2026-07-09T10:44:46Z] INGEST mode=raw pages_updated=4 pages_created=0 source="_raw/*.md"
-- [2026-07-13T13:30:00Z] CAPTURE type=session page="journal/2026-07-13-second-brain-integration-session.md" title="Second Brain Integration — Full Stack Session"
-- [2026-07-13T13:45:00Z] RESTRUCTURE vault_folders="01_WORK,02_KNOWLEDGE,03_LEARNING,04_RELATIONSHIP,05_OBSERVABILITY,06_STATE"
-- [2026-07-13T13:50:00Z] SCRIPTS created="lifeos_client.py,hermes_router.py,hermes,poznote_pipeline.py,poznote_watch.sh"
-- [2026-07-13T13:55:00Z] CONFIG updated="obsidian-git/data.json (hermes author, rebase), sync-strategy.md, AGENTS.md (numbered paths, confidence/source fields)"
-- [2026-07-14T02:50:00Z] INGEST mode=raw pages_created=2 pages_updated=1 source="_raw/2026-07-14-session-state-tool-installs.md"
-- [2026-07-14T04:06:00Z] CAPTURE type=synthesis page="synthesis/opencode-freehive-integration.md" title="OpenCode FreeHive Integration"
+## Activity Log
+
+### July 21, 2026 — Vault Enrichment Session
+- [16:32] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [16:26] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [16:20] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [16:14] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [16:08] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [16:02] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:56] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:50] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:45] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:39] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:33] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:27] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:22] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:17] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:12] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:06] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [15:01] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:55] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:50] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:44] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:38] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:33] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:27] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:22] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:16] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:10] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+- [14:04] DAILY-UPDATE — Cloudflare Edge Sync trigger (index & hot.md update)
+
+### July 20, 2026 — Prior Activity
+- [07:57 → 04:34] DAILY-UPDATE — Cloudflare Edge Sync (37 entries across ~3h)
+- [04:34] FREE-TOOL — Freebuff vault enrichment (graph zoom/pan, frontmatter, system docs)
+
+### July 19, 2026
+- [13:02 → 01:00] DAILY-UPDATE — Cloudflare Edge Sync (~5min intervals)
+
+### July 18, 2026
+- [17:36 → 09:03] DAILY-UPDATE — Cloudflare Edge Sync (~5min intervals)

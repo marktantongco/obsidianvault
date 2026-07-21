@@ -24,6 +24,7 @@ provenance:
   ambiguous: 0.0
 base_confidence: 0.9
 lifecycle: active
+tier: core
 ---
 
 # Vault Enrichment — Freebuff Session

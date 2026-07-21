@@ -6,6 +6,8 @@ base_confidence: 0.9
 lifecycle_changed: 2026-07-14
 sources:
   - "default project session (2026-07-14)"
+lifecycle: archived
+tier: peripheral
 ---
 
 ## Finding: tokensave and codegraph MCP Removal

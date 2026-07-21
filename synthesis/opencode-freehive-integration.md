@@ -21,6 +21,7 @@ provenance:
 base_confidence: 0.9
 lifecycle: draft
 lifecycle_changed: 2026-07-14
+tier: supporting
 ---
 
 # OpenCode FreeHive Integration

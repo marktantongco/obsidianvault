@@ -22,6 +22,7 @@ provenance:
 base_confidence: 0.85
 lifecycle: active
 lifecycle_changed: 2026-07-14
+tier: core
 ---
 
 # MCP Cleanup, Docker Disable, and AI Tool Installations

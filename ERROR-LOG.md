@@ -4,6 +4,8 @@ type: reference
 created: 2026-07-09
 updated: 2026-07-09
 tags: [errors, debugging, reference]
+lifecycle: active
+tier: supporting
 ---
 
 # Error Log

@@ -14,6 +14,7 @@ provenance:
 lifecycle: draft
 lifecycle_changed: 2026-07-09
 created: 2026-07-09T10:00:20Z
+tier: peripheral
 ---
 
 # Free China proxy direct-first rule

@@ -28,6 +28,7 @@ provenance:
 base_confidence: 0.85
 lifecycle: active
 lifecycle_changed: 2026-07-13
+tier: core
 ---
 
 # Second Brain Integration — Multi-Agent Session

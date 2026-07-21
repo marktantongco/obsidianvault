@@ -4,6 +4,8 @@ date: {{date:YYYY-MM-DD}}
 type: project
 tags: [project]
 status: active
+lifecycle: active
+tier: core
 ---
 
 # Project: 

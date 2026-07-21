@@ -13,6 +13,7 @@ provenance:
 lifecycle: draft
 lifecycle_changed: 2026-07-09
 created: 2026-07-09T10:00:20Z
+tier: peripheral
 ---
 
 # Wiki compound habit after install

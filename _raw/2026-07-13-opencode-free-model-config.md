@@ -16,6 +16,7 @@ provenance:
 base_confidence: 0.7
 lifecycle: draft
 lifecycle_changed: 2026-07-13
+tier: supporting
 ---
 
 # OpenCode Free Model Configuration

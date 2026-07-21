@@ -5,6 +5,8 @@ created: 2026-07-09
 updated: 2026-07-21
 status: testing
 tags: [test, workflow, agents]
+lifecycle: active
+tier: core
 ---
 
 # Cross-Agent Workflow Test

@@ -4,6 +4,8 @@ type: reference
 created: 2026-07-21
 updated: 2026-07-21
 tags: [activation, setup, configuration, getting-started]
+lifecycle: active
+tier: core
 ---
 
 # System Activation Guide

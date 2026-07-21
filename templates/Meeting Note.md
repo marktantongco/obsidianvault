@@ -4,6 +4,8 @@ date: {{date:YYYY-MM-DD}}
 type: meeting
 tags: [meeting]
 attendees: []
+lifecycle: active
+tier: core
 ---
 
 # Meeting: 

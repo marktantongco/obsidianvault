@@ -9,6 +9,8 @@ provenance:
   extracted: 0.8
   inferred: 0.2
 base_confidence: 0.75
+lifecycle: draft
+tier: supporting
 ---
 
 # Multi-Agent AI Setup: Gotchas and Workarounds

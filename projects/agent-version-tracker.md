@@ -8,6 +8,8 @@ tags:
   - versions
   - tracking
   - changelog
+lifecycle: active
+tier: supporting
 ---
 
 # Agent Version Tracker
