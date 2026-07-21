@@ -1,4 +1,5 @@
 ---
+title: OpenAI Codex
 tags: [codex, openai, coding]
 type: concept
 created: 2026-07-09

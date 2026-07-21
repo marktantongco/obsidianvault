@@ -1,4 +1,5 @@
 ---
+title: Obsidian Wiki
 tags: [obsidian, wiki, knowledge-base]
 type: concept
 created: 2026-07-09

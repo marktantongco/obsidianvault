@@ -3,6 +3,7 @@ title: OBSERVABILITY — Logs, Metrics & Dashboards
 bucket: OBSERVABILITY
 path: 05_OBSERVABILITY/
 purpose: System logs, metrics, dashboards
+tags: [bucket, observability, logs]
 lifecycle: active
 tier: core
 ---

@@ -1,4 +1,5 @@
 ---
+title: Meeting Note
 date: {{date:YYYY-MM-DD}}
 type: meeting
 tags: [meeting]

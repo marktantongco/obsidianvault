@@ -1,4 +1,5 @@
 ---
+title: MCP Servers
 tags: [mcp, protocol, tools]
 type: concept
 created: 2026-07-09

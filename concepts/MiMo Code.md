@@ -1,4 +1,5 @@
 ---
+title: MiMo Code
 tags: [mimo, xiaomi, coding]
 type: concept
 created: 2026-07-09

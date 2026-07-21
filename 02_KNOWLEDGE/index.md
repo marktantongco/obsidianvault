@@ -3,6 +3,7 @@ title: KNOWLEDGE — Concepts, Research & References
 bucket: KNOWLEDGE
 path: 02_KNOWLEDGE/
 purpose: Distilled research, concepts, references
+tags: [bucket, knowledge, concepts]
 lifecycle: active
 tier: core
 ---

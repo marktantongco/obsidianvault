@@ -69,3 +69,7 @@ updated: 2026-07-21T17:34:15.736Z
 
 ## Special
 - [[hot]] · [[log]] · [[AGENTS]]
+
+## _raw / Inbox
+- [[_raw/2026-07-09-multi-agent-setup-gotchas|Multi-Agent Setup Gotchas]] — GitHub rate limiting, PEP 668, git-remote-https, Hermes Python compatibility
+- [[_raw/2026-07-13-opencode-free-model-config|OpenCode Free Model Config]] — Free-tier model configuration for OpenCode agents

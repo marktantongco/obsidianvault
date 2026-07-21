@@ -1,4 +1,5 @@
 ---
+title: Daily Note
 date: {{date:YYYY-MM-DD}}
 type: daily
 tags: [daily]

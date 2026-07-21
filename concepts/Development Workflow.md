@@ -1,4 +1,5 @@
 ---
+title: Development Workflow
 tags: [workflow, development, process]
 type: concept
 created: 2026-07-09

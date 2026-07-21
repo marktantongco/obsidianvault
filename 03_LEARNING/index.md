@@ -3,6 +3,7 @@ title: LEARNING — Courses, Tutorials & Takeaways
 bucket: LEARNING
 path: 03_LEARNING/
 purpose: Courses, tutorials, takeaways
+tags: [bucket, learning, courses]
 lifecycle: draft
 tier: supporting
 ---

@@ -3,6 +3,7 @@ title: STATE — Configs, Env & Runtime State
 bucket: STATE
 path: 06_STATE/
 purpose: Configs, env files, runtime state
+tags: [bucket, state, configs]
 lifecycle: active
 tier: core
 ---

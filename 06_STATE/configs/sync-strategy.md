@@ -1,3 +1,10 @@
+---
+title: Sync & Conflict Strategy
+tags: [sync, git, conflict, strategy]
+lifecycle: active
+tier: supporting
+---
+
 # Sync & Conflict Strategy
 
 ## Git Sync Cadence

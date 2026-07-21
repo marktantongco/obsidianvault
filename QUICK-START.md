@@ -1,5 +1,11 @@
 ---
 title: Quick Start Guide
+category: reference
+tags: [quickstart, setup, navigation, usage]
+lifecycle: active
+tier: supporting
+created: 2026-07-09
+updated: 2026-07-09
 ---
 
 # Quick Start Guide

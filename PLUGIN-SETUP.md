@@ -1,5 +1,11 @@
 ---
 title: Plugin Setup Guide
+category: reference
+tags: [plugins, setup, configuration, obsidian]
+lifecycle: active
+tier: supporting
+created: 2026-07-09
+updated: 2026-07-09
 ---
 
 # Plugin Setup Guide

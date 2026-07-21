@@ -1,4 +1,5 @@
 ---
+title: AI Agents
 tags: [ai, agents, orchestration]
 type: concept
 created: 2026-07-09

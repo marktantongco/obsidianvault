@@ -381,6 +381,8 @@
       "templates/Daily Note.md", "templates/Meeting Note.md", "templates/Project Note.md",
       "01_WORK/index.md", "02_KNOWLEDGE/index.md", "03_LEARNING/index.md",
       "04_RELATIONSHIP/index.md", "05_OBSERVABILITY/index.md", "06_STATE/index.md",
+      "_raw/2026-07-09-multi-agent-setup-gotchas.md",
+      "_raw/2026-07-13-opencode-free-model-config.md",
       "API-KEY-GUIDE.md", "ERROR-LOG.md", "MANUAL-PLUGIN-INSTALL.md", "PLUGIN-SETUP.md",
       "QUICK-START.md", "SYSTEM-COMPLETE.md", "SYSTEM-INSTALLATION-STATUS.md", "TROUBLESHOOTING.md"
     ];
@@ -403,6 +405,12 @@
       });
       document.addEventListener('click', e => {
         if (!e.target.closest('.search-container')) closeSearch();
+      });
+      document.addEventListener('keydown', e => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          document.getElementById('search-input').focus();
+        }
       });
     });
 
@@ -904,14 +912,142 @@
         }
       }
 
-      // Draw
+      // View transform state for zoom/pan
+      let viewScale = 1;
+      let viewOffsetX = 0;
+      let viewOffsetY = 0;
+      let isDragging = false;
+      let isPanning = false;
+      let dragStartX = 0, dragStartY = 0;
+      let panStartX = 0, panStartY = 0;
+      let hoveredNode = null;
+
+      // Inverse transform: screen coords → graph coords
+      function graphCoords(clientX, clientY) {
+        const r = canvas.getBoundingClientRect();
+        return {
+          x: (clientX - r.left - viewOffsetX) / viewScale,
+          y: (clientY - r.top - viewOffsetY) / viewScale
+        };
+      }
+
+      drawGraph(ctx, nodes, edges, null, viewScale, viewOffsetX, viewOffsetY);
+
+      // Mouse wheel zoom
+      canvas.onwheel = (e) => {
+        e.preventDefault();
+        const r = canvas.getBoundingClientRect();
+        const mx = e.clientX - r.left;
+        const my = e.clientY - r.top;
+        const zoomFactor = e.deltaY > 0 ? 0.88 : 1 / 0.88;
+        const newScale = Math.max(0.15, Math.min(6, viewScale * zoomFactor));
+        // Zoom toward mouse position
+        viewOffsetX = mx - (mx - viewOffsetX) * (newScale / viewScale);
+        viewOffsetY = my - (my - viewOffsetY) * (newScale / viewScale);
+        viewScale = newScale;
+        drawGraph(ctx, nodes, edges, hoveredNode, viewScale, viewOffsetX, viewOffsetY);
+      };
+
+      // Drag to pan + hover detection
+      canvas.onmousedown = (e) => {
+        isDragging = true;
+        isPanning = false;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        panStartX = viewOffsetX;
+        panStartY = viewOffsetY;
+        canvas.style.cursor = 'grabbing';
+      };
+
+      canvas.onmousemove = (e) => {
+        if (isDragging) {
+          // Only start panning if mouse moved enough
+          const dx = e.clientX - dragStartX;
+          const dy = e.clientY - dragStartY;
+          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+            isPanning = true;
+          }
+          if (isPanning) {
+            viewOffsetX = panStartX + (e.clientX - dragStartX);
+            viewOffsetY = panStartY + (e.clientY - dragStartY);
+            drawGraph(ctx, nodes, edges, null, viewScale, viewOffsetX, viewOffsetY);
+          }
+          return;
+        }
+        // Hover detection (inverse transform)
+        const gc = graphCoords(e.clientX, e.clientY);
+        hoveredNode = null;
+        for (const node of nodes) {
+          const dx = gc.x - node.x, dy = gc.y - node.y;
+          if (dx * dx + dy * dy < (node.radius + 8) * (node.radius + 8)) {
+            hoveredNode = node;
+            break;
+          }
+        }
+        canvas.style.cursor = hoveredNode ? 'pointer' : 'grab';
+        drawGraph(ctx, nodes, edges, hoveredNode, viewScale, viewOffsetX, viewOffsetY);
+      };
+
+      canvas.onmouseup = (e) => {
+        if (isDragging && !isPanning) {
+          // It was a click, not a drag — navigate
+          const gc = graphCoords(e.clientX, e.clientY);
+          let clickedNode = null;
+          for (const node of nodes) {
+            const dx = gc.x - node.x, dy = gc.y - node.y;
+            if (dx * dx + dy * dy < (node.radius + 8) * (node.radius + 8)) {
+              clickedNode = node;
+              break;
+            }
+          }
+          if (clickedNode) navigateTo(clickedNode.path);
+        }
+        isDragging = false;
+        isPanning = false;
+        canvas.style.cursor = hoveredNode ? 'pointer' : 'grab';
+      };
+
+      canvas.onmouseleave = () => {
+        isDragging = false;
+        isPanning = false;
+        hoveredNode = null;
+      };
+
+      // ResizeObserver: redraw graph when container resizes
+      const graphObserver = new ResizeObserver(() => {
+        if (canvas && canvas.parentElement) {
+          canvas.width = canvas.parentElement.clientWidth;
+          drawGraph(ctx, nodes, edges, null, viewScale, viewOffsetX, viewOffsetY);
+        }
+      });
+      graphObserver.observe(canvas.parentElement);
+      // Store observer ref for cleanup
+      canvas._graphObserver = graphObserver;
+
+      graphInitialized = true;
+    }
+
+    function drawGraph(ctx, nodes, edges, highlight, scale, offsetX, offsetY) {
+      const canvas = ctx.canvas;
+      const s = scale || 1;
+      const ox = offsetX || 0;
+      const oy = offsetY || 0;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      ctx.translate(ox, oy);
+      ctx.scale(s, s);
 
       // Edges
-      ctx.strokeStyle = 'rgba(39, 39, 42, 0.6)';
-      ctx.lineWidth = 1;
       for (const edge of edges) {
         const a = nodes[edge.from], b = nodes[edge.to];
+        if (highlight && (a === highlight || b === highlight)) {
+          ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)';
+          ctx.lineWidth = 2 / s;
+        } else {
+          ctx.strokeStyle = 'rgba(39, 39, 42, 0.4)';
+          ctx.lineWidth = 1 / s;
+        }
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
@@ -920,105 +1056,47 @@
 
       // Nodes
       for (const node of nodes) {
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = node.color;
-        ctx.fill();
-        if (node.radius >= 6) {
-          ctx.shadowColor = node.color;
-          ctx.shadowBlur = 8;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-      }
-
-      // Labels for core nodes
-      ctx.fillStyle = '#A1A1AA';
-      ctx.font = '11px Outfit, sans-serif';
-      ctx.textAlign = 'center';
-      for (const node of nodes) {
-        if (node.tier === 'core') {
-          const displayName = node.title.length > 20 ? node.title.slice(0, 18) + '…' : node.title;
-          ctx.fillText(displayName, node.x, node.y - node.radius - 4);
-        }
-      }
-
-      // Hover interaction
-      let hoveredNode = null;
-      canvas.onmousemove = (e) => {
-        const r = canvas.getBoundingClientRect();
-        const mx = e.clientX - r.left;
-        const my = e.clientY - r.top;
-        hoveredNode = null;
-        for (const node of nodes) {
-          const dx = mx - node.x, dy = my - node.y;
-          if (dx * dx + dy * dy < (node.radius + 8) * (node.radius + 8)) {
-            hoveredNode = node;
-            break;
-          }
-        }
-        canvas.style.cursor = hoveredNode ? 'pointer' : 'grab';
-        // Redraw with highlight
-        drawGraph(ctx, nodes, edges, hoveredNode);
-      };
-
-      canvas.onclick = () => {
-        if (hoveredNode) {
-          navigateTo(hoveredNode.path);
-        }
-      };
-
-      graphInitialized = true;
-    }
-
-    function drawGraph(ctx, nodes, edges, highlight) {
-      const canvas = ctx.canvas;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (const edge of edges) {
-        const a = nodes[edge.from], b = nodes[edge.to];
-        if (highlight && (a === highlight || b === highlight)) {
-          ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)';
-          ctx.lineWidth = 2;
-        } else {
-          ctx.strokeStyle = 'rgba(39, 39, 42, 0.4)';
-          ctx.lineWidth = 1;
-        }
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
-
-      for (const node of nodes) {
         const isHighlight = node === highlight;
+        const r = isHighlight ? node.radius + 3 : node.radius;
         ctx.beginPath();
-        ctx.arc(node.x, node.y, isHighlight ? node.radius + 3 : node.radius, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
         ctx.fillStyle = isHighlight ? '#60A5FA' : node.color;
         ctx.fill();
         if (isHighlight) {
           ctx.shadowColor = '#60A5FA';
-          ctx.shadowBlur = 16;
+          ctx.shadowBlur = 16 / s;
           ctx.fill();
           ctx.shadowBlur = 0;
+        }
+      }
+
+      // Labels for core nodes (scale-invariant font size)
+      ctx.fillStyle = '#A1A1AA';
+      ctx.font = `${Math.max(8, 11 / s)}px Outfit, sans-serif`;
+      ctx.textAlign = 'center';
+      for (const node of nodes) {
+        if (node.tier === 'core') {
+          const displayName = node.title.length > 20 ? node.title.slice(0, 18) + '…' : node.title;
+          ctx.fillText(displayName, node.x, node.y - node.radius - 4 / s);
         }
       }
 
       if (highlight) {
         ctx.fillStyle = '#FAFAFA';
-        ctx.font = '12px Outfit, sans-serif';
+        ctx.font = `${Math.max(9, 12 / s)}px Outfit, sans-serif`;
         ctx.textAlign = 'center';
-        ctx.fillText(highlight.title, highlight.x, highlight.y - highlight.radius - 10);
+        ctx.fillText(highlight.title, highlight.x, highlight.y - highlight.radius - 10 / s);
 
-        // Show connected count
         let connCount = 0;
         for (const edge of edges) {
           if (edge.from === highlight.id || edge.to === highlight.id) connCount++;
         }
         ctx.fillStyle = '#71717A';
-        ctx.font = '10px Outfit, sans-serif';
-        ctx.fillText(`${connCount} connections`, highlight.x, highlight.y - highlight.radius - 24);
+        ctx.font = `${Math.max(7, 10 / s)}px Outfit, sans-serif`;
+        ctx.fillText(`${connCount} connections`, highlight.x, highlight.y - highlight.radius - 24 / s);
       }
+
+      ctx.restore();
     }
 
     // ── Sidebar ─────────────────────────────────────────────────────────────
@@ -1109,7 +1187,7 @@
 
     function escapeHtml(str) {
       if (!str) return '';
-      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
     // Legacy loadPage for any remaining [[wikilinks]] that aren't resolved

@@ -1,4 +1,5 @@
 ---
+title: OpenCode
 tags: [opencode, coding, cli]
 type: concept
 created: 2026-07-09

@@ -1,4 +1,5 @@
 ---
+title: Project Note
 date: {{date:YYYY-MM-DD}}
 type: project
 tags: [project]

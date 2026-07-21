@@ -1,3 +1,12 @@
+---
+title: Vault Agent Conventions
+category: system
+tags: [agents, conventions, vault, setup]
+lifecycle: verified
+tier: core
+source: system
+---
+
 # Vault Agent Conventions
 
 **Canonical vault path:** `/home/x1/obsidianvault`

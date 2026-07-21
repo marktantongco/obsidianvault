@@ -1,4 +1,5 @@
 ---
+title: Grok
 tags: [grok, xai, assistant]
 type: concept
 created: 2026-07-09
