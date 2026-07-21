@@ -3,241 +3,1130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obsidian Wiki Reader</title>
-  <!-- Pico CSS -->
+  <title>Second Brain — Obsidian Wiki Reader</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Marked.js (Markdown Parser) -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
       --font-family: 'Outfit', sans-serif;
       --font-family-mono: 'JetBrains Mono', monospace;
-      --pico-background-color: #0A0A0A;
-      --pico-card-background-color: #141414;
-      --pico-border-color: #2A2A2A;
-      --pico-color: #FAFAFA;
-      --pico-muted-color: #A0A0A0;
-      --pico-primary: #3B82F6;
-      --pico-primary-hover: #60A5FA;
+      --bg: #09090B;
+      --surface: #141416;
+      --surface-alt: #1A1A1E;
+      --border: #27272A;
+      --text: #FAFAFA;
+      --text-secondary: #A1A1AA;
+      --text-muted: #71717A;
+      --accent: #3B82F6;
+      --accent-hover: #60A5FA;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --green: #22C55E;
+      --amber: #F59E0B;
+      --purple: #8B5CF6;
+      --pink: #EC4899;
+      --radius: 12px;
+      --radius-sm: 8px;
     }
-    
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-family);
-      background-color: var(--pico-background-color);
-      color: var(--pico-color);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
     }
-    
-    main.container {
-      max-width: 900px;
-      padding-top: 2rem;
-      padding-bottom: 4rem;
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* Layout */
+    .app-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .app-header .inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1.5rem; gap: 1rem;
+    }
+    .logo { font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+    .logo span { background: linear-gradient(135deg, var(--accent), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .header-actions a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .header-actions a:hover { color: var(--text); }
+    .random-btn {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary);
+      padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;
+      font-size: 0.8rem; font-weight: 500; transition: all 0.2s;
+    }
+    .random-btn:hover { color: var(--text); border-color: var(--accent); background: var(--accent-glow); }
+
+    .main-layout {
+      max-width: 1100px; margin: 0 auto; padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 900px) {
+      .main-layout.has-sidebar { grid-template-columns: 1fr 280px; }
     }
 
-    header {
-      border-bottom: 1px solid var(--pico-border-color);
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
+    /* Search */
+    .search-container { position: relative; }
+    .search-input {
+      width: 100%; padding: 0.7rem 1rem 0.7rem 2.5rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text); font-size: 0.9rem; font-family: var(--font-family);
+      outline: none; transition: all 0.2s;
     }
-
-    h1, h2, h3, h4 {
-      font-weight: 700;
-      letter-spacing: -0.02em;
+    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .search-input::placeholder { color: var(--text-muted); }
+    .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; pointer-events: none; }
+    .search-results {
+      position: absolute; top: 100%; left: 0; right: 0; z-index: 50;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      margin-top: 0.25rem; max-height: 400px; overflow-y: auto; display: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
     }
-
-    .nav-tabs {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--pico-border-color);
-      padding-bottom: 0.5rem;
+    .search-results.visible { display: block; }
+    .search-result-item {
+      padding: 0.6rem 1rem; cursor: pointer; transition: background 0.15s;
+      border-bottom: 1px solid var(--border);
     }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover { background: var(--surface-alt); }
+    .search-result-item .title { font-weight: 600; font-size: 0.9rem; }
+    .search-result-item .path { font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-family-mono); }
+    .search-result-item .snippet { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.15rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .search-result-item .match { color: var(--accent); font-weight: 600; }
+    .search-no-results { padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
-    .nav-tabs button {
-      background: none;
-      border: none;
-      color: var(--pico-muted-color);
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.2s ease;
+    /* Tabs */
+    .tabs {
+      display: flex; gap: 0.25rem; flex-wrap: wrap;
+      background: var(--surface); border-radius: var(--radius-sm);
+      padding: 0.25rem; border: 1px solid var(--border);
     }
-
-    .nav-tabs button.active {
-      color: var(--pico-color);
-      background-color: var(--pico-card-background-color);
-      box-shadow: 0 0 0 1px var(--pico-border-color);
+    .tab-btn {
+      background: none; border: none; color: var(--text-muted); cursor: pointer;
+      padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500;
+      font-family: var(--font-family); transition: all 0.2s;
     }
+    .tab-btn:hover { color: var(--text-secondary); background: var(--surface-alt); }
+    .tab-btn.active { color: var(--text); background: var(--surface-alt); box-shadow: 0 0 0 1px var(--border); }
 
-    .wiki-content {
-      background-color: var(--pico-card-background-color);
-      border: 1px solid var(--pico-border-color);
-      border-radius: 12px;
-      padding: 2rem;
+    /* Content Area */
+    .content-area {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
       min-height: 400px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
     }
 
-    /* Convert Obsidian Wikilinks to clean buttons */
-    .wikilink {
-      color: var(--pico-primary);
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: 600;
-      border-bottom: 1px dashed var(--pico-primary);
+    /* Back button */
+    .back-container { margin-bottom: 1rem; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: none; border: none; color: var(--text-muted); cursor: pointer;
+      font-size: 0.85rem; font-family: var(--font-family); padding: 0.25rem 0;
       transition: color 0.2s;
     }
+    .back-btn:hover { color: var(--text); }
 
-    .wikilink:hover {
-      color: var(--pico-primary-hover);
-      border-bottom: 1px solid var(--pico-primary-hover);
+    /* Metadata Bar */
+    .metadata-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+      padding: 0.75rem 0; margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
     }
+    .meta-tag {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.75rem; font-weight: 500; padding: 0.2rem 0.6rem;
+      border-radius: 100px; background: var(--surface-alt);
+      color: var(--text-secondary);
+    }
+    .meta-tag.tier-core { background: rgba(59,130,246,0.15); color: var(--accent); }
+    .meta-tag.tier-supporting { background: rgba(139,92,246,0.15); color: var(--purple); }
+    .meta-tag.tier-peripheral { background: rgba(161,161,170,0.15); color: var(--text-muted); }
+    .meta-tag.lifecycle-active { background: rgba(34,197,94,0.15); color: var(--green); }
+    .meta-tag.lifecycle-draft { background: rgba(245,158,11,0.15); color: var(--amber); }
+    .meta-tag.lifecycle-verified { background: rgba(59,130,246,0.15); color: var(--accent); }
+    .meta-tag.tag { background: rgba(59,130,246,0.1); color: var(--accent-hover); }
+    .meta-tag.bucket { background: rgba(236,72,153,0.1); color: var(--pink); }
 
-    .back-btn {
+    /* Wikilinks */
+    .wikilink {
+      color: var(--accent); text-decoration: none; cursor: pointer;
+      font-weight: 600; border-bottom: 1px dashed var(--accent);
+      transition: all 0.2s;
+    }
+    .wikilink:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
+
+    /* Markdown Content */
+    .wiki-content h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em; margin-top: 0; margin-bottom: 0.5rem; }
+    .wiki-content h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-top: 2rem; margin-bottom: 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+    .wiki-content h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    .wiki-content h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .wiki-content p { margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.8; }
+    .wiki-content ul, .wiki-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    .wiki-content li { margin-bottom: 0.3rem; color: var(--text-secondary); }
+    .wiki-content strong { color: var(--text); font-weight: 600; }
+    .wiki-content code {
+      font-family: var(--font-family-mono); font-size: 0.85rem;
+      background: var(--surface-alt); padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+    }
+    .wiki-content pre {
+      background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1rem; overflow-x: auto;
       margin-bottom: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      cursor: pointer;
-      color: var(--pico-muted-color);
-      background: none;
-      border: none;
-      padding: 0;
     }
-    
-    .back-btn:hover {
-      color: var(--pico-color);
+    .wiki-content pre code { background: none; padding: 0; font-size: 0.8rem; }
+    .wiki-content blockquote {
+      border-left: 3px solid var(--accent); padding-left: 1rem;
+      color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;
     }
+    .wiki-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.9rem; }
+    .wiki-content th, .wiki-content td { padding: 0.5rem 0.75rem; border: 1px solid var(--border); text-align: left; }
+    .wiki-content th { background: var(--surface-alt); font-weight: 600; color: var(--text); }
+    .wiki-content td { color: var(--text-secondary); }
+    .wiki-content hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .wiki-content img { max-width: 100%; border-radius: var(--radius-sm); }
 
-    pre code {
-      font-family: var(--font-family-mono);
-      font-size: 0.9rem;
+    /* Backlinks */
+    .backlinks-section {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
     }
+    .backlinks-section h3 { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .backlink-item {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.35rem 0.75rem; margin: 0.2rem;
+      background: var(--surface-alt); border-radius: 6px;
+      cursor: pointer; font-size: 0.85rem; font-weight: 500;
+      color: var(--accent); transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .backlink-item:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .backlink-count { color: var(--text-muted); font-size: 0.8rem; }
+
+    /* Sidebar */
+    .sidebar { display: none; }
+    @media (min-width: 900px) {
+      .sidebar { display: block; }
+    }
+    .sidebar-section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1rem;
+    }
+    .sidebar-section h3 {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.75rem;
+    }
+    .sidebar-link {
+      display: block; padding: 0.3rem 0; font-size: 0.85rem;
+      color: var(--text-secondary); text-decoration: none; transition: color 0.2s;
+      cursor: pointer;
+    }
+    .sidebar-link:hover { color: var(--accent); }
+    .sidebar-link .count { color: var(--text-muted); font-size: 0.75rem; }
+
+    /* Tag Cloud */
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag-pill {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      padding: 0.25rem 0.65rem; border-radius: 100px; cursor: pointer;
+      font-size: 0.78rem; font-weight: 500; transition: all 0.2s;
+      background: var(--surface-alt); color: var(--text-secondary);
+      border: 1px solid transparent;
+    }
+    .tag-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .tag-pill.active { background: var(--accent-glow); color: var(--accent); border-color: var(--accent); }
+    .tag-pill .count { font-size: 0.7rem; opacity: 0.6; }
+
+    /* Grid view for some tabs */
+    .page-grid {
+      display: grid; gap: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .page-card {
+      background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1rem; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .page-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .page-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .page-card p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+    .page-card .tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; }
+    .page-card .mini-tag { font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 100px; background: var(--surface); color: var(--text-muted); }
+
+    /* Graph View */
+    #graph-canvas {
+      width: 100%; height: 500px; border-radius: var(--radius-sm);
+      background: var(--bg); cursor: grab;
+      border: 1px solid var(--border);
+    }
+    #graph-canvas:active { cursor: grabbing; }
+    .graph-legend {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem;
+      font-size: 0.78rem; color: var(--text-muted);
+    }
+    .graph-legend span { display: flex; align-items: center; gap: 0.3rem; }
+    .graph-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .graph-dot.core { background: var(--accent); }
+    .graph-dot.supporting { background: var(--purple); }
+    .graph-dot.peripheral { background: var(--text-muted); }
+
+    /* Loading / Error states */
+    .loading-state { display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 4rem 0; color: var(--text-muted); }
+    .spinner { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-state { text-align: center; padding: 3rem 0; color: var(--text-muted); }
+    .error-state h3 { color: var(--text); margin-bottom: 0.5rem; }
+
+    /* Fade in animation */
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-  <main class="container">
-    <header>
-      <nav>
-        <ul>
-          <li><strong>🧠 Second Brain</strong></li>
-        </ul>
-        <ul>
-          <li><a href="https://github.com/marktantongco/obsidianvault" target="_blank" class="secondary">GitHub Repo</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header class="app-header">
+    <div class="inner">
+      <div class="logo">🧠 <span>Second Brain</span></div>
+      <div class="header-actions">
+        <button class="random-btn" onclick="loadRandomPage()" title="Surprise me">🎲 Random</button>
+        <a href="https://github.com/marktantongco/obsidianvault" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </header>
 
-    <div class="nav-tabs">
-      <button id="tab-index" class="active" onclick="switchTab('index')">Wiki Index</button>
-      <button id="tab-hot" onclick="switchTab('hot')">Hot Cache</button>
+  <main class="main-layout" id="main-layout">
+    <div>
+      <!-- Search -->
+      <div class="search-container" style="margin-bottom: 1rem;">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" type="text" id="search-input" placeholder="Search all pages..." oninput="handleSearch(this.value)" autocomplete="off">
+        <div class="search-results" id="search-results"></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs" style="margin-bottom: 1rem;">
+        <button class="tab-btn active" onclick="switchTab('index')">📖 Index</button>
+        <button class="tab-btn" onclick="switchTab('hot')">🔥 Hot</button>
+        <button class="tab-btn" onclick="switchTab('graph')">🕸️ Graph</button>
+        <button class="tab-btn" onclick="switchTab('tags')">🏷️ Tags</button>
+        <button class="tab-btn" onclick="switchTab('browse')">📂 Browse</button>
+      </div>
+
+      <!-- Back -->
+      <div class="back-container" id="back-container" style="display:none;">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+      </div>
+
+      <!-- Content -->
+      <div class="content-area fade-in" id="render-target">
+        <div class="loading-state"><div class="spinner"></div> Loading your second brain...</div>
+      </div>
+
+      <!-- Backlinks -->
+      <div id="backlinks-container" style="display:none;"></div>
     </div>
 
-    <div id="back-container" style="display: none;">
-      <button class="back-btn" onclick="goBack()">← Back to Index</button>
-    </div>
-
-    <article class="wiki-content" id="render-target">
-      <div aria-busy="true">Loading your second brain...</div>
-    </article>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <h3>📊 Stats</h3>
+        <div id="sidebar-stats"></div>
+      </div>
+      <div class="sidebar-section">
+        <h3>🏷️ Active Tags</h3>
+        <div class="tag-cloud" id="sidebar-tags"></div>
+      </div>
+      <div class="sidebar-section">
+        <h3>📂 Buckets</h3>
+        <div id="sidebar-buckets"></div>
+      </div>
+    </aside>
   </main>
 
   <script>
+    // ── Page Index ──────────────────────────────────────────────────────────
+    const ALL_PAGES = [
+      "index.md", "hot.md", "AGENTS.md",
+      "concepts/AI Agents.md", "concepts/Antigravity Agent.md", "concepts/Claude Code.md",
+      "concepts/Development Workflow.md", "concepts/FreeHive.md", "concepts/Grok.md",
+      "concepts/Hermes Agent.md", "concepts/LifeOS Algorithm.md", "concepts/MCP Servers.md",
+      "concepts/MiMo Code.md", "concepts/Obsidian Wiki.md", "concepts/OpenAI Codex.md",
+      "concepts/OpenCode.md", "concepts/agentic-stack.md", "concepts/multi-agent-obsidian-wiki-synergy.md",
+      "concepts/oh-my-openagent.md", "concepts/poznote-pipeline.md", "concepts/system-prompt-v5-1-1.md",
+      "entities/CopyQ.md", "entities/DeepSeek.md", "entities/GPaste.md",
+      "entities/Owl-Agent.md", "entities/SiliconFlow.md", "entities/Zhipu-GLM.md",
+      "entities/ai-wanderer.md", "entities/free-claude-code.md", "entities/lifeos-cli.md", "entities/p2d-duck.md",
+      "journal/2026-07-09-multi-agent-wiki-compound.md",
+      "journal/2026-07-13-second-brain-integration-session.md",
+      "journal/2026-07-14-system-admin-tool-installs.md",
+      "journal/2026-07-21-freebuff-vault-enrichment-session.md",
+      "projects/AI-Second-Brain.md", "projects/Cross-Agent-Workflow-Test.md", "projects/agent-version-tracker.md",
+      "references/ai-skills-consolidated-framework.md", "references/free-china-proxy-research.md",
+      "references/obsidian-claude-memory-framework.md",
+      "skills/free-china-proxy-ops.md", "skills/git-sync-strategy.md", "skills/gpaste-gnome-wayland.md",
+      "skills/mobile-sync-termux.md", "skills/multi-agent-vault-wiring.md", "skills/wiki-compound-loop.md",
+      "synthesis/agentic-stack-obsidian-wiki-performance.md", "synthesis/opencode-freehive-integration.md",
+      "templates/Daily Note.md", "templates/Meeting Note.md", "templates/Project Note.md",
+      "01_WORK/index.md", "02_KNOWLEDGE/index.md", "03_LEARNING/index.md",
+      "04_RELATIONSHIP/index.md", "05_OBSERVABILITY/index.md", "06_STATE/index.md",
+      "API-KEY-GUIDE.md", "ERROR-LOG.md", "MANUAL-PLUGIN-INSTALL.md", "PLUGIN-SETUP.md",
+      "QUICK-START.md", "SYSTEM-COMPLETE.md", "SYSTEM-INSTALLATION-STATUS.md", "TROUBLESHOOTING.md"
+    ];
+
+    // ── State ───────────────────────────────────────────────────────────────
+    let pageData = {};          // path -> { frontmatter, content, wikilinks, html }
     let historyStack = [];
     let currentTab = 'index';
+    let currentPage = null;
+    let activeTagFilter = null;
+    let graphInitialized = false;
 
-    // Configure marked to clean and transform Obsidian Wikilinks
-    const renderer = new marked.Renderer();
-    
-    // Custom link renderer to catch custom wikilink syntax
-    function parseWikilinks(text) {
-      // Matches [[path/to/file|Display Name]] or [[path/to/file]]
-      return text.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (match, path, display) => {
-        const displayName = display ? display.trim() : path.trim().split('/').pop();
-        const targetPath = path.trim();
-        return `<span class="wikilink" onclick="loadPage('${targetPath}')">${displayName}</span>`;
+    // ── Init ────────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadAllPages();
+      renderSidebar();
+      switchTab('index');
+      document.getElementById('search-input').addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeSearch();
       });
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.search-container')) closeSearch();
+      });
+    });
+
+    // ── Load All Pages ──────────────────────────────────────────────────────
+    async function loadAllPages() {
+      const fetches = ALL_PAGES.map(async (path) => {
+        try {
+          const resp = await fetch(`./${encodeURI(path)}`);
+          if (!resp.ok) return;
+          const text = await resp.text();
+          const { frontmatter, content } = parseFrontmatter(text);
+          const wikilinks = extractWikilinks(content);
+          pageData[path] = { frontmatter, content, wikilinks, raw: text };
+        } catch (e) { /* skip */ }
+      });
+      await Promise.allSettled(fetches);
     }
 
-    async function fetchMarkdown(url) {
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error(`Failed to load: ${url}`);
-      let text = await resp.text();
-      // Remove frontmatter
-      text = text.replace(/^---\s*\n([\s\S]*?)\n---\s*\n/, '');
-      return text;
-    }
-
-    async function loadPage(pagePath) {
-      const target = document.getElementById('render-target');
-      target.innerHTML = '<div aria-busy="true">Loading page...</div>';
-      
-      // Handle special root level links like log, hot, AGENTS
-      let url = `./${pagePath}.md`;
-      if (!pagePath.includes('/')) {
-        url = `./${pagePath}.md`;
-      }
-
-      try {
-        const md = await fetchMarkdown(url);
-        // Track history for back button
-        if (historyStack.length === 0 || historyStack[historyStack.length - 1] !== pagePath) {
-          historyStack.push(pagePath);
+    function parseFrontmatter(text) {
+      const match = text.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+      if (!match) return { frontmatter: {}, content: text };
+      const fm = {};
+      const lines = match[1].split('\n');
+      let currentKey = null, currentList = [];
+      for (const line of lines) {
+        const kv = line.match(/^(\w+):\s*(.+)/);
+        if (kv) {
+          if (currentKey && currentList.length) {
+            fm[currentKey] = currentList.length === 1 ? currentList[0] : currentList;
+          }
+          currentKey = kv[1]; currentList = [];
+          let val = kv[2].trim();
+          if (val.startsWith('[')) { /* skip complex */ }
+          else if (val.startsWith('>')) { /* skip multiline */ }
+          else { currentList.push(val.replace(/^["']|["']$/g, '')); }
+        } else if (line.match(/^\s+-\s+/)) {
+          const item = line.replace(/^\s+-\s+/, '').trim().replace(/^["']|["']$/g, '');
+          if (item) currentList.push(item);
         }
-        
-        document.getElementById('back-container').style.display = 'block';
-        
-        // Render markdown and parse wikilinks in the html output
-        const rawHtml = await marked.parse(md);
-        target.innerHTML = parseWikilinks(rawHtml);
-      } catch (err) {
-        target.innerHTML = `
-          <h3>Page Not Found</h3>
-          <p>Could not load page: <code>${pagePath}</code></p>
-          <p>It may not be compiled or ingested yet.</p>
-        `;
       }
+      if (currentKey && currentList.length) {
+        fm[currentKey] = currentList.length === 1 ? currentList[0] : currentList;
+      }
+      // Handle tags as array
+      if (typeof fm.tags === 'string') fm.tags = [fm.tags];
+      return { frontmatter: fm, content: text.slice(match[0].length) };
+    }
+
+    function extractWikilinks(text) {
+      const links = [];
+      const regex = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+      let m;
+      while ((m = regex.exec(text)) !== null) {
+        links.push({ target: m[1].trim(), display: m[2] ? m[2].trim() : null });
+      }
+      return links;
+    }
+
+    // ── Search ──────────────────────────────────────────────────────────────
+    function handleSearch(query) {
+      const results = document.getElementById('search-results');
+      if (!query.trim()) { results.classList.remove('visible'); return; }
+      const q = query.toLowerCase();
+      const matches = [];
+      for (const [path, data] of Object.entries(pageData)) {
+        const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
+        const contentLower = (data.content || '').toLowerCase();
+        const titleLower = title.toLowerCase();
+        let score = 0;
+        if (titleLower === q) score = 100;
+        else if (titleLower.startsWith(q)) score = 80;
+        else if (titleLower.includes(q)) score = 60;
+        else if (contentLower.includes(q)) score = 30;
+        if (score > 0) {
+          const snippet = extractSnippet(data.content || '', q, 80);
+          matches.push({ path, title, score, snippet });
+        }
+      }
+      matches.sort((a, b) => b.score - a.score);
+      const top = matches.slice(0, 20);
+      if (top.length === 0) {
+        results.innerHTML = '<div class="search-no-results">No pages found</div>';
+      } else {
+        results.innerHTML = top.map(m => `
+          <div class="search-result-item" onclick="navigateTo('${m.path.replace(/'/g, "\\'")}'); closeSearch();">
+            <div class="title">${escapeHtml(highlight(m.title, q))}</div>
+            <div class="path">${m.path}</div>
+            ${m.snippet ? `<div class="snippet">${highlight(escapeHtml(m.snippet), q)}</div>` : ''}
+          </div>
+        `).join('');
+      }
+      results.classList.add('visible');
+    }
+
+    function extractSnippet(text, query, maxLen) {
+      const idx = text.toLowerCase().indexOf(query);
+      if (idx === -1) return text.slice(0, maxLen);
+      const start = Math.max(0, idx - Math.floor(maxLen / 3));
+      const end = Math.min(text.length, idx + query.length + Math.floor(maxLen / 2));
+      let snippet = text.slice(start, end).replace(/\n+/g, ' ').trim();
+      if (start > 0) snippet = '...' + snippet;
+      if (end < text.length) snippet += '...';
+      return snippet;
+    }
+
+    function highlight(text, query) {
+      if (!query) return text;
+      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(regex, '<span class="match">$1</span>');
+    }
+
+    function closeSearch() {
+      document.getElementById('search-results').classList.remove('visible');
+      document.getElementById('search-input').value = '';
+    }
+
+    // ── Navigation ──────────────────────────────────────────────────────────
+    async function navigateTo(path) {
+      closeSearch();
+      const data = pageData[path];
+      if (!data) { showError(`Page not found: ${path}`); return; }
+      currentPage = path;
+      if (!historyStack.length || historyStack[historyStack.length - 1] !== path) {
+        historyStack.push(path);
+      }
+      renderPage(path, data);
+    }
+
+    async function renderPage(path, data) {
+      const target = document.getElementById('render-target');
+      const backlinksContainer = document.getElementById('backlinks-container');
+      document.getElementById('back-container').style.display = 'block';
+
+      const fm = data.frontmatter || {};
+      const title = fm.title || path.split('/').pop().replace('.md', '');
+      const tags = Array.isArray(fm.tags) ? fm.tags : (fm.tags ? [fm.tags] : []);
+      const tier = fm.tier || '';
+      const lifecycle = fm.lifecycle || '';
+
+      // Render content
+      const html = await marked.parse(data.content || '');
+      const contentHtml = parseWikilinks(html);
+
+      // Metadata bar
+      let metaHtml = `<div class="metadata-bar">`;
+      metaHtml += `<span class="meta-tag bucket">📁 ${path.split('/')[0]}</span>`;
+      if (tier) metaHtml += `<span class="meta-tag tier-${tier.toLowerCase()}">${tier}</span>`;
+      if (lifecycle) metaHtml += `<span class="meta-tag lifecycle-${lifecycle.toLowerCase()}">${lifecycle}</span>`;
+      tags.forEach(t => { metaHtml += `<span class="meta-tag tag">#${t}</span>`; });
+      metaHtml += `</div>`;
+
+      target.innerHTML = `
+        <div class="fade-in">
+          <h1>${escapeHtml(title)}</h1>
+          ${metaHtml}
+          <div class="wiki-content">${contentHtml}</div>
+        </div>
+      `;
+
+      // Backlinks
+      const backlinks = findBacklinks(path);
+      if (backlinks.length > 0) {
+        backlinksContainer.style.display = 'block';
+        backlinksContainer.innerHTML = `
+          <div class="backlinks-section fade-in">
+            <h3>🔗 Backlinks (${backlinks.length})</h3>
+            <div>${backlinks.map(p => {
+              const d = pageData[p];
+              const t = d?.frontmatter?.title || p.split('/').pop().replace('.md', '');
+              return `<span class="backlink-item" onclick="navigateTo('${p.replace(/'/g, "\\'")}')">${escapeHtml(t)}</span>`;
+            }).join('')}</div>
+          </div>
+        `;
+      } else {
+        backlinksContainer.style.display = 'none';
+      }
+
+      // No sidebar needed in page tab
+      document.getElementById('main-layout').classList.remove('has-sidebar');
+
+      // Update active tab
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      currentTab = null; // we're in navigation mode
     }
 
     function goBack() {
-      historyStack.pop(); // Remove current
+      historyStack.pop();
       if (historyStack.length > 0) {
         const prev = historyStack[historyStack.length - 1];
-        loadPage(prev);
+        navigateTo(prev);
       } else {
         document.getElementById('back-container').style.display = 'none';
-        switchTab(currentTab);
+        document.getElementById('backlinks-container').style.display = 'none';
+        switchTab('index');
       }
     }
 
+    function findBacklinks(path) {
+      const results = [];
+      for (const [p, data] of Object.entries(pageData)) {
+        if (p === path) continue;
+        if (data.wikilinks?.some(l => l.target === path.replace('.md', '') || 
+            l.target === path.replace(/\.md$/, '').replace(/^\//, ''))) {
+          results.push(p);
+        }
+      }
+      return results;
+    }
+
+    function loadRandomPage() {
+      const paths = Object.keys(pageData);
+      if (paths.length === 0) return;
+      const path = paths[Math.floor(Math.random() * paths.length)];
+      navigateTo(path);
+    }
+
+    // ── Tab Switching ──────────────────────────────────────────────────────
     async function switchTab(tab) {
       currentTab = tab;
       historyStack = [];
       document.getElementById('back-container').style.display = 'none';
-      
-      const target = document.getElementById('render-target');
-      target.innerHTML = '<div aria-busy="true">Loading...</div>';
-      
-      document.getElementById('tab-index').className = tab === 'index' ? 'active' : '';
-      document.getElementById('tab-hot').className = tab === 'hot' ? 'active' : '';
+      document.getElementById('backlinks-container').style.display = 'none';
+      document.getElementById('main-layout').classList.add('has-sidebar');
 
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.toggle('active', b.textContent.includes(tab === 'index' ? 'Index' : 
+          tab === 'hot' ? 'Hot' : tab === 'graph' ? 'Graph' : tab === 'tags' ? 'Tags' : 'Browse'));
+      });
+
+      const target = document.getElementById('render-target');
+      target.innerHTML = '<div class="loading-state"><div class="spinner"></div> Loading...</div>';
+
+      if (tab === 'index') await renderIndexTab(target);
+      else if (tab === 'hot') await renderHotTab(target);
+      else if (tab === 'graph') renderGraphTab(target);
+      else if (tab === 'tags') renderTagsTab(target);
+      else if (tab === 'browse') renderBrowseTab(target);
+    }
+
+    async function renderIndexTab(target) {
       try {
-        const file = tab === 'index' ? './index.md' : './hot.md';
-        const md = await fetchMarkdown(file);
-        const rawHtml = await marked.parse(md);
-        target.innerHTML = parseWikilinks(rawHtml);
-      } catch (err) {
-        target.innerHTML = `<h3>Error</h3><p>Could not load ${tab}.md. Make sure the edge update has run.</p>`;
+        const resp = await fetch('./index.md');
+        const text = await resp.text();
+        const { content } = parseFrontmatter(text);
+        const html = await marked.parse(content);
+        target.innerHTML = `<div class="wiki-content fade-in">${parseWikilinks(html)}</div>`;
+      } catch (e) {
+        target.innerHTML = '<div class="error-state"><h3>Error</h3><p>Could not load index.</p></div>';
       }
     }
 
-    // Initial load
-    switchTab('index');
+    async function renderHotTab(target) {
+      try {
+        const resp = await fetch('./hot.md');
+        const text = await resp.text();
+        const { content } = parseFrontmatter(text);
+        const html = await marked.parse(content);
+        target.innerHTML = `<div class="wiki-content fade-in">${parseWikilinks(html)}</div>`;
+      } catch (e) {
+        target.innerHTML = '<div class="error-state"><h3>Error</h3><p>Could not load hot cache.</p></div>';
+      }
+    }
+
+    // ── Tags Tab ────────────────────────────────────────────────────────────
+    function renderTagsTab(target) {
+      const tagMap = {};
+      const tierMap = {};
+      const lifecycleMap = {};
+      const bucketMap = {};
+
+      for (const [path, data] of Object.entries(pageData)) {
+        const fm = data.frontmatter || {};
+        const tags = Array.isArray(fm.tags) ? fm.tags : (fm.tags ? [fm.tags] : []);
+        tags.forEach(t => { tagMap[t] = (tagMap[t] || 0) + 1; });
+        if (fm.tier) tierMap[fm.tier] = (tierMap[fm.tier] || 0) + 1;
+        if (fm.lifecycle) lifecycleMap[fm.lifecycle] = (lifecycleMap[fm.lifecycle] || 0) + 1;
+        const bucket = path.split('/')[0];
+        bucketMap[bucket] = (bucketMap[bucket] || 0) + 1;
+      }
+
+      const sortedTags = Object.entries(tagMap).sort((a, b) => b[1] - a[1]);
+      const sortedTiers = Object.entries(tierMap).sort((a, b) => b[1] - a[1]);
+      const sortedLifecycles = Object.entries(lifecycleMap).sort((a, b) => b[1] - a[1]);
+      const sortedBuckets = Object.entries(bucketMap).sort((a, b) => b[1] - a[1]);
+
+      let html = '<div class="fade-in">';
+
+      // Filter bar
+      if (activeTagFilter) {
+        html += `<div style="margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+          <span style="font-size:0.85rem;color:var(--text-muted)">Filtering by:</span>
+          <span class="tag-pill active" style="cursor:default">#${escapeHtml(activeTagFilter)}</span>
+          <button class="random-btn" onclick="activeTagFilter=null;switchTab('tags')">Clear</button>
+        </div>`;
+      }
+
+      // Tag cloud
+      html += '<h2 style="font-size:1.2rem;margin-bottom:0.75rem;">🏷️ Tags</h2>';
+      html += '<div class="tag-cloud" style="margin-bottom:2rem">';
+      sortedTags.forEach(([tag, count]) => {
+        const size = Math.min(1.2, 0.8 + (count / sortedTags[0][1]) * 0.6);
+        const active = tag === activeTagFilter ? ' active' : '';
+        html += `<span class="tag-pill${active}" style="font-size:${size}rem" onclick="activeTagFilter='${escapeHtml(tag)}';switchTab('tags')">#${escapeHtml(tag)} <span class="count">${count}</span></span>`;
+      });
+      html += '</div>';
+
+      // Filtered pages if a tag is active
+      if (activeTagFilter) {
+        const filtered = Object.entries(pageData).filter(([_, d]) => {
+          const tags = Array.isArray(d.frontmatter?.tags) ? d.frontmatter.tags : (d.frontmatter?.tags ? [d.frontmatter.tags] : []);
+          return tags.map(t => t.toLowerCase()).includes(activeTagFilter.toLowerCase());
+        });
+        html += '<h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Pages tagged</h2>';
+        html += '<div class="page-grid">';
+        filtered.forEach(([path, data]) => {
+          const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
+          html += `<div class="page-card" onclick="navigateTo('${path.replace(/'/g, "\\'")}')">
+            <h4>${escapeHtml(title)}</h4>
+            <p>${path}</p>
+          </div>`;
+        });
+        html += '</div>';
+      }
+
+      // Tiers & Lifecycles summary
+      html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem">';
+      html += '<div><h3 style="font-size:0.9rem;margin-bottom:0.5rem;color:var(--text-muted)">Tiers</h3>';
+      sortedTiers.forEach(([tier, count]) => {
+        html += `<div style="display:flex;justify-content:space-between;padding:0.25rem 0;font-size:0.85rem">
+          <span>${escapeHtml(tier)}</span><span style="color:var(--text-muted)">${count}</span>
+        </div>`;
+      });
+      html += '</div><div><h3 style="font-size:0.9rem;margin-bottom:0.5rem;color:var(--text-muted)">Lifecycles</h3>';
+      sortedLifecycles.forEach(([lc, count]) => {
+        html += `<div style="display:flex;justify-content:space-between;padding:0.25rem 0;font-size:0.85rem">
+          <span>${escapeHtml(lc)}</span><span style="color:var(--text-muted)">${count}</span>
+        </div>`;
+      });
+      html += '</div></div>';
+
+      html += '</div>';
+      target.innerHTML = html;
+    }
+
+    // ── Browse Tab ─────────────────────────────────────────────────────────
+    function renderBrowseTab(target) {
+      const buckets = {};
+      for (const [path, data] of Object.entries(pageData)) {
+        const bucket = path.split('/')[0];
+        if (!buckets[bucket]) buckets[bucket] = [];
+        buckets[bucket].push({ path, data });
+      }
+      const sortedBuckets = Object.entries(buckets).sort((a, b) => a[0].localeCompare(b[0]));
+
+      let html = '<div class="fade-in">';
+      sortedBuckets.forEach(([bucket, pages]) => {
+        const label = bucket === '.' ? 'Root' : bucket;
+        html += `<h2 style="font-size:1.1rem;margin-top:1.5rem;margin-bottom:0.75rem;text-transform:capitalize">${escapeHtml(label)} <span style="color:var(--text-muted);font-size:0.8rem;font-weight:400">(${pages.length})</span></h2>`;
+        html += '<div class="page-grid">';
+        pages.sort((a, b) => {
+          const ta = a.data.frontmatter?.title || '';
+          const tb = b.data.frontmatter?.title || '';
+          return ta.localeCompare(tb);
+        });
+        pages.forEach(({ path, data }) => {
+          const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
+          const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.slice(0, 3) : [];
+          const summary = data.frontmatter?.summary ? (typeof data.frontmatter.summary === 'string' ? data.frontmatter.summary.slice(0, 80) + '...' : '') : '';
+          html += `<div class="page-card" onclick="navigateTo('${path.replace(/'/g, "\\'")}')">
+            <h4>${escapeHtml(title)}</h4>
+            <p>${escapeHtml(summary)}</p>
+            ${tags.length ? `<div class="tags">${tags.map(t => `<span class="mini-tag">#${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+          </div>`;
+        });
+        html += '</div>';
+      });
+      html += '</div>';
+      target.innerHTML = html;
+    }
+
+    // ── Graph Tab ──────────────────────────────────────────────────────────
+    function renderGraphTab(target) {
+      target.innerHTML = `
+        <div class="fade-in">
+          <p style="color:var(--text-secondary);margin-bottom:1rem;font-size:0.9rem">
+            Visualizing ${Object.keys(pageData).length} pages and their wikilink connections.
+            <span style="color:var(--text-muted)">Drag to pan · Scroll to zoom</span>
+          </p>
+          <canvas id="graph-canvas"></canvas>
+          <div class="graph-legend">
+            <span><span class="graph-dot core"></span> Core</span>
+            <span><span class="graph-dot supporting"></span> Supporting</span>
+            <span><span class="graph-dot peripheral"></span> Peripheral / Unclassified</span>
+          </div>
+        </div>
+      `;
+
+      // Defer to next frame for canvas sizing
+      requestAnimationFrame(() => initGraph());
+    }
+
+    function initGraph() {
+      const canvas = document.getElementById('graph-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = 500;
+
+      // Build nodes + edges
+      const nodes = [];
+      const edges = [];
+      const nodeMap = {};
+
+      let idx = 0;
+      for (const [path, data] of Object.entries(pageData)) {
+        const fm = data.frontmatter || {};
+        const title = fm.title || path.split('/').pop().replace('.md', '');
+        const tier = (fm.tier || '').toLowerCase();
+        const tags = Array.isArray(fm.tags) ? fm.tags : [];
+        nodeMap[path] = idx;
+        nodes.push({
+          id: idx++,
+          path, title, tier,
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: 0, vy: 0,
+          radius: tier === 'core' ? 8 : tier === 'supporting' ? 6 : 4,
+          color: tier === 'core' ? '#3B82F6' : tier === 'supporting' ? '#8B5CF6' : '#52525B',
+          tags
+        });
+      }
+
+      for (const [path, data] of Object.entries(pageData)) {
+        const from = nodeMap[path];
+        if (from === undefined) continue;
+        for (const link of (data.wikilinks || [])) {
+          // Find the target page
+          for (const [targetPath, targetData] of Object.entries(pageData)) {
+            const targetTitle = targetData.frontmatter?.title || targetPath.split('/').pop().replace('.md', '');
+            if (link.target === targetTitle || link.target === targetPath.replace('.md', '') || link.target === targetPath) {
+              const to = nodeMap[targetPath];
+              if (to !== undefined && from !== to) {
+                edges.push({ from, to });
+              }
+              break;
+            }
+          }
+        }
+      }
+
+      // Force-directed layout (simple simulation)
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const reps = 100;
+
+      for (let iter = 0; iter < reps; iter++) {
+        // Repulsion between all nodes
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.max(1, Math.sqrt(dx * dx + dy * dy));
+            const force = 3000 / (dist * dist);
+            const fx = (dx / dist) * force;
+            const fy = (dy / dist) * force;
+            nodes[i].vx += fx;
+            nodes[i].vy += fy;
+            nodes[j].vx -= fx;
+            nodes[j].vy -= fy;
+          }
+        }
+
+        // Attraction along edges
+        for (const edge of edges) {
+          const a = nodes[edge.from], b = nodes[edge.to];
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const dist = Math.max(1, Math.sqrt(dx * dx + dy * dy));
+          const force = dist * 0.01;
+          const fx = (dx / dist) * force;
+          const fy = (dy / dist) * force;
+          a.vx += fx; a.vy += fy;
+          b.vx -= fx; b.vy -= fy;
+        }
+
+        // Center gravity
+        for (const node of nodes) {
+          node.vx += (centerX - node.x) * 0.001;
+          node.vy += (centerY - node.y) * 0.001;
+          // Friction
+          node.vx *= 0.85;
+          node.vy *= 0.85;
+          node.x += node.vx;
+          node.y += node.vy;
+          // Clamp
+          node.x = Math.max(20, Math.min(canvas.width - 20, node.x));
+          node.y = Math.max(20, Math.min(canvas.height - 20, node.y));
+        }
+      }
+
+      // Draw
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Edges
+      ctx.strokeStyle = 'rgba(39, 39, 42, 0.6)';
+      ctx.lineWidth = 1;
+      for (const edge of edges) {
+        const a = nodes[edge.from], b = nodes[edge.to];
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+
+      // Nodes
+      for (const node of nodes) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = node.color;
+        ctx.fill();
+        if (node.radius >= 6) {
+          ctx.shadowColor = node.color;
+          ctx.shadowBlur = 8;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      // Labels for core nodes
+      ctx.fillStyle = '#A1A1AA';
+      ctx.font = '11px Outfit, sans-serif';
+      ctx.textAlign = 'center';
+      for (const node of nodes) {
+        if (node.tier === 'core') {
+          const displayName = node.title.length > 20 ? node.title.slice(0, 18) + '…' : node.title;
+          ctx.fillText(displayName, node.x, node.y - node.radius - 4);
+        }
+      }
+
+      // Hover interaction
+      let hoveredNode = null;
+      canvas.onmousemove = (e) => {
+        const r = canvas.getBoundingClientRect();
+        const mx = e.clientX - r.left;
+        const my = e.clientY - r.top;
+        hoveredNode = null;
+        for (const node of nodes) {
+          const dx = mx - node.x, dy = my - node.y;
+          if (dx * dx + dy * dy < (node.radius + 8) * (node.radius + 8)) {
+            hoveredNode = node;
+            break;
+          }
+        }
+        canvas.style.cursor = hoveredNode ? 'pointer' : 'grab';
+        // Redraw with highlight
+        drawGraph(ctx, nodes, edges, hoveredNode);
+      };
+
+      canvas.onclick = () => {
+        if (hoveredNode) {
+          navigateTo(hoveredNode.path);
+        }
+      };
+
+      graphInitialized = true;
+    }
+
+    function drawGraph(ctx, nodes, edges, highlight) {
+      const canvas = ctx.canvas;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const edge of edges) {
+        const a = nodes[edge.from], b = nodes[edge.to];
+        if (highlight && (a === highlight || b === highlight)) {
+          ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)';
+          ctx.lineWidth = 2;
+        } else {
+          ctx.strokeStyle = 'rgba(39, 39, 42, 0.4)';
+          ctx.lineWidth = 1;
+        }
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+
+      for (const node of nodes) {
+        const isHighlight = node === highlight;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, isHighlight ? node.radius + 3 : node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = isHighlight ? '#60A5FA' : node.color;
+        ctx.fill();
+        if (isHighlight) {
+          ctx.shadowColor = '#60A5FA';
+          ctx.shadowBlur = 16;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      if (highlight) {
+        ctx.fillStyle = '#FAFAFA';
+        ctx.font = '12px Outfit, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(highlight.title, highlight.x, highlight.y - highlight.radius - 10);
+
+        // Show connected count
+        let connCount = 0;
+        for (const edge of edges) {
+          if (edge.from === highlight.id || edge.to === highlight.id) connCount++;
+        }
+        ctx.fillStyle = '#71717A';
+        ctx.font = '10px Outfit, sans-serif';
+        ctx.fillText(`${connCount} connections`, highlight.x, highlight.y - highlight.radius - 24);
+      }
+    }
+
+    // ── Sidebar ─────────────────────────────────────────────────────────────
+    function renderSidebar() {
+      const totalPages = Object.keys(pageData).length;
+      const concepts = Object.keys(pageData).filter(p => p.startsWith('concepts/')).length;
+      const entities = Object.keys(pageData).filter(p => p.startsWith('entities/')).length;
+      const skills = Object.keys(pageData).filter(p => p.startsWith('skills/')).length;
+      const journal = Object.keys(pageData).filter(p => p.startsWith('journal/')).length;
+
+      document.getElementById('sidebar-stats').innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem">
+          <span style="color:var(--text-muted)">Total</span><span style="font-weight:600">${totalPages}</span>
+          <span style="color:var(--text-muted)">Concepts</span><span>${concepts}</span>
+          <span style="color:var(--text-muted)">Entities</span><span>${entities}</span>
+          <span style="color:var(--text-muted)">Skills</span><span>${skills}</span>
+          <span style="color:var(--text-muted)">Journal</span><span>${journal}</span>
+        </div>
+      `;
+
+      // Tags
+      const tagCounts = {};
+      for (const data of Object.values(pageData)) {
+        const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags : (data.frontmatter?.tags ? [data.frontmatter.tags] : []);
+        tags.forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; });
+      }
+      const topTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 15);
+      document.getElementById('sidebar-tags').innerHTML = topTags.map(([tag, count]) =>
+        `<span class="tag-pill" onclick="activeTagFilter='${escapeHtml(tag)}';switchTab('tags')">#${escapeHtml(tag)} <span class="count">${count}</span></span>`
+      ).join('');
+
+      // Buckets
+      const buckets = {};
+      for (const p of Object.keys(pageData)) {
+        const b = p.split('/')[0];
+        buckets[b] = (buckets[b] || 0) + 1;
+      }
+      const bucketList = [
+        { label: '📁 01_WORK', key: '01_WORK', path: '01_WORK/index.md' },
+        { label: '📁 02_KNOWLEDGE', key: '02_KNOWLEDGE', path: '02_KNOWLEDGE/index.md' },
+        { label: '📁 03_LEARNING', key: '03_LEARNING', path: '03_LEARNING/index.md' },
+        { label: '📁 04_RELATIONSHIP', key: '04_RELATIONSHIP', path: '04_RELATIONSHIP/index.md' },
+        { label: '📁 05_OBSERVABILITY', key: '05_OBSERVABILITY', path: '05_OBSERVABILITY/index.md' },
+        { label: '📁 06_STATE', key: '06_STATE', path: '06_STATE/index.md' },
+      ];
+      // Also add type-based buckets
+      const typeBuckets = ['concepts', 'entities', 'skills', 'journal', 'projects', 'references', 'synthesis', 'templates'];
+      typeBuckets.forEach(b => {
+        if (!bucketList.find(x => x.key === b)) {
+          bucketList.push({ label: `📂 ${b}`, key: b, path: null });
+        }
+      });
+
+      document.getElementById('sidebar-buckets').innerHTML = bucketList.map(b => {
+        const count = buckets[b.key] || 0;
+        if (b.path && pageData[b.path]) {
+          return `<div class="sidebar-link" onclick="navigateTo('${b.path}')">${escapeHtml(b.label)} <span class="count">${count}</span></div>`;
+        }
+        return `<div style="padding:0.3rem 0;font-size:0.85rem;color:var(--text-secondary)">${escapeHtml(b.label)} <span class="count">${count}</span></div>`;
+      }).join('');
+    }
+
+    // ── Utils ───────────────────────────────────────────────────────────────
+    function parseWikilinks(html) {
+      return html.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (match, path, display) => {
+        const displayName = display ? display.trim() : path.trim().split('/').pop();
+        const targetPath = path.trim();
+        // Find the actual .md path
+        let foundPath = null;
+        for (const p of Object.keys(pageData)) {
+          const title = pageData[p]?.frontmatter?.title || p.split('/').pop().replace('.md', '');
+          if (p === targetPath + '.md' || p === targetPath || title === targetPath || p.includes(targetPath)) {
+            foundPath = p;
+            break;
+          }
+        }
+        if (foundPath) {
+          return `<span class="wikilink" onclick="navigateTo('${foundPath.replace(/'/g, "\\'")}')">${displayName}</span>`;
+        }
+        return `<span class="wikilink" onclick="loadPage('${targetPath}')">${displayName}</span>`;
+      });
+    }
+
+    function showError(msg) {
+      document.getElementById('render-target').innerHTML =
+        `<div class="error-state"><h3>⚠️ Not Found</h3><p>${escapeHtml(msg)}</p></div>`;
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Legacy loadPage for any remaining [[wikilinks]] that aren't resolved
+    async function loadPage(pagePath) {
+      const target = document.getElementById('render-target');
+      target.innerHTML = '<div class="loading-state"><div class="spinner"></div> Loading...</div>';
+      try {
+        const resp = await fetch(`./${pagePath}.md`);
+        if (!resp.ok) throw new Error('Not found');
+        let text = await resp.text();
+        text = text.replace(/^---[\s\S]*?---\s*\n/, '');
+        const html = await marked.parse(text);
+        target.innerHTML = `<div class="wiki-content fade-in">${parseWikilinks(html)}</div>`;
+      } catch (e) {
+        showError(`Could not load page: ${pagePath}`);
+      }
+    }
   </script>
 </body>
 </html>
