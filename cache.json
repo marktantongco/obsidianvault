@@ -9,7 +9,7 @@
     "sha": "a75d2d78fad8a5859de95e1201b4f41df6103590",
     "title": "Antigravity Agent",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "concepts/Claude Code.md": {
     "sha": "04f6bb3db68d012055762b3fc2ace77c2f958303",
@@ -45,7 +45,7 @@
     "sha": "aa21b6771586fe79df72ce044d32a66cf5d232ed",
     "title": "LifeOS Algorithm",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "concepts/MCP Servers.md": {
     "sha": "383c466fa8e5ed5090b3c37ae51b9f7bf3f95121",
@@ -81,7 +81,7 @@
     "sha": "2dc3889087b4511c7335333166cc5b2ce2c44103",
     "title": "agentic-stack",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "concepts/multi-agent-obsidian-wiki-synergy.md": {
     "sha": "7e9c9d294e53622abd29a947e0a6d7a70b82e334",
@@ -93,79 +93,79 @@
     "sha": "3d371b1f1e5569a1d92ed7c7ab2faa0e3b2b5d23",
     "title": "oh-my-openagent",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "concepts/poznote-pipeline.md": {
     "sha": "c4d55e2cc7217099a0307e72677380b965299f1a",
     "title": "Poznote Capture Pipeline",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "concepts/system-prompt-v5-1-1.md": {
     "sha": "779b207796ec1ff7025e75cd6df18628bd5b9680",
     "title": "System Prompt v5.1.1",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/CopyQ.md": {
     "sha": "5487afb630eca65c51ad108c2adf73758f1309b8",
     "title": "CopyQ",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/DeepSeek.md": {
     "sha": "3852d89df6757219a1a5eae2a4e1d9a4a32b695a",
     "title": "DeepSeek",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/GPaste.md": {
     "sha": "439b3d8f4c373878275be2ca6512ec45bb4b5822",
     "title": "GPaste",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/Owl-Agent.md": {
     "sha": "b063cec451eab04f687c86e1655983e8ed319176",
     "title": "Owl-Agent",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/SiliconFlow.md": {
     "sha": "17ac61b125c48ed67c3c2840aa3e8f97f85a0303",
     "title": "SiliconFlow",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/Zhipu-GLM.md": {
     "sha": "bb64692838bc7ef391222d4986869d313af0b596",
     "title": "Zhipu-GLM",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/ai-wanderer.md": {
     "sha": "04dd42b3e5f815b2b6267a4651cd8a2f29ffe708",
     "title": "ai-wanderer (ai-free-swap)",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/free-claude-code.md": {
     "sha": "19d2aa53edc4d36839a6015b5de0cc6cc5f46e2b",
     "title": "free-claude-code",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/lifeos-cli.md": {
     "sha": "4d178eb8c34dff9fbe6b0107694f8cbefffdd97d",
     "title": "lifeos-cli",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/p2d-duck.md": {
     "sha": "6558dcec5aeea6a7f42a808be2fc367c374e1f2e",
     "title": "p2d-duck",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "journal/2026-07-09-multi-agent-wiki-compound.md": {
     "sha": "9b5db07f67c6a3c94afa727daaf78235dc91c404",
@@ -189,7 +189,7 @@
     "sha": "b965e3fb2131d7d34b26be6c413bda60765382ca",
     "title": "2026-07-21-freebuff-vault-enrichment-session",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "projects/AI-Second-Brain.md": {
     "sha": "2a31d76b27e8dd5b8ae42d8496eb4ce85ce414be",
@@ -201,13 +201,13 @@
     "sha": "0082fd9c8b39e88b7c6d0bc2e44dfbe861f49962",
     "title": "Cross-Agent Workflow Test",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "projects/agent-version-tracker.md": {
     "sha": "45a94cc2478045034c67aebb67519043bf03d29e",
     "title": "Agent Version Tracker",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "references/ai-skills-consolidated-framework.md": {
     "sha": "6eb4a4b35624db0d725ec0b2a1f47ab1ad77eb76",
@@ -237,7 +237,7 @@
     "sha": "68a604779238d3e222755e45711329f28ed1bf24",
     "title": "Git Sync & Conflict Strategy",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "skills/gpaste-gnome-wayland.md": {
     "sha": "091b673ff0a9f074cd20c926225cf2934e58c23b",
@@ -249,7 +249,7 @@
     "sha": "b691f99a42b9894f5ec78897b468b6b53f1ac3ba",
     "title": "Mobile Vault Sync via Termux",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "skills/multi-agent-vault-wiring.md": {
     "sha": "200dbc4bdf75a14edbc171ce0f92037a943e0c55",
@@ -261,7 +261,7 @@
     "sha": "ae9d052af1f98cf57e2eecffe7e144ff53788adc",
     "title": "Wiki Knowledge Compounding Loop",
     "summary": "",
-    "mtime": "2026-07-21T08:08:22.944Z"
+    "mtime": "2026-07-21T08:09:14.140Z"
   },
   "synthesis/agentic-stack-obsidian-wiki-performance.md": {
     "sha": "d02ca1fb684b6c5ff0ecc85603f995f0ed7cc23f",
