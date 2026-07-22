@@ -1,14 +1,11 @@
 ---
 title: Wiki Index
-tags: [index, navigation, wiki]
-lifecycle: active
-tier: core
-updated: 2026-07-22T14:34:43.438Z
+updated: 2026-07-22T20:40:52.763Z
 ---
 
 # Wiki Index
 
-*Last updated: 2026-07-22T14:34:43.438Z*
+*Last updated: 2026-07-22T20:40:52.763Z*
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
