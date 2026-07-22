@@ -382,6 +382,8 @@
       "01_WORK/index.md", "02_KNOWLEDGE/index.md", "03_LEARNING/index.md",
       "04_RELATIONSHIP/index.md", "05_OBSERVABILITY/index.md", "06_STATE/index.md",
       "06_STATE/configs/poznote-capture-schema.md", "06_STATE/configs/second-brain-skill.md", "06_STATE/configs/sync-strategy.md",
+      "concepts/index.md", "entities/index.md", "skills/index.md",
+      "projects/index.md", "references/index.md", "synthesis/index.md", "templates/index.md",
       "_raw/2026-07-09-multi-agent-setup-gotchas.md",
       "_raw/2026-07-13-opencode-free-model-config.md",
       "_raw/_archived/2026-07-09-free-china-proxy-direct-first.md",
@@ -1149,10 +1151,19 @@
         { label: '📁 06_STATE', key: '06_STATE', path: '06_STATE/index.md' },
       ];
       // Also add type-based buckets
-      const typeBuckets = ['concepts', 'entities', 'skills', 'journal', 'projects', 'references', 'synthesis', 'templates'];
+      const typeBuckets = [
+        { label: '📂 concepts', key: 'concepts', path: 'concepts/index.md' },
+        { label: '📂 entities', key: 'entities', path: 'entities/index.md' },
+        { label: '📂 skills', key: 'skills', path: 'skills/index.md' },
+        { label: '📂 journal', key: 'journal', path: null },
+        { label: '📂 projects', key: 'projects', path: 'projects/index.md' },
+        { label: '📂 references', key: 'references', path: 'references/index.md' },
+        { label: '📂 synthesis', key: 'synthesis', path: 'synthesis/index.md' },
+        { label: '📂 templates', key: 'templates', path: 'templates/index.md' },
+      ];
       typeBuckets.forEach(b => {
-        if (!bucketList.find(x => x.key === b)) {
-          bucketList.push({ label: `📂 ${b}`, key: b, path: null });
+        if (!bucketList.find(x => x.key === b.key)) {
+          bucketList.push(b);
         }
       });
 
