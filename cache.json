@@ -36,10 +36,10 @@
     "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/Hermes Agent.md": {
-    "sha": "db70638ca420de3be8b19266513532e69f0d60a6",
+    "sha": "1caf3c1459f7ccd44a73c5fb06583ddeed56dddf",
     "title": "Hermes Agent",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-22T14:34:43.438Z"
   },
   "concepts/LifeOS Algorithm.md": {
     "sha": "aa21b6771586fe79df72ce044d32a66cf5d232ed",
@@ -60,10 +60,10 @@
     "mtime": "2026-07-21T23:42:10.502Z"
   },
   "concepts/Obsidian Wiki.md": {
-    "sha": "df37c56163e23c5559782221b263ad2cf6d70ce0",
+    "sha": "2d479c38f06f1c4d7d7185bc4a5c7c0f90833de2",
     "title": "Obsidian Wiki",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-22T14:34:43.438Z"
   },
   "concepts/OpenAI Codex.md": {
     "sha": "a45cac3c73e7480c27b2e6d3bf82ed0c0eb8fcf8",
@@ -210,10 +210,10 @@
     "mtime": "2026-07-21T23:55:39.576Z"
   },
   "references/ai-skills-consolidated-framework.md": {
-    "sha": "6eb4a4b35624db0d725ec0b2a1f47ab1ad77eb76",
+    "sha": "b2ff5fa205ea47543a424486a912b2ae282ebf0d",
     "title": "AI Skills Consolidated Framework (source)",
     "summary": "Deduped catalog of ~67 agent skills across 8 domains plus 5-layer routing taxonomy.",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-22T14:34:43.438Z"
   },
   "references/free-china-proxy-research.md": {
     "sha": "1eb08061717907e521e50a79e84eb2a9b47b1b59",
@@ -252,10 +252,10 @@
     "mtime": "2026-07-21T08:09:14.140Z"
   },
   "skills/multi-agent-vault-wiring.md": {
-    "sha": "200dbc4bdf75a14edbc171ce0f92037a943e0c55",
+    "sha": "143182fbee986e58277faed5c7da75c0449e6a87",
     "title": "Multi-Agent Vault Wiring",
     "summary": "Point every CLI agent skill tree and AGENTS bootstrap at one Obsidian vault via config + symlinks.",
-    "mtime": "2026-07-16T13:28:36.859Z"
+    "mtime": "2026-07-22T14:34:43.438Z"
   },
   "skills/wiki-compound-loop.md": {
     "sha": "ae9d052af1f98cf57e2eecffe7e144ff53788adc",
