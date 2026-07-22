@@ -1,7 +1,7 @@
 ---
 title: LifeOS SecondBrain Skill Config
 category: state
-tags: [lifeos, second-brain, config, skill]
+tags: [lifeos, second-brain, configuration, skills]
 lifecycle: draft
 tier: supporting
 ---

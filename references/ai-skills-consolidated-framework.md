@@ -1,7 +1,7 @@
 ---
 title: AI Skills Consolidated Framework (source)
 category: references
-tags: [skills, framework, agents]
+tags: [skills, frameworks, agents]
 sources:
   - /home/x1/Downloads/@ai/ai-skills-consolidated-framework.md
   - /home/x1/Downloads/@ai/consolidated-framework_SKILL.md

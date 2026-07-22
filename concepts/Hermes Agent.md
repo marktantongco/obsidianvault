@@ -1,6 +1,6 @@
 ---
 title: Hermes Agent
-tags: [hermes, orchestrator, agent]
+tags: [hermes, orchestrator, agents]
 type: concept
 created: 2026-07-09
 updated: 2026-07-09

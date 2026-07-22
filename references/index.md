@@ -3,7 +3,7 @@ title: References — External Research & Frameworks
 bucket: REFERENCES
 path: references/
 purpose: External research, consolidated frameworks, and reference documentation
-tags: [references, research, frameworks]
+tags: [reference, research, frameworks]
 lifecycle: active
 tier: supporting
 ---

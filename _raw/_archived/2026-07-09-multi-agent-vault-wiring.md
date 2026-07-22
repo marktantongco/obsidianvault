@@ -1,6 +1,6 @@
 ---
 title: Multi-agent vault wiring gotchas
-tags: [obsidian, agents, symlink, config]
+tags: [obsidian, agents, symlink, configuration]
 summary: Single vault for all CLIs via ~/.obsidian-wiki/config + skill/vault symlinks; do not empty enabled-extensions.
 project: AI-Second-Brain
 capture_source: grok-session

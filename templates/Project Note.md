@@ -2,7 +2,7 @@
 title: Project Note
 date: {{date:YYYY-MM-DD}}
 type: project
-tags: [project]
+tags: [projects]
 status: active
 lifecycle: active
 tier: core

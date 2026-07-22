@@ -1,7 +1,7 @@
 ---
 title: Multi-Agent Vault Wiring
 category: skills
-tags: [obsidian, agents, symlink, agents-md]
+tags: [obsidian, agents, symlink]
 sources:
   - conversation:2026-07-09
   - https://github.com/Ar9av/obsidian-wiki
