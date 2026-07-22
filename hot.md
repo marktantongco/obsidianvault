@@ -1,5 +1,8 @@
 ---
 title: Hot Cache
+tags: [hot, cache, activity]
+lifecycle: active
+tier: supporting
 updated: 2026-07-22T14:34:43.438Z
 ---
 

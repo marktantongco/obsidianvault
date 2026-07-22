@@ -1,5 +1,6 @@
 ---
 title: Query Log
+tags: [log, queries, activity]
 lifecycle: active
 tier: supporting
 ---

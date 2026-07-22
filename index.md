@@ -1,5 +1,8 @@
 ---
 title: Wiki Index
+tags: [index, navigation, wiki]
+lifecycle: active
+tier: core
 updated: 2026-07-22T14:34:43.438Z
 ---
 

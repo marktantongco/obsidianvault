@@ -24,16 +24,16 @@ AI agents are autonomous systems that can perceive their environment, make decis
 ### Primary Agents
 | Agent | Version | Role | Location |
 |-------|---------|------|----------|
-| [[Hermes]] | v0.18.2 | Orchestrator | `~/.hermes/hermes-agent/` |
-| [[OpenCode]] | v1.17.15 | Code Worker | `~/.opencode/bin/opencode` |
-| [[Claude Code]] | v2.1.205 | Reviewer | `~/.local/bin/claude` |
-| [[MiMo Code]] | v0.1.5 | Xiaomi Assistant | `~/.local/bin/mimo` |
+| [[concepts/Hermes Agent|Hermes]] | v0.18.2 | Orchestrator | `~/.hermes/hermes-agent/` |
+| [[concepts/OpenCode|OpenCode]] | v1.17.15 | Code Worker | `~/.opencode/bin/opencode` |
+| [[concepts/Claude Code|Claude Code]] | v2.1.205 | Reviewer | `~/.local/bin/claude` |
+| [[concepts/MiMo Code|MiMo Code]] | v0.1.5 | Xiaomi Assistant | `~/.local/bin/mimo` |
 
 ### Secondary Agents
 | Agent | Version | Role | Location |
 |-------|---------|------|----------|
-| [[OpenAI Codex]] | v0.143.0 | Code Generation | `~/.local/bin/codex` |
-| [[Grok]] | v0.2.93 | xAI Assistant | `~/.grok/bin/grok` |
+| [[concepts/OpenAI Codex|OpenAI Codex]] | v0.143.0 | Code Generation | `~/.local/bin/codex` |
+| [[concepts/Grok|Grok]] | v0.2.93 | xAI Assistant | `~/.grok/bin/grok` |
 
 ## Architecture
 ```
