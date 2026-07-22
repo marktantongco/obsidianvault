@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting Guide
-type: reference
+category: reference
 created: 2026-07-09
 updated: 2026-07-09
 tags: [troubleshooting, debugging, reference]

@@ -290,6 +290,117 @@
     .error-state { text-align: center; padding: 3rem 0; color: var(--text-muted); }
     .error-state h3 { color: var(--text); margin-bottom: 0.5rem; }
 
+    /* Light theme */
+    [data-theme="light"] {
+      --bg: #FAFAFA;
+      --surface: #FFFFFF;
+      --surface-alt: #F4F4F5;
+      --border: #E4E4E7;
+      --text: #18181B;
+      --text-secondary: #52525B;
+      --text-muted: #A1A1AA;
+    }
+    .app-header.light { background: rgba(255, 255, 255, 0.85); }
+
+    /* Theme toggle */
+    .theme-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 1rem; padding: 0.25rem; line-height: 1;
+      color: var(--text-muted); transition: color 0.2s, transform 0.2s;
+    }
+    .theme-btn:hover { color: var(--text); transform: rotate(15deg); }
+
+    /* Table of Contents */
+    .toc-container {
+      position: sticky; top: 5rem;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+    }
+    .toc-container .toc-item {
+      display: block; padding: 0.2rem 0;
+      font-size: 0.78rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s;
+      cursor: pointer;
+    }
+    .toc-container .toc-item:hover { color: var(--accent); }
+    .toc-container .toc-item.h2 { padding-left: 0; }
+    .toc-container .toc-item.h3 { padding-left: 0.75rem; }
+    .toc-container .toc-item.h4 { padding-left: 1.5rem; }
+    .toc-container .toc-item.active { color: var(--accent); font-weight: 600; }
+
+    /* Keyboard shortcuts modal */
+    .shortcuts-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.6);
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .shortcuts-overlay.visible { display: flex; }
+    .shortcuts-modal {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      max-width: 420px; width: 90%;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+    .shortcuts-modal h2 { font-size: 1.1rem; margin-bottom: 1.25rem; }
+    .shortcut-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.4rem 0; font-size: 0.85rem;
+    }
+    .shortcut-row .key {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      font-family: var(--font-family-mono); font-size: 0.75rem;
+      background: var(--surface-alt); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.15rem 0.5rem;
+      color: var(--text-secondary);
+    }
+    .shortcuts-close {
+      display: block; margin-top: 1.25rem; width: 100%;
+      padding: 0.5rem; border-radius: var(--radius-sm);
+      background: var(--accent); color: white; border: none;
+      font-family: var(--font-family); font-size: 0.85rem; cursor: pointer;
+    }
+
+    /* Scroll to top */
+    .scroll-top-btn {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 1.1rem;
+      cursor: pointer; display: none; align-items: center; justify-content: center;
+      transition: all 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .scroll-top-btn.visible { display: flex; }
+    .scroll-top-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* Activity timeline */
+    .activity-timeline { position: relative; padding-left: 1.5rem; }
+    .activity-timeline::before {
+      content: ''; position: absolute; left: 0.4rem; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .activity-item {
+      position: relative; padding: 0.5rem 0 0.75rem 1rem;
+      cursor: pointer; transition: background 0.15s;
+      border-radius: var(--radius-sm);
+    }
+    .activity-item:hover { background: var(--surface-alt); }
+    .activity-item::before {
+      content: ''; position: absolute; left: -1.1rem; top: 0.8rem;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .activity-item .date { font-size: 0.75rem; color: var(--text-muted); }
+    .activity-item .title { font-weight: 600; font-size: 0.9rem; }
+    .activity-item .desc { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.1rem; }
+    .activity-item .path { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-family-mono); }
+
+    .activity-day-header {
+      font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+      padding: 1rem 0 0.25rem; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .activity-day-header:first-child { padding-top: 0; }
+
     /* Fade in animation */
     .fade-in { animation: fadeIn 0.3s ease-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -301,6 +412,8 @@
       <div class="logo">🧠 <span>Second Brain</span></div>
       <div class="header-actions">
         <button class="random-btn" onclick="loadRandomPage()" title="Surprise me">🎲 Random</button>
+        <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle theme">🌙</button>
+        <button class="random-btn" onclick="showShortcuts()" title="Keyboard shortcuts">⌨️</button>
         <a href="https://github.com/marktantongco/obsidianvault" target="_blank">GitHub</a>
       </div>
     </div>
@@ -322,6 +435,7 @@
         <button class="tab-btn" onclick="switchTab('graph')">🕸️ Graph</button>
         <button class="tab-btn" onclick="switchTab('tags')">🏷️ Tags</button>
         <button class="tab-btn" onclick="switchTab('browse')">📂 Browse</button>
+        <button class="tab-btn" onclick="switchTab('activity')">⚡ Activity</button>
       </div>
 
       <!-- Back -->
@@ -354,6 +468,22 @@
       </div>
     </aside>
   </main>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Scroll to top">↑</button>
+
+  <!-- Keyboard shortcuts modal -->
+  <div class="shortcuts-overlay" id="shortcuts-overlay" onclick="closeShortcuts(event)">
+    <div class="shortcuts-modal" onclick="event.stopPropagation()">
+      <h2>⌨️ Keyboard Shortcuts</h2>
+      <div class="shortcut-row"><span>Search pages</span><span class="key">⌘K / Ctrl+K</span></div>
+      <div class="shortcut-row"><span>Navigate back</span><span class="key">Esc (in page)</span></div>
+      <div class="shortcut-row"><span>Random page</span><span class="key">?</span></div>
+      <div class="shortcut-row"><span>Close search/modal</span><span class="key">Esc</span></div>
+      <div class="shortcut-row"><span>Toggle theme</span><span class="key">T</span></div>
+      <button class="shortcuts-close" onclick="closeShortcuts(event)">Got it</button>
+    </div>
+  </div>
 
   <script>
     // ── Page Index ──────────────────────────────────────────────────────────
@@ -420,6 +550,31 @@
           e.preventDefault();
           document.getElementById('search-input').focus();
         }
+        if (e.key === '?' && !e.ctrlKey && !e.metaKey && !e.target.closest('input')) {
+          e.preventDefault();
+          showShortcuts();
+        }
+        if ((e.key === 't' || e.key === 'T') && !e.ctrlKey && !e.metaKey && !e.target.closest('input') && !e.target.closest('textarea')) {
+          e.preventDefault();
+          toggleTheme();
+        }
+        if (e.key === 'Escape' && currentPage && !historyStack.length <= 1) {
+          goBack();
+        }
+      });
+
+      // Load saved theme
+      const savedTheme = localStorage.getItem('wiki-theme');
+      if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.getElementById('theme-btn').textContent = '☀️';
+      }
+
+      // Scroll to top visibility
+      window.addEventListener('scroll', () => {
+        const btn = document.getElementById('scroll-top-btn');
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
       });
     });
 
@@ -563,11 +718,15 @@
       const html = await marked.parse(data.content || '');
       const contentHtml = parseWikilinks(html);
 
+      // Reading time
+      const readingTime = estimateReadingTime(data.content || '');
+
       // Metadata bar
       let metaHtml = `<div class="metadata-bar">`;
       metaHtml += `<span class="meta-tag bucket">📁 ${path.split('/')[0]}</span>`;
       if (tier) metaHtml += `<span class="meta-tag tier-${tier.toLowerCase()}">${tier}</span>`;
       if (lifecycle) metaHtml += `<span class="meta-tag lifecycle-${lifecycle.toLowerCase()}">${lifecycle}</span>`;
+      metaHtml += `<span class="meta-tag" style="background:rgba(161,161,170,0.1);color:var(--text-muted)">📖 ${readingTime.minutes} min (${readingTime.wordsDisplay} words)</span>`;
       tags.forEach(t => { metaHtml += `<span class="meta-tag tag">#${t}</span>`; });
       metaHtml += `</div>`;
 
@@ -636,6 +795,39 @@
       navigateTo(path);
     }
 
+    // ── Theme Toggle ───────────────────────────────────────────────────────
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.getElementById('theme-btn');
+      const isLight = html.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        html.setAttribute('data-theme', 'dark');
+        btn.textContent = '🌙';
+        localStorage.setItem('wiki-theme', 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+        btn.textContent = '☀️';
+        localStorage.setItem('wiki-theme', 'light');
+      }
+    }
+
+    // ── Keyboard Shortcuts Modal ────────────────────────────────────────────
+    function showShortcuts() {
+      document.getElementById('shortcuts-overlay').classList.add('visible');
+    }
+    function closeShortcuts(e) {
+      document.getElementById('shortcuts-overlay').classList.remove('visible');
+    }
+
+    // ── Reading Time ────────────────────────────────────────────────────────
+    function estimateReadingTime(text) {
+      const words = (text || '').trim().split(/\s+/).filter(Boolean).length;
+      const wpm = 200;
+      const minutes = Math.max(1, Math.round(words / wpm));
+      const wordsDisplay = words < 1000 ? words : (words / 1000).toFixed(1) + 'k';
+      return { minutes, words, wordsDisplay };
+    }
+
     // ── Tab Switching ──────────────────────────────────────────────────────
     async function switchTab(tab) {
       currentTab = tab;
@@ -646,7 +838,7 @@
 
       document.querySelectorAll('.tab-btn').forEach(b => {
         b.classList.toggle('active', b.textContent.includes(tab === 'index' ? 'Index' : 
-          tab === 'hot' ? 'Hot' : tab === 'graph' ? 'Graph' : tab === 'tags' ? 'Tags' : 'Browse'));
+          tab === 'hot' ? 'Hot' : tab === 'graph' ? 'Graph' : tab === 'tags' ? 'Tags' : tab === 'activity' ? 'Activity' : 'Browse'));
       });
 
       const target = document.getElementById('render-target');
@@ -657,6 +849,7 @@
       else if (tab === 'graph') renderGraphTab(target);
       else if (tab === 'tags') renderTagsTab(target);
       else if (tab === 'browse') renderBrowseTab(target);
+      else if (tab === 'activity') renderActivityTab(target);
     }
 
     async function renderIndexTab(target) {
@@ -681,6 +874,62 @@
       } catch (e) {
         target.innerHTML = '<div class="error-state"><h3>Error</h3><p>Could not load hot cache.</p></div>';
       }
+    }
+
+    // ── Activity Tab ───────────────────────────────────────────────────────
+    function renderActivityTab(target) {
+      // Collect pages with updated timestamps
+      const timeline = [];
+      for (const [path, data] of Object.entries(pageData)) {
+        const fm = data.frontmatter || {};
+        const title = fm.title || path.split('/').pop().replace('.md', '');
+        const updated = fm.updated || fm.created || '';
+        const created = fm.created || '';
+        if (updated || created) {
+          timeline.push({ path, title, updated, created, fm });
+        }
+      }
+
+      // Sort by updated descending (most recent first)
+      timeline.sort((a, b) => {
+        const da = a.updated || a.created;
+        const db = b.updated || b.created;
+        return db.localeCompare(da);
+      });
+
+      // Group by date
+      const grouped = {};
+      for (const item of timeline) {
+        const dateKey = (item.updated || item.created).split('T')[0] || 'unknown';
+        if (!grouped[dateKey]) grouped[dateKey] = [];
+        grouped[dateKey].push(item);
+      }
+
+      const dateKeys = Object.keys(grouped).sort((a, b) => b.localeCompare(a)).slice(0, 30);
+
+      if (dateKeys.length === 0) {
+        target.innerHTML = '<div class="error-state fade-in"><h3>No activity data</h3><p>Pages need <code>updated</code> or <code>created</code> frontmatter to appear here.</p></div>';
+        return;
+      }
+
+      let html = '<div class="fade-in"><h2 style="font-size:1.2rem;margin-bottom:0.5rem;">⚡ Recent Activity</h2>';
+      html += `<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem">${timeline.length} pages with timestamps · Most recent updates first</p>`;
+      html += '<div class="activity-timeline">';
+
+      for (const dateKey of dateKeys) {
+        html += `<div class="activity-day-header">${dateKey}</div>`;
+        for (const item of grouped[dateKey]) {
+          const tags = Array.isArray(item.fm.tags) ? item.fm.tags.slice(0, 3) : [];
+          html += `<div class="activity-item" onclick="navigateTo('${item.path.replace(/'/g, "\\'")}')">
+            <div class="title">${escapeHtml(item.title)}</div>
+            <div class="path">${item.path}</div>
+            ${tags.length ? `<div class="desc">${tags.map(t => '#' + escapeHtml(t)).join(' · ')}</div>` : ''}
+          </div>`;
+        }
+      }
+
+      html += '</div></div>';
+      target.innerHTML = html;
     }
 
     // ── Tags Tab ────────────────────────────────────────────────────────────
