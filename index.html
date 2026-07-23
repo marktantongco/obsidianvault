@@ -11,6 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11/highlight.min.js"></script>
   <style>
     :root {
       --font-family: 'Outfit', sans-serif;
@@ -614,6 +616,10 @@
     
     // ── Init ────────────────────────────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', async () => {
+      // Load search analytics
+      if (!localStorage.getItem('search-analytics')) {
+        localStorage.setItem('search-analytics', JSON.stringify({ searches: [], noResults: [] }));
+      }
       await loadAllPages();
       renderSidebar();
       switchTab('index');
@@ -756,6 +762,16 @@
       const fuseResults = fuseSearch.search(query);
       const top = fuseResults.slice(0, 20);
 
+      // Track search analytics
+      const analytics = JSON.parse(localStorage.getItem('search-analytics') || '{"searches":[],"noResults":[]}');
+      analytics.searches.push({ q: query, time: Date.now(), results: top.length });
+      if (analytics.searches.length > 200) analytics.searches = analytics.searches.slice(-200);
+      if (top.length === 0) {
+        analytics.noResults.push({ q: query, time: Date.now() });
+        if (analytics.noResults.length > 100) analytics.noResults = analytics.noResults.slice(-100);
+      }
+      localStorage.setItem('search-analytics', JSON.stringify(analytics));
+
       if (top.length === 0) {
         results.innerHTML = '<div class="search-no-results">No pages found</div>';
       } else {
@@ -872,7 +888,13 @@
 
       // Update active tab
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      currentTab = null; // we're in navigation mode
+      currentTab = null;
+      // Highlight code blocks
+      setTimeout(() => {
+        document.querySelectorAll('.wiki-content pre code').forEach(block => {
+          if (typeof hljs !== 'undefined') hljs.highlightElement(block);
+        });
+      }, 50); // we're in navigation mode
     }
 
     function goBack() {
@@ -1221,7 +1243,48 @@
           </div>
         </div>`;
       });
-      html += '</div></div></div>';
+      html += '</div></div>';
+
+      // Search analytics section
+      try {
+        const sa = JSON.parse(localStorage.getItem('search-analytics') || '{"searches":[],"noResults":[]}');
+        if (sa.searches.length > 0) {
+          const totalSearches = sa.searches.length;
+          const totalNoResults = sa.noResults.length;
+          const topQueries = {};
+          sa.searches.forEach(s => { topQueries[s.q] = (topQueries[s.q] || 0) + 1; });
+          const topSorted = Object.entries(topQueries).sort((a, b) => b[1] - a[1]).slice(0, 10);
+          const recentNoResults = sa.noResults.slice(-10).reverse();
+
+          html += '<h2 style="font-size:1.1rem;margin:1.5rem 0 0.75rem">🔍 Search Analytics</h2>';
+          html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">';
+          html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem">';
+          html += '<h3 style="font-size:0.9rem;margin-bottom:0.75rem">Top Searches</h3>';
+          if (topSorted.length === 0) html += '<p style="font-size:0.8rem;color:var(--text-muted)">No searches yet</p>';
+          else {
+            const maxCount = topSorted[0][1];
+            topSorted.forEach(([q, count]) => {
+              const pct = Math.round(count / maxCount * 100);
+              html += '<div style="margin-bottom:0.3rem"><div style="display:flex;justify-content:space-between;font-size:0.78rem"><span>' + escapeHtml(q) + '</span><span style="color:var(--text-muted)">' + count + '</span></div><div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:var(--accent);border-radius:2px"></div></div></div>';
+            });
+          }
+          html += '</div>';
+          html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem">';
+          html += '<h3 style="font-size:0.9rem;margin-bottom:0.75rem">❌ No-Result Queries</h3>';
+          if (recentNoResults.length === 0) html += '<p style="font-size:0.8rem;color:var(--text-muted)">None — every search found results!</p>';
+          else {
+            html += '<p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem">' + totalNoResults + ' total · Recent:</p>';
+            recentNoResults.forEach(s => {
+              html += '<div style="font-size:0.78rem;padding:0.15rem 0">' + escapeHtml(s.q) + ' <span style="color:var(--text-muted);font-size:0.65rem">(' + s.time ? new Date(s.time).toLocaleDateString() : '' + ')</span></div>';
+            });
+          }
+          html += '</div></div>';
+        }
+      } catch (e) { /* analytics not available */ }
+
+      html += '</div>';
+      target.innerHTML = html;
+    }
 
       html += '</div>'; // end two-column
 
@@ -1412,7 +1475,7 @@
           if (target && target.id !== path) edges.push({ source: path, target: target.id });
         }
       }
-      target.innerHTML = '<div class="fade-in"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem"><div><h2 style="font-size:1.1rem">🕸️ Knowledge Graph</h2><p style="font-size:0.8rem;color:var(--text-muted)">' + nodes.length + ' nodes · ' + edges.length + ' edges · Drag nodes · Scroll to zoom</p></div><div><button class="random-btn" onclick="initD3Graph()">🔄 Reset</button><button class="random-btn" onclick="zoomToFit()">🔍 Fit</button><button class="random-btn" onclick="filterGraph("core")">🎯 Core</button><button class="random-btn" onclick="filterGraph(null)">All</button></div></div><div style="position:relative"><div class="graph-container" id="graph-container"></div><div class="graph-minimap" id="graph-minimap"><canvas id="minimap-canvas" width="150" height="100"></canvas></div></div><div class="graph-legend"><span><span class="graph-dot core"></span> Core (' + nodes.filter(n => n.tier === 'core').length + ')</span><span><span class="graph-dot supporting"></span> Supporting (' + nodes.filter(n => n.tier === 'supporting').length + ')</span><span><span class="graph-dot peripheral"></span> Peripheral (' + nodes.filter(n => n.tier === 'peripheral' || n.tier === '').length + ')</span><span>💡 Hover for details · Click to navigate</span></div></div>';
+      target.innerHTML = '<div class="fade-in"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem"><div><h2 style="font-size:1.1rem">🕸️ Knowledge Graph</h2><p style="font-size:0.8rem;color:var(--text-muted)">' + nodes.length + ' nodes · ' + edges.length + ' edges · Drag nodes · Scroll to zoom</p></div><div><button class="random-btn" onclick="initD3Graph()">🔄 Reset</button><button class="random-btn" onclick="zoomToFit()">🔍 Fit</button><button class="random-btn" onclick="filterGraph("core")">🎯 Core</button><button class="random-btn" onclick="filterGraph(null)">All</button></div><div class="graph-tag-filters" id="graph-tag-filters" style="margin-top:0.5rem"></div></div><div style="position:relative"><div class="graph-container" id="graph-container"></div><div class="graph-minimap" id="graph-minimap"><canvas id="minimap-canvas" width="150" height="100"></canvas></div></div><div class="graph-legend"><span><span class="graph-dot core"></span> Core (' + nodes.filter(n => n.tier === 'core').length + ')</span><span><span class="graph-dot supporting"></span> Supporting (' + nodes.filter(n => n.tier === 'supporting').length + ')</span><span><span class="graph-dot peripheral"></span> Peripheral (' + nodes.filter(n => n.tier === 'peripheral' || n.tier === '').length + ')</span><span>💡 Hover for details · Click to navigate</span></div></div>';
       setTimeout(() => initD3Graph(nodes, edges), 50);
     }
 
@@ -1420,6 +1483,13 @@
     function filterGraph(tier) { filterTier = tier; switchTab('graph'); }
 
     let d3Simulation = null;
+    let minimapCtx = null;
+    let graphAllNodes = [];
+    let graphAllEdges = [];
+    let mainSvg = null;
+    let mainZoom = null;
+    let currentZoomTransform = null;
+    
     function initD3Graph(nodes, edges) {
       const container = document.getElementById('graph-container');
       if (!container) return;
@@ -1429,17 +1499,20 @@
       const tierColors = { core: '#3B82F6', supporting: '#8B5CF6', peripheral: '#52525B' };
       const tierRadii = { core: 7, supporting: 5, peripheral: 3.5 };
       let displayNodes = nodes, displayEdges = edges;
+      // Build tag filter chips
+      buildGraphTagFilters(container, nodes, edges);
       if (filterTier) {
         const ids = new Set(nodes.filter(n => n.tier === filterTier).map(n => n.id));
         displayNodes = nodes.filter(n => ids.has(n.id));
         displayEdges = edges.filter(e => ids.has(e.source) && ids.has(e.target));
       }
       const svg = d3.select(container).append('svg').attr('width', width).attr('height', height);
+      mainSvg = svg;
       const g = svg.append('g');
       const tip = document.getElementById('graph-tooltip');
       const tipTitle = document.getElementById('graph-tt-title');
       const tipMeta = document.getElementById('graph-tt-meta');
-      const zoom = d3.zoom().scaleExtent([0.2, 4]).on('zoom', e => g.attr('transform', e.transform));
+      const zoom = d3.zoom().scaleExtent([0.2, 4]).on('zoom', e => { g.attr('transform', e.transform); currentZoomTransform = e.transform; drawMinimapViewport(); });
       svg.call(zoom).call(zoom.transform, d3.zoomIdentity.translate(width / 2, height / 2));
       const link = g.append('g').selectAll('line').data(displayEdges).join('line').attr('class', 'link');
       const node = g.append('g').selectAll('circle').data(displayNodes).join('circle')
@@ -1476,7 +1549,67 @@
         tip.classList.remove('visible');
       });
       node.on('click', function(e, d) { navigateTo(d.path); });
-      d3Simulation = d3.forceSimulation(displayNodes)
+          function drawMinimap() {
+      const canvas = document.getElementById('minimap-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      minimapCtx = ctx;
+      const w = 150, h = 100;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.fillRect(0, 0, w, h);
+      const allNodes = graphAllNodes;
+      if (!allNodes.length) return;
+      const xs = allNodes.map(n => n.x), ys = allNodes.map(n => n.y);
+      const minX = Math.min(...xs), maxX = Math.max(...xs);
+      const minY = Math.min(...ys), maxY = Math.max(...ys);
+      const dataW = maxX - minX || 1, dataH = maxY - minY || 1;
+      const scale = Math.min(w / dataW * 0.85, h / dataH * 0.85);
+      const ox = (w - dataW * scale) / 2 - minX * scale;
+      const oy = (h - dataH * scale) / 2 - minY * scale;
+      // Draw edges
+      ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+      ctx.lineWidth = 0.3;
+      for (const e of graphAllEdges) {
+        const s = typeof e.source === 'object' ? e.source : graphAllNodes.find(n => n.id === e.source);
+        const t = typeof e.target === 'object' ? e.target : graphAllNodes.find(n => n.id === e.target);
+        if (s && t) {
+          ctx.beginPath(); ctx.moveTo(s.x * scale + ox, s.y * scale + oy);
+          ctx.lineTo(t.x * scale + ox, t.y * scale + oy); ctx.stroke();
+        }
+      }
+      // Draw nodes
+      const tierColorsMinimap = { core: '#3B82F6', supporting: '#8B5CF6', peripheral: '#52525B' };
+      for (const n of allNodes) {
+        ctx.beginPath();
+        ctx.arc(n.x * scale + ox, n.y * scale + oy, Math.max(1.5, (n.tier === 'core' ? 3 : n.tier === 'supporting' ? 2 : 1.2)), 0, 2 * Math.PI);
+        ctx.fillStyle = tierColorsMinimap[n.tier] || '#52525B';
+        ctx.fill();
+      }
+    }
+
+    function drawMinimapViewport() {
+      const canvas = document.getElementById('minimap-canvas');
+      if (!canvas || !graphAllNodes.length) return;
+      const ctx = canvas.getContext('2d');
+      drawMinimap();
+      const w = canvas.width, h = canvas.height;
+      const xs = graphAllNodes.map(n => n.x), ys = graphAllNodes.map(n => n.y);
+      const scale = Math.min(w / (Math.max(...xs) - Math.min(...xs) || 1) * 0.85, h / (Math.max(...ys) - Math.min(...ys) || 1) * 0.85);
+      const ox = (w - (Math.max(...xs) - Math.min(...xs) || 1) * scale) / 2 - Math.min(...xs) * scale;
+      const oy = (h - (Math.max(...ys) - Math.min(...ys) || 1) * scale) / 2 - Math.min(...ys) * scale;
+      // Draw viewport rect
+      if (currentZoomTransform) {
+        const t = currentZoomTransform;
+        const vw = w / t.k, vh = h / t.k;
+        const vx = -t.x / t.k, vy = -t.y / t.k;
+        ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(vx * scale + ox, vy * scale + oy, vw * scale, vh * scale);
+      }
+    }
+
+    d3Simulation = d3.forceSimulation(displayNodes)
         .force('link', d3.forceLink(displayEdges).id(d => d.id).distance(40))
         .force('charge', d3.forceManyBody().strength(-200)).force('center', d3.forceCenter(0, 0))
         .force('collision', d3.forceCollide().radius(d => (tierRadii[d.tier] || 4) + 10)).alphaDecay(0.02)
@@ -1489,6 +1622,31 @@
     }
 
     let minimapSvg = null;
+        let graphTagFilter = null;
+    function buildGraphTagFilters(container, nodes, edges) {
+      const tagFreq = {};
+      for (const n of nodes) {
+        const data = pageData[n.path];
+        if (!data) continue;
+        const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags : [];
+        tags.forEach(t => { tagFreq[t] = (tagFreq[t] || 0) + 1; });
+      }
+      const sorted = Object.entries(tagFreq).sort((a, b) => b[1] - a[1]).slice(0, 20);
+      const chipsContainer = document.getElementById('graph-tag-filters');
+      if (!chipsContainer || !sorted.length) return;
+      chipsContainer.innerHTML = '<span style="font-size:0.7rem;color:var(--text-muted);margin-right:0.3rem">🏷️</span>' +
+        sorted.map(([tag, count]) => {
+          const active = graphTagFilter === tag ? ' active' : '';
+          return '<span class="tag-pill' + active + '" onclick="filterGraphByTag(\'' + tag + '\')"><span class="count">' + count + '</span> ' + tag + '</span>';
+        }).join('') +
+        (graphTagFilter ? '<span class="tag-pill" onclick="filterGraphByTag(null)" style="margin-left:0.3rem">✕ Clear</span>' : '');
+    }
+
+    function filterGraphByTag(tag) {
+      graphTagFilter = tag;
+      switchTab('graph');
+    }
+
     function zoomToFit() {
       const container = document.getElementById('graph-container');
       const svg = container?.querySelector('svg');
@@ -1673,7 +1831,48 @@
             html += '<div class="path">' + c.hash.slice(0, 7) + ' · ' + escapeHtml(c.author) + '</div>';
             html += '</div>';
           });
-          html += '</div></div></div>';
+          html += '</div></div>';
+
+      // Search analytics section
+      try {
+        const sa = JSON.parse(localStorage.getItem('search-analytics') || '{"searches":[],"noResults":[]}');
+        if (sa.searches.length > 0) {
+          const totalSearches = sa.searches.length;
+          const totalNoResults = sa.noResults.length;
+          const topQueries = {};
+          sa.searches.forEach(s => { topQueries[s.q] = (topQueries[s.q] || 0) + 1; });
+          const topSorted = Object.entries(topQueries).sort((a, b) => b[1] - a[1]).slice(0, 10);
+          const recentNoResults = sa.noResults.slice(-10).reverse();
+
+          html += '<h2 style="font-size:1.1rem;margin:1.5rem 0 0.75rem">🔍 Search Analytics</h2>';
+          html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">';
+          html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem">';
+          html += '<h3 style="font-size:0.9rem;margin-bottom:0.75rem">Top Searches</h3>';
+          if (topSorted.length === 0) html += '<p style="font-size:0.8rem;color:var(--text-muted)">No searches yet</p>';
+          else {
+            const maxCount = topSorted[0][1];
+            topSorted.forEach(([q, count]) => {
+              const pct = Math.round(count / maxCount * 100);
+              html += '<div style="margin-bottom:0.3rem"><div style="display:flex;justify-content:space-between;font-size:0.78rem"><span>' + escapeHtml(q) + '</span><span style="color:var(--text-muted)">' + count + '</span></div><div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:var(--accent);border-radius:2px"></div></div></div>';
+            });
+          }
+          html += '</div>';
+          html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem">';
+          html += '<h3 style="font-size:0.9rem;margin-bottom:0.75rem">❌ No-Result Queries</h3>';
+          if (recentNoResults.length === 0) html += '<p style="font-size:0.8rem;color:var(--text-muted)">None — every search found results!</p>';
+          else {
+            html += '<p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem">' + totalNoResults + ' total · Recent:</p>';
+            recentNoResults.forEach(s => {
+              html += '<div style="font-size:0.78rem;padding:0.15rem 0">' + escapeHtml(s.q) + ' <span style="color:var(--text-muted);font-size:0.65rem">(' + s.time ? new Date(s.time).toLocaleDateString() : '' + ')</span></div>';
+            });
+          }
+          html += '</div></div>';
+        }
+      } catch (e) { /* analytics not available */ }
+
+      html += '</div>';
+      target.innerHTML = html;
+    }
           target.innerHTML = html;
         })
         .catch(() => {
