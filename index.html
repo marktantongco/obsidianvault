@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
   <style>
     :root {
       --font-family: 'Outfit', sans-serif;
@@ -267,12 +269,29 @@
     .page-card .mini-tag { font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 100px; background: var(--surface); color: var(--text-muted); }
 
     /* Graph View */
-    #graph-canvas {
-      width: 100%; height: 500px; border-radius: var(--radius-sm);
-      background: var(--bg); cursor: grab;
-      border: 1px solid var(--border);
+    
+    .graph-container {
+      width: 100%; height: 520px; border-radius: var(--radius-sm);
+      background: var(--graph-bg); border: 1px solid var(--border);
+      overflow: hidden; position: relative;
     }
-    #graph-canvas:active { cursor: grabbing; }
+    .graph-container svg { width: 100%; height: 100%; }
+    .graph-container .node-label { font-family: var(--font-family); font-size: 9px; fill: var(--text-muted); pointer-events: none; }
+    .graph-container .node { cursor: pointer; transition: r 0.15s; }
+    .graph-container .link { stroke: var(--border); stroke-width: 0.8; stroke-opacity: 0.4; }
+    .graph-container .link.highlighted { stroke: var(--accent); stroke-width: 1.5; stroke-opacity: 0.7; }
+    .graph-tooltip {
+      position: absolute; pointer-events: none; z-index: 10;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.5rem 0.75rem;
+      font-size: 0.78rem; color: var(--text);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .graph-tooltip.visible { opacity: 1; }
+    .graph-tooltip .tt-title { font-weight: 600; font-size: 0.85rem; }
+    .graph-tooltip .tt-meta { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.2rem; }
+
     .graph-legend {
       display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem;
       font-size: 0.78rem; color: var(--text-muted);
@@ -404,6 +423,49 @@
     /* Fade in animation */
     .fade-in { animation: fadeIn 0.3s ease-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Mobile Responsive ─────────────────────────────────────────────── */
+    .hamburger-btn {
+      display: none; background: none; border: none; cursor: pointer;
+      font-size: 1.3rem; color: var(--text); padding: 0.25rem; line-height: 1;
+    }
+    @media (max-width: 899px) {
+      .hamburger-btn { display: block; }
+      .header-actions .nav-links { display: none; }
+      .main-layout { padding: 0.75rem; }
+      .content-area { padding: 1rem; border-radius: var(--radius-sm); }
+      .content-area h1 { font-size: 1.3rem; }
+      .tabs { padding: 0.15rem; gap: 0.1rem; }
+      .tab-btn { padding: 0.35rem 0.6rem; font-size: 0.72rem; }
+      .sidebar { display: none; }
+      .sidebar.mobile-visible {
+        display: block; position: fixed; top: 0; right: 0; bottom: 0; z-index: 150;
+        width: 280px; padding: 1rem; overflow-y: auto;
+        background: var(--surface); border-left: 1px solid var(--border);
+        box-shadow: -8px 0 32px rgba(0,0,0,0.4);
+        animation: slideIn 0.2s ease-out;
+      }
+      .sidebar-overlay {
+        display: none; position: fixed; inset: 0; z-index: 140;
+        background: rgba(0,0,0,0.5);
+      }
+      .sidebar-overlay.visible { display: block; }
+      .app-header .inner { padding: 0.5rem 0.75rem; }
+      .logo { font-size: 0.95rem; }
+      .search-input { font-size: 0.85rem; padding: 0.6rem 0.75rem 0.6rem 2.2rem; }
+      .metadata-bar { gap: 0.3rem; }
+      .meta-tag { font-size: 0.65rem; padding: 0.15rem 0.4rem; }
+      .shortcuts-modal { width: 95%; padding: 1.25rem; }
+      .page-grid { grid-template-columns: 1fr; }
+      .main-layout.has-sidebar #sidebar { display: none; }
+      .stats-cards { grid-template-columns: repeat(2,1fr); }
+      #graph-canvas { height: 350px; }
+    }
+    @media (max-width: 480px) {
+      .content-area { padding: 0.75rem; }
+      .tab-btn { padding: 0.25rem 0.4rem; font-size: 0.65rem; }
+    }
+    @keyframes slideIn { from { transform: translateX(60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
   </style>
 </head>
 <body>
@@ -411,10 +473,13 @@
     <div class="inner">
       <div class="logo">🧠 <span>Second Brain</span></div>
       <div class="header-actions">
-        <button class="random-btn" onclick="loadRandomPage()" title="Surprise me">🎲 Random</button>
-        <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle theme">🌙</button>
-        <button class="random-btn" onclick="showShortcuts()" title="Keyboard shortcuts">⌨️</button>
-        <a href="https://github.com/marktantongco/obsidianvault" target="_blank">GitHub</a>
+        <span class="nav-links">
+          <button class="random-btn" onclick="loadRandomPage()" title="Surprise me">🎲 Random</button>
+          <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle theme">🌙</button>
+          <button class="random-btn" onclick="showShortcuts()" title="Keyboard shortcuts">⌨️</button>
+          <a href="https://github.com/marktantongco/obsidianvault" target="_blank">GitHub</a>
+        </span>
+        <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMobileSidebar()" title="Menu">☰</button>
       </div>
     </div>
   </header>
@@ -469,6 +534,9 @@
       </div>
     </aside>
   </main>
+
+  <!-- Mobile sidebar overlay -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeMobileSidebar()"></div>
 
   <!-- Scroll to top -->
   <button class="scroll-top-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Scroll to top">↑</button>
@@ -534,8 +602,7 @@
     let currentTab = 'index';
     let currentPage = null;
     let activeTagFilter = null;
-    let graphInitialized = false;
-
+    
     // ── Init ────────────────────────────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', async () => {
       await loadAllPages();
@@ -635,45 +702,75 @@
       return links;
     }
 
-    // ── Search ──────────────────────────────────────────────────────────────
+    // ── Search (Fuse.js Fuzzy) ──────────────────────────────────────────────
+    let fuseSearch = null;
+    let searchCacheBuilt = false;
+
+    function buildFuseIndex() {
+      if (searchCacheBuilt) return;
+      const pages = [];
+      for (const [path, data] of Object.entries(pageData)) {
+        const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
+        const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.join(' ') : '';
+        // Index title heavily, content lightly
+        const content = (data.content || '').slice(0, 2000); // first 2000 chars
+        pages.push({
+          path,
+          title,
+          tags,
+          content,
+          category: path.split('/')[0],
+          tier: data.frontmatter?.tier || ''
+        });
+      }
+      // Build fuse with weighted search
+      fuseSearch = new Fuse(pages, {
+        keys: [
+          { name: 'title', weight: 4 },
+          { name: 'tags', weight: 2 },
+          { name: 'category', weight: 1 },
+          { name: 'content', weight: 0.5 }
+        ],
+        threshold: 0.4,
+        distance: 100,
+        includeScore: true,
+        minMatchCharLength: 2
+      });
+      searchCacheBuilt = true;
+    }
+
     function handleSearch(query) {
       const results = document.getElementById('search-results');
       if (!query.trim()) { results.classList.remove('visible'); return; }
-      const q = query.toLowerCase();
-      const matches = [];
-      for (const [path, data] of Object.entries(pageData)) {
-        const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
-        const contentLower = (data.content || '').toLowerCase();
-        const titleLower = title.toLowerCase();
-        let score = 0;
-        if (titleLower === q) score = 100;
-        else if (titleLower.startsWith(q)) score = 80;
-        else if (titleLower.includes(q)) score = 60;
-        else if (contentLower.includes(q)) score = 30;
-        if (score > 0) {
-          const snippet = extractSnippet(data.content || '', q, 80);
-          matches.push({ path, title, score, snippet });
-        }
-      }
-      matches.sort((a, b) => b.score - a.score);
-      const top = matches.slice(0, 20);
+
+      buildFuseIndex();
+      const fuseResults = fuseSearch.search(query);
+      const top = fuseResults.slice(0, 20);
+
       if (top.length === 0) {
         results.innerHTML = '<div class="search-no-results">No pages found</div>';
       } else {
-        results.innerHTML = top.map(m => `
-          <div class="search-result-item" onclick="navigateTo('${m.path.replace(/'/g, "\\'")}'); closeSearch();">
-            <div class="title">${escapeHtml(highlight(m.title, q))}</div>
-            <div class="path">${m.path}</div>
-            ${m.snippet ? `<div class="snippet">${highlight(escapeHtml(m.snippet), q)}</div>` : ''}
-          </div>
-        `).join('');
+        const qLower = query.toLowerCase();
+        results.innerHTML = top.map(({ item, score }) => {
+          const snippet = extractSnippet(item.content || '', qLower, 100);
+          return `<div class="search-result-item" onclick="navigateTo('${item.path.replace(/'/g, "\\'")}'); closeSearch();">
+            <div class="title">${highlight(item.title, qLower)}</div>
+            <div class="path">${item.path}</div>
+            <div style="display:flex;gap:0.5rem;font-size:0.7rem;color:var(--text-muted);margin-top:0.1rem">
+              <span>📁 ${item.category}</span>
+              ${item.tier ? `<span>${item.tier}</span>` : ''}
+              ${score ? `<span>${Math.round((1 - score) * 100)}% match</span>` : ''}
+            </div>
+            ${snippet ? `<div class="snippet">${snippet}</div>` : ''}
+          </div>`;
+        }).join('');
       }
       results.classList.add('visible');
     }
 
     function extractSnippet(text, query, maxLen) {
       const idx = text.toLowerCase().indexOf(query);
-      if (idx === -1) return text.slice(0, maxLen);
+      if (idx === -1) return '';
       const start = Math.max(0, idx - Math.floor(maxLen / 3));
       const end = Math.min(text.length, idx + query.length + Math.floor(maxLen / 2));
       let snippet = text.slice(start, end).replace(/\n+/g, ' ').trim();
@@ -684,8 +781,10 @@
 
     function highlight(text, query) {
       if (!query) return text;
-      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-      return text.replace(regex, '<span class="match">$1</span>');
+      try {
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<span class="match">$1</span>');
+      } catch (e) { return text; }
     }
 
     function closeSearch() {
@@ -796,6 +895,20 @@
       if (paths.length === 0) return;
       const path = paths[Math.floor(Math.random() * paths.length)];
       navigateTo(path);
+    }
+
+    // ── Mobile Sidebar ────────────────────────────────────────────────────
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      sidebar.classList.toggle('mobile-visible');
+      overlay.classList.toggle('visible');
+      document.body.style.overflow = sidebar.classList.contains('mobile-visible') ? 'hidden' : '';
+    }
+    function closeMobileSidebar() {
+      document.getElementById('sidebar').classList.remove('mobile-visible');
+      document.getElementById('sidebar-overlay').classList.remove('visible');
+      document.body.style.overflow = '';
     }
 
     // ── Theme Toggle ───────────────────────────────────────────────────────
@@ -1269,315 +1382,101 @@
     }
 
     // ── Graph Tab ──────────────────────────────────────────────────────────
-    function renderGraphTab(target) {
-      target.innerHTML = `
-        <div class="fade-in">
-          <p style="color:var(--text-secondary);margin-bottom:1rem;font-size:0.9rem">
-            Visualizing ${Object.keys(pageData).length} pages and their wikilink connections.
-            <span style="color:var(--text-muted)">Drag to pan · Scroll to zoom</span>
-          </p>
-          <canvas id="graph-canvas"></canvas>
-          <div class="graph-legend">
-            <span><span class="graph-dot core"></span> Core</span>
-            <span><span class="graph-dot supporting"></span> Supporting</span>
-            <span><span class="graph-dot peripheral"></span> Peripheral / Unclassified</span>
-          </div>
-        </div>
-      `;
-
-      // Defer to next frame for canvas sizing
-      requestAnimationFrame(() => initGraph());
-    }
-
-    function initGraph() {
-      const canvas = document.getElementById('graph-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const rect = canvas.parentElement.getBoundingClientRect();
-      canvas.width = canvas.parentElement.clientWidth;
-      canvas.height = 500;
-
-      // Build nodes + edges
+        function renderGraphTab(target) {
       const nodes = [];
       const edges = [];
       const nodeMap = {};
-
-      let idx = 0;
       for (const [path, data] of Object.entries(pageData)) {
-        const fm = data.frontmatter || {};
-        const title = fm.title || path.split('/').pop().replace('.md', '');
-        const tier = (fm.tier || '').toLowerCase();
-        const tags = Array.isArray(fm.tags) ? fm.tags : [];
-        nodeMap[path] = idx;
-        nodes.push({
-          id: idx++,
-          path, title, tier,
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: 0, vy: 0,
-          radius: tier === 'core' ? 8 : tier === 'supporting' ? 6 : 4,
-          color: tier === 'core' ? '#3B82F6' : tier === 'supporting' ? '#8B5CF6' : '#52525B',
-          tags
-        });
+        const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
+        const tier = (data.frontmatter?.tier || 'peripheral').toLowerCase();
+        const bucket = path.split('/')[0];
+        const linkCount = (data.wikilinks || []).length;
+        nodeMap[path] = { id: path, title, path, tier, bucket, linkCount };
+        nodes.push(nodeMap[path]);
       }
-
       for (const [path, data] of Object.entries(pageData)) {
-        const from = nodeMap[path];
-        if (from === undefined) continue;
         for (const link of (data.wikilinks || [])) {
-          // Find the target page
-          for (const [targetPath, targetData] of Object.entries(pageData)) {
-            const targetTitle = targetData.frontmatter?.title || targetPath.split('/').pop().replace('.md', '');
-            if (link.target === targetTitle || link.target === targetPath.replace('.md', '') || link.target === targetPath) {
-              const to = nodeMap[targetPath];
-              if (to !== undefined && from !== to) {
-                edges.push({ from, to });
-              }
-              break;
-            }
-          }
+          let target = nodeMap[link.target + '.md'];
+          if (!target) target = Object.values(nodeMap).find(n => n.title.toLowerCase() === link.target.toLowerCase());
+          if (!target) target = Object.values(nodeMap).find(n => n.path.toLowerCase().includes(link.target.toLowerCase()));
+          if (target && target.id !== path) edges.push({ source: path, target: target.id });
         }
       }
+      target.innerHTML = '<div class="fade-in"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem"><div><h2 style="font-size:1.1rem">🕸️ Knowledge Graph</h2><p style="font-size:0.8rem;color:var(--text-muted)">' + nodes.length + ' nodes · ' + edges.length + ' edges · Drag nodes · Scroll to zoom</p></div><div><button class="random-btn" onclick="initD3Graph()">🔄 Reset</button><button class="random-btn" onclick="filterGraph("core")">🎯 Core</button><button class="random-btn" onclick="filterGraph(null)">All</button></div></div><div class="graph-container" id="graph-container"></div><div class="graph-legend"><span><span class="graph-dot core"></span> Core (' + nodes.filter(n => n.tier === 'core').length + ')</span><span><span class="graph-dot supporting"></span> Supporting (' + nodes.filter(n => n.tier === 'supporting').length + ')</span><span><span class="graph-dot peripheral"></span> Peripheral (' + nodes.filter(n => n.tier === 'peripheral' || n.tier === '').length + ')</span><span>💡 Hover for details · Click to navigate</span></div></div>';
+      setTimeout(() => initD3Graph(nodes, edges), 50);
+    }
 
-      // Force-directed layout (simple simulation)
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const reps = 100;
+    let filterTier = null;
+    function filterGraph(tier) { filterTier = tier; switchTab('graph'); }
 
-      for (let iter = 0; iter < reps; iter++) {
-        // Repulsion between all nodes
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x;
-            const dy = nodes[i].y - nodes[j].y;
-            const dist = Math.max(1, Math.sqrt(dx * dx + dy * dy));
-            const force = 3000 / (dist * dist);
-            const fx = (dx / dist) * force;
-            const fy = (dy / dist) * force;
-            nodes[i].vx += fx;
-            nodes[i].vy += fy;
-            nodes[j].vx -= fx;
-            nodes[j].vy -= fy;
-          }
-        }
-
-        // Attraction along edges
-        for (const edge of edges) {
-          const a = nodes[edge.from], b = nodes[edge.to];
-          const dx = b.x - a.x;
-          const dy = b.y - a.y;
-          const dist = Math.max(1, Math.sqrt(dx * dx + dy * dy));
-          const force = dist * 0.01;
-          const fx = (dx / dist) * force;
-          const fy = (dy / dist) * force;
-          a.vx += fx; a.vy += fy;
-          b.vx -= fx; b.vy -= fy;
-        }
-
-        // Center gravity
-        for (const node of nodes) {
-          node.vx += (centerX - node.x) * 0.001;
-          node.vy += (centerY - node.y) * 0.001;
-          // Friction
-          node.vx *= 0.85;
-          node.vy *= 0.85;
-          node.x += node.vx;
-          node.y += node.vy;
-          // Clamp
-          node.x = Math.max(20, Math.min(canvas.width - 20, node.x));
-          node.y = Math.max(20, Math.min(canvas.height - 20, node.y));
-        }
+    let d3Simulation = null;
+    function initD3Graph(nodes, edges) {
+      const container = document.getElementById('graph-container');
+      if (!container) return;
+      container.innerHTML = '';
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      const tierColors = { core: '#3B82F6', supporting: '#8B5CF6', peripheral: '#52525B' };
+      const tierRadii = { core: 7, supporting: 5, peripheral: 3.5 };
+      let displayNodes = nodes, displayEdges = edges;
+      if (filterTier) {
+        const ids = new Set(nodes.filter(n => n.tier === filterTier).map(n => n.id));
+        displayNodes = nodes.filter(n => ids.has(n.id));
+        displayEdges = edges.filter(e => ids.has(e.source) && ids.has(e.target));
       }
-
-      // View transform state for zoom/pan
-      let viewScale = 1;
-      let viewOffsetX = 0;
-      let viewOffsetY = 0;
-      let isDragging = false;
-      let isPanning = false;
-      let dragStartX = 0, dragStartY = 0;
-      let panStartX = 0, panStartY = 0;
-      let hoveredNode = null;
-
-      // Inverse transform: screen coords → graph coords
-      function graphCoords(clientX, clientY) {
-        const r = canvas.getBoundingClientRect();
-        return {
-          x: (clientX - r.left - viewOffsetX) / viewScale,
-          y: (clientY - r.top - viewOffsetY) / viewScale
-        };
-      }
-
-      drawGraph(ctx, nodes, edges, null, viewScale, viewOffsetX, viewOffsetY);
-
-      // Mouse wheel zoom
-      canvas.onwheel = (e) => {
-        e.preventDefault();
-        const r = canvas.getBoundingClientRect();
-        const mx = e.clientX - r.left;
-        const my = e.clientY - r.top;
-        const zoomFactor = e.deltaY > 0 ? 0.88 : 1 / 0.88;
-        const newScale = Math.max(0.15, Math.min(6, viewScale * zoomFactor));
-        // Zoom toward mouse position
-        viewOffsetX = mx - (mx - viewOffsetX) * (newScale / viewScale);
-        viewOffsetY = my - (my - viewOffsetY) * (newScale / viewScale);
-        viewScale = newScale;
-        drawGraph(ctx, nodes, edges, hoveredNode, viewScale, viewOffsetX, viewOffsetY);
-      };
-
-      // Drag to pan + hover detection
-      canvas.onmousedown = (e) => {
-        isDragging = true;
-        isPanning = false;
-        dragStartX = e.clientX;
-        dragStartY = e.clientY;
-        panStartX = viewOffsetX;
-        panStartY = viewOffsetY;
-        canvas.style.cursor = 'grabbing';
-      };
-
-      canvas.onmousemove = (e) => {
-        if (isDragging) {
-          // Only start panning if mouse moved enough
-          const dx = e.clientX - dragStartX;
-          const dy = e.clientY - dragStartY;
-          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
-            isPanning = true;
-          }
-          if (isPanning) {
-            viewOffsetX = panStartX + (e.clientX - dragStartX);
-            viewOffsetY = panStartY + (e.clientY - dragStartY);
-            drawGraph(ctx, nodes, edges, null, viewScale, viewOffsetX, viewOffsetY);
-          }
-          return;
-        }
-        // Hover detection (inverse transform)
-        const gc = graphCoords(e.clientX, e.clientY);
-        hoveredNode = null;
-        for (const node of nodes) {
-          const dx = gc.x - node.x, dy = gc.y - node.y;
-          if (dx * dx + dy * dy < (node.radius + 8) * (node.radius + 8)) {
-            hoveredNode = node;
-            break;
-          }
-        }
-        canvas.style.cursor = hoveredNode ? 'pointer' : 'grab';
-        drawGraph(ctx, nodes, edges, hoveredNode, viewScale, viewOffsetX, viewOffsetY);
-      };
-
-      canvas.onmouseup = (e) => {
-        if (isDragging && !isPanning) {
-          // It was a click, not a drag — navigate
-          const gc = graphCoords(e.clientX, e.clientY);
-          let clickedNode = null;
-          for (const node of nodes) {
-            const dx = gc.x - node.x, dy = gc.y - node.y;
-            if (dx * dx + dy * dy < (node.radius + 8) * (node.radius + 8)) {
-              clickedNode = node;
-              break;
-            }
-          }
-          if (clickedNode) navigateTo(clickedNode.path);
-        }
-        isDragging = false;
-        isPanning = false;
-        canvas.style.cursor = hoveredNode ? 'pointer' : 'grab';
-      };
-
-      canvas.onmouseleave = () => {
-        isDragging = false;
-        isPanning = false;
-        hoveredNode = null;
-      };
-
-      // ResizeObserver: redraw graph when container resizes
-      const graphObserver = new ResizeObserver(() => {
-        if (canvas && canvas.parentElement) {
-          canvas.width = canvas.parentElement.clientWidth;
-          drawGraph(ctx, nodes, edges, null, viewScale, viewOffsetX, viewOffsetY);
-        }
+      const svg = d3.select(container).append('svg').attr('width', width).attr('height', height);
+      const g = svg.append('g');
+      const tip = document.getElementById('graph-tooltip');
+      const tipTitle = document.getElementById('graph-tt-title');
+      const tipMeta = document.getElementById('graph-tt-meta');
+      const zoom = d3.zoom().scaleExtent([0.2, 4]).on('zoom', e => g.attr('transform', e.transform));
+      svg.call(zoom).call(zoom.transform, d3.zoomIdentity.translate(width / 2, height / 2));
+      const link = g.append('g').selectAll('line').data(displayEdges).join('line').attr('class', 'link');
+      const node = g.append('g').selectAll('circle').data(displayNodes).join('circle')
+        .attr('class', 'node').attr('r', d => tierRadii[d.tier] || 4)
+        .attr('fill', d => tierColors[d.tier] || tierColors.peripheral)
+        .attr('stroke', d => d3.color(tierColors[d.tier] || tierColors.peripheral).brighter(0.5)).attr('stroke-width', 1)
+        .call(d3.drag().on('start', (e, d) => { if (!e.active) d3Simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+          .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; }).on('end', (e, d) => { if (!e.active) d3Simulation.alphaTarget(0); d.fx = null; d.fy = null; }));
+      const label = g.append('g').selectAll('text').data(displayNodes).join('text')
+        .attr('class', 'node-label').text(d => d.tier === 'core' ? (d.title.length > 18 ? d.title.slice(0, 16) + '…' : d.title) : '')
+        .attr('dy', d => -(tierRadii[d.tier] || 4) - 4).attr('text-anchor', 'middle');
+      node.on('mouseenter', function(e, d) {
+        const ids = new Set();
+        displayEdges.forEach(ed => { const s = typeof ed.source === 'object' ? ed.source.id : ed.source; const t = typeof ed.target === 'object' ? ed.target.id : ed.target; if (s === d.id || t === d.id) { ids.add(s); ids.add(t); }});
+        d3.select(this).transition().attr('r', (tierRadii[d.tier] || 4) * 1.8).attr('stroke-width', 2.5);
+        link.transition().attr('class', ed => { const s = typeof ed.source === 'object' ? ed.source.id : ed.source; const t = typeof ed.target === 'object' ? ed.target.id : ed.target; return (s === d.id || t === d.id) ? 'link highlighted' : 'link'; }).attr('stroke-opacity', ed => { const s = typeof ed.source === 'object' ? ed.source.id : ed.source; const t = typeof ed.target === 'object' ? ed.target.id : ed.target; return (s === d.id || t === d.id) ? 0.8 : 0.08; });
+        node.transition().attr('opacity', n => (n.id === d.id || ids.has(n.id)) ? 1 : 0.15);
+        label.filter(n => n.id === d.id).text(d.title.length > 25 ? d.title.slice(0, 23) + '…' : d.title);
+        tipTitle.textContent = d.title; tipMeta.textContent = '📁 ' + d.bucket + ' · ' + d.tier + ' · 🔗 ' + d.linkCount + ' links';
+        tip.classList.add('visible');
+        const rect = container.getBoundingClientRect();
+        tip.style.left = Math.min(e.offsetX + 10, width - 220) + 'px'; tip.style.top = Math.max(e.offsetY - 10, 10) + 'px';
       });
-      graphObserver.observe(canvas.parentElement);
-      // Store observer ref for cleanup
-      canvas._graphObserver = graphObserver;
-
-      graphInitialized = true;
+      node.on('mousemove', function(e) {
+        const rect = container.getBoundingClientRect();
+        tip.style.left = Math.min(e.clientX - rect.left + 10, width - 220) + 'px'; tip.style.top = Math.max(e.clientY - rect.top - 10, 10) + 'px';
+      });
+      node.on('mouseleave', function() {
+        d3.select(this).transition().attr('r', d => tierRadii[d.tier] || 4).attr('stroke-width', 1);
+        link.transition().attr('class', 'link').attr('stroke-opacity', 0.3);
+        node.transition().attr('opacity', 1);
+        label.filter(n => n.tier === 'core').text(d => d.title.length > 18 ? d.title.slice(0, 16) + '…' : d.title);
+        label.filter(n => n.tier !== 'core').text('');
+        tip.classList.remove('visible');
+      });
+      node.on('click', function(e, d) { navigateTo(d.path); });
+      d3Simulation = d3.forceSimulation(displayNodes)
+        .force('link', d3.forceLink(displayEdges).id(d => d.id).distance(40))
+        .force('charge', d3.forceManyBody().strength(-200)).force('center', d3.forceCenter(0, 0))
+        .force('collision', d3.forceCollide().radius(d => (tierRadii[d.tier] || 4) + 10)).alphaDecay(0.02)
+        .on('tick', () => {
+          link.attr('x1', d => d.source.x).attr('y1', d => d.source.y).attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+          node.attr('cx', d => d.x).attr('cy', d => d.y);
+          label.attr('x', d => d.x).attr('y', d => d.y);
+        });
+      new ResizeObserver(() => { svg.attr('width', container.clientWidth).attr('height', container.clientHeight); }).observe(container);
     }
-
-    function drawGraph(ctx, nodes, edges, highlight, scale, offsetX, offsetY) {
-      const canvas = ctx.canvas;
-      const s = scale || 1;
-      const ox = offsetX || 0;
-      const oy = offsetY || 0;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.save();
-      ctx.translate(ox, oy);
-      ctx.scale(s, s);
-
-      // Edges
-      for (const edge of edges) {
-        const a = nodes[edge.from], b = nodes[edge.to];
-        if (highlight && (a === highlight || b === highlight)) {
-          ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)';
-          ctx.lineWidth = 2 / s;
-        } else {
-          ctx.strokeStyle = 'rgba(39, 39, 42, 0.4)';
-          ctx.lineWidth = 1 / s;
-        }
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
-
-      // Nodes
-      for (const node of nodes) {
-        const isHighlight = node === highlight;
-        const r = isHighlight ? node.radius + 3 : node.radius;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = isHighlight ? '#60A5FA' : node.color;
-        ctx.fill();
-        if (isHighlight) {
-          ctx.shadowColor = '#60A5FA';
-          ctx.shadowBlur = 16 / s;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-      }
-
-      // Labels for core nodes (scale-invariant font size)
-      ctx.fillStyle = '#A1A1AA';
-      ctx.font = `${Math.max(8, 11 / s)}px Outfit, sans-serif`;
-      ctx.textAlign = 'center';
-      for (const node of nodes) {
-        if (node.tier === 'core') {
-          const displayName = node.title.length > 20 ? node.title.slice(0, 18) + '…' : node.title;
-          ctx.fillText(displayName, node.x, node.y - node.radius - 4 / s);
-        }
-      }
-
-      if (highlight) {
-        ctx.fillStyle = '#FAFAFA';
-        ctx.font = `${Math.max(9, 12 / s)}px Outfit, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.fillText(highlight.title, highlight.x, highlight.y - highlight.radius - 10 / s);
-
-        let connCount = 0;
-        for (const edge of edges) {
-          if (edge.from === highlight.id || edge.to === highlight.id) connCount++;
-        }
-        ctx.fillStyle = '#71717A';
-        ctx.font = `${Math.max(7, 10 / s)}px Outfit, sans-serif`;
-        ctx.fillText(`${connCount} connections`, highlight.x, highlight.y - highlight.radius - 24 / s);
-      }
-
-      ctx.restore();
-    }
-
-    // ── Sidebar ─────────────────────────────────────────────────────────────
-    // ── Table of Contents ──────────────────────────────────────────────────
     function buildTocFromHtml(html) {
       const temp = document.createElement('div');
       temp.innerHTML = html;
