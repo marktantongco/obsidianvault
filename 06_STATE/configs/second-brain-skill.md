@@ -92,3 +92,9 @@ Feed a vault entry into the LifeOS Algorithm loop starting at OBSERVE step.
   }
 }
 ```
+
+## Related
+
+- [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Inbox capture pipeline
+- [[06_STATE/configs/sync-strategy|Sync Strategy]] — Mobile-desktop sync configuration
+- [[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework]] — Skill taxonomy

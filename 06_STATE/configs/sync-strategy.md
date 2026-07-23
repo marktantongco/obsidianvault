@@ -37,3 +37,9 @@ Mobile captures are quick notes (Poznote-style). Desktop edits are deep work.
 - If mobile pushes before desktop pulls: desktop gets merge conflict on next pull.
 - Resolution: desktop user reviews conflict markers, keeps both versions if unsure.
 - Prevention: mobile uses `_raw/poznote/` for captures, desktop organizes into final buckets. Inbox is append-only, rarely conflicts.
+
+## Related
+
+- [[skills/mobile-sync-termux|Mobile Sync Termux]] — Termux-based sync setup
+- [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Inbox capture workflow
+- [[skills/git-sync-strategy|Git Sync Strategy]] — Commit and push rules

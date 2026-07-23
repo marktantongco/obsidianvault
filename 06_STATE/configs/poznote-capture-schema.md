@@ -79,3 +79,9 @@ Files dropped in `~/poznote-inbox/` are processed by the pipeline:
 2. Add/update frontmatter
 3. Move to correct bucket directory
 4. Git commit + push (batched, one commit per run)
+
+## Related
+
+- [[06_STATE/configs/second-brain-skill|Second Brain Skill]] — Companion AI skill configuration
+- [[06_STATE/configs/sync-strategy|Sync Strategy]] — Mobile-desktop sync pipeline
+- [[skills/wiki-compound-loop|Wiki Compound Loop]] — Capture pipeline automation

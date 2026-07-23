@@ -291,6 +291,14 @@
     .graph-tooltip.visible { opacity: 1; }
     .graph-tooltip .tt-title { font-weight: 600; font-size: 0.85rem; }
     .graph-tooltip .tt-meta { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .graph-minimap {
+      position: absolute; bottom: 8px; right: 8px; z-index: 5;
+      border: 1px solid var(--border); border-radius: 6px;
+      background: rgba(9,9,11,0.8); overflow: hidden;
+      opacity: 0.6; transition: opacity 0.2s; cursor: pointer;
+    }
+    .graph-minimap:hover { opacity: 1; }
+    #minimap-canvas { display: block; }
 
     .graph-legend {
       display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem;
@@ -502,6 +510,7 @@
         <button class="tab-btn" onclick="switchTab('browse')">📂 Browse</button>
         <button class="tab-btn" onclick="switchTab('activity')">⚡ Activity</button>
         <button class="tab-btn" onclick="switchTab('stats')">📊 Stats</button>
+        <button class="tab-btn" onclick="switchTab('changelog')">📜 Changelog</button>
       </div>
 
       <!-- Back -->
@@ -713,7 +722,7 @@
         const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
         const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.join(' ') : '';
         // Index title heavily, content lightly
-        const content = (data.content || '').slice(0, 2000); // first 2000 chars
+        const content = (data.content || ''); // first 2000 chars
         pages.push({
           path,
           title,
@@ -954,7 +963,7 @@
 
       document.querySelectorAll('.tab-btn').forEach(b => {
         b.classList.toggle('active', b.textContent.includes(tab === 'index' ? 'Index' : 
-          tab === 'hot' ? 'Hot' : tab === 'graph' ? 'Graph' : tab === 'tags' ? 'Tags' : tab === 'activity' ? 'Activity' : tab === 'stats' ? 'Stats' : 'Browse'));
+          tab === 'hot' ? 'Hot' : tab === 'graph' ? 'Graph' : tab === 'tags' ? 'Tags' : tab === 'activity' ? 'Activity' : tab === 'stats' ? 'Stats' : tab === 'changelog' ? 'Changelog' : 'Browse'));
       });
 
       const target = document.getElementById('render-target');
@@ -967,6 +976,7 @@
       else if (tab === 'browse') renderBrowseTab(target);
       else if (tab === 'activity') renderActivityTab(target);
       else if (tab === 'stats') renderStatsTab(target);
+      else if (tab === 'changelog') renderChangelogTab(target);
     }
 
     async function renderIndexTab(target) {
@@ -1402,7 +1412,7 @@
           if (target && target.id !== path) edges.push({ source: path, target: target.id });
         }
       }
-      target.innerHTML = '<div class="fade-in"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem"><div><h2 style="font-size:1.1rem">🕸️ Knowledge Graph</h2><p style="font-size:0.8rem;color:var(--text-muted)">' + nodes.length + ' nodes · ' + edges.length + ' edges · Drag nodes · Scroll to zoom</p></div><div><button class="random-btn" onclick="initD3Graph()">🔄 Reset</button><button class="random-btn" onclick="filterGraph("core")">🎯 Core</button><button class="random-btn" onclick="filterGraph(null)">All</button></div></div><div class="graph-container" id="graph-container"></div><div class="graph-legend"><span><span class="graph-dot core"></span> Core (' + nodes.filter(n => n.tier === 'core').length + ')</span><span><span class="graph-dot supporting"></span> Supporting (' + nodes.filter(n => n.tier === 'supporting').length + ')</span><span><span class="graph-dot peripheral"></span> Peripheral (' + nodes.filter(n => n.tier === 'peripheral' || n.tier === '').length + ')</span><span>💡 Hover for details · Click to navigate</span></div></div>';
+      target.innerHTML = '<div class="fade-in"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem"><div><h2 style="font-size:1.1rem">🕸️ Knowledge Graph</h2><p style="font-size:0.8rem;color:var(--text-muted)">' + nodes.length + ' nodes · ' + edges.length + ' edges · Drag nodes · Scroll to zoom</p></div><div><button class="random-btn" onclick="initD3Graph()">🔄 Reset</button><button class="random-btn" onclick="zoomToFit()">🔍 Fit</button><button class="random-btn" onclick="filterGraph("core")">🎯 Core</button><button class="random-btn" onclick="filterGraph(null)">All</button></div></div><div style="position:relative"><div class="graph-container" id="graph-container"></div><div class="graph-minimap" id="graph-minimap"><canvas id="minimap-canvas" width="150" height="100"></canvas></div></div><div class="graph-legend"><span><span class="graph-dot core"></span> Core (' + nodes.filter(n => n.tier === 'core').length + ')</span><span><span class="graph-dot supporting"></span> Supporting (' + nodes.filter(n => n.tier === 'supporting').length + ')</span><span><span class="graph-dot peripheral"></span> Peripheral (' + nodes.filter(n => n.tier === 'peripheral' || n.tier === '').length + ')</span><span>💡 Hover for details · Click to navigate</span></div></div>';
       setTimeout(() => initD3Graph(nodes, edges), 50);
     }
 
@@ -1476,6 +1486,24 @@
           label.attr('x', d => d.x).attr('y', d => d.y);
         });
       new ResizeObserver(() => { svg.attr('width', container.clientWidth).attr('height', container.clientHeight); }).observe(container);
+    }
+
+    let minimapSvg = null;
+    function zoomToFit() {
+      const container = document.getElementById('graph-container');
+      const svg = container?.querySelector('svg');
+      if (!svg) return;
+      const nodes = d3.select(svg).selectAll('circle.node').data();
+      if (!nodes.length) return;
+      const xs = nodes.map(n => n.x), ys = nodes.map(n => n.y);
+      const x0 = Math.min(...xs), x1 = Math.max(...xs);
+      const y0 = Math.min(...ys), y1 = Math.max(...ys);
+      const dx = x1 - x0 || 1, dy = y1 - y0 || 1;
+      const pad = 40;
+      const scale = Math.min((container.clientWidth - pad * 2) / dx, (container.clientHeight - pad * 2) / dy, 2);
+      const tx = -(x0 + dx / 2) * scale + container.clientWidth / 2;
+      const ty = -(y0 + dy / 2) * scale + container.clientHeight / 2;
+      d3.select(svg).transition().duration(500).call(d3.zoom().transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
     }
     function buildTocFromHtml(html) {
       const temp = document.createElement('div');
@@ -1622,6 +1650,37 @@
     }
 
     // ── Utils ───────────────────────────────────────────────────────────────
+        // ── Changelog Tab ────────────────────────────────────────────────
+    function renderChangelogTab(target) {
+      target.innerHTML = '<div class="loading-state"><div class="spinner"></div> Loading changelog...</div>';
+      fetch('./changelog.json')
+        .then(r => r.ok ? r.json() : Promise.reject('Failed to load'))
+        .then(commits => {
+          const recent = commits.slice(-50).reverse();
+          let html = '<div class="fade-in"><h2 style="font-size:1.2rem;margin-bottom:0.25rem;">📜 Git Changelog</h2>';
+          html += '<p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem">' + commits.length + ' total commits · Showing last 50</p>';
+          html += '<div class="activity-timeline">';
+          let lastDate = '';
+          recent.forEach(c => {
+            const d = c.date.split('T')[0];
+            if (d !== lastDate) {
+              if (lastDate) html += '</div></div>';
+              html += '<div class="activity-day-header">' + d + '</div><div>';
+              lastDate = d;
+            }
+            html += '<div class="activity-item" style="cursor:default">';
+            html += '<div class="title" style="font-size:0.82rem">' + escapeHtml(c.subject) + '</div>';
+            html += '<div class="path">' + c.hash.slice(0, 7) + ' · ' + escapeHtml(c.author) + '</div>';
+            html += '</div>';
+          });
+          html += '</div></div></div>';
+          target.innerHTML = html;
+        })
+        .catch(() => {
+          target.innerHTML = '<div class="error-state fade-in"><h3>No changelog data</h3><p>Run <code>git log</code> to generate changelog.json</p></div>';
+        });
+    }
+
     function parseWikilinks(html) {
       return html.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (match, path, display) => {
         const displayName = display ? display.trim() : path.trim().split('/').pop();

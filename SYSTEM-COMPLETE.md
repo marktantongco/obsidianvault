@@ -223,3 +223,10 @@ The multi-agent AI development environment is fully operational. All core compon
 2. Obtaining additional API keys (Anthropic, Gemini, MiMo)
 
 Once these are complete, the system will be fully ready for development work.
+
+## Related
+
+- [[SYSTEM-ACTIVATION|System Activation]] — Step-by-step activation guide
+- [[SYSTEM-INSTALLATION-STATUS|System Installation Status]] — Detailed install status
+- [[QUICK-START|Quick Start]] — Getting started reference
+- [[PLUGIN-SETUP|Plugin Setup]] — Obsidian plugin installation

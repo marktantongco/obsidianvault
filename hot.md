@@ -16,3 +16,10 @@ updated: 2026-07-23T22:02:54.993Z
 ## Key Takeaways
 - Knowledge is compiled dynamically on Cloudflare edge.
 - Vault references are maintained via git webhook cron trigger.
+
+## Related
+
+- [[concepts/index|🧠 Concepts]] — Concept directory
+- [[entities/index|🛠️ Entities]] — AI entity directory
+- [[skills/index|🔧 Skills]] — Automation skill directory
+- [[journal/index|📓 Journal]] — Session journal

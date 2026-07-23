@@ -751,3 +751,10 @@ tier: supporting
 
 ### July 18, 2026
 - [17:36 → 09:03] DAILY-UPDATE — Cloudflare Edge Sync (~5min intervals)
+
+
+## Related
+
+- [[hot.md|🔥 Hot Topics]] — Current activity cache
+- [[journal/index|📓 Journal]] — Session journal index
+- [[05_OBSERVABILITY/index|Observability]] — System monitoring
