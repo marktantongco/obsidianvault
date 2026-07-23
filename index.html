@@ -485,6 +485,7 @@
       <div class="header-actions">
         <span class="nav-links">
           <button class="random-btn" onclick="loadRandomPage()" title="Surprise me">🎲 Random</button>
+          <button class="random-btn" id="bookmarks-btn" onclick="showBookmarks()" title="Bookmarked pages">⭐ <span id="bookmarks-count" style="font-size:0.7rem;font-weight:700">0</span></button>
           <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle theme">🌙</button>
           <button class="random-btn" onclick="showShortcuts()" title="Keyboard shortcuts">⌨️</button>
           <a href="https://github.com/marktantongco/obsidianvault" target="_blank">GitHub</a>
@@ -561,6 +562,8 @@
       <div class="shortcut-row"><span>Random page</span><span class="key">?</span></div>
       <div class="shortcut-row"><span>Close search/modal</span><span class="key">Esc</span></div>
       <div class="shortcut-row"><span>Toggle theme</span><span class="key">T</span></div>
+      <div class="shortcut-row"><span>Jump to graph</span><span class="key">G</span></div>
+      <div class="shortcut-row"><span>Bookmark page</span><span class="key">B</span></div>
       <button class="shortcuts-close" onclick="closeShortcuts(event)">Got it</button>
     </div>
   </div>
@@ -621,7 +624,8 @@
         localStorage.setItem('search-analytics', JSON.stringify({ searches: [], noResults: [] }));
       }
       await loadAllPages();
-      renderSidebar();
+      renderSidebar(); loadBookmarkCount(); renderSidebarBookmarks();
+      renderSidebarBookmarks();
       switchTab('index');
       document.getElementById('search-input').addEventListener('keydown', e => {
         if (e.key === 'Escape') closeSearch();
@@ -642,6 +646,8 @@
           e.preventDefault();
           toggleTheme();
         }
+        if ((e.key === 'g' || e.key === 'G') && !e.ctrlKey && !e.metaKey && !e.target.closest('input') && !e.target.closest('textarea')) { e.preventDefault(); switchTab('graph'); }
+        if ((e.key === 'b' || e.key === 'B') && !e.ctrlKey && !e.metaKey && !e.target.closest('input') && !e.target.closest('textarea') && currentPage) { e.preventDefault(); toggleBookmark(currentPage); }
         if (e.key === 'Escape' && currentPage && !historyStack.length <= 1) {
           goBack();
         }
@@ -854,6 +860,7 @@
       if (lifecycle) metaHtml += `<span class="meta-tag lifecycle-${lifecycle.toLowerCase()}">${lifecycle}</span>`;
       metaHtml += `<span class="meta-tag" style="background:rgba(161,161,170,0.1);color:var(--text-muted)">📖 ${readingTime.minutes} min (${readingTime.wordsDisplay} words)</span>`;
       tags.forEach(t => { metaHtml += `<span class="meta-tag tag">#${t}</span>`; });
+      metaHtml += `<span class="meta-tag" id="bookmark-star" style="cursor:pointer;background:rgba(245,158,11,0.1);color:var(--amber)" onclick="toggleBookmark('${path.replace(/'/g, "\'")}')">` + (isBookmarked('${path.replace(/'/g, "\'")}') ? '⭐ Bookmarked' : '☆ Bookmark') + `</span>`;
       metaHtml += `</div>`;
 
       target.innerHTML = `
@@ -951,11 +958,21 @@
         html.setAttribute('data-theme', 'dark');
         btn.textContent = '🌙';
         localStorage.setItem('wiki-theme', 'dark');
+        swapHighlightTheme('dark');
       } else {
         html.setAttribute('data-theme', 'light');
         btn.textContent = '☀️';
         localStorage.setItem('wiki-theme', 'light');
+        swapHighlightTheme('light');
       }
+    }
+
+    function swapHighlightTheme(mode) {
+      const link = document.querySelector('link[href*="highlight.js"][href$=".min.css"]');
+      if (!link) return;
+      const theme = mode === 'light' ? 'github.min.css' : 'github-dark.min.css';
+      const base = link.href.substring(0, link.href.lastIndexOf('/') + 1);
+      link.href = base + theme;
     }
 
     // ── Keyboard Shortcuts Modal ────────────────────────────────────────────
@@ -1880,7 +1897,42 @@
         });
     }
 
-    function parseWikilinks(html) {
+    // ⭐ Bookmarks
+function getBookmarks() {
+  try { return JSON.parse(localStorage.getItem('wiki-bookmarks') || '[]'); } catch(e) { return []; }
+}
+function saveBookmarks(bookmarks) {
+  localStorage.setItem('wiki-bookmarks', JSON.stringify(bookmarks));
+  var el = document.getElementById('bookmarks-count');
+  if (el) el.textContent = bookmarks.length;
+}
+function isBookmarked(path) {
+  return getBookmarks().indexOf(path) >= 0;
+}
+function loadBookmarkCount() {
+  var el = document.getElementById('bookmarks-count');
+  if (el) { try { var b = JSON.parse(localStorage.getItem('wiki-bookmarks') || '[]'); el.textContent = b.length; } catch(e) { el.textContent = '0'; } }
+}
+function renderSidebarBookmarks() {
+  var bookmarks = getBookmarks();
+  if (!bookmarks.length) return;
+  var sidebar = document.getElementById('sidebar');
+  var sec = sidebar.querySelector('.sidebar-bookmarks');
+  if (!sec) {
+    sec = document.createElement('div');
+    sec.className = 'sidebar-section sidebar-bookmarks';
+    sidebar.appendChild(sec);
+  }
+  sec.style.display = 'block';
+  sec.innerHTML = '<h3>⭐ Bookmarks (' + bookmarks.length + ')</h3>' +
+    bookmarks.map(function(p) {
+      var d = pageData[p]; if (!d) return '';
+      var t = d.frontmatter?.title || p.split('/').pop().replace('.md', '');
+      return '<a class="sidebar-link" onclick="navigateTo(\'' + p.replace(/'/g, "\\'") + '\')">' + escapeHtml(t) + ' <span class="count">' + p.split('/')[0] + '</span></a>';
+    }).join('');
+}
+
+function parseWikilinks(html) {
       return html.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (match, path, display) => {
         const displayName = display ? display.trim() : path.trim().split('/').pop();
         const targetPath = path.trim();
