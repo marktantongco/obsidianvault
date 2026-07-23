@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://github.com/marktantongco/obsidianvault</loc><priority>1.0</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/01_WORK/index.md</loc><lastmod>2026-07-21</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/02_KNOWLEDGE/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/03_LEARNING/index.md</loc><lastmod>2026-07-21</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/04_RELATIONSHIP/index.md</loc><lastmod>2026-07-21</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/05_OBSERVABILITY/index.md</loc><lastmod>2026-07-21</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/06_STATE/configs/poznote-capture-schema.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/06_STATE/configs/second-brain-skill.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/06_STATE/configs/sync-strategy.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/06_STATE/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/AGENTS.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/API-KEY-GUIDE.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/ERROR-LOG.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/MANUAL-PLUGIN-INSTALL.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/PLUGIN-SETUP.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/QUICK-START.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/SYSTEM-ACTIVATION.md</loc><lastmod>2026-07-22</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/SYSTEM-COMPLETE.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/SYSTEM-INSTALLATION-STATUS.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/TROUBLESHOOTING.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/AI Agents.md</loc><lastmod>2026-07-22</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/Antigravity Agent.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/Claude Code.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/Development Workflow.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/FreeHive.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/Grok.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/Hermes Agent.md</loc><lastmod>2026-07-22</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/LifeOS Algorithm.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/MCP Servers.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/MiMo Code.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/Obsidian Wiki.md</loc><lastmod>2026-07-22</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/OpenAI Codex.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/OpenCode.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/agentic-stack.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/multi-agent-obsidian-wiki-synergy.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/oh-my-openagent.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/poznote-pipeline.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/concepts/system-prompt-v5-1-1.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/CopyQ.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/DeepSeek.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/GPaste.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/Owl-Agent.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/SiliconFlow.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/Zhipu-GLM.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/ai-wanderer.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/free-claude-code.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/lifeos-cli.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/entities/p2d-duck.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/hot.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/index.md</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/journal/2026-07-09-multi-agent-wiki-compound.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/journal/2026-07-13-second-brain-integration-session.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/journal/2026-07-14-system-admin-tool-installs.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/journal/2026-07-21-freebuff-vault-enrichment-session.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/journal/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/log.md</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/projects/AI-Second-Brain.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/projects/Cross-Agent-Workflow-Test.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/projects/agent-version-tracker.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/projects/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/references/ai-skills-consolidated-framework.md</loc><lastmod>2026-07-22</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/references/free-china-proxy-research.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/references/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/references/obsidian-claude-memory-framework.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/skills/free-china-proxy-ops.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/skills/git-sync-strategy.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/skills/gpaste-gnome-wayland.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/skills/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/skills/mobile-sync-termux.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/skills/multi-agent-vault-wiring.md</loc><lastmod>2026-07-22</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/skills/wiki-compound-loop.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/synthesis/agentic-stack-obsidian-wiki-performance.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/synthesis/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/synthesis/opencode-freehive-integration.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/tags/index.md</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/templates/Daily Note.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/templates/Meeting Note.md</loc><lastmod>2026-07-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/templates/Project Note.md</loc><lastmod>2026-07-22</lastmod><priority>0.5</priority></url>
+  <url><loc>https://github.com/marktantongco/obsidianvault/blob/master/templates/index.md</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
+</urlset>
