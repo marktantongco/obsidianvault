@@ -756,8 +756,9 @@
         backlinksContainer.style.display = 'none';
       }
 
-      // No sidebar needed in page tab
-      document.getElementById('main-layout').classList.remove('has-sidebar');
+      // Show sidebar with table of contents
+      document.getElementById('main-layout').classList.add('has-sidebar');
+      renderPageSidebar(path, data, html);
 
       // Update active tab
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1358,6 +1359,83 @@
     }
 
     // ── Sidebar ─────────────────────────────────────────────────────────────
+    // ── Table of Contents ──────────────────────────────────────────────────
+    function buildTocFromHtml(html) {
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+      const headings = temp.querySelectorAll('h2, h3, h4');
+      const items = [];
+      for (const h of headings) {
+        const text = h.textContent.trim();
+        if (!text) continue;
+        const id = 'toc-' + text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        items.push({ level: h.tagName.toLowerCase(), text, id });
+      }
+      return items;
+    }
+
+    function renderPageSidebar(path, data, contentHtml) {
+      const fm = data.frontmatter || {};
+      const tags = Array.isArray(fm.tags) ? fm.tags : (fm.tags ? [fm.tags] : []);
+      const bucket = path.split('/')[0];
+      const tocItems = buildTocFromHtml(contentHtml);
+      let sbHtml = '';
+      sbHtml += `<div class="sidebar-section">
+        <h3>&#x1F4C4; Page Info</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.3rem;font-size:0.78rem">
+          <span style="color:var(--text-muted)">Bucket</span>
+          <span style="color:var(--text-secondary);font-weight:500">${escapeHtml(bucket === '.' ? 'Root' : bucket)}</span>
+          ${fm.tier ? `<span style="color:var(--text-muted)">Tier</span><span style="color:var(--text-secondary);font-weight:500">${escapeHtml(fm.tier)}</span>` : ''}
+          ${fm.lifecycle ? `<span style="color:var(--text-muted)">Lifecycle</span><span style="color:var(--text-secondary);font-weight:500">${escapeHtml(fm.lifecycle)}</span>` : ''}
+        </div>
+        ${tags.length ? `<div style="margin-top:0.5rem;display:flex;flex-wrap:wrap;gap:0.25rem">${tags.map(t => '<span style="font-size:0.7rem;padding:0.15rem 0.45rem;border-radius:100px;background:var(--accent-glow);color:var(--accent)">#' + escapeHtml(t) + '</span>').join('')}</div>` : ''}
+      </div>`;
+      if (tocItems.length > 0) {
+        sbHtml += `<div class="sidebar-section">
+          <h3>&#x1F4D1; On This Page</h3>
+          <div class="toc-container" id="page-toc">
+            ${tocItems.map(function(item) { return '<a class="toc-item ' + item.level + '" href="#' + item.id + '" onclick="event.preventDefault();var el=document.getElementById(\'' + item.id + '\');if(el){el.scrollIntoView({behavior:\'smooth\',block:\'start\'});history.replaceState(null,\'\',\'#' + item.id + '\')}">' + escapeHtml(item.text) + '</a>'; }).join('')}
+          </div>
+        </div>`;
+      }
+      const backlinks = findBacklinks(path);
+      if (backlinks.length > 0) {
+        sbHtml += '<div class="sidebar-section">';
+        sbHtml += '<h3>&#x1F517; Backlinks <span style="font-weight:400;color:var(--text-muted)">(' + backlinks.length + ')</span></h3>';
+        sbHtml += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem">';
+        var count = 0;
+        backlinks.slice(0, 8).forEach(function(p) {
+          var d = pageData[p];
+          var t = d && d.frontmatter && d.frontmatter.title ? d.frontmatter.title : p.split('/').pop().replace('.md', '');
+          sbHtml += '<span class="tag-pill" onclick="navigateTo(\'' + p.replace(/'/g, "\\'") + '\')" style="font-size:0.7rem">' + escapeHtml(t) + '</span>';
+          count++;
+        });
+        if (backlinks.length > 8) {
+          sbHtml += '<span style="font-size:0.7rem;color:var(--text-muted)">+' + (backlinks.length - 8) + ' more</span>';
+        }
+        sbHtml += '</div></div>';
+      }
+      document.getElementById('sidebar').innerHTML = sbHtml;
+      if (tocItems.length > 0) {
+        var tocLinks = document.querySelectorAll('.toc-item');
+        var headingEls = [];
+        tocItems.forEach(function(item) {
+          var el = document.getElementById(item.id);
+          if (el) headingEls.push(el);
+        });
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(function(el) {
+                el.classList.toggle('active', el.getAttribute('href') === '#' + entry.target.id);
+              });
+            }
+          });
+        }, { rootMargin: '-80px 0px -60% 0px' });
+        headingEls.forEach(function(el) { observer.observe(el); });
+      }
+    }
+
     function renderSidebar() {
       const totalPages = Object.keys(pageData).length;
       const concepts = Object.keys(pageData).filter(p => p.startsWith('concepts/')).length;

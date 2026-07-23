@@ -108,3 +108,10 @@ After installing all plugins, verify they work:
 4. Type "Templater" — should show Templater commands
 
 If commands appear, plugins are installed correctly.
+
+## Related
+
+- [[MANUAL-PLUGIN-INSTALL]] — Step-by-step manual installation instructions
+- [[QUICK-START]] — Quick reference card for vault navigation
+- [[SYSTEM-ACTIVATION]] — Full system activation guide
+- [[TROUBLESHOOTING]] — Common issues and debugging

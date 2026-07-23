@@ -81,3 +81,10 @@ All agents are linked to the wiki:
 3. Start creating notes
 4. Test wiki-query skill
 5. Build your first project
+
+## Related
+
+- [[AGENTS]] — Vault agent conventions and system master prompt
+- [[SYSTEM-ACTIVATION]] — Full activation guide for all system components
+- [[SYSTEM-COMPLETE]] — What's installed and what's pending
+- [[PLUGIN-SETUP]] — Detailed Obsidian plugin configuration guide

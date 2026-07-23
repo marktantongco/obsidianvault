@@ -254,3 +254,9 @@ chmod 600 ~/.opencode/.env
 3. [ ] Get MiMo API key
 4. [ ] Configure all keys
 5. [ ] Test each provider
+
+## Related
+
+- [[SYSTEM-ACTIVATION]] — Full activation guide including API key setup
+- [[SYSTEM-INSTALLATION-STATUS]] — Installation status and configuration overview
+- [[TROUBLESHOOTING]] — Debugging API key and connectivity issues

@@ -134,3 +134,10 @@ Direct. Conversational (one person). Confident + provisional. Short sentences. P
 
 ---
 Deploy as system instructions. Silent Protocol invisible. Output shows Response Framework + Depth-Seeking.
+
+## Related
+
+- [[QUICK-START]] — Quick reference card for vault navigation and wiki skills
+- [[SYSTEM-ACTIVATION]] — Step-by-step guide to activate all system components
+- [[SYSTEM-COMPLETE]] — Overview of installed components and pending items
+- [[SYSTEM-INSTALLATION-STATUS]] — Detailed installation status of every component

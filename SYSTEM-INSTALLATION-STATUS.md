@@ -354,6 +354,13 @@ which grok      # → /home/x1/.grok/bin/grok
 - [ ] Set up automated backups
 - [ ] Configure multi-vault setup
 
+## Related
+
+- [[SYSTEM-COMPLETE]] — Executive summary of the system installation
+- [[TROUBLESHOOTING]] — Common issues and debugging commands
+- [[API-KEY-GUIDE]] — API key configuration for all providers
+- [[ERROR-LOG]] — Known errors and their resolution status
+
 ---
 
 ## 13. Verification Commands

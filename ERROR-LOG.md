@@ -144,3 +144,9 @@ npm list -g | grep <package>
 5. **Test installations** immediately after
 6. **Document errors** as they occur
 7. **Use workarounds** when blocked
+
+## Related
+
+- [[TROUBLESHOOTING]] — Comprehensive troubleshooting and debugging guide
+- [[SYSTEM-INSTALLATION-STATUS]] — Full installation status with known issues
+- [[API-KEY-GUIDE]] — API key setup and testing

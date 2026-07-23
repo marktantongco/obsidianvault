@@ -412,3 +412,10 @@ ls ~/obsidianvault/.obsidian/workspace.json
 3. **Document errors** as they occur
 4. **Keep logs** for debugging
 5. **Update regularly** to get fixes
+
+## Related
+
+- [[ERROR-LOG]] — Known errors and their resolution status
+- [[SYSTEM-ACTIVATION]] — Activation guide for all components
+- [[QUICK-START]] — Quick reference card for vault navigation
+- [[SYSTEM-INSTALLATION-STATUS]] — Installation status of every component

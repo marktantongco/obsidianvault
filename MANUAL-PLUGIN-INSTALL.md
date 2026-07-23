@@ -169,3 +169,10 @@ bash install-plugins.sh
 - Manual installation through Obsidian GUI is reliable
 - All plugins are free and open source
 - Plugins update automatically through Obsidian
+
+## Related
+
+- [[PLUGIN-SETUP]] — Plugin configuration guide with hotkeys and settings
+- [[SYSTEM-ACTIVATION]] — Full system activation guide
+- [[TROUBLESHOOTING]] — Common issues and debugging
+- [[SYSTEM-INSTALLATION-STATUS]] — Installation status overview
