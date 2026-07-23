@@ -436,6 +436,7 @@
         <button class="tab-btn" onclick="switchTab('tags')">🏷️ Tags</button>
         <button class="tab-btn" onclick="switchTab('browse')">📂 Browse</button>
         <button class="tab-btn" onclick="switchTab('activity')">⚡ Activity</button>
+        <button class="tab-btn" onclick="switchTab('stats')">📊 Stats</button>
       </div>
 
       <!-- Back -->
@@ -523,7 +524,8 @@
       "_raw/_archived/2026-07-09-wiki-compound-habit.md",
       "_raw/_archived/2026-07-14-session-state-tool-installs.md",
       "API-KEY-GUIDE.md", "ERROR-LOG.md", "MANUAL-PLUGIN-INSTALL.md", "PLUGIN-SETUP.md",
-      "QUICK-START.md", "SYSTEM-ACTIVATION.md", "SYSTEM-COMPLETE.md", "SYSTEM-INSTALLATION-STATUS.md", "TROUBLESHOOTING.md"
+      "QUICK-START.md", "SYSTEM-ACTIVATION.md", "SYSTEM-COMPLETE.md", "SYSTEM-INSTALLATION-STATUS.md", "TROUBLESHOOTING.md",
+      "tags/index.md"
     ];
 
     // ── State ───────────────────────────────────────────────────────────────
@@ -839,7 +841,7 @@
 
       document.querySelectorAll('.tab-btn').forEach(b => {
         b.classList.toggle('active', b.textContent.includes(tab === 'index' ? 'Index' : 
-          tab === 'hot' ? 'Hot' : tab === 'graph' ? 'Graph' : tab === 'tags' ? 'Tags' : tab === 'activity' ? 'Activity' : 'Browse'));
+          tab === 'hot' ? 'Hot' : tab === 'graph' ? 'Graph' : tab === 'tags' ? 'Tags' : tab === 'activity' ? 'Activity' : tab === 'stats' ? 'Stats' : 'Browse'));
       });
 
       const target = document.getElementById('render-target');
@@ -851,6 +853,7 @@
       else if (tab === 'tags') renderTagsTab(target);
       else if (tab === 'browse') renderBrowseTab(target);
       else if (tab === 'activity') renderActivityTab(target);
+      else if (tab === 'stats') renderStatsTab(target);
     }
 
     async function renderIndexTab(target) {
@@ -930,6 +933,221 @@
       }
 
       html += '</div></div>';
+      target.innerHTML = html;
+    }
+
+    // ── Stats Tab ───────────────────────────────────────────────────────────
+    function renderStatsTab(target) {
+      // Collect all metrics
+      const totalPages = Object.keys(pageData).length;
+
+      // Bucket counts
+      const bucketCounts = {};
+      let totalWords = 0;
+      const wordsByBucket = {};
+      const backlinkCounts = {};
+      const outlinkCounts = {};
+      let frontmatterComplete = 0;
+
+      for (const [path, data] of Object.entries(pageData)) {
+        const bucket = path.split('/')[0];
+        bucketCounts[bucket] = (bucketCounts[bucket] || 0) + 1;
+
+        // Word count
+        const wc = (data.content || '').trim().split(/\s+/).filter(Boolean).length;
+        totalWords += wc;
+        wordsByBucket[bucket] = (wordsByBucket[bucket] || 0) + wc;
+
+        // Outgoing links
+        outlinkCounts[path] = (data.wikilinks || []).length;
+
+        // Frontmatter completeness
+        const fm = data.frontmatter || {};
+        if (fm.tags && fm.tier && fm.lifecycle) frontmatterComplete++;
+
+        // Find backlinks
+        for (const [otherPath, otherData] of Object.entries(pageData)) {
+          if (otherPath === path) continue;
+          if (otherData.wikilinks?.some(l =>
+            l.target === path.replace('.md', '') ||
+            l.target === data.frontmatter?.title
+          )) {
+            backlinkCounts[path] = (backlinkCounts[path] || 0) + 1;
+          }
+        }
+      }
+
+      // Most linked pages (incoming backlinks)
+      const mostLinked = Object.entries(backlinkCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+
+      // Tag frequency
+      const tagFreq = {};
+      for (const data of Object.values(pageData)) {
+        const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags :
+          (data.frontmatter?.tags ? [data.frontmatter.tags] : []);
+        tags.forEach(t => { tagFreq[t] = (tagFreq[t] || 0) + 1; });
+      }
+      const uniqueTags = Object.keys(tagFreq).length;
+
+      // Tier distribution
+      const tierDist = {};
+      const lifecycleDist = {};
+      for (const data of Object.values(pageData)) {
+        const fm = data.frontmatter || {};
+        if (fm.tier) tierDist[fm.tier] = (tierDist[fm.tier] || 0) + 1;
+        if (fm.lifecycle) lifecycleDist[fm.lifecycle] = (lifecycleDist[fm.lifecycle] || 0) + 1;
+      }
+
+      // Graph metrics
+      let totalEdges = 0;
+      for (const data of Object.values(pageData)) {
+        totalEdges += (data.wikilinks || []).length;
+      }
+      const graphDensity = totalPages > 1 ? (totalEdges / (totalPages * (totalPages - 1)) * 100).toFixed(2) : '0';
+
+      // Average page length
+      const avgWords = totalPages > 0 ? Math.round(totalWords / totalPages) : 0;
+
+      let html = '<div class="fade-in">';
+      html += '<h2 style="font-size:1.3rem;margin-bottom:0.25rem;">📊 Vault Stats Dashboard</h2>';
+      html += `<p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem">Comprehensive metrics for your second brain</p>`;
+
+      // Overview cards
+      html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.75rem;margin-bottom:2rem">';
+      const cards = [
+        { label: 'Total Pages', value: totalPages, icon: '📄' },
+        { label: 'Total Words', value: totalWords.toLocaleString(), icon: '📝' },
+        { label: 'Avg Words/Page', value: avgWords, icon: '📏' },
+        { label: 'Unique Tags', value: uniqueTags, icon: '🏷️' },
+        { label: 'Total Links', value: totalEdges, icon: '🔗' },
+        { label: 'Graph Density', value: graphDensity + '%', icon: '🕸️' },
+        { label: 'Backlinks Tracked', value: Object.keys(backlinkCounts).length, icon: '↩️' },
+        { label: 'FM Complete', value: Math.round(frontmatterComplete / totalPages * 100) + '%', icon: '✅' },
+      ];
+      cards.forEach(c => {
+        html += `<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem;text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:0.25rem">${c.icon}</div>
+          <div style="font-size:1.3rem;font-weight:700">${c.value}</div>
+          <div style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.03em">${c.label}</div>
+        </div>`;
+      });
+      html += '</div>';
+
+      // Two-column layout for detailed stats
+      html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem">';
+
+      // Per-bucket breakdown
+      html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem">';
+      html += '<h3 style="font-size:0.9rem;margin-bottom:0.75rem">📁 Pages by Bucket</h3>';
+      const sortedBuckets = Object.entries(bucketCounts).sort((a, b) => b[1] - a[1]);
+      const maxBucketCount = sortedBuckets[0]?.[1] || 1;
+      sortedBuckets.forEach(([bucket, count]) => {
+        const pct = Math.round(count / maxBucketCount * 100);
+        const words = wordsByBucket[bucket] || 0;
+        html += `<div style="margin-bottom:0.5rem">
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:0.15rem">
+            <span style="font-weight:500">${escapeHtml(bucket)}</span>
+            <span style="color:var(--text-muted)">${count} pages · ${words.toLocaleString()} words</span>
+          </div>
+          <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:var(--accent);border-radius:3px;transition:width 0.3s"></div>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+
+      // Tier & Lifecycle breakdown
+      html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem">';
+      html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">';
+
+      html += '<div><h3 style="font-size:0.9rem;margin-bottom:0.75rem">🎯 Tiers</h3>';
+      const sortedTiers = Object.entries(tierDist).sort((a, b) => b[1] - a[1]);
+      const maxTier = sortedTiers[0]?.[1] || 1;
+      const tierColors = { core: '#3B82F6', supporting: '#8B5CF6', peripheral: '#52525B', draft: '#F59E0B' };
+      sortedTiers.forEach(([tier, count]) => {
+        const pct = Math.round(count / maxTier * 100);
+        const color = tierColors[tier.toLowerCase()] || '#52525B';
+        html += `<div style="margin-bottom:0.4rem">
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:0.15rem">
+            <span style="font-weight:500;color:${color}">${escapeHtml(tier)}</span>
+            <span style="color:var(--text-muted)">${count}</span>
+          </div>
+          <div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:${color};border-radius:3px"></div>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+
+      html += '<div><h3 style="font-size:0.9rem;margin-bottom:0.75rem">🔄 Lifecycles</h3>';
+      const sortedLifecycles = Object.entries(lifecycleDist).sort((a, b) => b[1] - a[1]);
+      const maxLC = sortedLifecycles[0]?.[1] || 1;
+      const lcColors = { active: '#22C55E', draft: '#F59E0B', verified: '#3B82F6' };
+      sortedLifecycles.forEach(([lc, count]) => {
+        const pct = Math.round(count / maxLC * 100);
+        const color = lcColors[lc.toLowerCase()] || '#52525B';
+        html += `<div style="margin-bottom:0.4rem">
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:0.15rem">
+            <span style="font-weight:500;color:${color}">${escapeHtml(lc)}</span>
+            <span style="color:var(--text-muted)">${count}</span>
+          </div>
+          <div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:${color};border-radius:3px"></div>
+          </div>
+        </div>`;
+      });
+      html += '</div></div></div>';
+
+      html += '</div>'; // end two-column
+
+      // Most linked pages
+      html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;margin-bottom:1rem">';
+      html += '<h3 style="font-size:0.9rem;margin-bottom:0.75rem">🔗 Most Linked Pages (top 10 by backlinks)</h3>';
+      if (mostLinked.length === 0) {
+        html += '<p style="font-size:0.8rem;color:var(--text-muted)">No backlink data available</p>';
+      } else {
+        const maxBL = mostLinked[0][1];
+        mostLinked.forEach(([path, count], i) => {
+          const data = pageData[path];
+          const title = data?.frontmatter?.title || path.split('/').pop().replace('.md', '');
+          const pct = Math.round(count / maxBL * 100);
+          html += `<div style="margin-bottom:0.4rem;cursor:pointer" onclick="navigateTo('${path.replace(/'/g, "\\'")}')">
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:0.15rem">
+              <span style="font-weight:500">${i + 1}. ${escapeHtml(title)}</span>
+              <span style="color:var(--text-muted)">${count} backlinks</span>
+            </div>
+            <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden">
+              <div style="height:100%;width:${pct}%;background:var(--purple);border-radius:2px"></div>
+            </div>
+          </div>`;
+        });
+      }
+      html += '</div>';
+
+      // Tag frequency chart
+      html += '<div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem">';
+      html += '<h3 style="font-size:0.9rem;margin-bottom:0.75rem">🏷️ Top Tags</h3>';
+      const topTags = Object.entries(tagFreq).sort((a, b) => b[1] - a[1]).slice(0, 20);
+      const maxTag = topTags[0]?.[1] || 1;
+      html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">';
+      topTags.forEach(([tag, count]) => {
+        const pct = Math.round(count / maxTag * 100);
+        html += `<div style="margin-bottom:0.25rem">
+          <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:0.1rem">
+            <span style="color:var(--accent)">#${escapeHtml(tag)}</span>
+            <span style="color:var(--text-muted)">${count}</span>
+          </div>
+          <div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:var(--accent);border-radius:2px"></div>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+      html += '</div>';
+
+      html += '</div>';
       target.innerHTML = html;
     }
 
