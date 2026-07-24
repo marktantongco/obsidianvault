@@ -6,7 +6,7 @@ tags:
   - second-brain
   - lifeos
   - hermes
-  - multi-agent
+  - multi-agents
   - obsidian
   - poznote
   - opencode

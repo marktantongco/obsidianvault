@@ -3,7 +3,7 @@ title: Entities — Tools, Providers & Services
 bucket: ENTITIES
 path: entities/
 purpose: Documented tools, AI providers, and services in the ecosystem
-tags: [entities, tools, providers]
+tags: [entities, tool, providers]
 lifecycle: active
 tier: core
 ---

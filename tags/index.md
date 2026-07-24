@@ -63,6 +63,18 @@ Complete directory of all **77 tags** used across **~80 pages** in this vault. T
 | `second-brain` | 2 | `06_STATE/configs/second-brain-skill.md`, `journal/2026-07-13-second-brain-integration-session.md` |
 | `memory` | 1 | `references/obsidian-claude-memory-framework.md` |
 | `lifeos` | 1 | `06_STATE/configs/second-brain-skill.md` |
+| `agentic-stack` | 1 | `concepts/agentic-stack.md` |
+| `antigravity` | 2 | `concepts/Antigravity Agent.md`, `journal/2026-07-13-second-brain-integration-session.md` |
+| `claude-code` | 1 | `journal/2026-07-13-second-brain-integration-session.md` |
+| `creative` | 1 | `concepts/Antigravity Agent.md` |
+| `duck-ai` | 1 | `entities/p2d-duck.md` |
+| `e5` | 1 | `concepts/Antigravity Agent.md` |
+| `free-ai` | 2 | `concepts/FreeHive.md`, `journal/2026-07-14-system-admin-tool-installs.md` |
+| `free-tier` | 3 | `entities/SiliconFlow.md`, `entities/Zhipu-GLM.md`, `entities/ai-wanderer.md` |
+| `freehive` | 1 | `synthesis/opencode-freehive-integration.md` |
+| `gateway` | 1 | `concepts/FreeHive.md` |
+| `llm` | 2 | `entities/DeepSeek.md`, `entities/Zhipu-GLM.md` |
+| `system-prompt` | 1 | `concepts/system-prompt-v5-1-1.md` |
 
 ---
 
@@ -78,6 +90,11 @@ Complete directory of all **77 tags** used across **~80 pages** in this vault. T
 | `providers` | 1 | `entities/index.md` |
 | `infrastructure` | 1 | `projects/AI-Second-Brain.md` |
 | `integration` | 1 | `synthesis/opencode-freehive-integration.md` |
+| `android` | 1 | `skills/mobile-sync-termux.md` |
+| `mobile` | 3 | `skills/git-sync-strategy.md`, `skills/mobile-sync-termux.md`, `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `pipx` | 1 | `entities/p2d-duck.md` |
+| `tool` | 13 | `concepts/MCP Servers.md`, `entities/CopyQ.md`, `entities/DeepSeek.md` +10 more |
+| `uv` | 1 | `entities/free-claude-code.md` |
 
 ---
 
@@ -95,6 +112,10 @@ Complete directory of all **77 tags** used across **~80 pages** in this vault. T
 | `summary` | 1 | `SYSTEM-COMPLETE.md` |
 | `keys` | 1 | `API-KEY-GUIDE.md` |
 | `api` | 1 | `API-KEY-GUIDE.md` |
+| `cron` | 1 | `skills/mobile-sync-termux.md` |
+| `docker` | 1 | `journal/2026-07-14-system-admin-tool-installs.md` |
+| `quickstart` | 1 | `QUICK-START.md` |
+| `systemd` | 1 | `synthesis/opencode-freehive-integration.md` |
 
 ---
 
@@ -108,6 +129,10 @@ Complete directory of all **77 tags** used across **~80 pages** in this vault. T
 | `log` | 1 | `log.md` |
 | `activity` | 1 | `log.md` |
 | `queries` | 1 | `log.md` |
+| `backup` | 1 | `skills/git-sync-strategy.md` |
+| `changelog` | 1 | `projects/agent-version-tracker.md` |
+| `compound` | 1 | `skills/wiki-compound-loop.md` |
+| `query` | 1 | `skills/wiki-compound-loop.md` |
 
 ---
 
@@ -122,6 +147,9 @@ Complete directory of all **77 tags** used across **~80 pages** in this vault. T
 | `copyq` | 1 | `entities/CopyQ.md` |
 | `gpaste` | 1 | `entities/GPaste.md` |
 | `xiaomi` | 1 | `entities/lifeos-cli.md` |
+| `gdm` | 1 | `journal/2026-07-14-system-admin-tool-installs.md` |
+| `qt` | 1 | `entities/CopyQ.md` |
+| `termux` | 1 | `skills/mobile-sync-termux.md` |
 
 ---
 
@@ -172,6 +200,8 @@ Complete directory of all **77 tags** used across **~80 pages** in this vault. T
 | `templates` | 2 | `templates/index.md` |
 | `conventions` | 3 | `AGENTS.md`, `templates/index.md` |
 | `notes` | 1 | `templates/index.md` |
+| `meeting` | 1 | `templates/Meeting Note.md` |
+| `process` | 1 | `concepts/Development Workflow.md` |
 
 ---
 
@@ -226,6 +256,42 @@ Complete directory of all **77 tags** used across **~80 pages** in this vault. T
 | `synthesis` | 2 | `synthesis/index.md` |
 | `analysis` | 1 | `synthesis/index.md` |
 | `integration` | 1 | `synthesis/index.md` |
+
+---
+
+## 🗂️ Other & Domain-Specific
+
+| Tag | Pages | Files |
+|-----|-------|-------|
+| `capture` | 3 | `06_STATE/configs/poznote-capture-schema.md`, `concepts/poznote-pipeline.md`, `skills/wiki-compound-loop.md` |
+| `conflict` | 2 | `06_STATE/configs/sync-strategy.md`, `skills/git-sync-strategy.md` |
+| `freebuff` | 2 | `journal/2026-07-21-freebuff-vault-enrichment-session.md`, `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `pipeline` | 2 | `06_STATE/configs/poznote-capture-schema.md`, `concepts/poznote-pipeline.md` |
+| `poznote` | 3 | `06_STATE/configs/poznote-capture-schema.md`, `concepts/poznote-pipeline.md`, `journal/2026-07-13-second-brain-integration-session.md` |
+| `vault` | 3 | `AGENTS.md`, `journal/2026-07-21-freebuff-vault-enrichment-session.md`, `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `audit` | 1 | `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `classification` | 1 | `concepts/poznote-pipeline.md` |
+| `features` | 1 | `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `gestures` | 1 | `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `inference` | 1 | `entities/SiliconFlow.md` |
+| `ingest` | 1 | `skills/wiki-compound-loop.md` |
+| `injection` | 1 | `concepts/oh-my-openagent.md` |
+| `pagination` | 1 | `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `pulse` | 1 | `entities/lifeos-cli.md` |
+| `quality-gates` | 1 | `concepts/system-prompt-v5-1-1.md` |
+| `routing` | 1 | `concepts/LifeOS Algorithm.md` |
+| `router` | 1 | `entities/ai-wanderer.md` |
+| `schema` | 1 | `06_STATE/configs/poznote-capture-schema.md` |
+| `search` | 1 | `journal/2026-07-24-freebuff-features-audit-session.md` |
+| `state` | 1 | `06_STATE/index.md` |
+| `symlink` | 1 | `skills/multi-agent-vault-wiring.md` |
+| `sysadmin` | 1 | `journal/2026-07-14-system-admin-tool-installs.md` |
+| `taxonomy` | 1 | `tags/index.md` |
+| `tiers` | 1 | `concepts/LifeOS Algorithm.md` |
+| `unified` | 1 | `concepts/agentic-stack.md` |
+| `usage` | 1 | `QUICK-START.md` |
+| `versions` | 1 | `projects/agent-version-tracker.md` |
+| `wikilinks` | 1 | `journal/2026-07-24-freebuff-features-audit-session.md` |
 
 ---
 

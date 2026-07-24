@@ -1,7 +1,7 @@
 ---
 title: Clipboard Managers
 category: config
-tags: [clipboard, tools, reference, wayland]
+tags: [clipboard, tool, reference, wayland]
 summary: Overview of clipboard manager tools for Linux
 lifecycle: active
 tier: 2

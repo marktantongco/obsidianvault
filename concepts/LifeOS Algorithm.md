@@ -4,7 +4,7 @@ category: concepts
 tags:
   - lifeos
   - routing
-  - multi-agent
+  - multi-agents
   - hermes
   - orchestration
   - tiers

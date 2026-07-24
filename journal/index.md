@@ -3,7 +3,7 @@ title: Journal — Session Logs
 bucket: JOURNAL
 path: journal/
 purpose: Chronological record of multi-agent sessions, system admin work, and vault enrichment
-tags: [journal, sessions, logs]
+tags: [journal, session, logs]
 lifecycle: active
 tier: core
 ---

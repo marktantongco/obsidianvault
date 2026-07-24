@@ -4,7 +4,7 @@ title: >-
 category: journal
 tags:
   - sysadmin
-  - tools
+  - tool
   - mcp
   - free-ai
   - docker

@@ -1,7 +1,7 @@
 ---
 title: Configuration
 category: config
-tags: [configuration, setup, tools]
+tags: [configuration, setup, tool]
 summary: System and tool configurations
 lifecycle: active
 tier: 1

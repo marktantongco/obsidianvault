@@ -3,7 +3,7 @@ title: oh-my-openagent
 category: concepts
 tags:
   - mcp
-  - plugin
+  - plugins
   - agents
   - injection
   - configuration

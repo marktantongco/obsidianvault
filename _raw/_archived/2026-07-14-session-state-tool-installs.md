@@ -1,6 +1,6 @@
 ---
 title: "Session State - MCP Cleanup and AI Tool Installations"
-tags: [sysadmin, tools, environment-setup]
+tags: [sysadmin, tool, environment-setup]
 summary: "Removed tokensave/codegraph MCPs (777MB freed), installed FreeHive, lifeos-cli, p2d-duck, ai-wanderer, free-claude-code, and LifeOS skill. Fixed apt mirror. GDM Wayland fix in progress."
 base_confidence: 0.9
 lifecycle_changed: 2026-07-14

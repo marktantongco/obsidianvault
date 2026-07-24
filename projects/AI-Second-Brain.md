@@ -1,6 +1,6 @@
 ---
 title: AI Second Brain
-tags: [project, setup, infrastructure]
+tags: [projects, setup, infrastructure]
 type: project
 created: 2026-07-09
 updated: 2026-07-09

@@ -3,7 +3,7 @@ title: Antigravity Agent
 category: concepts
 tags:
   - antigravity
-  - agent
+  - agents
   - creative
   - synthesis
   - e5
