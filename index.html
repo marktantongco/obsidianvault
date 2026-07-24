@@ -13,6 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark.min.css">
   <script src="https://cdn.jsdelivr.net/npm/highlight.js@11/highlight.min.js"></script>
+<script src="attio.js"></script>
   <style>
     :root {
       --font-family: 'Outfit', sans-serif;
@@ -542,6 +543,7 @@
         <button class="tab-btn" onclick="switchTab('stats')">📊 Stats</button>
         <button class="tab-btn" onclick="switchTab('changelog')">📜 Changelog</button>
         <button class="tab-btn" onclick="switchTab('buckets')">🪣 Buckets <span id="bucket-badge" class="tab-badge"></span></button>
+        <button class="tab-btn" onclick="switchTab('crm')">🤝 CRM</button>
       </div>
 
       <!-- Back -->
@@ -694,6 +696,7 @@
         }
         if ((e.key === 'g' || e.key === 'G') && !e.ctrlKey && !e.metaKey && !e.target.closest('input') && !e.target.closest('textarea')) { e.preventDefault(); switchTab('graph'); }
         if ((e.key === 'b' || e.key === 'B') && !e.ctrlKey && !e.metaKey && !e.target.closest('input') && !e.target.closest('textarea') && currentPage) { e.preventDefault(); toggleBookmark(currentPage); }
+        if ((e.key === 'c' || e.key === 'C') && !e.ctrlKey && !e.metaKey && !e.target.closest('input') && !e.target.closest('textarea')) { e.preventDefault(); switchTab('crm'); }
         if (e.key === 'Escape' && currentPage && !historyStack.length <= 1) {
           goBack();
         }
@@ -1113,6 +1116,7 @@
       else if (tab === 'stats') renderStatsTab(target);
       else if (tab === 'changelog') renderChangelogTab(target);
     else if (tab === 'buckets') renderBucketsTab(target);
+    else if (tab === 'crm') renderCrmTab(target);
     }
 
     async function renderIndexTab(target) {
@@ -1936,6 +1940,90 @@
         section.style.display = visible > 0 || !q ? '' : 'none';
         const countEl = section.querySelector('.bucket-match-count');
         if (countEl) countEl.textContent = q ? '(' + visible + ')' : '';
+      });
+    }
+
+    function renderCrmTab(target) {
+      if (!window.attioIsConfigured || !attioIsConfigured()) {
+        target.innerHTML = '<div class="fade-in" style="max-width:600px;margin:2rem auto;text-align:center;padding:2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">'
+          + '<div style="font-size:3rem;margin-bottom:1rem">🤝</div>'
+          + '<h2 style="margin-bottom:0.5rem">Attio CRM</h2>'
+          + '<p style="color:var(--text-secondary);margin-bottom:1.5rem">Connect your Attio workspace to manage contacts and relationships directly from your vault.</p>'
+          + '<div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;margin-bottom:1.5rem;text-align:left">'
+          + '<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem">To integrate Attio:</p>'
+          + '<ol style="font-size:0.85rem;color:var(--text-secondary);margin:0;padding-left:1.25rem;line-height:1.8">'
+          + '<li>Create an API key in your <a href="https://app.attio.com/settings/api-keys" target="_blank" style="color:var(--accent)">Attio workspace settings</a></li>'
+          + '<li>Add your key as <code style="background:var(--surface);padding:0.1rem 0.3rem;border-radius:4px;font-size:0.75rem">ATTIO_API_KEY</code> in the project Keys tab</li>'
+          + '<li>Refresh this page to start using CRM features</li>'
+          + '</ol>'
+          + '</div>'
+          + '<p style="font-size:0.75rem;color:var(--text-muted)">Your API key is stored securely and never exposed on the client.</p>'
+          + '</div>';
+        return;
+      }
+      target.innerHTML = '<div class="fade-in" style="max-width:800px;margin:0 auto">'
+        + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">'
+        + '<div><h2 style="font-size:1.3rem;margin:0">🤝 Contacts</h2><p style="color:var(--text-secondary);font-size:0.8rem;margin:0.25rem 0 0 0">From your Attio CRM workspace</p></div>'
+        + '<button class="random-btn" onclick="showAddContactForm()">➕ Add Contact</button>'
+        + '</div>'
+        + '<div id="crm-contacts-list" style="margin-bottom:1rem"><p style="color:var(--text-muted);text-align:center;padding:2rem">Loading contacts...</p></div>'
+        + '<div id="crm-add-form" style="display:none"></div>'
+        + '</div>';
+      attioListContacts(50, 0).then(function(contacts) {
+        var list = document.getElementById('crm-contacts-list');
+        if (!contacts || contacts.length === 0) {
+          list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem">No contacts found yet.</p>'; return;
+        }
+        var html = '<div style="display:grid;gap:0.5rem">';
+        contacts.forEach(function(c) {
+          var attrs = c.attributes || {};
+          var name = [attrs.name?.first_name, attrs.name?.last_name].filter(Boolean).join(' ');
+          var email = attrs.email_addresses?.[0]?.email_address || '';
+          var title = attrs.title || '';
+          var org = attrs.organisation || '';
+          html += '<div style="display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem">'
+            + '<div><div style="font-weight:500;font-size:0.9rem">' + escapeHtml(name || 'Unknown') + '</div>'
+            + '<div style="font-size:0.75rem;color:var(--text-muted)">' + (email ? escapeHtml(email) : '') + (email && title ? ' · ' : '') + (title ? escapeHtml(title) : '') + (org ? ' · ' + escapeHtml(org) : '') + '</div></div>'
+            + '<span style="font-size:0.75rem;color:var(--text-muted)">#' + escapeHtml((c.id || '').substring(0, 8)) + '</span></div>';
+        });
+        html += '</div>';
+        list.innerHTML = html;
+      }).catch(function(err) {
+        var el = document.getElementById('crm-contacts-list');
+        if (el) el.innerHTML = '<p style="color:var(--pink);text-align:center;padding:1rem">Error: ' + escapeHtml(err.message) + '</p>';
+      });
+    }
+
+    function showAddContactForm() {
+      var form = document.getElementById('crm-add-form');
+      if (!form) return;
+      form.style.display = 'block';
+      form.innerHTML = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem">'
+        + '<h3 style="font-size:1rem;margin:0 0 1rem 0">Add Contact</h3>'
+        + '<div style="display:grid;gap:0.75rem">'
+        + '<input id="crm-name" placeholder="Full name" style="padding:0.5rem 0.75rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:0.85rem">'
+        + '<input id="crm-email" type="email" placeholder="Email address" style="padding:0.5rem 0.75rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:0.85rem">'
+        + '<input id="crm-title" placeholder="Job title (optional)" style="padding:0.5rem 0.75rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:0.85rem">'
+        + '</div>'
+        + '<div style="display:flex;gap:0.5rem;margin-top:1rem">'
+        + '<button class="random-btn" onclick="submitAttioContact()">💾 Save to Attio</button>'
+        + '<button class="random-btn" onclick="document.getElementById('crm-add-form').style.display='none'">Cancel</button>'
+        + '</div></div>';
+    }
+
+    function submitAttioContact() {
+      var name = document.getElementById('crm-name')?.value?.trim();
+      var email = document.getElementById('crm-email')?.value?.trim();
+      var title = document.getElementById('crm-title')?.value?.trim();
+      if (!name || !email) { alert('Name and email required.'); return; }
+      var btn = document.querySelector('#crm-add-form .random-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Saving...'; }
+      attioCreateContact({ name: name, email: email, title: title }).then(function() {
+        document.getElementById('crm-add-form').style.display = 'none';
+        switchTab('crm');
+      }).catch(function(err) {
+        alert('Error: ' + err.message);
+        if (btn) { btn.disabled = false; btn.textContent = '💾 Save to Attio'; }
       });
     }
 
