@@ -1555,10 +1555,15 @@
         allPages = allPages.concat(pages);
       });
       if (browseBucketFilter) allPages = allPages.filter(p => p._bucketKey === browseBucketFilter);
+      if (browseTagFilter) allPages = allPages.filter(p => {
+        const tags = p.data.frontmatter?.tags;
+        return tags && (Array.isArray(tags) ? tags.includes(browseTagFilter) : tags === browseTagFilter);
+      });
 
       const perPage = 30;
       const totalPages = Math.ceil(allPages.length / perPage);
       let browseBucketFilter = sessionStorage.getItem('browse-bucket') || '';
+      let browseTagFilter = sessionStorage.getItem('browse-tag') || '';
       let page = parseInt(sessionStorage.getItem('browse-page') || '1', 10);
       if (page < 1) page = 1;
       if (page > totalPages) page = totalPages;
@@ -1576,6 +1581,21 @@
         html += '<span class="mini-tag' + active + '" onclick="filterBrowse('' + b + '')" style="cursor:pointer;font-size:0.75rem">' + escapeHtml(label) + '</span>';
       });
       html += '</div>';
+      // Tag filter bar
+      const allTags = [...new Set(Object.values(pageData).flatMap(d => {
+        const t = d.frontmatter?.tags;
+        return Array.isArray(t) ? t : (t ? [t] : []);
+      }))].sort();
+      if (allTags.length > 0) {
+        html += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.75rem;padding-top:0.25rem;border-top:1px solid var(--border)">';
+        html += '<span class="mini-tag' + (!browseTagFilter ? ' active-tag' : '') + '" onclick="filterBrowseByTag(\'\')" style="cursor:pointer;font-size:0.7rem">🏷️ All</span>';
+        allTags.slice(0, 25).forEach(t => {
+          const active = browseTagFilter === t ? ' active-tag' : '';
+          html += '<span class="mini-tag' + active + '" onclick="filterBrowseByTag(\'' + t + '\')" style="cursor:pointer;font-size:0.7rem">#' + escapeHtml(t) + '</span>';
+        });
+        if (allTags.length > 25) html += '<span style="font-size:0.7rem;color:var(--text-muted)">+' + (allTags.length - 25) + ' more</span>';
+        html += '</div>';
+      }
       current.forEach(({ path, data, _bucket: bucket }) => {
         const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
         const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.slice(0, 3) : [];
@@ -1625,12 +1645,19 @@
 
     function filterBrowse(bucket) {
       sessionStorage.setItem('browse-bucket', bucket);
+      sessionStorage.setItem('browse-tag', '');
       sessionStorage.setItem('browse-page', '1');
       switchTab('browse');
     }
 
     // ── Graph Tab ──────────────────────────────────────────────────────────
-        function toggleBucketColors() {
+        function filterBrowseByTag(tag) {
+      sessionStorage.setItem('browse-tag', tag);
+      sessionStorage.setItem('browse-page', '1');
+      switchTab('browse');
+    }
+
+    function toggleBucketColors() {
       window._useBucketColors = !window._useBucketColors;
       const btn = document.getElementById('bucket-color-toggle');
       if (btn) btn.textContent = window._useBucketColors ? '🎨 Bucket' : '🎨 Tier';
