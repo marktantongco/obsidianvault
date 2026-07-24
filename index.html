@@ -1586,10 +1586,13 @@
       });
       html += '</div>';
       // Tag filter bar
-      const allTags = [...new Set(Object.values(pageData).flatMap(d => {
-        const t = d.frontmatter?.tags;
-        return Array.isArray(t) ? t : (t ? [t] : []);
-      }))].sort();
+      const tagCounts = {};
+      Object.values(pageData).forEach(function(d) {
+        var t = d.frontmatter && d.frontmatter.tags;
+        var tags = Array.isArray(t) ? t : (t ? [t] : []);
+        tags.forEach(function(tag) { tagCounts[tag] = (tagCounts[tag] || 0) + 1; });
+      });
+      const allTags = Object.keys(tagCounts).sort(function(a, b) { return tagCounts[b] - tagCounts[a]; });
       if (allTags.length > 0) {
         html += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.75rem;padding-top:0.25rem;border-top:1px solid var(--border)">';
         html += '<span class="mini-tag' + (!browseTagFilter ? ' active-tag' : '') + '" onclick="filterBrowseByTag(\'\')" style="cursor:pointer;font-size:0.7rem">🏷️ All</span>';
@@ -1598,6 +1601,12 @@
           html += '<span class="mini-tag' + active + '" onclick="filterBrowseByTag(\'' + t + '\')" style="cursor:pointer;font-size:0.7rem">#' + escapeHtml(t) + '</span>';
         });
         if (allTags.length > 25) html += '<span style="font-size:0.7rem;color:var(--text-muted)">+' + (allTags.length - 25) + ' more</span>';
+        html += '</div>';
+      }
+      if (browseBucketFilter || browseTagFilter) {
+        html += '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;padding:0.4rem 0.6rem;background:var(--accent-glow);border:1px solid var(--accent);border-radius:6px;font-size:0.78rem;color:var(--accent)">';
+        html += '<span>🔍 Filters active' + (browseBucketFilter ? ' · Bucket: <strong>' + escapeHtml(browseBucketFilter) + '</strong>' : '') + (browseTagFilter ? ' · Tag: <strong>#' + escapeHtml(browseTagFilter) + '</strong>' : '') + '</span>';
+        html += '<span style="margin-left:auto;cursor:pointer;font-weight:600;color:var(--text-secondary);text-decoration:underline;text-underline-offset:2px" onclick="clearAllFilters()" title="Clear all filters">✕ Clear all</span>';
         html += '</div>';
       }
       current.forEach(({ path, data, _bucket: bucket }) => {
@@ -1657,6 +1666,12 @@
     // ── Graph Tab ──────────────────────────────────────────────────────────
         function filterBrowseByTag(tag) {
       sessionStorage.setItem('browse-tag', tag);
+      sessionStorage.setItem('browse-page', '1');
+      switchTab('browse');
+    }
+    function clearAllFilters() {
+      sessionStorage.setItem('browse-bucket', '');
+      sessionStorage.setItem('browse-tag', '');
       sessionStorage.setItem('browse-page', '1');
       switchTab('browse');
     }
