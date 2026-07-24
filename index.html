@@ -673,6 +673,7 @@
       await loadAllPages();
       renderSidebar(); loadBookmarkCount(); renderSidebarBookmarks(); renderSidebarConnections(path, data);
       renderSidebarBookmarks(); renderSidebarConnections(path, data);
+      readFilterParams();
       switchTab('index');
       document.getElementById('search-input').addEventListener('keydown', e => {
         if (e.key === 'Escape') closeSearch();
@@ -1559,10 +1560,14 @@
         allPages = allPages.concat(pages);
       });
       if (browseBucketFilter) allPages = allPages.filter(p => p._bucketKey === browseBucketFilter);
-      if (browseTagFilter) allPages = allPages.filter(p => {
-        const tags = p.data.frontmatter?.tags;
-        return tags && (Array.isArray(tags) ? tags.includes(browseTagFilter) : tags === browseTagFilter);
-      });
+      if (browseTagFilter) {
+        const wantedTags = browseTagFilter.split(',');
+        allPages = allPages.filter(p => {
+          const tags = p.data.frontmatter?.tags;
+          const tagArr = Array.isArray(tags) ? tags : (tags ? [tags] : []);
+          return wantedTags.every(wt => tagArr.some(t => t === wt));
+        });
+      }
 
       const perPage = 30;
       const totalPages = Math.ceil(allPages.length / perPage);
@@ -1596,8 +1601,9 @@
       if (allTags.length > 0) {
         html += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.75rem;padding-top:0.25rem;border-top:1px solid var(--border)">';
         html += '<span class="mini-tag' + (!browseTagFilter ? ' active-tag' : '') + '" onclick="filterBrowseByTag(\'\')" style="cursor:pointer;font-size:0.7rem">🏷️ All</span>';
+        var activeTags = browseTagFilter ? browseTagFilter.split(',') : [];
         allTags.slice(0, 25).forEach(t => {
-          const active = browseTagFilter === t ? ' active-tag' : '';
+          const active = activeTags.indexOf(t) >= 0 ? ' active-tag' : '';
           html += '<span class="mini-tag' + active + '" onclick="filterBrowseByTag(\'' + t + '\')" style="cursor:pointer;font-size:0.7rem">#' + escapeHtml(t) + '</span>';
         });
         if (allTags.length > 25) html += '<span style="font-size:0.7rem;color:var(--text-muted)">+' + (allTags.length - 25) + ' more</span>';
@@ -1605,10 +1611,19 @@
       }
       if (browseBucketFilter || browseTagFilter) {
         html += '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;padding:0.4rem 0.6rem;background:var(--accent-glow);border:1px solid var(--accent);border-radius:6px;font-size:0.78rem;color:var(--accent)">';
-        html += '<span>🔍 Filters active' + (browseBucketFilter ? ' · Bucket: <strong>' + escapeHtml(browseBucketFilter) + '</strong>' : '') + (browseTagFilter ? ' · Tag: <strong>#' + escapeHtml(browseTagFilter) + '</strong>' : '') + '</span>';
+        html += '<span>🔍 Filters active' + (browseBucketFilter ? ' · Bucket: <strong>' + escapeHtml(browseBucketFilter) + '</strong>' : '') + (browseTagFilter ? ' · Tags: <strong>' + browseTagFilter.split(',').map(function(t) { return '#' + t; }).join(' ') + '</strong>' : '') + '</span>';
         html += '<span style="margin-left:auto;cursor:pointer;font-weight:600;color:var(--text-secondary);text-decoration:underline;text-underline-offset:2px" onclick="clearAllFilters()" title="Clear all filters">✕ Clear all</span>';
         html += '</div>';
       }
+      var curSort = sessionStorage.getItem('browse-sort') || 'title-asc';
+      var sortLabels = { 'title-asc': 'Title A-Z', 'title-desc': 'Title Z-A', 'length-asc': 'Shortest', 'length-desc': 'Longest' };
+      html += '<div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.75rem;font-size:0.78rem">';
+      html += '<span style="color:var(--text-muted)">📋 Sort:</span>';
+      html += '<select onchange="sessionStorage.setItem('browse-sort', this.value); sessionStorage.setItem('browse-page', '1'); switchTab('browse')" style="background:var(--surface-alt);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:0.25rem 0.5rem;font-size:0.78rem;font-family:var(--font-family);outline:none;cursor:pointer">';
+      Object.keys(sortLabels).forEach(function(k) {
+        html += '<option value="' + k + '"' + (curSort === k ? ' selected' : '') + '>' + sortLabels[k] + '</option>';
+      });
+      html += '</select></div>';
       current.forEach(({ path, data, _bucket: bucket }) => {
         const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
         const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.slice(0, 3) : [];
@@ -1660,20 +1675,51 @@
       sessionStorage.setItem('browse-bucket', bucket);
       sessionStorage.setItem('browse-tag', '');
       sessionStorage.setItem('browse-page', '1');
+      updateFilterUrl();
       switchTab('browse');
     }
 
     // ── Graph Tab ──────────────────────────────────────────────────────────
         function filterBrowseByTag(tag) {
-      sessionStorage.setItem('browse-tag', tag);
+      var current = sessionStorage.getItem('browse-tag') || '';
+      var tags = current ? current.split(',') : [];
+      var idx = tags.indexOf(tag);
+      if (tag === '') {
+        tags = [];
+      } else if (idx >= 0) {
+        tags.splice(idx, 1);
+      } else {
+        tags.push(tag);
+      }
+      sessionStorage.setItem('browse-tag', tags.join(','));
       sessionStorage.setItem('browse-page', '1');
+      updateFilterUrl();
       switchTab('browse');
     }
     function clearAllFilters() {
       sessionStorage.setItem('browse-bucket', '');
       sessionStorage.setItem('browse-tag', '');
       sessionStorage.setItem('browse-page', '1');
+      updateFilterUrl();
       switchTab('browse');
+    }
+    function readFilterParams() {
+      var params = new URLSearchParams(window.location.search);
+      var bucket = params.get('bucket') || '';
+      var tags = params.get('tags') || '';
+      if (bucket) sessionStorage.setItem('browse-bucket', bucket);
+      if (tags) sessionStorage.setItem('browse-tag', tags);
+      if (bucket || tags) sessionStorage.setItem('browse-page', '1');
+    }
+    function updateFilterUrl() {
+      var bucket = sessionStorage.getItem('browse-bucket') || '';
+      var tags = sessionStorage.getItem('browse-tag') || '';
+      var params = new URLSearchParams();
+      if (bucket) params.set('bucket', bucket);
+      if (tags) params.set('tags', tags);
+      var qs = params.toString();
+      var url = window.location.pathname + (qs ? '?' + qs : '');
+      try { history.replaceState({}, '', url); } catch(e) {}
     }
 
     function toggleBucketColors() {
@@ -2083,7 +2129,16 @@
 
         if (pages.length > 0) {
           html += '<div class="page-grid" style="margin-top:0.5rem">';
-          pages.sort((a, b) => (a.data.frontmatter?.title || '').localeCompare(b.data.frontmatter?.title || ''));
+          const sortMode = sessionStorage.getItem('browse-sort') || 'title-asc';
+      if (sortMode === 'title-asc') {
+        pages.sort((a, b) => (a.data.frontmatter?.title || '').localeCompare(b.data.frontmatter?.title || ''));
+      } else if (sortMode === 'title-desc') {
+        pages.sort((a, b) => (b.data.frontmatter?.title || '').localeCompare(a.data.frontmatter?.title || ''));
+      } else if (sortMode === 'length-asc') {
+        pages.sort((a, b) => (a.data.content || '').length - (b.data.content || '').length);
+      } else if (sortMode === 'length-desc') {
+        pages.sort((a, b) => (b.data.content || '').length - (a.data.content || '').length);
+      }
           pages.forEach(({ path, data }) => {
             const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
             const summary = data.frontmatter?.summary ? (typeof data.frontmatter.summary === 'string' ? data.frontmatter.summary.slice(0, 100) : '') : '';
