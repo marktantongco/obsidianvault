@@ -272,7 +272,23 @@
 
     /* Graph View */
     
-    .graph-container {
+    .tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  padding: 0 0.3rem;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+  line-height: 1;
+}
+.graph-container {
       width: 100%; height: 520px; border-radius: var(--radius-sm);
       background: var(--graph-bg); border: 1px solid var(--border);
       overflow: hidden; position: relative;
@@ -525,7 +541,7 @@
         <button class="tab-btn" onclick="switchTab('activity')">⚡ Activity</button>
         <button class="tab-btn" onclick="switchTab('stats')">📊 Stats</button>
         <button class="tab-btn" onclick="switchTab('changelog')">📜 Changelog</button>
-        <button class="tab-btn" onclick="switchTab('buckets')">🪣 Buckets</button>
+        <button class="tab-btn" onclick="switchTab('buckets')">🪣 Buckets <span id="bucket-badge" class="tab-badge"></span></button>
       </div>
 
       <!-- Back -->
@@ -1597,7 +1613,16 @@
     }
 
     // ── Graph Tab ──────────────────────────────────────────────────────────
-        function renderGraphTab(target) {
+        function toggleBucketColors() {
+      window._useBucketColors = !window._useBucketColors;
+      const btn = document.getElementById('bucket-color-toggle');
+      if (btn) btn.textContent = window._useBucketColors ? '🎨 Bucket' : '🎨 Tier';
+      document.querySelectorAll('.legend-tier').forEach(el => el.style.display = window._useBucketColors ? 'none' : '');
+      document.querySelectorAll('.legend-bucket').forEach(el => el.style.display = window._useBucketColors ? '' : 'none');
+      switchTab('graph');
+    }
+
+    function renderGraphTab(target) {
       const nodes = [];
       const edges = [];
       const nodeMap = {};
@@ -1617,7 +1642,7 @@
           if (target && target.id !== path) edges.push({ source: path, target: target.id });
         }
       }
-      target.innerHTML = '<div class="fade-in"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem"><div><h2 style="font-size:1.1rem">🕸️ Knowledge Graph</h2><p style="font-size:0.8rem;color:var(--text-muted)">' + nodes.length + ' nodes · ' + edges.length + ' edges · Drag nodes · Scroll to zoom</p></div><div><button class="random-btn" onclick="initD3Graph()">🔄 Reset</button><button class="random-btn" onclick="zoomToFit()">🔍 Fit</button><button class="random-btn" onclick="filterGraph("core")">🎯 Core</button><button class="random-btn" onclick="filterGraph(null)">All</button></div><div class="graph-tag-filters" id="graph-tag-filters" style="margin-top:0.5rem"></div></div><div style="position:relative"><div class="graph-container" id="graph-container"></div><div class="graph-minimap" id="graph-minimap"><canvas id="minimap-canvas" width="150" height="100"></canvas></div></div><div class="graph-legend"><span><span class="graph-dot core"></span> Core (' + nodes.filter(n => n.tier === 'core').length + ')</span><span><span class="graph-dot supporting"></span> Supporting (' + nodes.filter(n => n.tier === 'supporting').length + ')</span><span><span class="graph-dot peripheral"></span> Peripheral (' + nodes.filter(n => n.tier === 'peripheral' || n.tier === '').length + ')</span><span>💡 Hover for details · Click to navigate</span></div></div>';
+      target.innerHTML = '<div class="fade-in"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem"><div><h2 style="font-size:1.1rem">🕸️ Knowledge Graph</h2><p style="font-size:0.8rem;color:var(--text-muted)">' + nodes.length + ' nodes · ' + edges.length + ' edges · Drag nodes · Scroll to zoom</p></div><div><button class="random-btn" onclick="initD3Graph()">🔄 Reset</button><button class="random-btn" onclick="zoomToFit()">🔍 Fit</button><button class="random-btn" id="bucket-color-toggle" onclick="toggleBucketColors()">🎨 Tier</button><button class="random-btn" onclick="filterGraph("core")">🎯 Core</button><button class="random-btn" onclick="filterGraph(null)">All</button></div><div class="graph-tag-filters" id="graph-tag-filters" style="margin-top:0.5rem"></div></div><div style="position:relative"><div class="graph-container" id="graph-container"></div><div class="graph-minimap" id="graph-minimap"><canvas id="minimap-canvas" width="150" height="100"></canvas></div></div><div class="graph-legend" id="graph-legend"><span class="legend-tier-items"><span class="graph-dot core"></span> Core (' + nodes.filter(n => n.tier === 'core').length + ')</span><span class="legend-tier-items"><span class="graph-dot supporting"></span> Supporting (' + nodes.filter(n => n.tier === 'supporting').length + ')</span><span class="legend-tier-items"><span class="graph-dot peripheral"></span> Peripheral (' + nodes.filter(n => n.tier === 'peripheral' || n.tier === '').length + ')</span><span class="legend-bucket-items" style="display:none"><span style="color:#22C55E">● 01_WORK</span> <span style="color:#3B82F6">● 02_KNOWLEDGE</span> <span style="color:#F59E0B">● 03_LEARNING</span> <span style="color:#EC4899">● 04_RELATIONSHIP</span> <span style="color:#8B5CF6">● 05_OBSERVABILITY</span> <span style="color:#06B6D4">● 06_STATE</span></span><span>💡 Hover for details · Click to navigate</span></div></div>';
       setTimeout(() => initD3Graph(nodes, edges), 50);
     }
 
@@ -1640,6 +1665,18 @@
       const height = container.clientHeight;
       const tierColors = { core: '#3B82F6', supporting: '#8B5CF6', peripheral: '#52525B' };
       const tierRadii = { core: 7, supporting: 5, peripheral: 3.5 };
+      const bucketColors = {
+        '01_WORK': '#22C55E', '02_KNOWLEDGE': '#3B82F6', '03_LEARNING': '#F59E0B',
+        '04_RELATIONSHIP': '#EC4899', '05_OBSERVABILITY': '#8B5CF6', '06_STATE': '#06B6D4'
+      };
+      const useBucketColors = window._useBucketColors || false;
+      function getNodeColor(d) {
+        if (useBucketColors) {
+          const bucket = (d.id || '').split('/')[0];
+          return bucketColors[bucket] || tierColors.peripheral;
+        }
+        return tierColors[d.tier] || tierColors.peripheral;
+      }
       let displayNodes = nodes, displayEdges = edges;
       // Build tag filter chips
       buildGraphTagFilters(container, nodes, edges);
@@ -1678,7 +1715,7 @@
       const link = g.append('g').selectAll('line').data(displayEdges).join('line').attr('class', 'link');
       const node = g.append('g').selectAll('circle').data(displayNodes).join('circle')
         .attr('class', 'node').attr('r', d => tierRadii[d.tier] || 4)
-        .attr('fill', d => tierColors[d.tier] || tierColors.peripheral)
+        .attr('fill', d => getNodeColor(d))
         .attr('stroke', d => d3.color(tierColors[d.tier] || tierColors.peripheral).brighter(0.5)).attr('stroke-width', 1)
         .call(d3.drag().on('start', (e, d) => { if (!e.active) d3Simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
           .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; }).on('end', (e, d) => { if (!e.active) d3Simulation.alphaTarget(0); d.fx = null; d.fy = null; }));
@@ -1838,6 +1875,22 @@
       return items;
     }
 
+    function filterBuckets(query) {
+      const q = query.toLowerCase().trim();
+      document.querySelectorAll('.bucket-section').forEach(section => {
+        let visible = 0;
+        section.querySelectorAll('.bucket-page-card').forEach(card => {
+          const text = (card.dataset.search || '').toLowerCase();
+          const match = !q || text.includes(q);
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+        section.style.display = visible > 0 || !q ? '' : 'none';
+        const countEl = section.querySelector('.bucket-match-count');
+        if (countEl) countEl.textContent = q ? '(' + visible + ')' : '';
+      });
+    }
+
     function renderBucketsTab(target) {
       // Group pages by bucket (first path segment)
       const buckets = {
@@ -1860,20 +1913,21 @@
 
       const orderedBuckets = Object.keys(buckets);
       let html = '<div class="fade-in" style="max-width:900px;margin:0 auto">';
-      html += '<h1 style="font-size:1.5rem;margin-bottom:0.25rem">🗂️ Memory Buckets</h1>';
-      html += '<p style="color:var(--text-secondary);margin-bottom:2rem">' + Object.keys(bucketData).reduce((s, b) => s + bucketData[b].length, 0) + ' pages across ' + orderedBuckets.length + ' buckets</p>';
+      html += '<h1 style="font-size:1.5rem;margin-bottom:0.25rem">🗂️ Memory Buckets <span id="bucket-badge-inline" style="font-size:0.85rem;color:var(--text-muted);font-weight:400"></span></h1>';
+      html += '<p style="color:var(--text-secondary);margin-bottom:1rem">' + Object.keys(bucketData).reduce((s, b) => s + bucketData[b].length, 0) + ' pages across ' + orderedBuckets.length + ' buckets</p>';
+      html += '<div style="margin-bottom:1.5rem;position:relative"><input type="text" id="bucket-search" placeholder="🔍 Search by name, tag, or path..." style="width:100%;padding:0.6rem 0.75rem 0.6rem 2.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:0.85rem;outline:none;box-sizing:border-box" oninput="filterBuckets(this.value)"><span style="position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.9rem;pointer-events:none">🔍</span></div>';
 
       orderedBuckets.forEach(bucket => {
         const info = buckets[bucket];
         const pages = bucketData[bucket] || [];
         const label = bucket.replace(/^\d+_/, '');
-        html += '<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem">';
+        html += '<div class="bucket-section" data-bucket="' + escapeHtml(label) + '" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem">';
         html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">';
         html += '<div>';
         html += '<h2 style="font-size:1.15rem;margin:0;display:flex;align-items:center;gap:0.5rem">' + info.icon + ' ' + escapeHtml(label) + ' <code style="font-size:0.7rem;color:var(--text-muted)">' + escapeHtml(bucket) + '</code></h2>';
         html += '<p style="color:var(--text-secondary);font-size:0.85rem;margin:0.25rem 0 0 0">' + escapeHtml(info.desc) + '</p>';
         html += '</div>';
-        html += '<span style="background:var(--accent);color:white;padding:0.2rem 0.6rem;border-radius:999px;font-size:0.75rem;font-weight:600;white-space:nowrap">' + pages.length + ' page' + (pages.length !== 1 ? 's' : '') + '</span>';
+        html += '<span style="background:var(--accent);color:white;padding:0.2rem 0.6rem;border-radius:999px;font-size:0.75rem;font-weight:600;white-space:nowrap">' + pages.length + ' page' + (pages.length !== 1 ? 's' : '') + ' <span class="bucket-match-count" style="font-weight:400;opacity:0.8"></span></span>';
         html += '</div>';
 
         if (pages.length > 0) {
@@ -1883,7 +1937,7 @@
             const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
             const summary = data.frontmatter?.summary ? (typeof data.frontmatter.summary === 'string' ? data.frontmatter.summary.slice(0, 100) : '') : '';
             const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.slice(0, 3) : [];
-            html += '<div class="page-card" onclick="navigateTo('' + path.replace(/'/g, "\\'") + '')">';
+            html += '<div class="page-card bucket-page-card" onclick="navigateTo('' + path.replace(/'/g, "\\'") + '')" data-search="' + escapeHtml((title + ' ' + path + ' ' + tags.join(' ')).toLowerCase()) + '">';
             html += '<h4>' + escapeHtml(title) + '</h4>';
             if (summary) html += '<p>' + escapeHtml(summary) + (summary.length >= 100 ? '...' : '') + '</p>';
             if (tags.length) html += '<div class="tags">' + tags.map(t => '<span class="mini-tag">#' + escapeHtml(t) + '</span>').join('') + '</div>';
@@ -1896,6 +1950,11 @@
 
       html += '</div>';
       target.innerHTML = html;
+      const badge = document.getElementById('bucket-badge');
+      const inlineBadge = document.getElementById('bucket-badge-inline');
+      const total = Object.keys(bucketData).reduce((s, b) => s + bucketData[b].length, 0);
+      if (badge) badge.textContent = total;
+      if (inlineBadge) inlineBadge.textContent = '— ' + total + ' total';
     }
 
     function renderPageSidebar(path, data, contentHtml) {
