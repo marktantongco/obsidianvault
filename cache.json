@@ -6,10 +6,10 @@
     "mtime": "2026-07-22T20:40:52.763Z"
   },
   "concepts/Antigravity Agent.md": {
-    "sha": "a75d2d78fad8a5859de95e1201b4f41df6103590",
+    "sha": "d07a2460dff4c21c93991d96150ffce3fb9526ce",
     "title": "Antigravity Agent",
     "summary": "",
-    "mtime": "2026-07-21T08:09:14.140Z"
+    "mtime": "2026-07-24T16:31:32.558Z"
   },
   "concepts/Claude Code.md": {
     "sha": "2e755fd9ed4b6a72ce51513100d1264a2cbfac42",
@@ -42,16 +42,16 @@
     "mtime": "2026-07-22T14:34:43.438Z"
   },
   "concepts/LifeOS Algorithm.md": {
-    "sha": "aa21b6771586fe79df72ce044d32a66cf5d232ed",
+    "sha": "3aa02c36213c36c1e891261907f7adc73996cb73",
     "title": "LifeOS Algorithm",
     "summary": "",
-    "mtime": "2026-07-21T08:09:14.140Z"
+    "mtime": "2026-07-24T16:31:32.558Z"
   },
   "concepts/MCP Servers.md": {
-    "sha": "6194accae0310200e03a99709f5af109576ea3b2",
+    "sha": "976fc92f1ffa717d093fc72103221b69ca19fec8",
     "title": "MCP Servers",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-24T16:31:32.558Z"
   },
   "concepts/MiMo Code.md": {
     "sha": "01ed5435e633e1bde5e7f53abd45f58ea326f6bc",
@@ -90,10 +90,10 @@
     "mtime": "2026-07-16T13:28:36.859Z"
   },
   "concepts/oh-my-openagent.md": {
-    "sha": "3d371b1f1e5569a1d92ed7c7ab2faa0e3b2b5d23",
+    "sha": "f7b8e01ae8c0f6a8a92e5d036bb4268b9632bc92",
     "title": "oh-my-openagent",
     "summary": "",
-    "mtime": "2026-07-21T08:09:14.140Z"
+    "mtime": "2026-07-24T16:31:32.558Z"
   },
   "concepts/poznote-pipeline.md": {
     "sha": "c4d55e2cc7217099a0307e72677380b965299f1a",
@@ -174,16 +174,16 @@
     "mtime": "2026-07-16T13:28:36.859Z"
   },
   "journal/2026-07-13-second-brain-integration-session.md": {
-    "sha": "f99433eefea9110af6bd6d694b87e463ffb10592",
+    "sha": "0b15e9556e996125f95b8bf2495f529318160930",
     "title": "2026-07-13-second-brain-integration-session",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-24T16:31:32.558Z"
   },
   "journal/2026-07-14-system-admin-tool-installs.md": {
-    "sha": "396dc60e50c57e7a81408cefa581b6229769494c",
+    "sha": "b87ae5993bb5e1a5ec52c2083c4662c91d56d835",
     "title": "2026-07-14-system-admin-tool-installs",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-24T16:31:32.558Z"
   },
   "journal/2026-07-21-freebuff-vault-enrichment-session.md": {
     "sha": "8aeb87f14d860ab6393910ed7c173c05142fdd93",
@@ -198,10 +198,10 @@
     "mtime": "2026-07-24T16:20:06.622Z"
   },
   "projects/AI-Second-Brain.md": {
-    "sha": "9856e4bce291cc88f7c9a11f61523228805abfe3",
+    "sha": "1f25ce806fee15c0293e4946f39652b507279e36",
     "title": "AI Second Brain",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-24T16:31:32.558Z"
   },
   "projects/Cross-Agent-Workflow-Test.md": {
     "sha": "2bbf9f11dc75c424433669eb1d90102d4071496a",
