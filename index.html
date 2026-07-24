@@ -300,6 +300,9 @@
       opacity: 0.6; transition: opacity 0.2s; cursor: pointer;
     }
     .graph-minimap:hover { opacity: 1; }
+    .visit-history-item { padding:0.35rem 0; border-bottom:1px solid var(--border); cursor:pointer; display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; }
+    .visit-history-item:hover { color:var(--accent); }
+    .visit-history-item .time { color:var(--text-muted); font-size:0.65rem; min-width:60px; }
     #minimap-canvas { display: block; }
 
     .graph-legend {
@@ -629,6 +632,15 @@
     // ── State ───────────────────────────────────────────────────────────────
     let pageData = {};          // path -> { frontmatter, content, wikilinks, html }
     let historyStack = [];
+    function recordVisit(path, title) {
+      try {
+        var visits = JSON.parse(localStorage.getItem('wiki-visit-history') || '[]');
+        visits = visits.filter(function(v) { return v.path !== path; });
+        visits.unshift({ path: path, title: title || path.split('/').pop().replace('.md',''), time: Date.now() });
+        if (visits.length > 50) visits = visits.slice(0, 50);
+        localStorage.setItem('wiki-visit-history', JSON.stringify(visits));
+      } catch(e) {}
+    }
     let currentTab = 'index';
     let currentPage = null;
     let activeTagFilter = null;
@@ -806,7 +818,7 @@
       } else {
         const qLower = query.toLowerCase();
         results.innerHTML = top.map(({ item, score }) => {
-          const snippet = extractSnippet(item.content || '', qLower, 100);
+          const snippet = extractSnippet(item.content || '', qLower, 200);
           return `<div class="search-result-item" onclick="navigateTo('${item.path.replace(/'/g, "\\'")}'); closeSearch();">
             <div class="title">${highlight(item.title, qLower)}</div>
             <div class="path">${item.path}</div>
@@ -815,7 +827,7 @@
               ${item.tier ? `<span>${item.tier}</span>` : ''}
               ${score ? `<span>${Math.round((1 - score) * 100)}% match</span>` : ''}
             </div>
-            ${snippet ? `<div class="snippet">${snippet}</div>` : ''}
+            ${item.content && item.content.length > 60 ? `<div class="preview-line">${item.content.slice(0, 60).replace(/\n/g, ' ')}...</div>` : ''}${snippet ? `<div class="snippet">${snippet}</div>` : ''}
           </div>`;
         }).join('');
       }
@@ -854,6 +866,7 @@
       currentPage = path;
       if (!historyStack.length || historyStack[historyStack.length - 1] !== path) {
         historyStack.push(path);
+      recordVisit(path, data.frontmatter?.title);
       }
       renderPage(path, data);
     }
@@ -971,6 +984,49 @@
       document.getElementById('sidebar-overlay').classList.remove('visible');
       document.body.style.overflow = '';
     }
+    // Mobile swipe gestures
+    var touchStartX = 0;
+    var touchCurrentX = 0;
+    var isSwiping = false;
+    document.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchCurrentX = touchStartX;
+      isSwiping = true;
+    }, {passive: true});
+    document.addEventListener('touchmove', function(e) {
+      if (!isSwiping) return;
+      touchCurrentX = e.touches[0].clientX;
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+      var dx = touchCurrentX - touchStartX;
+      // Swipe right on main content (from left edge) to open sidebar
+      if (!sidebar.classList.contains('mobile-visible') && touchStartX < 40 && dx > 60) {
+        toggleMobileSidebar();
+        isSwiping = false;
+        return;
+      }
+      // Swipe left on sidebar to close it
+      if (sidebar.classList.contains('mobile-visible') && dx < -40) {
+        overlay.style.opacity = Math.max(0, 1 + dx / 100);
+        overlay.style.transition = 'none';
+        sidebar.style.transform = 'translateX(' + Math.max(-280, dx) + 'px)';
+        sidebar.style.transition = 'none';
+      }
+    }, {passive: true});
+    document.addEventListener('touchend', function(e) {
+      if (!isSwiping) return;
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+      var dx = touchCurrentX - touchStartX;
+      if (sidebar.classList.contains('mobile-visible') && dx < -40) {
+        closeMobileSidebar();
+      }
+      overlay.style.opacity = '';
+      overlay.style.transition = '';
+      sidebar.style.transform = '';
+      sidebar.style.transition = '';
+      isSwiping = false;
+    }, {passive: true});
 
     // ── Theme Toggle ───────────────────────────────────────────────────────
     function toggleTheme() {
@@ -1017,7 +1073,7 @@
 
     // ── Tab Switching ──────────────────────────────────────────────────────
     async function switchTab(tab) {
-      currentTab = tab;
+      currentTab = tab; renderVisitHistory();
       historyStack = [];
       document.getElementById('back-container').style.display = 'none';
       document.getElementById('backlinks-container').style.display = 'none';
@@ -1468,29 +1524,73 @@
       }
       const sortedBuckets = Object.entries(buckets).sort((a, b) => a[0].localeCompare(b[0]));
 
-      let html = '<div class="fade-in">';
+      // Flatten all pages with bucket labels for pagination
+      let allPages = [];
       sortedBuckets.forEach(([bucket, pages]) => {
         const label = bucket === '.' ? 'Root' : bucket;
-        html += `<h2 style="font-size:1.1rem;margin-top:1.5rem;margin-bottom:0.75rem;text-transform:capitalize">${escapeHtml(label)} <span style="color:var(--text-muted);font-size:0.8rem;font-weight:400">(${pages.length})</span></h2>`;
-        html += '<div class="page-grid">';
         pages.sort((a, b) => {
           const ta = a.data.frontmatter?.title || '';
           const tb = b.data.frontmatter?.title || '';
           return ta.localeCompare(tb);
         });
-        pages.forEach(({ path, data }) => {
-          const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
-          const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.slice(0, 3) : [];
-          const summary = data.frontmatter?.summary ? (typeof data.frontmatter.summary === 'string' ? data.frontmatter.summary.slice(0, 80) + '...' : '') : '';
-          html += `<div class="page-card" onclick="navigateTo('${path.replace(/'/g, "\\'")}')">
-            <h4>${escapeHtml(title)}</h4>
-            <p>${escapeHtml(summary)}</p>
-            ${tags.length ? `<div class="tags">${tags.map(t => `<span class="mini-tag">#${escapeHtml(t)}</span>`).join('')}</div>` : ''}
-          </div>`;
-        });
-        html += '</div>';
+        pages.forEach(p => p._bucket = label);
+        allPages = allPages.concat(pages);
+      });
+
+      const perPage = 30;
+      const totalPages = Math.ceil(allPages.length / perPage);
+      let page = parseInt(sessionStorage.getItem('browse-page') || '1', 10);
+      if (page < 1) page = 1;
+      if (page > totalPages) page = totalPages;
+      const start = (page - 1) * perPage;
+      const end = Math.min(start + perPage, allPages.length);
+      const current = allPages.slice(start, end);
+
+      let html = '<div class="fade-in">';
+      current.forEach(({ path, data, _bucket: bucket }) => {
+        const title = data.frontmatter?.title || path.split('/').pop().replace('.md', '');
+        const tags = Array.isArray(data.frontmatter?.tags) ? data.frontmatter.tags.slice(0, 3) : [];
+        const summary = data.frontmatter?.summary ? (typeof data.frontmatter.summary === 'string' ? data.frontmatter.summary.slice(0, 80) + '...' : '') : '';
+        html += `<div class="page-card" onclick="navigateTo('${path.replace(/'/g, "\'")}')">
+          <h4>${escapeHtml(title)}</h4>
+          <div style="font-size:0.65rem;color:var(--text-muted);margin-bottom:0.25rem">${escapeHtml(bucket)}</div>
+          <p>${escapeHtml(summary)}</p>
+          ${tags.length ? `<div class="tags">${tags.map(t => `<span class="mini-tag">#${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+        </div>`;
       });
       html += '</div>';
+
+      // Pagination controls
+      if (totalPages > 1) {
+        let pagi = '<div style="display:flex;justify-content:center;align-items:center;gap:0.4rem;padding:0.75rem 0;flex-wrap:wrap">';
+        // Prev button
+        if (page > 1) {
+          pagi += '<button class="random-btn" onclick="sessionStorage.setItem('browse-page','' + (page - 1) + '');renderBrowseTab(document.getElementById('tab-browse'))">« Prev</button>';
+        } else {
+          pagi += '<button class="random-btn" disabled style="opacity:0.4">« Prev</button>';
+        }
+        // Page numbers with smart window
+        let pStart = 1, pEnd = totalPages;
+        if (totalPages > 7) {
+          if (page <= 4) { pStart = 1; pEnd = 7; }
+          else if (page >= totalPages - 3) { pStart = totalPages - 6; pEnd = totalPages; }
+          else { pStart = page - 3; pEnd = page + 3; }
+        }
+        for (let p = pStart; p <= pEnd; p++) {
+          const active = p === page ? ' style="background:var(--accent);color:white"' : '';
+          pagi += '<button class="random-btn" onclick="sessionStorage.setItem('browse-page','' + p + '');renderBrowseTab(document.getElementById('tab-browse'))"' + active + '>' + p + '</button>';
+        }
+        // Next button
+        if (page < totalPages) {
+          pagi += '<button class="random-btn" onclick="sessionStorage.setItem('browse-page','' + (page + 1) + '');renderBrowseTab(document.getElementById('tab-browse'))">Next »</button>';
+        } else {
+          pagi += '<button class="random-btn" disabled style="opacity:0.4">Next »</button>';
+        }
+        pagi += '<span style="font-size:0.75rem;color:var(--text-muted);margin-left:0.5rem">' + (start + 1) + '–' + end + ' of ' + allPages.length + '</span>';
+        pagi += '</div>';
+        html = pagi + html + pagi;
+      }
+
       target.innerHTML = html;
     }
 
@@ -1966,6 +2066,41 @@ function renderSidebarConnections(path, data) {
   }
 }
 
+function renderVisitHistory() {
+      var sec = document.getElementById('sidebar-visit-history');
+      if (!sec) {
+        sec = document.createElement('div');
+        sec.id = 'sidebar-visit-history';
+        sec.className = 'sidebar-section';
+        var sidebar = document.getElementById('sidebar');
+        var connSection = sidebar.querySelector('.sidebar-connections');
+        if (connSection && connSection.nextSibling) {
+          sidebar.insertBefore(sec, connSection.nextSibling);
+        } else {
+          sidebar.appendChild(sec);
+        }
+      }
+      try {
+        var visits = JSON.parse(localStorage.getItem('wiki-visit-history') || '[]');
+        if (!visits.length) { sec.style.display = 'none'; return; }
+        sec.style.display = '';
+        var h = '<h3>👀 Recent (' + visits.length + ')</h3>';
+        h += '<div style="max-height:200px;overflow-y:auto">';
+        visits.slice(0, 10).forEach(function(v) {
+          var rel = '';
+          var ago = Math.floor((Date.now() - v.time) / 60000);
+          if (ago < 1) rel = 'just now';
+          else if (ago < 60) rel = ago + 'm ago';
+          else rel = Math.floor(ago / 60) + 'h ago';
+          h += '<div class="visit-history-item" onclick="navigateTo(\"' + v.path.replace(/'/g, "\\'") + '\")">';
+          h += '<span class="time">' + rel + '</span>';
+          h += '<span>' + escapeHtml(v.title || v.path.split('/').pop().replace('.md','')) + '</span>';
+          h += '</div>';
+        });
+        h += '</div>';
+        sec.innerHTML = h;
+      } catch(e) { sec.style.display = 'none'; }
+    }
 function getBookmarks() {
   try { return JSON.parse(localStorage.getItem('wiki-bookmarks') || '[]'); } catch(e) { return []; }
 }
