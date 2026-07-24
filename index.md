@@ -1,11 +1,11 @@
 ---
 title: Wiki Index
-updated: 2026-07-24T14:30:43.387Z
+updated: 2026-07-24T16:20:06.622Z
 ---
 
 # Wiki Index
 
-*Last updated: 2026-07-24T14:30:43.387Z*
+*Last updated: 2026-07-24T16:20:06.622Z*
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
@@ -44,6 +44,7 @@ updated: 2026-07-24T14:30:43.387Z
 - [[journal/2026-07-13-second-brain-integration-session|2026-07-13-second-brain-integration-session]]
 - [[journal/2026-07-14-system-admin-tool-installs|2026-07-14-system-admin-tool-installs]]
 - [[journal/2026-07-21-freebuff-vault-enrichment-session|2026-07-21-freebuff-vault-enrichment-session]]
+- [[journal/2026-07-24-freebuff-features-audit-session|2026-07-24-freebuff-features-audit-session]]
 
 ## Skills
 - [[skills/free-china-proxy-ops|Free China Proxy Operations]] — Hybrid free China proxy ops for China AI APIs — direct-first, CN-only pool, real-host health (401=OK).
