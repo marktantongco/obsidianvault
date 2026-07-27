@@ -1,4 +1,4 @@
-# Cache static markdown files and index/hot pages at the Cloudflare Edge
+# Cache rules for Cloudflare Pages / GitHub Pages
 /*.md
   Cache-Control: public, max-age=600, stale-while-revalidate=3600
   Access-Control-Allow-Origin: *
@@ -6,3 +6,14 @@
 /index.html
   Cache-Control: public, max-age=300, stale-while-revalidate=1800
   Access-Control-Allow-Origin: *
+
+/reader.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=1800
+  Access-Control-Allow-Origin: *
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+# JSON/cache files - short TTL
+/cache.json
+  Cache-Control: public, max-age=60
