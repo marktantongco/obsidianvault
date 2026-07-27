@@ -2,7 +2,7 @@
 title: System Installation Status
 category: reference
 created: 2026-07-09
-updated: 2026-07-09
+updated: 2026-07-23
 tags: [installation, status, reference]
 lifecycle: active
 tier: core
@@ -10,7 +10,7 @@ tier: core
 
 # System Installation Status
 
-**Last Updated**: 2026-07-09 13:00 UTC
+**Last Updated**: 2026-07-23 07:00 UTC
 
 ---
 
@@ -22,9 +22,10 @@ tier: core
 | Desktop Apps | 2 | 0 | 0 |
 | Wiki System | 3 | 0 | 0 |
 | Agent Bridges | 2 | 0 | 0 |
+| [[entities/Owl-Agent\|Owl-Agent]] | 1 | 0 | 0 |
 | Obsidian Plugins | 0 | 6 | 0 (manual install) |
 | API Keys | 4 | 0 | 0 |
-| **Total** | **20** | **2** | **0** |
+| **Total** | **21** | **2** | **0** |
 
 ---
 
@@ -72,7 +73,46 @@ tier: core
 
 ---
 
-## 2. Desktop Apps — ALL INSTALLED
+## 2. [[entities/Owl-Agent|Owl-Agent]] — INSTALLED ✅
+
+### 2.1 Owl-Agent v4.2
+- **Version**: 4.2.0
+- **Location**: `~/.owl-agent/`
+- **Core Script**: `proxy_defense.py`
+- **CLI**: `run.sh`
+- **MCP Server**: `mcp-server.py`
+- **Proxy Pool**: 50 proxies loaded
+- **Status**: ✅ INSTALLED
+
+### 2.2 Features
+- Quality scoring (weighted success/latency)
+- Adaptive rate limiting (per-domain)
+- Circuit breaker (stops dead endpoints)
+- LRU cache (memory + disk)
+- curl_cffi Chrome fingerprinting
+- Request deduplication
+
+### 2.3 Integrations
+| Tool | Integration | Status |
+|------|-------------|--------|
+| [[concepts/OpenCode\|OpenCode]] | `owl-agent.skill.json` | ✅ |
+| Cline | MCP server | ✅ |
+| Cursor | `commands.json` | ✅ |
+| Warp | `warp-agent.yaml` | ✅ |
+| [[concepts/Claude Code\|Claude Code]] | Skills | ✅ |
+
+### 2.4 Commands
+```bash
+~/.owl-agent/run.sh stats           # Show proxy pool
+~/.owl-agent/run.sh test            # Test connection
+~/.owl-agent/run.sh fetch <url>     # Fetch URL (direct)
+~/.owl-agent/run.sh fetch --proxy <url>  # Fetch via proxy
+~/.owl-agent/test_all.sh            # Run test suite
+```
+
+---
+
+## 3. Desktop Apps — ALL INSTALLED
 
 ### 2.1 Obsidian
 - **Type**: AppImage

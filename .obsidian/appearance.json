@@ -1,8 +1,13 @@
 {
   "accentColor": "#7b6cd9",
   "theme": "obsidian",
-  "cssTheme": "Minimal",
+  "cssTheme": "Typewriter",
   "baseFontSize": 16,
   "textFontFamily": "",
-  "monospaceFontFamily": ""
+  "monospaceFontFamily": "",
+  "showViewHeader": true,
+  "nativeMenus": true,
+  "enabledCssSnippets": [
+    "toc-sidebar"
+  ]
 }

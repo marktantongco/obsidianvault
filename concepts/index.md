@@ -36,7 +36,7 @@ This is the vault's knowledge core — 18 concept pages covering agent systems, 
 | [[concepts/MCP Servers\|MCP Servers]] | Model Context Protocol server ecosystem |
 | [[concepts/oh-my-openagent\|oh-my-openagent]] | Community agent framework aggregator |
 
-## Knowledge System (4 pages)
+## Knowledge System (5 pages)
 
 | Page | Description |
 |------|-------------|
@@ -44,6 +44,7 @@ This is the vault's knowledge core — 18 concept pages covering agent systems, 
 | [[concepts/multi-agent-obsidian-wiki-synergy\|Multi-Agent Wiki Synergy]] | Cross-agent wiki protocol for shared memory |
 | [[concepts/poznote-pipeline\|Poznote Pipeline]] | Capture-to-knowledge classification pipeline |
 | [[concepts/Development Workflow\|Development Workflow]] | Multi-agent pipeline from research to verification |
+| [[concepts/wikilinks\|Wikilinks]] | Cross-reference convention using [[wikilinks]] |
 
 ## Related Buckets
 - [[02_KNOWLEDGE/index|02_KNOWLEDGE]] — Parent knowledge bucket

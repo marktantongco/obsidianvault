@@ -13,7 +13,7 @@
   "mergeStrategy": "rebase",
   "disablePush": false,
   "pullStrategy": "rebase",
-  "pushOnBackup": false,
+  "pushOnBackup": true,
   "backupRootDirectory": "_backups",
   "disablePopups": false,
   "listChangedFilesInMessageBody": true,

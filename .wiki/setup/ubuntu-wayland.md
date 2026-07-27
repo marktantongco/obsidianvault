@@ -17,7 +17,7 @@ Configuration notes for Ubuntu running under GNOME Wayland.
 ### Clipboard Managers
 Wayland restricts clipboard access compared to X11.
 Use Wayland-compatible clipboard managers like CopyQ or GPaste.
-See [[tools/clipboard-managers]] for a full comparison.
+See [[.wiki/tools/clipboard-managers]] for a full comparison.
 
 ### Display Protocol
 Check which display server is active:
@@ -33,5 +33,5 @@ QT_QPA_PLATFORM=wayland
 ```
 
 ## Related
-- [[config/copyq/README|CopyQ Configuration]]
-- [[config/ubuntu-wayland]]
+- [[.wiki/config/copyq/README|CopyQ Configuration]]
+- [[.wiki/config/ubuntu-wayland]]

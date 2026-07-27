@@ -1,23 +1,32 @@
 {
-  "switcher:open": [
-    { "modifiers": ["Mod"], "key": "o" }
+  "outline:toggle": [
+    {
+      "modifiers": ["Alt"],
+      "key": "o"
+    }
   ],
-  "command-palette:open": [
-    { "modifiers": ["Mod", "Shift"], "key": "p" }
-  ],
-  "daily-notes": [
-    { "modifiers": ["Mod"], "key": "d" }
-  ],
-  "templates:insert-template": [
-    { "modifiers": ["Mod", "Shift"], "key": "t" }
+  "page-preview:toggle": [
+    {
+      "modifiers": ["Alt"],
+      "key": "p"
+    }
   ],
   "graph:open": [
-    { "modifiers": ["Mod", "Shift"], "key": "g" }
+    {
+      "modifiers": ["Ctrl", "Shift"],
+      "key": "g"
+    }
   ],
-  "search": [
-    { "modifiers": ["Mod"], "key": "f" }
+  "switcher:open": [
+    {
+      "modifiers": ["Ctrl"],
+      "key": "o"
+    }
   ],
-  "editor:toggle-checklist-status": [
-    { "modifiers": ["Mod"], "key": "Enter" }
+  "command-palette:open": [
+    {
+      "modifiers": ["Ctrl", "Shift"],
+      "key": "p"
+    }
   ]
 }

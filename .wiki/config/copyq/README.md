@@ -101,5 +101,5 @@ copyq log
 ```
 
 ## Related
-- [[config/ubuntu-wayland]]
-- [[tools/clipboard-managers]]
+- [[.wiki/config/ubuntu-wayland]]
+- [[.wiki/tools/clipboard-managers]]

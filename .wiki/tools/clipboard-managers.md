@@ -13,7 +13,7 @@ tier: 2
 
 ### CopyQ
 Advanced clipboard manager with history, search, and multi-tab support.
-Configured for Ubuntu GNOME Wayland — see [[config/copyq/README|CopyQ Configuration]].
+Configured for Ubuntu GNOME Wayland — see [[.wiki/config/copyq/README|CopyQ Configuration]].
 
 ### GPaste
 GNOME-integrated clipboard manager — see [[entities/GPaste|GPaste]].
@@ -34,5 +34,5 @@ Lightweight clipboard manager for XFCE.
 | Clipit | ❌ | ❌ | Limited | ❌ |
 
 ## See Also
-- [[setup/ubuntu-wayland]]
-- [[config/copyq/README|CopyQ Setup]]
+- [[.wiki/setup/ubuntu-wayland]]
+- [[.wiki/config/copyq/README|CopyQ Setup]]

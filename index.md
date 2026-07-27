@@ -1,30 +1,49 @@
 ---
 title: Wiki Index
 updated: 2026-07-27T04:34:57Z
+updated: 2026-07-24T10:00:00.000Z
 ---
 
 # Wiki Index
 
 *Last updated: 2026-07-27T04:34:57Z*
+*Last updated: 2026-07-24*
+
+## System
+- [[dashboards/proxy-dashboard|Proxy Dashboard]] — Live status of all proxy services (freebuff + jcode)
+- [[SYSTEM-INSTALLATION-STATUS|System Installation Status]] — All installed tools and their status
+- [[SYSTEM-ACTIVATION|System Activation]] — How to activate the system
+- [[SYSTEM-COMPLETE|System Complete]] — System completion checklist
+- [[AGENTS|Vault Agent Conventions]] — Agent behavior rules for this vault
+- [[API-KEY-GUIDE|API Key Guide]] — API keys for AI providers and services
+- [[ERROR-LOG|Error Log]] — Recorded errors and troubleshooting
+- [[TROUBLESHOOTING|Troubleshooting]] — Common issues and solutions
+- [[QUICK-START|Quick Start]] — Getting started with the vault
+- [[MANUAL-PLUGIN-INSTALL|Manual Plugin Install]] — Manual Obsidian plugin installation guide
+- [[PLUGIN-SETUP|Plugin Setup]] — Plugin configuration guide
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
 - [[concepts/AI Agents|AI Agents]]
 - [[concepts/Antigravity Agent|Antigravity Agent]]
-- [[concepts/Claude Code|Claude Code]]
+- [[concepts/Claude Code|Claude Code]] — Anthropic's agentic coding tool
 - [[concepts/Development Workflow|Development Workflow]]
+- [[concepts/Freebuff|Freebuff]] — Unified proxy manager (codebuff-proxy, Freebuff2API, freebuff-proxy, mimo-unified)
 - [[concepts/FreeHive|FreeHive]]
 - [[concepts/Grok|Grok]]
 - [[concepts/Hermes Agent|Hermes Agent]]
 - [[concepts/index|Concepts — Agent Systems & Architecture]]
+- [[concepts/Grok|Grok]] — xAI's AI coding assistant
+- [[concepts/Hermes Agent|Hermes Agent]] — Self-improving AI orchestrator by Nous Research
+- [[concepts/JCode|JCode]] — jcode ecosystem (daemon :1456, proxy :8088, web :3456)
 - [[concepts/LifeOS Algorithm|LifeOS Algorithm]]
 - [[concepts/MCP Servers|MCP Servers]]
-- [[concepts/MiMo Code|MiMo Code]]
+- [[concepts/MiMo Code|MiMo Code]] — Xiaomi's AI coding assistant
 - [[concepts/multi-agent-obsidian-wiki-synergy|Multi-Agent Obsidian Wiki Synergy]] — How Ar9av/obsidian-wiki, the shared vault, and every CLI agent share one brain via config + symlinks.
 - [[concepts/Obsidian Wiki|Obsidian Wiki]]
 - [[concepts/oh-my-openagent|oh-my-openagent]]
-- [[concepts/OpenAI Codex|OpenAI Codex]]
-- [[concepts/OpenCode|OpenCode]]
+- [[concepts/OpenAI Codex|OpenAI Codex]] — Lightweight coding agent from OpenAI
+- [[concepts/OpenCode|OpenCode]] — Terminal-based AI coding agent with TUI
 - [[concepts/poznote-pipeline|Poznote Capture Pipeline]]
 - [[concepts/system-prompt-v5-1-1|System Prompt v5.1.1]]
 
@@ -36,7 +55,7 @@ updated: 2026-07-27T04:34:57Z
 - [[entities/GPaste|GPaste]]
 - [[entities/index|Entities — Tools, Providers & Services]]
 - [[entities/lifeos-cli|lifeos-cli]]
-- [[entities/Owl-Agent|Owl-Agent]]
+- [[entities/Owl-Agent|Owl-Agent]] — Self-optimising HTTP scraping engine v4.2
 - [[entities/p2d-duck|p2d-duck]]
 - [[entities/SiliconFlow|SiliconFlow]]
 - [[entities/Zhipu-GLM|Zhipu-GLM]]
@@ -58,6 +77,13 @@ updated: 2026-07-27T04:34:57Z
 - [[skills/multi-agent-vault-wiring|Multi-Agent Vault Wiring]] — Point every CLI agent skill tree and AGENTS bootstrap at one Obsidian vault via config + symlinks.
 - [[skills/wiki-compound-loop|Wiki Knowledge Compounding Loop]]
 
+### External Skills (installed from GitHub)
+- [[_skills/obsidian-skills/obsidian-cli/SKILL|Obsidian CLI]] — Interact with running Obsidian instance (notes, tasks, properties, plugin dev)
+- [[_skills/obsidian-skills/obsidian-markdown/SKILL|Obsidian Markdown]] — Write Obsidian-specific markdown (wikilinks, embeds, callouts, properties)
+- [[_skills/obsidian-skills/obsidian-bases/SKILL|Obsidian Bases]] — `.base` files management (views, filters, formulas, summaries)
+- [[_skills/obsidian-skills/json-canvas/SKILL|JSON Canvas]] — Edit `.canvas` files (nodes, edges, groups)
+- [[_skills/obsidian-skills/defuddle/SKILL|Defuddle]] — Extract clean markdown from web pages
+
 ## References
 - [[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework (source)]] — Deduped catalog of ~67 agent skills across 8 domains plus 5-layer routing taxonomy.
 - [[references/free-china-proxy-research|Free China Proxy Research (source)]] — Source research on free CN proxies for GLM/MiniMax/DeepSeek; hybrid free+paid recommendation.
@@ -75,5 +101,20 @@ updated: 2026-07-27T04:34:57Z
 - [[projects/Cross-Agent-Workflow-Test|Cross-Agent Workflow Test]]
 - [[projects/index|Projects — Active & Tracked Initiatives]]
 
+## Journal
+- [[journal/2026-07-24-jcode-freebuff-troubleshooting|JCode and Freebuff Troubleshooting Session]] — 429 rate limits, HTML div fix, service failures
+
 ## Special
 - [[hot]] · [[log]] · [[AGENTS]]
+
+## Tools Architecture
+```
+freebuff.sh — Proxy Manager (codebuff-proxy :3211, Freebuff2API :8080, freebuff-proxy :1455, mimo-unified :8877)
+jcode.sh   — jcode Stack (daemon :1456, proxy :8088, web :3456)
+opencode   — Terminal AI Agent (37 skills)
+claude     — Claude Code Reviewer (37 skills)
+hermes     — Hermes Orchestrator (36 skills, 2 plugins)
+codex      — OpenAI Codex CLI
+mimo       — Xiaomi MiMo CLI
+grok       — xAI Grok CLI
+```

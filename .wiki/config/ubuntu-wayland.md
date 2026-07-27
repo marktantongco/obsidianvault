@@ -22,8 +22,8 @@ tier: 2
 
 ## Clipboard Integration
 CopyQ is configured as the primary clipboard manager for Wayland.
-See [[config/copyq/README|CopyQ Configuration]] for setup details.
+See [[.wiki/config/copyq/README|CopyQ Configuration]] for setup details.
 
 ## See Also
-- [[setup/ubuntu-wayland]]
-- [[tools/clipboard-managers]]
+- [[.wiki/setup/ubuntu-wayland]]
+- [[.wiki/tools/clipboard-managers]]

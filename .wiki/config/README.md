@@ -12,7 +12,7 @@ tier: 1
 ## Installed Tools
 
 ### Clipboard Manager
-- [[config/copyq/README|CopyQ]] - Optimized for Ubuntu GNOME Wayland
+- [[.wiki/config/copyq/README|CopyQ]] - Optimized for Ubuntu GNOME Wayland
 
 ### AI Agents
 - OpenCode
@@ -29,5 +29,5 @@ tier: 1
 - `~/obsidian-vaults/` - Obsidian vaults
 
 ## See Also
-- [[tools/clipboard-managers]]
-- [[setup/ubuntu-wayland]]
+- [[.wiki/tools/clipboard-managers]]
+- [[.wiki/setup/ubuntu-wayland]]

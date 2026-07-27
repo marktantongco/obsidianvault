@@ -1,9 +1,10 @@
 [
-  "dataview",
   "calendar",
   "templater-obsidian",
+  "obsidian-git",
+  "dataview",
   "obsidian-kanban",
   "obsidian-tasks-plugin",
   "obsidian-excalidraw-plugin",
-  "obsidian-git"
+  "obsidian-local-rest-api"
 ]
