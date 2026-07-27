@@ -327,7 +327,7 @@ Auto-deployed via GitHub Actions every daily update at **1:00 AM UTC**. The SPA 
 
 ### Vercel
 
-Ready for one-click deployment. The static site is fully self-contained — no build step required.
+Deployed at [obsidianvault-ochre.vercel.app](https://obsidianvault-ochre.vercel.app/). The static site is fully self-contained — no build step required.
 
 ### Cloudflare
 
