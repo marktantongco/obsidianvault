@@ -12,10 +12,10 @@
     "mtime": "2026-07-24T16:31:32.558Z"
   },
   "concepts/Claude Code.md": {
-    "sha": "2e755fd9ed4b6a72ce51513100d1264a2cbfac42",
+    "sha": "64bce38d598f22180a81d1be2bdd0148f008f796",
     "title": "Claude Code",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/Development Workflow.md": {
     "sha": "ebdf14332c87b1f2459fecdeca37401ca1f80ea8",
@@ -29,17 +29,29 @@
     "summary": "",
     "mtime": "2026-07-16T13:28:36.859Z"
   },
+  "concepts/Freebuff.md": {
+    "sha": "4c3038829e99b89defd1fb8c9e693fd17793a653",
+    "title": "Freebuff",
+    "summary": "",
+    "mtime": "2026-07-27T09:28:17.791Z"
+  },
   "concepts/Grok.md": {
-    "sha": "326540d1704356149d38fdd600605012d295db4c",
+    "sha": "af5939faaa9487cca808981a95c2f8f24a5b7169",
     "title": "Grok",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/Hermes Agent.md": {
-    "sha": "1caf3c1459f7ccd44a73c5fb06583ddeed56dddf",
+    "sha": "7e786aaf104796430c71fd60d0a877b31c4eb52d",
     "title": "Hermes Agent",
     "summary": "",
-    "mtime": "2026-07-22T14:34:43.438Z"
+    "mtime": "2026-07-27T09:28:17.791Z"
+  },
+  "concepts/JCode.md": {
+    "sha": "0f6b85f987e78f10a0d2b8823c064d289dfc1afb",
+    "title": "JCode",
+    "summary": "",
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/LifeOS Algorithm.md": {
     "sha": "3aa02c36213c36c1e891261907f7adc73996cb73",
@@ -54,10 +66,10 @@
     "mtime": "2026-07-24T16:31:32.558Z"
   },
   "concepts/MiMo Code.md": {
-    "sha": "01ed5435e633e1bde5e7f53abd45f58ea326f6bc",
+    "sha": "d14c6931bc504a93eb11b9530000de74985d827f",
     "title": "MiMo Code",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/Obsidian Wiki.md": {
     "sha": "2d479c38f06f1c4d7d7185bc4a5c7c0f90833de2",
@@ -66,16 +78,16 @@
     "mtime": "2026-07-22T14:34:43.438Z"
   },
   "concepts/OpenAI Codex.md": {
-    "sha": "a45cac3c73e7480c27b2e6d3bf82ed0c0eb8fcf8",
+    "sha": "e5087dbf5c9cc47b3ce660e0a7c9e3f942bda523",
     "title": "OpenAI Codex",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/OpenCode.md": {
-    "sha": "4ad4136c5d3ecf2b909faf2a3af11263814ce038",
+    "sha": "c6548c33e27d8f7064773adf3ba10fd447052f5e",
     "title": "OpenCode",
     "summary": "",
-    "mtime": "2026-07-21T23:42:10.502Z"
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/agentic-stack.md": {
     "sha": "2dc3889087b4511c7335333166cc5b2ce2c44103",
@@ -107,6 +119,12 @@
     "summary": "",
     "mtime": "2026-07-21T08:09:14.140Z"
   },
+  "concepts/wikilinks.md": {
+    "sha": "b40fd1391ec234d938c38840ea5fd7f3158d27b4",
+    "title": "Wikilinks — Cross-Reference Convention",
+    "summary": "Obsidian wikilink syntax for cross-referencing pages in the vault.",
+    "mtime": "2026-07-27T09:28:17.791Z"
+  },
   "entities/CopyQ.md": {
     "sha": "5487afb630eca65c51ad108c2adf73758f1309b8",
     "title": "CopyQ",
@@ -126,10 +144,10 @@
     "mtime": "2026-07-21T08:09:14.140Z"
   },
   "entities/Owl-Agent.md": {
-    "sha": "b063cec451eab04f687c86e1655983e8ed319176",
+    "sha": "4a8f392eb6af166cc44ef1ca75fba2da5603e806",
     "title": "Owl-Agent",
     "summary": "",
-    "mtime": "2026-07-21T08:09:14.140Z"
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "entities/SiliconFlow.md": {
     "sha": "17ac61b125c48ed67c3c2840aa3e8f97f85a0303",
@@ -196,6 +214,12 @@
     "title": "2026-07-24-freebuff-features-audit-session",
     "summary": "",
     "mtime": "2026-07-24T16:20:06.622Z"
+  },
+  "journal/2026-07-24-jcode-freebuff-troubleshooting.md": {
+    "sha": "4b3b116b5b8674d1a0410fe50b434431fa9c34a0",
+    "title": "JCode and Freebuff Troubleshooting Session",
+    "summary": "",
+    "mtime": "2026-07-27T09:28:17.791Z"
   },
   "projects/AI-Second-Brain.md": {
     "sha": "1f25ce806fee15c0293e4946f39652b507279e36",
