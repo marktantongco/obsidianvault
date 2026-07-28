@@ -30,3 +30,4 @@ _staging/
 *.pyc
 __pycache__/
 .venv/
+.vercel
