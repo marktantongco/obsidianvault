@@ -1,18 +1,17 @@
 ---
 title: Hot Cache
-updated: 2026-07-30T03:54:40Z
+updated: 2026-07-31T01:00:01.810Z
 ---
 
 # Hot Cache
 
 ## Recent Activity
-- 2026-07-27 [[README|README]] — Updated note.
-- 2026-07-27 [[Untitled Kanban 1|Untitled Kanban 1]] — Updated note.
-- 2026-07-27 [[Untitled Kanban 2|Untitled Kanban 2]] — Updated note.
-- 2026-07-27 [[Untitled Kanban|Untitled Kanban]] — Updated note.
-- 2026-07-27 [[SYSTEM-INSTALLATION-STATUS|System Installation Status]] — Updated note.
-- 2026-07-27 [[2026-07-23|Daily Note — 2026-07-23]] — Updated note.
-- 2026-07-27 [[TOOL-GUIDE|Tool Guide — All Installed Tools & Services]] — Updated note.
-- 2026-07-27 [[Untitled Kanban 3|Untitled Kanban 3]] — Updated note.
-- 2026-07-27 [[Excalidraw/Drawing 2026-07-27 17.20.03.excalidraw|Drawing 2026-07-27 17.20.03.excalidraw]] — Updated note.
-- 2026-07-27 [[Excalidraw/Untitled Kanban|Untitled Kanban]] — Updated note.
+* Claude Code, JCode, MiMo Code, and OpenAI Codex are related concepts, all being types of code or coding systems.
+* Freebuff and Grok are distinct concepts, with Grok potentially being related to understanding or comprehending code.
+* Hermes Agent and Owl-Agent are separate entities, possibly related to AI or automated systems.
+* OpenCode is a concept that may be connected to the other coding systems.
+* Wikilinks are used for cross-referencing pages in the vault, using Obsidian syntax, enabling connections between concepts like Claude Code, Freebuff, and Grok.
+
+## Key Takeaways
+- Knowledge is compiled dynamically on Cloudflare edge.
+- Vault references are maintained via git webhook cron trigger.
