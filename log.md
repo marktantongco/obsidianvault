@@ -764,3 +764,4 @@ _Compressed from ~740 individual entries. Each count represents the number of sy
 - [2026-08-03T11:47:05+08:00] QUERY query='what causes kiro 403' result_pages=1 mode=normal escalated=false
 - [2026-08-03T11:47:05+08:00] QUERY query='freebuff memory' result_pages=1 mode=normal escalated=false
 - [2026-08-03T11:52:09+08:00] WIKI-UPDATE page=Kiro-CLI-Pool-Proxy-Debug reason='Cybx PR #7 status verified: OPEN/mergeable, no reviews; action: request review'
+- [2026-08-03T11:55:18+08:00] QUERY query='multi-hop: Kiro-CLI-Pool-Proxy-Debug to archived concepts/Freebuff' result_pages=6 mode=normal escalated=true hops=3
