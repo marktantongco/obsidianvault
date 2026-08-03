@@ -7,7 +7,7 @@ tags:
   - debugging
   - session
 created: 2026-08-03T12:00:00+08:00
-updated: 2026-08-03T13:00:00+08:00
+updated: 2026-08-03T12:15:00+08:00
 category: skill
 aliases:
   - kiro-pool-proxy
@@ -83,7 +83,15 @@ and `proxy/anthropic.go` (call sites).
 **Verification:** `echo "2+2" | kiro-cli chat` → `"2 + 2 = 4"` with credits
 shown. Chat works end-to-end through the pool-proxy. The same fix was ported
 to **Cybx-GateawayQue** (which has the identical profileArn bug) as
-[PR #7](https://github.com/cybha22/Cybx-GateawayQue/pull/7).
+[PR #7](https://github.com/cybha22/Cybx-GateawayQue/pull/7)
+("fix: inject fallback profileArn for Builder-ID/OIDC accounts").
+
+**PR #7 status (verified 2026-08-03 via GitHub API):** **OPEN** and
+**mergeable** — 2 files changed (+50): `Backend/proxy/kiro_api.go`
+(`fallbackProfileArn` + `isValidRegion`) and `Backend/proxy/kiro.go`
+(injection after `ResolveProfileArn` fails at ~line 488). No reviews or
+comments yet; not merged, not closed. Action needed: request review from
+`cybha22` / maintainers to land it.
 
 ## Operational notes
 

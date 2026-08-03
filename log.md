@@ -761,3 +761,6 @@ _Compressed from ~740 individual entries. Each count represents the number of sy
 - [[05_OBSERVABILITY/index|Observability]] — System monitoring
 - [2026-08-03T11:38:30+08:00] WIKI-AGENT agent=opencode query='freebuff/proxy work' sessions_searched=9 sessions_ingested=6 pages_created=2 pages_updated=0
 - [2026-08-03T11:44:09+08:00] WIKI-AGENT agent=opencode query='kiro profileArn fix follow-through' sessions_searched=8 sessions_ingested=1 pages_created=0 pages_updated=1
+- [2026-08-03T11:47:05+08:00] QUERY query='what causes kiro 403' result_pages=1 mode=normal escalated=false
+- [2026-08-03T11:47:05+08:00] QUERY query='freebuff memory' result_pages=1 mode=normal escalated=false
+- [2026-08-03T11:52:09+08:00] WIKI-UPDATE page=Kiro-CLI-Pool-Proxy-Debug reason='Cybx PR #7 status verified: OPEN/mergeable, no reviews; action: request review'
