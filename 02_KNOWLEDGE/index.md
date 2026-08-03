@@ -33,6 +33,11 @@ This bucket holds the vault's durable knowledge — compiled concepts, research 
 - [[synthesis/agentic-stack-obsidian-wiki-performance]] — System performance assessment
 - [[synthesis/opencode-freehive-integration]] — FreeHive provider integration
 
+### React Performance Research (2026)
+- [[React-Performance-Optimization-2026]] — Top 5 React perf optimizations for 2026 (multi-provider research)
+- [[React-Performance-Patterns]] — Rendering strategies & performance patterns
+- [[React-Server-Components-2026]] — RSC in 2026: async components, progressive hydration, bundle reduction
+
 ## Related Buckets
 - [[01_WORK/index|01_WORK]] — Active projects that produce this knowledge
 - [[03_LEARNING/index|03_LEARNING]] — Courses and tutorials

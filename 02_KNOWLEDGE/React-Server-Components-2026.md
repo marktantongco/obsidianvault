@@ -29,7 +29,7 @@ React Server Components (RSC) allow rendering components on the server without s
 4. Use Suspense boundaries for streaming
 
 ## Related Notes
-- [[React Performance Patterns]]
+- [[02_KNOWLEDGE/React-Performance-Patterns|React Performance Patterns]]
 - [[Next.js 15 Features]]
 - [[Fullstack Optimization]]
 

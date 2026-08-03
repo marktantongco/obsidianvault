@@ -6,7 +6,7 @@ aliases: [React Optimization, React Perf]
 # React Performance Patterns
 
 ## Rendering Strategies
-- React Server Components (see [[React Server Components in 2026]])
+- React Server Components (see [[02_KNOWLEDGE/React-Server-Components-2026|React Server Components in 2026]])
 - Client-side rendering
 - Static site generation
 - Incremental static regeneration

@@ -40,8 +40,8 @@ Based on multi-provider research (Brave Search + Perplexity Sonar Pro), the top 
 - `useFormStatus` and `useFormState` for server action results
 
 ## Related Notes
-- [[React Server Components in 2026]]
-- [[Synthesis-React-RSC-Performance]]
+- [[02_KNOWLEDGE/React-Server-Components-2026|React Server Components in 2026]]
+- [[synthesis/Synthesis-React-RSC-Performance|Synthesis: React RSC and Performance Patterns]]
 - [[Next.js Performance Patterns]]
 
 ## Pipeline Traceability
