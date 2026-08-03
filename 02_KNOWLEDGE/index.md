@@ -37,3 +37,7 @@ This bucket holds the vault's durable knowledge — compiled concepts, research 
 - [[01_WORK/index|01_WORK]] — Active projects that produce this knowledge
 - [[03_LEARNING/index|03_LEARNING]] — Courses and tutorials
 - [[06_STATE/index|06_STATE]] — Configs implementing these concepts
+
+### Ingested 2026-08-03 (wiki-agent ← opencode history)
+- [[Kiro-CLI-Pool-Proxy-Debug]] — kiro-cli-pool-proxy architecture; 403 root cause = missing profileArn on social-imported accounts.
+- [[Freebuff-CLI-Memory-Optimization]] — 241MB chat-messages.json → ~2GB RSS; history parse expansion is the dominant memory cost.

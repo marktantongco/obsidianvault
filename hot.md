@@ -15,3 +15,7 @@ updated: 2026-08-03T01:00:01.559Z
 ## Key Takeaways
 - Knowledge is compiled dynamically on Cloudflare edge.
 - Vault references are maintained via git webhook cron trigger.
+
+## hot
+- 2026-08-03T11:38:30+08:00 wiki-agent ingested opencode proxy/freebuff history → [[Kiro-CLI-Pool-Proxy-Debug]] + [[Freebuff-CLI-Memory-Optimization]]
+- 2026-08-03T11:44:09+08:00 wiki-agent: kiro profileArn fix VERIFIED in parent session ses_04130bd3... → [[Kiro-CLI-Pool-Proxy-Debug]] updated (InjectProfileArn resolution; Cybx PR #7)

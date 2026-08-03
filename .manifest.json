@@ -2,7 +2,7 @@
   "version": "2026.7.2",
   "vault": "/home/x1/obsidianvault",
   "created": "2026-07-09T10:31:00Z",
-  "last_updated": "2026-07-14T02:50:00Z",
+  "last_updated": "2026-08-03T03:44:08Z",
   "sources": {
     "/home/x1/Downloads/@ai/free-china-proxy-research.md": {
       "ingested_at": "2026-07-09T09:58:13Z",
@@ -346,11 +346,60 @@
       "pages_updated": [
         "concepts/MCP Servers.md"
       ]
+    },
+    "opencode://ses_03c73d3c3ffelzHaSEov3k2G1K": {
+      "ingested_at": "2026-08-03T03:38:30Z",
+      "source_type": "opencode_conversation",
+      "pages_created": [
+        "02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug.md"
+      ],
+      "pages_updated": [
+        "02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug.md"
+      ]
+    },
+    "opencode://ses_03c75d623ffewZf22YfpXIFnRE": {
+      "ingested_at": "2026-08-03T03:38:30Z",
+      "source_type": "opencode_conversation",
+      "pages_created": [
+        "02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug.md"
+      ],
+      "pages_updated": [
+        "02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug.md"
+      ]
+    },
+    "opencode://ses_0416912ceffesYZnRBez48O90t": {
+      "ingested_at": "2026-08-03T03:38:30Z",
+      "source_type": "opencode_conversation",
+      "pages_created": [
+        "02_KNOWLEDGE/Freebuff-CLI-Memory-Optimization.md"
+      ]
+    },
+    "opencode://ses_0418758fcffeNcwiltrAHxJuIy": {
+      "ingested_at": "2026-08-03T03:38:30Z",
+      "source_type": "opencode_conversation",
+      "pages_created": []
+    },
+    "opencode://ses_041eaf50dffeNn7xH70ussueBK": {
+      "ingested_at": "2026-08-03T03:38:30Z",
+      "source_type": "opencode_conversation",
+      "pages_created": []
+    },
+    "opencode://ses_041eb2b0cffeOST7br0N3v9jcc": {
+      "ingested_at": "2026-08-03T03:38:30Z",
+      "source_type": "opencode_conversation",
+      "pages_created": []
+    },
+    "opencode://ses_04130bd30ffer8ksOS4f1Cl33E": {
+      "ingested_at": "2026-08-03T03:44:08Z",
+      "source_type": "opencode_conversation",
+      "pages_updated": [
+        "02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug.md"
+      ]
     }
   },
   "stats": {
-    "total_sources_ingested": 11,
-    "total_pages": 50,
+    "total_sources_ingested": 18,
+    "total_pages": 52,
     "total_projects": 2,
     "last_full_rebuild": null
   }
