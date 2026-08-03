@@ -6,6 +6,9 @@ tags:
   - schema
   - capture
   - pipeline
+relationships:
+  - target: "[[skills/wiki-compound-loop.md]]"
+    type: related_to
 summary: "Frontmatter schema and field definitions for the Poznote capture pipeline. Defines required/optional fields, classification rules, and file naming conventions."
 lifecycle: active
 tier: core
@@ -84,4 +87,4 @@ Files dropped in `~/poznote-inbox/` are processed by the pipeline:
 
 - [[06_STATE/configs/second-brain-skill|Second Brain Skill]] — Companion AI skill configuration
 - [[06_STATE/configs/sync-strategy|Sync Strategy]] — Mobile-desktop sync pipeline
-- [[skills/wiki-compound-loop|Wiki Compound Loop]] — Capture pipeline automation
+- [[skills/[[skills/wiki-compound-loop|wiki-compound-loop]]|Wiki Compound Loop]] — Capture pipeline automation

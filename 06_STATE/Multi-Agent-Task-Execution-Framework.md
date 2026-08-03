@@ -17,6 +17,11 @@ aliases:
   - Agent Orchestration Guide
   - AI Agent Configuration
   - Multi-Agent Development
+relationships:
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
+  - target: "[[concepts/AI Agents.md]]"
+    type: related_to
 keywords:
   - multi-agent AI
   - agent orchestration
@@ -27,7 +32,7 @@ keywords:
 
 # Multi-Agent Task Execution Framework
 
-**Configure AI agents for development, research, and automation workflows**
+**Configure [[concepts/AI Agents|AI agents]] for development, research, and automation workflows**
 
 ---
 
@@ -50,7 +55,7 @@ Multi-agent systems use specialized AI agents working together to solve complex 
 
 ```bash
 # Fetch system prompt
-curl https://raw.githubusercontent.com/marktantongco/opencode-accomplishments/refs/heads/main/profiles/SMP-v5.1
+curl https://raw.githubusercontent.com/marktantongco/[[concepts/OpenCode|opencode]]-accomplishments/refs/heads/main/profiles/SMP-v5.1
 ```
 
 **Verify**: System prompt active ✅

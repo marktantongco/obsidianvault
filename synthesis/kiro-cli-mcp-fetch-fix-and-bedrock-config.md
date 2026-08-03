@@ -3,6 +3,13 @@ title: >-
   Kiro CLI MCP Fetch Repair, Agentic Firewall, and Claude Code Bedrock Setup
 category: synthesis
 tags: [mcp, kiro-cli, aws-bedrock, claude-code, agentic-firewall]
+relationships:
+  - target: "[[concepts/Claude Code.md]]"
+    type: related_to
+  - target: "[[concepts/MCP Servers.md]]"
+    type: related_to
+  - target: "[[concepts/agentic-stack.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-30
 created: 2026-07-30T07:05:00.000Z
@@ -18,7 +25,7 @@ lifecycle: verified
 lifecycle_changed: 2026-07-30
 ---
 
-# Kiro CLI MCP Fetch Repair, Agentic Firewall, and Claude Code Bedrock Setup
+# Kiro CLI MCP Fetch Repair, Agentic Firewall, and [[concepts/Claude Code|Claude Code]] Bedrock Setup
 
 ## Context
 During CLI system operations, three distinct toolchain integration tasks were requested and completed:
@@ -89,6 +96,6 @@ export BEDROCK_API_KEY="<REDACTED-rotate-key>"
 ---
 
 ## Related
-- [[concepts/MCP Servers|MCP Servers]]
+- [[concepts/[[concepts/MCP Servers|MCP Servers]]|MCP Servers]]
 - [[concepts/Claude Code|Claude Code]]
-- [[concepts/agentic-stack|agentic-stack]]
+- [[concepts/[[concepts/agentic-stack|agentic-stack]]|agentic-stack]]

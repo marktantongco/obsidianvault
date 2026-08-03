@@ -8,6 +8,13 @@ tags:
   - mobile
   - conflict
   - backup
+relationships:
+  - target: "[[06_STATE/configs/sync-strategy.md]]"
+    type: related_to
+  - target: "[[concepts/Obsidian Wiki.md]]"
+    type: related_to
+  - target: "[[concepts/LifeOS Algorithm.md]]"
+    type: related_to
 created: 2026-07-21
 updated: 2026-07-21
 summary: >-
@@ -20,11 +27,11 @@ source: opencode
 confidence: 0.85
 ---
 
-# Git Sync & Conflict Strategy
+# Git [[06_STATE/configs/sync-strategy|Sync & Conflict Strategy]]
 
 ## Overview
 
-This skill covers git-based sync for the Obsidian vault across multiple devices. The vault uses [[concepts/Obsidian Wiki|Obsidian Git plugin]] for automated sync on desktop and either the plugin or Termux cron on mobile.
+This skill covers git-based sync for the Obsidian vault across multiple devices. The vault uses [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]|Obsidian Git plugin]] for automated sync on desktop and either the plugin or Termux cron on mobile.
 
 The canonical sync rules are defined in `06_STATE/configs/sync-strategy.md`. This skill provides step-by-step setup and operational commands.
 
@@ -169,7 +176,7 @@ Mobile captures are quick notes (Poznote-style). Desktop edits are deep work.
 - **Rule**: Mobile pushes first → desktop pulls → gets merge conflict
 - **Resolution**: Desktop user reviews conflict markers, keeps both versions if unsure
 - **Prevention**: Mobile uses `_raw/poznote/` for captures (append-only, rarely conflicts). Desktop organizes into final buckets.
-- **Worst case**: Hermes routes to E2 (Codex) for resolution suggestion via LifeOS Algorithm
+- **Worst case**: Hermes routes to E2 (Codex) for resolution suggestion via [[concepts/LifeOS Algorithm|LifeOS Algorithm]]
 
 ---
 

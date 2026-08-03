@@ -2,6 +2,13 @@
 title: Free China Proxy Operations
 category: skills
 tags: [proxy, china, network, glm, deepseek]
+relationships:
+  - target: "[[entities/Owl-Agent]]"
+    type: uses
+  - target: "[[entities/SiliconFlow]]"
+    type: uses
+  - target: "[[entities/Zhipu-GLM.md]]"
+    type: related_to
 sources:
   - /home/x1/Downloads/@ai/free-china-proxy-research.md
   - conversation:2026-07-09
@@ -13,17 +20,12 @@ lifecycle_changed: 2026-07-09
 tier: supporting
 created: 2026-07-09T09:57:44Z
 updated: 2026-07-09T10:44:47Z
-relationships:
-  - target: "[[entities/Owl-Agent]]"
-    type: uses
-  - target: "[[entities/SiliconFlow]]"
-    type: uses
 ---
 
 # Free China Proxy Operations
 
 ## Context
-China AI providers (GLM, MiniMax, DeepSeek, Kimi, SiliconFlow) sometimes need CN egress. Free public China proxies are scarce and flaky.
+China AI providers (GLM, MiniMax, DeepSeek, Kimi, [[entities/SiliconFlow|SiliconFlow]]) sometimes need CN egress. Free public China proxies are scarce and flaky.
 
 ## Finding / Procedure
 1. **Test direct first** — HTTP 200/401 means reachable without proxy.
@@ -38,8 +40,8 @@ China AI providers (GLM, MiniMax, DeepSeek, Kimi, SiliconFlow) sometimes need CN
 - Success 20–40%, latency 1.5–10s, uptime often <24h per IP.
 
 ## Related
-- [[entities/Owl-Agent]]
-- [[entities/Zhipu-GLM]]
+- [[entities/[[entities/Owl-Agent|Owl-Agent]]]]
+- [[entities/[[entities/Zhipu-GLM|Zhipu-GLM]]]]
 - [[entities/SiliconFlow]]
 - [[concepts/multi-agent-obsidian-wiki-synergy]]
 

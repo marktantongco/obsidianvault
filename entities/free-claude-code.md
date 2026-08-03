@@ -7,6 +7,13 @@ tags:
   - codex
   - free-tier
   - uv
+relationships:
+  - target: "[[concepts/FreeHive.md]]"
+    type: related_to
+  - target: "[[concepts/Claude Code.md]]"
+    type: related_to
+  - target: "[[concepts/OpenAI Codex.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-14
   - journal/2026-07-14-system-admin-tool-installs
@@ -30,7 +37,7 @@ updated: 2026-07-21
 
 ## Overview
 
-free-claude-code is an open-source CLI toolset that provides free-tier alternatives to Claude Code and OpenAI Codex. It routes requests through free API tiers and exposes multiple entry points for different use cases.
+free-claude-code is an open-source CLI toolset that provides free-tier alternatives to [[concepts/Claude Code|Claude Code]] and [[concepts/OpenAI Codex|OpenAI Codex]]. It routes requests through free API tiers and exposes multiple entry points for different use cases.
 
 ## Key Facts
 
@@ -68,7 +75,7 @@ fcc-server
 
 ## Related
 
-- [[concepts/FreeHive]] — Primary AI gateway (free-claude-code is an alternative approach)
+- [[concepts/[[concepts/FreeHive|FreeHive]]]] — Primary AI gateway (free-claude-code is an alternative approach)
 - [[entities/ai-wanderer]] — Another free-tier proxy router
 - [[concepts/Claude Code]] — The commercial tool this emulates
 - [[concepts/OpenAI Codex]] — The commercial tool this emulates

@@ -2,6 +2,11 @@
 title: LifeOS SecondBrain Skill Config
 category: state
 tags: [lifeos, second-brain, configuration, skills]
+relationships:
+  - target: "[[references/ai-skills-consolidated-framework.md]]"
+    type: related_to
+  - target: "[[concepts/LifeOS Algorithm.md]]"
+    type: related_to
 lifecycle: draft
 tier: supporting
 ---
@@ -67,7 +72,7 @@ Create a new markdown file in the correct bucket with proper frontmatter.
 Bidirectional sync: push new vault files to LifeOS Memory, pull Memory entries to vault.
 
 ### algorithm_trigger(context)
-Feed a vault entry into the LifeOS Algorithm loop starting at OBSERVE step.
+Feed a vault entry into the [[concepts/LifeOS Algorithm|LifeOS Algorithm]] loop starting at OBSERVE step.
 
 ## Hook Configuration
 
@@ -97,4 +102,4 @@ Feed a vault entry into the LifeOS Algorithm loop starting at OBSERVE step.
 
 - [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Inbox capture pipeline
 - [[06_STATE/configs/sync-strategy|Sync Strategy]] — Mobile-desktop sync configuration
-- [[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework]] — Skill taxonomy
+- [[references/ai-skills-consolidated-framework|[[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework]]]] — Skill taxonomy

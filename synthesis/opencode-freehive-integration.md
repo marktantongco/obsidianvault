@@ -7,6 +7,13 @@ tags:
   - freehive
   - configuration
   - systemd
+relationships:
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
+  - target: "[[concepts/FreeHive.md]]"
+    type: related_to
+  - target: "[[concepts/Claude Code.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-14
 created: 2026-07-14T04:06:00Z
@@ -24,7 +31,7 @@ lifecycle_changed: 2026-07-14
 tier: supporting
 ---
 
-# OpenCode FreeHive Integration
+# [[concepts/OpenCode|OpenCode]] [[concepts/FreeHive|FreeHive]] Integration
 
 ## Context
 
@@ -81,7 +88,7 @@ kill 11964  # then systemctl --user restart freehive.service
 - OpenCode can now switch to any FreeHive-hosted model via its model picker.
 - The service restart loop fix is permanent as long as no other process binds port 7200.
 - Anthropic Claude models will remain unavailable through FreeHive until `claude login` is run to set up OAuth tokens.
-- Other agents (Claude Code, Codex, etc.) can also use FreeHive at `http://127.0.0.1:7200/v1`.
+- Other agents ([[concepts/Claude Code|Claude Code]], Codex, etc.) can also use FreeHive at `http://127.0.0.1:7200/v1`.
 
 ## Related
 

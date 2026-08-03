@@ -9,6 +9,13 @@ tags:
   - network
   - scraping
   - http-client
+relationships:
+  - target: "[[skills/free-china-proxy-ops.md]]"
+    type: related_to
+  - target: "[[skills/multi-agent-vault-wiring.md]]"
+    type: related_to
+  - target: "[[concepts/MiMo Code.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
   - conversation:2026-07-23
@@ -171,16 +178,16 @@ Applied optimizations (v4.2):
 
 ## Related
 
-- [[skills/free-china-proxy-ops]] — China proxy operations skill
+- [[skills/[[skills/free-china-proxy-ops|free-china-proxy-ops]]]] — China proxy operations skill
 - [[SYSTEM-INSTALLATION-STATUS]] — System installation status
 - [[entities/DeepSeek]] — China LLM provider
 - [[entities/SiliconFlow]] — China AI inference hub
 - [[entities/Zhipu-GLM]] — Zhipu AI GLM APIs
-- [[concepts/MiMo Code]] — MiMoCode agent
+- [[concepts/[[concepts/MiMo Code|MiMo Code]]]] — MiMoCode agent
 - [[concepts/OpenCode]] — OpenCode CLI
 - [[concepts/Claude Code]] — Claude Code agent
 - [[concepts/MCP Servers]] — MCP server integration
-- [[concepts/multi-agent-obsidian-wiki-synergy]] — Multi-agent vault wiring
+- [[concepts/multi-agent-obsidian-wiki-synergy]] — [[skills/multi-agent-vault-wiring|Multi-agent vault wiring]]
 
 ## See Also
 

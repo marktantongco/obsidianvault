@@ -11,6 +11,10 @@ category: system
 aliases:
   - System Master Prompt
   - AI Operating Instructions
+relationships:
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
+
 ---
 
 # Persistent System Operating Instructions v5.1
@@ -184,6 +188,6 @@ All outputs must pass:
 
 ## References
 
-- Original: https://raw.githubusercontent.com/marktantongco/opencode-accomplishments/refs/heads/main/profiles/SMP-v5.1
+- Original: https://raw.githubusercontent.com/marktantongco/[[concepts/OpenCode|opencode]]-accomplishments/refs/heads/main/profiles/SMP-v5.1
 - Created: 2026-08-01
 - Version: 5.1

@@ -1,6 +1,13 @@
 ---
 title: Proxy Dashboard
 tags: [dashboard, proxy, monitoring, status]
+relationships:
+  - target: "[[concepts/Freebuff.md]]"
+    type: related_to
+  - target: "[[concepts/JCode.md]]"
+    type: related_to
+  - target: "[[concepts/MiMo Code.md]]"
+    type: related_to
 type: dashboard
 created: 2026-07-24
 updated: 2026-07-24
@@ -16,7 +23,7 @@ tier: core
 
 Run in your terminal for live status:
 ```bash
-./freebuff.sh status     # Shows all 6 services
+./[[concepts/Freebuff|freebuff]].sh status     # Shows all 6 services
 ./freebuff.sh smoke      # Tests all endpoints
 ```
 
@@ -27,7 +34,7 @@ Run in your terminal for live status:
 | 1 | **codebuff-proxy** | `:3211` | AI Proxy | Bun + Convex | `./freebuff.sh start codebuff-proxy` |
 | 2 | **Freebuff2API** | `:8080` | API Gateway | Go | `./freebuff.sh start freebuff2api` |
 | 3 | **freebuff-proxy** | `:1455` | AI Proxy | Go | `./freebuff.sh start freebuff-proxy-ff` |
-| 4 | **jcode-daemon** | `:1456` | AI Agent | Go (jcode) | `./freebuff.sh start jcode-daemon` |
+| 4 | **[[concepts/JCode|jcode]]-daemon** | `:1456` | AI Agent | Go (jcode) | `./freebuff.sh start jcode-daemon` |
 | 5 | **jcode-proxy** | `:8088` | API Bridge | Go | `./freebuff.sh start jcode-proxy` |
 | 6 | **mimo-unified** | `:8877` | AI Proxy | Python | `./freebuff.sh start mimo-unified` |
 
@@ -134,7 +141,7 @@ fb:stop-jcode-daemon    fb:stop-jcode-proxy
 
 - [[concepts/Freebuff]] — Freebuff proxy manager
 - [[concepts/JCode]] — jcode ecosystem (daemon, proxy, web)
-- [[concepts/MiMo Code]] — MiMo CLI tool
+- [[concepts/[[concepts/MiMo Code|MiMo Code]]]] — MiMo CLI tool
 - [[concepts/OpenCode]] — OpenCode CLI agent
 - [[concepts/Hermes Agent]] — Hermes orchestrator
 - [[hot]] — Recent activity log

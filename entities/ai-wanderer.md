@@ -7,6 +7,13 @@ tags:
   - proxy
   - free-tier
   - router
+relationships:
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
+  - target: "[[concepts/FreeHive.md]]"
+    type: related_to
+  - target: "[[concepts/AI Agents.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-14
   - journal/2026-07-14-system-admin-tool-installs
@@ -30,9 +37,9 @@ updated: 2026-07-21
 
 ## Overview
 
-ai-wanderer (command: `ai-free-swap`) is a free-tier proxy router that provides an OpenAI/Anthropic-compatible API endpoint with automatic provider fallback. It sits between AI agents and multiple free-tier AI providers, routing requests to whichever provider has available quota.
+ai-wanderer (command: `ai-free-swap`) is a free-tier proxy router that provides an OpenAI/Anthropic-compatible API endpoint with automatic provider fallback. It sits between [[concepts/AI Agents|AI agents]] and multiple free-tier AI providers, routing requests to whichever provider has available quota.
 
-On this system, it is configured as a **secondary fallback** behind the primary [[concepts/FreeHive|FreeHive AI Gateway]].
+On this system, it is configured as a **secondary fallback** behind the primary [[concepts/[[concepts/FreeHive|FreeHive]]|FreeHive AI Gateway]].
 
 ## Key Facts
 
@@ -49,7 +56,7 @@ On this system, it is configured as a **secondary fallback** behind the primary 
 ## Architecture
 
 ```
-AI Agent (OpenCode, Claude, etc.)
+AI Agent ([[concepts/OpenCode|OpenCode]], Claude, etc.)
         │
         ▼
   FreeHive Gateway (:7200)        ← Primary

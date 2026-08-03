@@ -2,6 +2,15 @@
 title: Multi-Agent Vault Wiring
 category: skills
 tags: [obsidian, agents, symlink]
+relationships:
+  - target: "[[concepts/multi-agent-obsidian-wiki-synergy]]"
+    type: implements
+  - target: "[[concepts/Obsidian Wiki]]"
+    type: uses
+  - target: "[[entities/GPaste.md]]"
+    type: related_to
+  - target: "[[concepts/AI Agents.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
   - https://github.com/Ar9av/obsidian-wiki
@@ -13,11 +22,6 @@ lifecycle_changed: 2026-07-09
 tier: core
 created: 2026-07-09T09:57:44Z
 updated: 2026-07-09T10:44:46Z
-relationships:
-  - target: "[[concepts/multi-agent-obsidian-wiki-synergy]]"
-    type: implements
-  - target: "[[concepts/Obsidian Wiki]]"
-    type: uses
 ---
 
 # Multi-Agent Vault Wiring
@@ -40,7 +44,7 @@ relationships:
 - Do not fork a second vault per agent
 
 ## Related
-- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[concepts/Obsidian Wiki]] · [[concepts/AI Agents]]
+- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]] · [[concepts/[[concepts/AI Agents|AI Agents]]]]
 
 ## Session notes (promoted 2026-07-09)
 
@@ -51,7 +55,7 @@ Point every CLI at **one** vault (`/home/x1/obsidianvault`) via `~/.obsidian-wik
 
 ## Gotchas
 - `obsidian-wiki setup` can thin global config — re-add `OBSIDIAN_WIKI_REPO` / `OBSIDIAN_SOURCES_DIR` after setup.
-- Setting `enabled-extensions` to only GPaste **disables Ubuntu Dock** — always keep `ubuntu-dock@ubuntu.com`.
+- Setting `enabled-extensions` to only [[entities/GPaste|GPaste]] **disables Ubuntu Dock** — always keep `ubuntu-dock@ubuntu.com`.
 - Prefer symlink skills over copies so upgrades propagate.
 
 ## Promote

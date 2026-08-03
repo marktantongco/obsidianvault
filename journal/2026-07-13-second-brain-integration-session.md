@@ -15,6 +15,13 @@ tags:
   - grok
   - antigravity
   - mimo
+relationships:
+  - target: "[[06_STATE/configs/sync-strategy.md]]"
+    type: related_to
+  - target: "[[synthesis/agentic-stack-obsidian-wiki-performance.md]]"
+    type: related_to
+  - target: "[[projects/AI-Second-Brain.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-13
 created: 2026-07-13T13:30:00Z
@@ -65,7 +72,7 @@ Task arrives → classify tier → route:
 3. **Integration audit** — Compared MiMo output vs detailed prompt spec. 5 categories: KEEP, OVERRIDE, MERGE, CREATE NEW, CONFLICT.
 4. **Script rewrite** — Built dependency chain: lifeos_client → hermes_router → hermes (bash) → poznote_pipeline → poznote_watch.sh
 5. **Vault restructure** — Renamed to numbered folders (`01_WORK/`, `02_KNOWLEDGE/`, etc.) for correct sort order
-6. **Config fixes** — obsidian-git (Hermes author, rebase), sync-strategy (cadence table, conflict rules), frontmatter (added confidence, source)
+6. **Config fixes** — obsidian-git (Hermes author, rebase), [[06_STATE/configs/sync-strategy|sync-strategy]] (cadence table, conflict rules), frontmatter (added confidence, source)
 7. **Multi-agent deployment** — All agents wired into hermes_router for automatic tier-based dispatch
 
 ## Key Takeaways
@@ -126,5 +133,5 @@ obsidianvault/
 - [[concepts/Grok]]
 - [[concepts/MiMo Code]]
 - [[concepts/multi-agent-obsidian-wiki-synergy]]
-- [[projects/AI-Second-Brain]]
-- [[synthesis/agentic-stack-obsidian-wiki-performance]]
+- [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]]]
+- [[synthesis/[[synthesis/agentic-stack-obsidian-wiki-performance|agentic-stack-obsidian-wiki-performance]]]]

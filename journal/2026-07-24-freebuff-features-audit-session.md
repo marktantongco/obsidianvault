@@ -14,6 +14,11 @@ tags:
   - wikilinks
   - pagination
   - gestures
+relationships:
+  - target: "[[skills/multi-agent-vault-wiring.md]]"
+    type: related_to
+  - target: "[[concepts/Obsidian Wiki.md]]"
+    type: related_to
 created: 2026-07-24T05:00:00Z
 updated: 2026-07-24T05:30:00Z
 summary: >-
@@ -83,5 +88,5 @@ tier: core
 
 - [[journal/index]]
 - [[tags/index]]
-- [[concepts/Obsidian Wiki]]
-- [[skills/multi-agent-vault-wiring]]
+- [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]]
+- [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]]

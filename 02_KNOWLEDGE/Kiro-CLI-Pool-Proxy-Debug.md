@@ -12,13 +12,24 @@ category: skill
 aliases:
   - kiro-pool-proxy
   - kiro-cli-pool-proxy 403
+relationships:
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
+  - target: "[[concepts/MCP Servers.md]]"
+    type: related_to
+  - target: "[[concepts/Freebuff]]"
+    type: related_to
+  - target: "[[concepts/MiMo Code]]"
+    type: related_to
+  - target: "[[concepts/JCode]]"
+    type: related_to
 ---
 
 # Kiro CLI Pool-Proxy — Architecture & 403 Debug
 
 Findings from reverse-engineering the `kiro-cli-pool-proxy` Go project at
 `/home/ubuntu/kiro-cli-pool-proxy/` (running on `127.0.0.1:5000`), driven by
-`kiro-cli chat` failing with **403 AccessDenied from AWS** after MCP servers
+`kiro-cli chat` failing with **403 AccessDenied from AWS** after [[concepts/MCP Servers|MCP servers]]
 load.
 
 ## Architecture
@@ -105,7 +116,13 @@ comments yet; not merged, not closed. Action needed: request review from
 
 ## Sources
 
-- `opencode://ses_03c73d3c3ffelzHaSEov3k2G1K` (Reverse engineer pool-proxy)
+- `[[concepts/OpenCode|opencode]]://ses_03c73d3c3ffelzHaSEov3k2G1K` (Reverse engineer pool-proxy)
 - `opencode://ses_03c75d623ffewZf22YfpXIFnRE` (Reverse engineer kiro proxy)
 - `opencode://ses_04130bd30ffer8ksOS4f1Cl33E` (OpenCode debug config — fix &
   verification)
+
+## Related
+
+- [[concepts/Freebuff]] — Freebuff as unified proxy manager (this proxy ecosystem)
+- [[concepts/MiMo Code]] — Co-located agent/concept hub in the same knowledge graph
+- [[concepts/JCode]] — Proxy manager ecosystem context

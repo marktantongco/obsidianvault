@@ -6,6 +6,9 @@ tags:
   - clipboard
   - gnome
   - wayland
+relationships:
+  - target: "[[skills/gpaste-gnome-wayland.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
   - /home/x1/Downloads/@ai/free-china-proxy-research.md
@@ -49,7 +52,7 @@ sudo apt install gpaste-2 gnome-shell-extension-gpaste
 ```
 
 ### Custom Shortcut (Super+Shift+V)
-Per [[skills/gpaste-gnome-wayland|GPaste on GNOME Wayland]]:
+Per [[skills/gpaste-gnome-wayland|[[skills/gpaste-gnome-wayland|GPaste on GNOME Wayland]]]]:
 
 1. GNOME Settings → Keyboard → View and Customize Shortcuts
 2. Custom Shortcuts → Add

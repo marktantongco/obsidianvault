@@ -12,9 +12,13 @@ category: skill
 aliases:
   - freebuff memory
   - freebuff cli rss
+relationships:
+  - target: "[[concepts/Freebuff.md]]"
+    type: related_to
+
 ---
 
-# Freebuff CLI — Memory Optimization & Resource Limits
+# [[concepts/Freebuff|Freebuff]] CLI — Memory Optimization & Resource Limits
 
 Research into the freebuff CLI (the CodebuffAI agent at
 `~/.config/manicode/freebuff`, version `0.0.13`) after it was observed using

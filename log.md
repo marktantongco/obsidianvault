@@ -773,3 +773,4 @@ _Compressed from ~740 individual entries. Each count represents the number of sy
 - [2026-08-03T11:52:09+08:00] WIKI-UPDATE page=Kiro-CLI-Pool-Proxy-Debug reason='Cybx PR #7 status verified: OPEN/mergeable, no reviews; action: request review'
 - [2026-08-03T11:55:18+08:00] QUERY query='multi-hop: Kiro-CLI-Pool-Proxy-Debug to archived concepts/Freebuff' result_pages=6 mode=normal escalated=true hops=3
 - [2026-08-03T12:30:22+08:00] QUERY query='multi-hop: Kiro-CLI-Pool-Proxy-Debug to concepts/Freebuff (pushed branch)' result_pages=6 mode=normal escalated=true hops=3
+- [2026-08-03T13:17:40+08:00] CROSS_LINK pages_scanned=109 links_added=126 typed_relations_written=126 pages_modified=48 orphans_remaining=0 misc_affinity_updated=0 promotion_candidates=0

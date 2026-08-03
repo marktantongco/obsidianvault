@@ -10,6 +10,14 @@ updated: 2026-08-01T21:19:20+08:00
 category: synthesis
 aliases:
   - AI Prompt Optimization Session
+relationships:
+  - target: "[[06_STATE/Persistent-System-Operating-Instructions-v5.1.md]]"
+    type: related_to
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
+  - target: "[[concepts/AI Agents.md]]"
+    type: related_to
+
 ---
 
 # Prompt Rewriting Session - AI System Instructions
@@ -26,7 +34,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 
 ### 1. Multi-Agent Task Execution Framework
 
-**Original Intent**: Instructions for configuring AI agents with system prompt adoption, multi-agent architecture, skill discovery, and research-first approach.
+**Original Intent**: Instructions for configuring [[concepts/AI Agents|AI agents]] with system prompt adoption, multi-agent architecture, skill discovery, and research-first approach.
 
 **Key Improvements**:
 - Separated into numbered phases for clarity
@@ -43,7 +51,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 
 ### 2. Persistent System Operating Instructions v5.1
 
-**Original**: System Master Prompt (SMP) v5.1 - Agentic workflow with depth
+**Original**: [[06_STATE/Persistent-System-Operating-Instructions-v5.1|System Master Prompt]] (SMP) v5.1 - Agentic workflow with depth
 
 **Key Improvements**:
 - Reorganized into 8 numbered sections for easier reference
@@ -235,7 +243,7 @@ These rewritten prompts serve as:
 
 ## References
 
-- Original SMP v5.1: https://raw.githubusercontent.com/marktantongco/opencode-accomplishments/refs/heads/main/profiles/SMP-v5.1
+- Original SMP v5.1: https://raw.githubusercontent.com/marktantongco/[[concepts/OpenCode|opencode]]-accomplishments/refs/heads/main/profiles/SMP-v5.1
 - Skills.sh: https://skills.sh/trending
 - Session Date: 2026-08-01
 - Duration: ~30 minutes

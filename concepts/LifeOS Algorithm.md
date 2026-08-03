@@ -8,6 +8,11 @@ tags:
   - hermes
   - orchestration
   - tiers
+relationships:
+  - target: "[[06_STATE/configs/second-brain-skill.md]]"
+    type: related_to
+  - target: "[[entities/lifeos-cli.md]]"
+    type: related_to
 created: 2026-07-21
 updated: 2026-07-21
 summary: >-
@@ -59,7 +64,7 @@ Created during the [[journal/2026-07-13-second-brain-integration-session|July 13
 | **hermes_router.py** | `second-brain/scripts/hermes_router.py` | Task classifier + dispatcher. Routes tasks by tier. |
 | **lifeos_client.py** | `second-brain/scripts/lifeos_client.py` | Pulse API client. Connects to LifeOS daemon at port 31337. |
 | **hermes** (bash) | `second-brain/scripts/hermes` | Bash wrapper for CLI invocation. |
-| **Skill config** | `06_STATE/configs/second-brain-skill.md` | Declares triggers, tools, and vault mapping. |
+| **Skill config** | `06_STATE/configs/[[06_STATE/configs/second-brain-skill|second-brain-skill]].md` | Declares triggers, tools, and vault mapping. |
 
 ---
 
@@ -193,7 +198,7 @@ STATE         → 06_STATE/
 
 ---
 
-## LifeOS CLI (Terminal Tool)
+## [[entities/lifeos-cli|LifeOS CLI]] (Terminal Tool)
 
 The `lifeos-cli` tool (v0.21.1) provides terminal access alongside the AI harness skill:
 

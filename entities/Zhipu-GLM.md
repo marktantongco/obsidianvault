@@ -8,6 +8,9 @@ tags:
   - china
   - glm
   - free-tier
+relationships:
+  - target: "[[skills/free-china-proxy-ops.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
   - /home/x1/Downloads/@ai/free-china-proxy-research.md
@@ -40,7 +43,7 @@ Zhipu AI is a leading China AI company behind the GLM (General Language Model) s
 - **Free models**: GLM-4-Flash (text), GLM-4V-Flash (vision) — **permanently free**
 - **Paid models**: GLM-4, GLM-4-Plus, GLM-4-AllTools, GLM-4V
 - **Reachability**: Direct reachable from non-CN networks in most cases
-- **Proxy strategy**: Direct-first per [[skills/free-china-proxy-ops]]
+- **Proxy strategy**: Direct-first per [[skills/[[skills/free-china-proxy-ops|free-china-proxy-ops]]]]
 
 ## Free Tier Details
 

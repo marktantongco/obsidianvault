@@ -1,6 +1,9 @@
 ---
 title: AI Second Brain
 tags: [projects, setup, infrastructure]
+relationships:
+  - target: "[[concepts/agentic-stack.md]]"
+    type: related_to
 type: project
 created: 2026-07-09
 updated: 2026-07-09
@@ -48,7 +51,7 @@ Set up a complete multi-agent AI development environment with shared knowledge b
 ### Unified Memory
 | Component | Location | Status |
 |-----------|----------|--------|
-| agentic-stack | `~/ai-workspace/.agent/` | Created |
+| [[concepts/agentic-stack|agentic-stack]] | `~/ai-workspace/.agent/` | Created |
 | Symlinks | All agents | Linked |
 
 ### Skills

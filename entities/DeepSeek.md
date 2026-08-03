@@ -7,6 +7,11 @@ tags:
   - llm
   - china
   - proxy
+relationships:
+  - target: "[[skills/free-china-proxy-ops.md]]"
+    type: related_to
+  - target: "[[concepts/multi-agent-obsidian-wiki-synergy.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
   - /home/x1/Downloads/@ai/free-china-proxy-research.md
@@ -43,7 +48,7 @@ DeepSeek is a China-based LLM provider known for competitive API pricing and int
 
 ## Proxy Behavior
 
-Per [[skills/free-china-proxy-ops|Free China Proxy Operations]]:
+Per [[skills/free-china-proxy-ops|[[skills/free-china-proxy-ops|Free China Proxy Operations]]]]:
 
 1. **Test direct first** — HTTP 200/401/403 = reachable without proxy
 2. **CN-only proxy pool** — Databay, Geonode CN, ProxyScrape `country=cn`, Proxifly CN
@@ -56,4 +61,4 @@ Per [[skills/free-china-proxy-ops|Free China Proxy Operations]]:
 - [[entities/SiliconFlow]] — China AI inference hub
 - [[entities/Zhipu-GLM]] — Zhipu AI GLM APIs with free Flash tiers
 - [[entities/Owl-Agent]] — Proxy client for CN pool routing
-- [[concepts/multi-agent-obsidian-wiki-synergy]]
+- [[concepts/[[concepts/multi-agent-obsidian-wiki-synergy|multi-agent-obsidian-wiki-synergy]]]]

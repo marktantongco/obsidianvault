@@ -5,6 +5,13 @@ created: 2026-07-09
 updated: 2026-07-21
 status: testing
 tags: [test, workflow, agents]
+relationships:
+  - target: "[[concepts/Freebuff.md]]"
+    type: related_to
+  - target: "[[concepts/Grok.md]]"
+    type: related_to
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
 lifecycle: active
 tier: core
 ---
@@ -18,7 +25,7 @@ Test the complete multi-agent workflow from research to implementation.
 
 The vault now has comprehensive documentation of all 7 agents and their routing through the LifeOS Algorithm. This test plan validates that the actual CLI tools work as documented.
 
-**Current environment**: Freebuff Cloud workspace — does not have local CLI agents installed (OpenCode, Claude, Hermes, etc.).
+**Current environment**: [[concepts/Freebuff|Freebuff]] Cloud workspace — does not have local CLI agents installed ([[concepts/OpenCode|OpenCode]], Claude, Hermes, etc.).
 **Test results below reflect**: The last known state from the local machine (Ubuntu 26.04, Intel HD 520, i5-6200U).
 
 ---
@@ -83,7 +90,7 @@ The vault now has comprehensive documentation of all 7 agents and their routing 
 | **Expected** | Task flows through agents, results saved to wiki |
 | **Status** | ⏳ **NOT RUN** |
 | **Context** | The full handoff pipeline is architected in `hermes_router.py` with the LifeOS Algorithm E1→E5 routing matrix. |
-| **Blockers** | Requires Tests 3–5 to complete first. Additionally, Grok and Antigravity are not yet wired into hermes_router dispatch (Claude Code currently handles both E4 and E5 tiers). |
+| **Blockers** | Requires Tests 3–5 to complete first. Additionally, [[concepts/Grok|Grok]] and Antigravity are not yet wired into hermes_router dispatch (Claude Code currently handles both E4 and E5 tiers). |
 
 ---
 

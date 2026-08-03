@@ -9,6 +9,13 @@ tags:
   - free-ai
   - docker
   - gdm
+relationships:
+  - target: "[[entities/GPaste.md]]"
+    type: related_to
+  - target: "[[entities/free-claude-code.md]]"
+    type: related_to
+  - target: "[[entities/lifeos-cli.md]]"
+    type: related_to
 sources:
   - "default project session (2026-07-14)"
 created: 2026-07-14
@@ -66,7 +73,7 @@ tier: core
 - **Needs `claude login`** — auth not yet configured
 - Two providers added to opencode.json: `freehive` (Anthropic) + `freehive-oai` (OpenAI)
 
-### lifeos-cli
+### [[entities/lifeos-cli|lifeos-cli]]
 - v0.21.1 via `uv tool install --upgrade lifeos-cli`
 - SQLite DB at `~/.local/share/lifeos/lifeos.db` (632KB)
 - Timezone Asia/Manila
@@ -79,7 +86,7 @@ tier: core
 - OpenAI/Anthropic-compatible free-tier proxy router with automatic provider fallback
 - Command: `ai-free-swap`
 
-### free-claude-code
+### [[entities/free-claude-code|free-claude-code]]
 - Via `uv tool install git+https://github.com/Alishahryar1/free-claude-code.git`
 - 6 executables: `fcc-claude`, `fcc-codex`, `fcc-init`, `fcc-pi`, `fcc-server`, `free-claude-code`
 
@@ -118,4 +125,4 @@ tier: core
 - [[concepts/MCP Servers]]
 - [[concepts/FreeHive]]
 - [[concepts/OpenCode]]
-- [[skills/gpaste-gnome-wayland]]
+- [[skills/[[entities/GPaste|gpaste]]-gnome-wayland]]

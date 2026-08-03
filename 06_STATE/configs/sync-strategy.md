@@ -1,6 +1,11 @@
 ---
 title: Sync & Conflict Strategy
 tags: [sync, git, conflict, strategy]
+relationships:
+  - target: "[[skills/mobile-sync-termux.md]]"
+    type: related_to
+  - target: "[[skills/git-sync-strategy.md]]"
+    type: related_to
 lifecycle: active
 tier: supporting
 ---
@@ -40,6 +45,6 @@ Mobile captures are quick notes (Poznote-style). Desktop edits are deep work.
 
 ## Related
 
-- [[skills/mobile-sync-termux|Mobile Sync Termux]] — Termux-based sync setup
+- [[skills/[[skills/mobile-sync-termux|mobile-sync-termux]]|Mobile Sync Termux]] — Termux-based sync setup
 - [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Inbox capture workflow
-- [[skills/git-sync-strategy|Git Sync Strategy]] — Commit and push rules
+- [[skills/git-sync-strategy|[[skills/git-sync-strategy|Git Sync Strategy]]]] — Commit and push rules

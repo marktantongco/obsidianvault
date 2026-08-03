@@ -2,6 +2,13 @@
 title: Session 2026-07-09 Multi-Agent Wiki Compound
 category: journal
 tags: [session, wiki, agents]
+relationships:
+  - target: "[[entities/GPaste.md]]"
+    type: related_to
+  - target: "[[entities/Owl-Agent.md]]"
+    type: related_to
+  - target: "[[entities/CopyQ.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
 summary: Setup refresh, @ai ingest, multi-agent capture; history sources empty on disk.
@@ -19,8 +26,8 @@ updated: 2026-07-09T09:58:13Z
 *Session captured: 2026-07-09*
 
 ## Topics Covered
-- Free China proxy + owl-agent hardening
-- GPaste vs CopyQ on GNOME Wayland
+- Free China proxy + [[entities/Owl-Agent|owl-agent]] hardening
+- [[entities/GPaste|GPaste]] vs [[entities/CopyQ|CopyQ]] on GNOME Wayland
 - Ar9av obsidian-wiki install and multi-agent vault wiring
 - System performance assessment and compound ingest
 

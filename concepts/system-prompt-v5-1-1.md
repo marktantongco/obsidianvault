@@ -7,6 +7,13 @@ tags:
   - agents
   - workflow
   - quality-gates
+relationships:
+  - target: "[[06_STATE/Persistent-System-Operating-Instructions-v5.1.md]]"
+    type: related_to
+  - target: "[[synthesis/agentic-stack-obsidian-wiki-performance.md]]"
+    type: related_to
+  - target: "[[projects/AI-Second-Brain.md]]"
+    type: related_to
 created: 2026-07-13
 updated: 2026-07-21
 summary: >-
@@ -23,7 +30,7 @@ confidence: 0.9
 
 ## Overview
 
-The System Master Prompt v5.1.1 is the unified instruction set that governs all agents in the multi-agent AI development environment. Created during the [[journal/2026-07-13-second-brain-integration-session|July 13 session]] by OpenCode, it replaces v5.1's open-ended *"be wise"* guidance with **negative constraints** — explicitly forbidding behaviors rather than encouraging good ones — creating harder boundaries in latent space.
+The [[06_STATE/Persistent-System-Operating-Instructions-v5.1|System Master Prompt]] v5.1.1 is the unified instruction set that governs all agents in the multi-agent AI development environment. Created during the [[journal/2026-07-13-second-brain-integration-session|July 13 session]] by OpenCode, it replaces v5.1's open-ended *"be wise"* guidance with **negative constraints** — explicitly forbidding behaviors rather than encouraging good ones — creating harder boundaries in latent space.
 
 **Deployed at:** Root of `AGENTS.md` in the canonical vault — every agent reads it at session start.
 
@@ -186,5 +193,5 @@ Direct. Conversational (one person). Confident + provisional. Short sentences. P
 - [[concepts/AI Agents]] — The agents governed by this prompt
 - [[concepts/LifeOS Algorithm]] — Task routing based on cognitive tier matching
 - [[concepts/Hermes Agent]] — Orchestrator that applies prompt routing
-- [[projects/AI-Second-Brain]] — Project context
-- [[synthesis/agentic-stack-obsidian-wiki-performance]] — System assessment
+- [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]]] — Project context
+- [[synthesis/[[synthesis/agentic-stack-obsidian-wiki-performance|agentic-stack-obsidian-wiki-performance]]]] — System assessment

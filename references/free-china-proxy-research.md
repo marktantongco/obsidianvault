@@ -2,6 +2,13 @@
 title: Free China Proxy Research (source)
 category: references
 tags: [proxy, china, research]
+relationships:
+  - target: "[[entities/SiliconFlow.md]]"
+    type: related_to
+  - target: "[[entities/Zhipu-GLM.md]]"
+    type: related_to
+  - target: "[[skills/free-china-proxy-ops.md]]"
+    type: related_to
 sources:
   - /home/x1/Downloads/@ai/free-china-proxy-research.md
 summary: Source research on free CN proxies for GLM/MiniMax/DeepSeek; hybrid free+paid recommendation.
@@ -28,4 +35,4 @@ Free vs paid China proxy landscape for OrcaFlow-style China AI API access.
 - Prefer direct; only proxy blocked providers; never global HTTP_PROXY.
 
 ## Related
-- [[skills/free-china-proxy-ops]] · [[entities/SiliconFlow]] · [[entities/Zhipu-GLM]]
+- [[skills/[[skills/free-china-proxy-ops|free-china-proxy-ops]]]] · [[entities/[[entities/SiliconFlow|SiliconFlow]]]] · [[entities/[[entities/Zhipu-GLM|Zhipu-GLM]]]]

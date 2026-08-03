@@ -8,6 +8,13 @@ tags:
   - obsidian
   - classification
   - workflow
+relationships:
+  - target: "[[06_STATE/configs/sync-strategy.md]]"
+    type: related_to
+  - target: "[[06_STATE/configs/poznote-capture-schema.md]]"
+    type: related_to
+  - target: "[[06_STATE/configs/second-brain-skill.md]]"
+    type: related_to
 created: 2026-07-21
 updated: 2026-07-21
 summary: >-
@@ -173,7 +180,7 @@ After pipeline processing, changes are committed to git:
 
 ### Conflict Handling
 
-Per the [[06_STATE/configs/sync-strategy|sync strategy config]]:
+Per the [[06_STATE/configs/[[06_STATE/configs/sync-strategy|sync-strategy]]|sync strategy config]]:
 
 - **Frontmatter conflicts** → Merge keys (union). `created` keeps earliest. `updated` keeps latest.
 - **Body conflicts** → Insert markers. Do not auto-resolve. Flag for manual review.
@@ -202,9 +209,9 @@ Each session starts by querying knowledge compiled from previous captures — th
 
 ## Related
 
-- [[06_STATE/configs/poznote-capture-schema]] — The frontmatter schema definition
+- [[06_STATE/configs/[[06_STATE/configs/poznote-capture-schema|poznote-capture-schema]]]] — The frontmatter schema definition
 - [[concepts/LifeOS Algorithm]] — Task routing that integrates with pipeline
 - [[06_STATE/configs/sync-strategy]] — Git merge and conflict rules
-- [[06_STATE/configs/second-brain-skill]] — Hook config linking pipeline to LifeOS
+- [[06_STATE/configs/[[06_STATE/configs/second-brain-skill|second-brain-skill]]]] — Hook config linking pipeline to LifeOS
 - [[concepts/Obsidian Wiki]] — The vault structure receiving captures
 - [[synthesis/agentic-stack-obsidian-wiki-performance]] — The capture loop context

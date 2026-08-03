@@ -8,6 +8,13 @@ tags:
   - versions
   - tracking
   - changelog
+relationships:
+  - target: "[[entities/free-claude-code.md]]"
+    type: related_to
+  - target: "[[entities/lifeos-cli.md]]"
+    type: related_to
+  - target: "[[entities/p2d-duck.md]]"
+    type: related_to
 lifecycle: active
 tier: supporting
 ---
@@ -47,10 +54,10 @@ Single-page reference for all agent and tool versions in the multi-agent AI deve
 
 | Tool | Version | Installed | Install Method | Command(s) |
 |------|---------|-----------|----------------|------------|
-| [[entities/lifeos-cli|lifeos-cli]] | v0.21.1 | 2026-07-14 | `uv tool install --upgrade lifeos-cli` | `lifeos` |
+| [[entities/[[entities/lifeos-cli|lifeos-cli]]|lifeos-cli]] | v0.21.1 | 2026-07-14 | `uv tool install --upgrade lifeos-cli` | `lifeos` |
 | [[entities/ai-wanderer|ai-wanderer]] | v0.2.0 | 2026-07-14 | `pipx install` from `github.com/sshnaidm/ai-wanderer` | `ai-free-swap` |
-| [[entities/p2d-duck|p2d-duck]] | v1.3.1 | 2026-07-14 | `pipx install p2d-duck` | `duck-ai`, `p2d-duck` |
-| [[entities/free-claude-code|free-claude-code]] | — | 2026-07-14 | `uv tool install git+...` | `fcc-claude`, `fcc-codex`, `fcc-init`, `fcc-pi`, `fcc-server` |
+| [[entities/[[entities/p2d-duck|p2d-duck]]|p2d-duck]] | v1.3.1 | 2026-07-14 | `pipx install p2d-duck` | `duck-ai`, `p2d-duck` |
+| [[entities/[[entities/free-claude-code|free-claude-code]]|free-claude-code]] | — | 2026-07-14 | `uv tool install git+...` | `fcc-claude`, `fcc-codex`, `fcc-init`, `fcc-pi`, `fcc-server` |
 
 ### AI Harness Skills
 

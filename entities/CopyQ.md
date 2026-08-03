@@ -6,6 +6,9 @@ tags:
   - clipboard
   - qt
   - wayland
+relationships:
+  - target: "[[skills/gpaste-gnome-wayland.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
   - /home/x1/Downloads/@ai/free-china-proxy-research.md
@@ -35,7 +38,7 @@ CopyQ is an advanced Qt-based clipboard manager with tabbed clipboard history, s
 
 - **Type**: Qt clipboard manager
 - **Install method**: Likely via apt (`apt install copyq`)
-- **Autostart**: **Disabled** — removed in favor of GPaste on GNOME Wayland
+- **Autostart**: **Disabled** — removed in favor of [[skills/gpaste-gnome-wayland|GPaste on GNOME Wayland]]
 - **Status**: Installed but inactive
 - **Replacement**: [[entities/GPaste]] (gpaste-2) preferred on Wayland
 

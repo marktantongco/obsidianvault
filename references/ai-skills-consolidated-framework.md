@@ -2,6 +2,13 @@
 title: AI Skills Consolidated Framework (source)
 category: references
 tags: [skills, frameworks, agents]
+relationships:
+  - target: "[[skills/multi-agent-vault-wiring.md]]"
+    type: related_to
+  - target: "[[concepts/Obsidian Wiki.md]]"
+    type: related_to
+  - target: "[[concepts/AI Agents.md]]"
+    type: related_to
 sources:
   - /home/x1/Downloads/@ai/ai-skills-consolidated-framework.md
   - /home/x1/Downloads/@ai/consolidated-framework_SKILL.md
@@ -26,4 +33,4 @@ Merged ~140 raw skill entries into 67 unique skills (strategy, design, engineeri
 - Use as a catalogue when adding agent skills; prefer wiki `skills/` pages for local procedures.
 
 ## Related
-- [[concepts/AI Agents]] · [[skills/multi-agent-vault-wiring]] · [[concepts/Obsidian Wiki]]
+- [[concepts/[[concepts/AI Agents|AI Agents]]]] · [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]] · [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]]

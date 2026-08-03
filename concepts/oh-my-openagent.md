@@ -7,6 +7,9 @@ tags:
   - agents
   - injection
   - configuration
+relationships:
+  - target: "[[projects/AI-Second-Brain.md]]"
+    type: related_to
 created: 2026-07-21
 updated: 2026-07-21
 summary: >-
@@ -25,7 +28,7 @@ confidence: 0.8
 
 **oh-my-openagent** is a plugin system that programmatically injects MCP (Model Context Protocol) server definitions into AI agents. Rather than each agent manually listing MCP servers in its config file, the plugin reads a centralized `.mcp.json` and injects them at load time. This means MCPs are added or removed in one place and propagate to all agents automatically.
 
-Installed as part of the [[projects/AI-Second-Brain|AI Second Brain]] setup, it sits between the agent config layer and the MCP runtime.
+Installed as part of the [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]|AI Second Brain]] setup, it sits between the agent config layer and the MCP runtime.
 
 ---
 

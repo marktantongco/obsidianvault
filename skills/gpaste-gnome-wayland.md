@@ -2,6 +2,13 @@
 title: GPaste on GNOME Wayland
 category: skills
 tags: [gpaste, gnome, wayland, clipboard, ubuntu]
+relationships:
+  - target: "[[entities/GPaste]]"
+    type: implements
+  - target: "[[entities/CopyQ]]"
+    type: replaces
+  - target: "[[concepts/Development Workflow.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
 summary: Install and dock-pin GPaste on Ubuntu GNOME Wayland; custom Super+Shift+V; disable CopyQ.
@@ -12,14 +19,9 @@ lifecycle_changed: 2026-07-09
 tier: supporting
 created: 2026-07-09T09:57:44Z
 updated: 2026-07-09T10:44:46Z
-relationships:
-  - target: "[[entities/GPaste]]"
-    type: implements
-  - target: "[[entities/CopyQ]]"
-    type: replaces
 ---
 
-# GPaste on GNOME Wayland
+# [[entities/GPaste|GPaste]] on GNOME Wayland
 
 ## Install
 ```bash
@@ -38,7 +40,7 @@ systemctl --user enable --now org.gnome.GPaste.service
 | Super+Shift+H | Preferences |
 
 ## Related
-- [[entities/GPaste]] · [[entities/CopyQ]] · [[concepts/Development Workflow]]
+- [[entities/GPaste]] · [[entities/[[entities/CopyQ|CopyQ]]]] · [[concepts/[[concepts/Development Workflow|Development Workflow]]]]
 
 ## Session notes (promoted 2026-07-09)
 

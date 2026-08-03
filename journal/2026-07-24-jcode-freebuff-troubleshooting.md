@@ -2,6 +2,13 @@
 title: JCode and Freebuff Troubleshooting Session
 category: journal
 tags: [troubleshooting, jcode, freebuff, proxy, rate-limit, html-fix]
+relationships:
+  - target: "[[concepts/Freebuff.md]]"
+    type: related_to
+  - target: "[[concepts/JCode.md]]"
+    type: related_to
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
 sources:
   - session:2026-07-24
 created: 2026-07-24T20:54:00.000Z
@@ -17,7 +24,7 @@ lifecycle: draft
 lifecycle_changed: 2026-07-24
 ---
 
-# JCode and Freebuff Troubleshooting Session
+# [[concepts/JCode|JCode]] and [[concepts/Freebuff|Freebuff]] Troubleshooting Session
 
 *Session captured: 2026-07-24*
 
@@ -31,7 +38,7 @@ lifecycle_changed: 2026-07-24
 
 ### JCode Rate Limits (429 Errors)
 
-JCode v0.56.0 configured with `default_provider = "openai-compatible"` hitting OpenCode Zen API directly. Free models (mimo-v2.5-free, laguna-s-2.1-free) experiencing rate limits:
+JCode v0.56.0 configured with `default_provider = "openai-compatible"` hitting [[concepts/OpenCode|OpenCode]] Zen API directly. Free models (mimo-v2.5-free, laguna-s-2.1-free) experiencing rate limits:
 
 ```
 endpoint: https://opencode.ai/zen/v1/chat/completions

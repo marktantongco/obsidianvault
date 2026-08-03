@@ -2,12 +2,17 @@
 title: OWL-AGENT and Obsidian Skills Integration
 category: infrastructure
 tags: [owl-agent, obsidian-skills, integration, worktree, wiki, setup]
+relationships:
+  - target: "[[entities/Owl-Agent.md]]"
+    type: related_to
+  - target: "[[concepts/OpenCode.md]]"
+    type: related_to
 summary: Full session log — OWL-AGENT v4.2 deployment, obsidian-skills install, worktree + wiki alignment
 lifecycle: evergreen
 tier: 1
 ---
 
-# OWL-AGENT & Obsidian Skills Integration – Session Log
+# [[entities/Owl-Agent|OWL-AGENT]] & Obsidian Skills Integration – Session Log
 
 ## Status: Complete
 
@@ -22,7 +27,7 @@ All major deliverables for this session are done and verified.
 | CLI (fetch / stats / bench) | ✅ | `~/.owl-agent/run.sh` |
 | Podman deployment | ✅ | `~/.owl-agent/podman-compose.yml` |
 | kiro-cli agent `owl-scraper` | ✅ | `~/.kiro/agents/owl-scraper.json` |
-| Obsidian skills (5) | ✅ | `~/.opencode/skills/obsidian-skills/` |
+| Obsidian skills (5) | ✅ | `~/.[[concepts/OpenCode|opencode]]/skills/obsidian-skills/` |
 | Vault wiki + worktree | ✅ | `~/obsidianvault/` + `~/obsidianvault-worktree/` |
 
 ---

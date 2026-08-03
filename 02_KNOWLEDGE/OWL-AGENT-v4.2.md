@@ -9,10 +9,13 @@ tags:
 aliases:
   - OWL Agent
   - Proxy Defense Stack
+relationships:
+  - target: "[[entities/Owl-Agent.md]]"
+    type: related_to
 status: active
 ---
 
-# OWL-AGENT v4.2
+# [[entities/Owl-Agent|OWL-AGENT]] v4.2
 
 A self-optimising proxy HTTP client with intelligent routing and adaptive rate limiting.
 

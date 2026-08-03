@@ -2,6 +2,15 @@
 title: Agentic-Stack + Obsidian-Wiki System Performance
 category: synthesis
 tags: [architecture, multi-agent, wiki, assessment]
+relationships:
+  - target: "[[concepts/multi-agent-obsidian-wiki-synergy]]"
+    type: extends
+  - target: "[[skills/multi-agent-vault-wiring]]"
+    type: uses
+  - target: "[[projects/AI-Second-Brain.md]]"
+    type: related_to
+  - target: "[[concepts/Obsidian Wiki.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-09
 summary: Plumbing is A− (shared vault, 12 agents, 36 skills); knowledge fill was early until this compound pass.
@@ -12,11 +21,6 @@ lifecycle_changed: 2026-07-09
 tier: core
 created: 2026-07-09T09:58:13Z
 updated: 2026-07-09T10:44:47Z
-relationships:
-  - target: "[[concepts/multi-agent-obsidian-wiki-synergy]]"
-    type: extends
-  - target: "[[skills/multi-agent-vault-wiring]]"
-    type: uses
 ---
 
 # Agentic-Stack + Obsidian-Wiki System Performance
@@ -37,7 +41,7 @@ Assessment of how `~/.agent` (agentic-stack), Ar9av `obsidian-wiki`, and `/home/
 - Single vault for all CLIs prevents knowledge silos.
 
 ## Related
-- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[skills/multi-agent-vault-wiring]] · [[concepts/Obsidian Wiki]] · [[projects/AI-Second-Brain]]
+- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]] · [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]] · [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]]]
 
 ## Session notes (promoted 2026-07-09)
 

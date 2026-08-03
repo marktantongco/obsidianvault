@@ -7,6 +7,13 @@ tags:
   - cli
   - memory
   - pulse
+relationships:
+  - target: "[[06_STATE/configs/second-brain-skill.md]]"
+    type: related_to
+  - target: "[[concepts/LifeOS Algorithm.md]]"
+    type: related_to
+  - target: "[[concepts/Hermes Agent.md]]"
+    type: related_to
 sources:
   - conversation:2026-07-14
   - journal/2026-07-14-system-admin-tool-installs
@@ -31,7 +38,7 @@ updated: 2026-07-21
 
 ## Overview
 
-The LifeOS CLI (`lifeos-cli`) is the terminal interface to the [[concepts/LifeOS Algorithm|LifeOS system]]. It manages the LifeOS memory database, provides access to Memory v7.6 buckets, and connects to the LifeOS Pulse daemon at `localhost:31337`.
+The LifeOS CLI (`lifeos-cli`) is the terminal interface to the [[concepts/[[concepts/LifeOS Algorithm|LifeOS Algorithm]]|LifeOS system]]. It manages the LifeOS memory database, provides access to Memory v7.6 buckets, and connects to the LifeOS Pulse daemon at `localhost:31337`.
 
 ## Key Facts
 
@@ -54,7 +61,7 @@ The CLI and the Pulse daemon serve different but complementary roles:
 | **LifeOS Pulse** | Daemon at `localhost:31337` with REST API | ⏳ Not running (`bun run pulse` needed) |
 | **LifeOS AI skill** | AI harness integration at `~/.claude/skills/LifeOS/` | ✅ Installed, needs `/lifeos-setup` |
 
-Per the [[06_STATE/configs/second-brain-skill|SecondBrain skill config]], the LifeOS system provides these API endpoints:
+Per the [[06_STATE/configs/[[06_STATE/configs/second-brain-skill|second-brain-skill]]|SecondBrain skill config]], the LifeOS system provides these API endpoints:
 
 ```text
 GET  /api/memory/{bucket}      — list vault entries in bucket
@@ -68,6 +75,6 @@ GET  /api/pulse/status         — daemon health check
 
 - [[concepts/LifeOS Algorithm]] — The task routing algorithm driven by LifeOS
 - [[concepts/agentic-stack]] — Separate session memory layer (agentic-stack is distinct from LifeOS memory)
-- [[concepts/Hermes Agent]] — Runs hermes_router.py which integrates with LifeOS
+- [[concepts/[[concepts/Hermes Agent|Hermes Agent]]]] — Runs hermes_router.py which integrates with LifeOS
 - [[journal/2026-07-14-system-admin-tool-installs]] — Installation session
 - [[06_STATE/configs/second-brain-skill]] — Skill config with vault↔memory mapping

@@ -1,6 +1,11 @@
 ---
 title: Obsidian Wiki
 tags: [obsidian, wiki, knowledge]
+relationships:
+  - target: "[[skills/multi-agent-vault-wiring.md]]"
+    type: related_to
+  - target: "[[references/obsidian-claude-memory-framework.md]]"
+    type: related_to
 type: concept
 created: 2026-07-09
 updated: 2026-07-09
@@ -72,4 +77,4 @@ wiki-capture --quick "Important discovery"
 - [[MCP Servers]]
 
 ## Related
-- [[multi-agent-obsidian-wiki-synergy]] · [[skills/multi-agent-vault-wiring]] · [[references/obsidian-claude-memory-framework]]
+- [[multi-agent-obsidian-wiki-synergy]] · [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]] · [[references/[[references/obsidian-claude-memory-framework|obsidian-claude-memory-framework]]]]
