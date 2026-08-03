@@ -7,7 +7,7 @@ tags:
   - debugging
   - session
 created: 2026-08-03T12:00:00+08:00
-updated: 2026-08-03T12:15:00+08:00
+updated: 2026-08-03T13:22:28+08:00
 category: skill
 aliases:
   - kiro-pool-proxy
@@ -31,6 +31,8 @@ Findings from reverse-engineering the `kiro-cli-pool-proxy` Go project at
 `/home/ubuntu/kiro-cli-pool-proxy/` (running on `127.0.0.1:5000`), driven by
 `kiro-cli chat` failing with **403 AccessDenied from AWS** after [[concepts/MCP Servers|MCP servers]]
 load.
+
+This proxy is part of the wider [[concepts/Freebuff|Freebuff]]-managed proxy ecosystem (see the `kiro-proxy-ecosystem` dashboard and the 07-24 [[journal/2026-07-24-jcode-freebuff-troubleshooting|troubleshooting session]]).
 
 ## Architecture
 
@@ -126,3 +128,4 @@ comments yet; not merged, not closed. Action needed: request review from
 - [[concepts/Freebuff]] — Freebuff as unified proxy manager (this proxy ecosystem)
 - [[concepts/MiMo Code]] — Co-located agent/concept hub in the same knowledge graph
 - [[concepts/JCode]] — Proxy manager ecosystem context
+- [[journal/2026-07-24-jcode-freebuff-troubleshooting]] — Session covering jcode 429 rate limits, the kiro-proxy-ecosystem HTML fix, and freebuff launch failures
