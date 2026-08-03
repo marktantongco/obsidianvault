@@ -42,3 +42,7 @@ This bucket holds configuration files, environment definitions, and runtime stat
 - [[05_OBSERVABILITY/index|05_OBSERVABILITY]] — Logs and metrics tracking config changes
 - [[02_KNOWLEDGE/index|02_KNOWLEDGE]] — Concepts implemented by these configs
 - [[01_WORK/index|01_WORK]] — Projects that modify these configs
+
+### Migrated 2026-08-03 (layout reconciliation)
+- [[Multi-Agent-Task-Execution-Framework]] — Multi-agent orchestration configuration framework.
+- [[Persistent-System-Operating-Instructions-v5.1]] — Persistent SMP v5.1 system operating instructions.

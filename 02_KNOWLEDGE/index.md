@@ -41,3 +41,6 @@ This bucket holds the vault's durable knowledge — compiled concepts, research 
 ### Ingested 2026-08-03 (wiki-agent ← opencode history)
 - [[Kiro-CLI-Pool-Proxy-Debug]] — kiro-cli-pool-proxy architecture; 403 root cause = missing profileArn on social-imported accounts.
 - [[Freebuff-CLI-Memory-Optimization]] — 241MB chat-messages.json → ~2GB RSS; history parse expansion is the dominant memory cost.
+
+### Migrated 2026-08-03 (layout reconciliation)
+- [[Prompt-Rewriting-Session-2026-08-01]] — AI system-instruction prompt rewriting session log.

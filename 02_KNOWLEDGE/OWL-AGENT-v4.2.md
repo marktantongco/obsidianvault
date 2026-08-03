@@ -400,6 +400,53 @@ The system is production-ready and can be deployed in minutes across any infrast
 
 ---
 
-*Last updated: 2026-07-27*
-*Version: v4.2.0*
+## 🔧 Fix & Merge Status (2026-07-29)
+
+All 13 bugs in the original v4.2 source have been corrected in `owl_agent_v4_fixed.py`:
+
+| Severity | Count | Fix |
+|----------|-------|-----|
+| **CRITICAL** | 4 | `mark_success()` made async; `broker.find()` kwargs fixed; 429/403/407 no longer cached; `enable_cleanup_closed` removed |
+| **MAJOR** | 4 | TokenBucket lock ordering; proxy collection timeout 1s→5s; variable shadowing fixed |
+| **MINOR** | 5 | Unused imports removed; `HTTP_CLIENT_OK` gates early-exit; sync I/O scoped to `__init__` only |
+
+### Merged into [[OWL-DNS-v5.1]]
+
+All useful features have been merged upstream into `owl-dns v5.1`:
+
+| Feature | owl-dns module | Status |
+|---------|---------------|--------|
+| Retry-After header parsing | `client.py:AdaptiveRateLimiter.adjust()` | ✅ |
+| Retry-After header parsing | `client.py:AdaptiveRateLimiter.adjust()` | ✅ |
+| Proxy auto-discovery (public lists) | `discover.py` + `cli.py discover` cmd | ✅ — 3,131 proxies found in test |
+| ProxyBroker2 discoverer (50+ sources) | `discover.py` + `--use-broker` flag | ✅ — lazy import avoids event-loop bug |
+| Full Playwright browser agent | `browser.py` + `--engine playwright` flag | ✅ — Chromium headless installed |
+| Bayesian ML predictor (no deps) | `predictor.py` + `--predictor` flag | ✅ — Beta-Binomial, persistence, decay |
+| Prometheus metrics instrumentation | `metrics.py` + `client.py --metrics-port` | ✅ |
+| Docker deployment | `Dockerfile` + `docker-compose.yml` | ✅ |
+| `--json` CLI output | `cli.py fetch/batch/discover --json` | ✅ |
+| Quality scoring w/ decay | `client.py:QualityScorer` | ✅ already had |
+| Circuit breaker | `client.py:DomainCircuitBreaker` | ✅ already had |
+| Redis state sharing | `client.py:RedisStore` | ✅ already had |
+| DNS tunneling | `dns_tunnel.py` | ✅ already had |
+| Stealth mode | `stealth.py` | ✅ already had |
+| Obsidian vault integration | `obsidian.py` | ✅ already had |
+
+### Architecture
+
+```
+OWL-AGENT v4.2 (concept) ──bugs-fixed──> owl_agent_v4_fixed.py
+                                    \
+                                     └──> owl-dns v5.1 ← unified engine
+                                              ├── discover.py  (proxy auto-discovery)
+                                              ├── browser.py   (browser agent)
+                                              ├── metrics.py   (Prometheus)
+                                              ├── Dockerfile   (deployment)
+                                              └── client.py    (all features wired)
+```
+
+The OWL-AGENT concept now lives as corrected reference code at `~/Downloads/owl-agent-v4 (2)/owl-agent-v4-release/owl_agent_v4_fixed.py`. For new work, use `owl-dns` directly.
+
+*Last updated: 2026-07-29*
+*Version: v4.2.0 (fixed) → v5.1 (merged)*
 *Compatible with: Python 3.10+, Docker 20+, kiro-cli 2.0+, OpenCode 2.0+
