@@ -21,6 +21,8 @@ tier: core
 | 2026-07-14 | [[journal/2026-07-14-system-admin-tool-installs\|MCP Cleanup & Tool Installs]] | Cleaned memory-heavy MCPs, disabled Docker, fixed apt 403, installed FreeHive + 5 AI tools. | core |
 | 2026-07-21 | [[journal/2026-07-21-freebuff-vault-enrichment-session\|Vault Enrichment (Freebuff)]] | Created 5 concept pages, thickened 6 entity stubs, promoted sync config to skill. | core |
 
+| 2026-07-30 | [[journal/2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup\|Kiro MCP Fix & Bedrock Config]] | Fixed kiro-cli MCP fetch; Agentic Firewall; Claude Code Bedrock configuration. | core |
+
 ## Related Buckets
 
 - [[01_WORK/index|01_WORK]] — Active projects referenced in sessions

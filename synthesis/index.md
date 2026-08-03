@@ -19,6 +19,8 @@ This directory holds 2 synthesis documents — cross-cutting analyses that combi
 | [[synthesis/agentic-stack-obsidian-wiki-performance\|Agentic Stack Wiki Performance]] | System performance assessment: agentic stack + Obsidian wiki integration |
 | [[synthesis/opencode-freehive-integration\|OpenCode FreeHive Integration]] | FreeHive provider integration into OpenCode's model routing |
 
+| [[synthesis/kiro-cli-mcp-fetch-fix-and-bedrock-config\|Kiro CLI MCP Fetch Fix & Bedrock Setup]] | Repaired kiro-cli MCP fetch; Agentic Firewall; Claude Code Bedrock setup (keys redacted). |
+
 ## Related Buckets
 - [[02_KNOWLEDGE/index|02_KNOWLEDGE]] — Source concepts used in these syntheses
 - [[concepts/index|Concepts]] — Individual concept pages referenced
