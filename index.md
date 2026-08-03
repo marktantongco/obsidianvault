@@ -1,11 +1,11 @@
 ---
 title: Wiki Index
-updated: 2026-08-03T05:23:52.779Z
+updated: 2026-08-03T05:44:08.374Z
 ---
 
 # Wiki Index
 
-*Last updated: 2026-08-03T05:23:52.779Z*
+*Last updated: 2026-08-03T05:44:08.374Z*
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
@@ -68,6 +68,7 @@ updated: 2026-08-03T05:23:52.779Z
 - [[synthesis/agentic-stack-obsidian-wiki-performance|Agentic-Stack + Obsidian-Wiki System Performance]] — Plumbing is A− (shared vault, 12 agents, 36 skills); knowledge fill was early until this compound pass.
 - [[synthesis/kiro-cli-mcp-fetch-fix-and-bedrock-config|kiro-cli-mcp-fetch-fix-and-bedrock-config]]
 - [[synthesis/opencode-freehive-integration|opencode-freehive-integration]]
+- [[synthesis/Synthesis-React-RSC-Performance|Synthesis-React-RSC-Performance]]
 
 ## Projects
 - [[projects/agent-version-tracker|Agent Version Tracker]]
