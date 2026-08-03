@@ -1,11 +1,11 @@
 ---
 title: Wiki Index
-updated: 2026-08-03T04:21:56.236Z
+updated: 2026-08-03T04:27:11.009Z
 ---
 
 # Wiki Index
 
-*Last updated: 2026-08-03T04:21:56.236Z*
+*Last updated: 2026-08-03T04:27:11.009Z*
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
@@ -49,6 +49,7 @@ updated: 2026-08-03T04:21:56.236Z
 - [[journal/2026-07-21-freebuff-vault-enrichment-session|2026-07-21-freebuff-vault-enrichment-session]]
 - [[journal/2026-07-24-freebuff-features-audit-session|2026-07-24-freebuff-features-audit-session]]
 - [[journal/2026-07-24-jcode-freebuff-troubleshooting|JCode and Freebuff Troubleshooting Session]]
+- [[journal/2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup|2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup]]
 
 ## Skills
 - [[skills/free-china-proxy-ops|Free China Proxy Operations]] — Hybrid free China proxy ops for China AI APIs — direct-first, CN-only pool, real-host health (401=OK).
@@ -65,6 +66,7 @@ updated: 2026-08-03T04:21:56.236Z
 
 ## Synthesis
 - [[synthesis/agentic-stack-obsidian-wiki-performance|Agentic-Stack + Obsidian-Wiki System Performance]] — Plumbing is A− (shared vault, 12 agents, 36 skills); knowledge fill was early until this compound pass.
+- [[synthesis/kiro-cli-mcp-fetch-fix-and-bedrock-config|kiro-cli-mcp-fetch-fix-and-bedrock-config]]
 - [[synthesis/opencode-freehive-integration|opencode-freehive-integration]]
 
 ## Projects

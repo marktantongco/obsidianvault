@@ -221,6 +221,12 @@
     "summary": "",
     "mtime": "2026-07-27T09:28:17.791Z"
   },
+  "journal/2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup.md": {
+    "sha": "f9ad4860fa88129094ac3cd83bf84b6bea1e9595",
+    "title": "2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup",
+    "summary": "",
+    "mtime": "2026-08-03T04:27:11.009Z"
+  },
   "projects/AI-Second-Brain.md": {
     "sha": "1f25ce806fee15c0293e4946f39652b507279e36",
     "title": "AI Second Brain",
@@ -298,6 +304,12 @@
     "title": "Agentic-Stack + Obsidian-Wiki System Performance",
     "summary": "Plumbing is A− (shared vault, 12 agents, 36 skills); knowledge fill was early until this compound pass.",
     "mtime": "2026-07-16T13:28:36.859Z"
+  },
+  "synthesis/kiro-cli-mcp-fetch-fix-and-bedrock-config.md": {
+    "sha": "8c6fe2fde68289cd1c31d0a43364cdb0a563c83f",
+    "title": "kiro-cli-mcp-fetch-fix-and-bedrock-config",
+    "summary": "",
+    "mtime": "2026-08-03T04:27:11.009Z"
   },
   "synthesis/opencode-freehive-integration.md": {
     "sha": "2c9d7a0395712bcdc34fbf4b16c1870677721536",
