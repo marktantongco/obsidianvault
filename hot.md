@@ -1,20 +1,18 @@
 ---
 title: Hot Cache
-updated: 2026-08-04T01:00:01.722Z
+updated: 2026-08-04T04:11:08Z
 ---
 
 # Hot Cache
 
 ## Recent Activity
-* Synthesis-React-RSC-Performance: Explored performance optimization in React applications using Server Components.
-* LifeOS Algorithm: Investigated algorithmic approaches to personal knowledge management and productivity.
-* Obsidian Wiki: Configured and utilized Obsidian for note-taking and knowledge organization.
-* Agentic-stack: Researched the agentic-stack framework for building autonomous systems.
-* Oh-my-openagent: Examined the oh-my-openagent project for creating customizable AI agents.
-* Poznote Capture Pipeline: Developed a pipeline for capturing and processing notes using Poznote.
-* System Prompt v5.1.1: Updated system prompts to improve AI interaction and knowledge retrieval.
-* CopyQ, DeepSeek, GPaste: Evaluated clipboard managers (CopyQ, GPaste) and search tools (DeepSeek) for enhanced productivity and information discovery.
-
-## Key Takeaways
-- Knowledge is compiled dynamically on Cloudflare edge.
-- Vault references are maintained via git webhook cron trigger.
+- 2026-08-03 [[02_KNOWLEDGE/React-Performance-Optimization-2026|React-Performance-Optimization-2026]] — Updated note.
+- 2026-08-03 [[02_KNOWLEDGE/React-Server-Components-2026|React-Server-Components-2026]] — Updated note.
+- 2026-08-03 [[02_KNOWLEDGE/React-Performance-Patterns|React-Performance-Patterns]] — Updated note.
+- 2026-08-03 [[synthesis/Synthesis-React-RSC-Performance|Synthesis-React-RSC-Performance]] — Updated note.
+- 2026-08-03 [[02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug|Kiro CLI Pool-Proxy — Architecture & 403 Debug]] — Updated note.
+- 2026-08-03 [[concepts/system-prompt-v5-1-1|System Prompt v5.1.1]] — Updated note.
+- 2026-08-03 [[concepts/LifeOS Algorithm|LifeOS Algorithm]] — Updated note.
+- 2026-08-03 [[concepts/oh-my-openagent|oh-my-openagent]] — Updated note.
+- 2026-08-03 [[concepts/poznote-pipeline|Poznote Capture Pipeline]] — Updated note.
+- 2026-08-03 [[concepts/Obsidian Wiki|Obsidian Wiki]] — Updated note.
