@@ -1,20 +1,18 @@
 ---
 title: Hot Cache
-updated: 2026-08-11T01:00:33.348Z
+updated: 2026-08-11T03:02:52Z
 ---
 
 # Hot Cache
 
 ## Recent Activity
-* Synthesis-React-RSC-Performance: Explored performance optimization in React applications using RSC.
-* LifeOS Algorithm: Investigated algorithmic framework for LifeOS, connecting to agentic-stack and oh-my-openagent concepts.
-* Obsidian Wiki: Documented Obsidian Wiki capabilities, linking to poznote-pipeline and system-prompt-v5-1-1.
-* Agentic-stack: Researched stack components, relating to oh-my-openagent and LifeOS Algorithm.
-* Oh-my-openagent: Examined openagent framework, intersecting with LifeOS Algorithm and agentic-stack.
-* Poznote Capture Pipeline: Developed pipeline for note capture, integrating with Obsidian Wiki and system-prompt-v5-1-1.
-* System Prompt v5.1.1: Updated system prompt, connecting to Obsidian Wiki and poznote-pipeline.
-* CopyQ, DeepSeek, GPaste: Investigated entities for note management and search, potentially integrating with Obsidian Wiki and poznote-pipeline.
-
-## Key Takeaways
-- Knowledge is compiled dynamically on Cloudflare edge.
-- Vault references are maintained via git webhook cron trigger.
+- 2026-08-03 [[02_KNOWLEDGE/React-Performance-Optimization-2026|React-Performance-Optimization-2026]] — Updated note.
+- 2026-08-03 [[02_KNOWLEDGE/React-Server-Components-2026|React-Server-Components-2026]] — Updated note.
+- 2026-08-03 [[02_KNOWLEDGE/React-Performance-Patterns|React-Performance-Patterns]] — Updated note.
+- 2026-08-03 [[synthesis/Synthesis-React-RSC-Performance|Synthesis-React-RSC-Performance]] — Updated note.
+- 2026-08-03 [[02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug|Kiro CLI Pool-Proxy — Architecture & 403 Debug]] — Updated note.
+- 2026-08-03 [[concepts/system-prompt-v5-1-1|System Prompt v5.1.1]] — Updated note.
+- 2026-08-03 [[concepts/LifeOS Algorithm|LifeOS Algorithm]] — Updated note.
+- 2026-08-03 [[concepts/oh-my-openagent|oh-my-openagent]] — Updated note.
+- 2026-08-03 [[concepts/poznote-pipeline|Poznote Capture Pipeline]] — Updated note.
+- 2026-08-03 [[concepts/Obsidian Wiki|Obsidian Wiki]] — Updated note.
