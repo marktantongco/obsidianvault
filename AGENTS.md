@@ -9,7 +9,7 @@ source: system
 
 # Vault Agent Conventions
 
-**Canonical vault path:** `/home/x1/obsidianvault`
+**Canonical vault path:** `/home/x1/Projects/obsidianvault`
 **Git remote:** HTTPS (https://github.com/marktantongco/obsidianvault.git), auto commit-and-sync via Obsidian Git plugin (enabled)
 
 ## Every new session
