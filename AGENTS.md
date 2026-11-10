@@ -17,6 +17,10 @@ source: system
 1. Read this file.
 2. Skim `hot.md` for recent activity.
 3. Use `[[wikilinks]]`, frontmatter with `title`, `category`, `tags`, `summary`, `lifecycle`, `tier`.
+4. To read or write this vault from an agent, use the `obsidian` MCP server
+   (`vault_read`, `vault_write`, `vault_append`, `vault_patch`, `search_simple`, …).
+   It is registered in OpenCode, Claude Code, Codex, LM Studio and Hermes.
+   Full contract: the `obsidian-memory` skill. Health check: `obsidian-mcp --doctor`.
 
 ## Memory v7.6 Bucket Mapping
 
