@@ -73,3 +73,4 @@ opencode / claude / codex / lmstudio / hermes
 ## Verified
 
 - Vault written through MCP (`vault_write`) and read back with frontmatter parsed.
+- 2026-11-13: re-verified after a 3-day gap — app was closed (path down), git had diverged from the daily edge-sync Action, both restored.
