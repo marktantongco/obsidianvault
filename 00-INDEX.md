@@ -15,6 +15,10 @@ updated: 2026-11-13
 ## Concepts
 - [[concepts/AI Agents|AI Agents]], [[concepts/Hermes Agent|Hermes Agent]], [[concepts/OpenCode|OpenCode]], [[concepts/Claude Code|Claude Code]], [[concepts/MCP Servers|MCP Servers]], [[concepts/Obsidian Wiki|Obsidian Wiki]], [[concepts/multi-agent-obsidian-wiki-synergy|Multi-Agent Wiki Synergy]], [[concepts/agentic-stack|Agentic Stack]], [[concepts/wikilinks|Wikilinks]] (see `concepts/`, `index.md`)
 
+## Wiki (compounding layer)
+- [[wiki/concepts/compounding-memory|Compounding Memory (raw → wiki → index)]] — active — immutable raw drops, model-maintained wiki, flat index cache, weekly lint
+- [[wiki/people/karpathy|Andrej Karpathy]] — stub — origin of the LLM-maintained markdown wiki pattern
+
 ## Knowledge (02_KNOWLEDGE)
 - [[02_KNOWLEDGE/Freebuff-CLI-Memory-Optimization|Freebuff CLI — Memory Optimization & Resource Limits]] — CLI RSS/resource-limit research
 - [[02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug|Kiro CLI Pool-Proxy — Architecture & 403 Debug]] — pool-proxy/auth debugging
@@ -41,7 +45,8 @@ updated: 2026-11-13
 - Journal: recent sessions in `journal/` (see `index.md`/`hot.md`)
 
 ## Raw / Inbox
-- [[_raw/inbox/2026-11-12-claude-memory-compounding-guide|Compounding Memory Guide (source)]] — `processed: false`
+- [[_raw/_archived/2026-11-12-claude-memory-compounding-guide|Compounding Memory Guide (source)]] — `processed: true` (2026-11-12) → [[wiki/concepts/compounding-memory|compounding-memory]]
+- `_raw/2026-07-09-multi-agent-setup-gotchas`, `_raw/2026-07-13-opencode-free-model-config` — legacy captures, still unprocessed
 
 ## Orphans (needs linking)
 - (re-run `/lint` to refresh after edits)
