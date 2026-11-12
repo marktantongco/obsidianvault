@@ -182,7 +182,7 @@ All outputs must pass:
 
 ## Related
 
-[[Multi-Agent-Task-Execution-Framework]]
+[[06_STATE/Multi-Agent-Task-Execution-Framework]]
 [[references/Wiki-Capture-System-Instructions]]
 [[references/Obsidian-Markdown-System-Instructions]]
 

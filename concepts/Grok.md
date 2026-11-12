@@ -48,5 +48,5 @@ grok -p "Explain quantum computing"
 ```
 
 ## Related
-- [[AI Agents]] — Agent ecosystem overview
-- [[OpenCode]] — OpenCode CLI agent
+- [[concepts/AI Agents]] — Agent ecosystem overview
+- [[concepts/OpenCode]] — OpenCode CLI agent

@@ -13,7 +13,7 @@ summary: Plain-markdown memory that compounds across sessions — immutable raw 
 Replace per-session recap with an accumulated, LLM-maintained markdown wiki: raw sources stay immutable, the model distils them into cross-linked wiki pages, and a single flat index keeps retrieval cheap.
 
 ## Links
-[[Karpathy]] · [[Claude Code]] · [[AI CLI Memory Integration]] · [[obsidian-mcp-wiring]]
+[[wiki/people/karpathy]] · [[concepts/Claude Code]] · [[06_STATE/AI CLI Memory Integration]] · [[06_STATE/configs/obsidian-mcp-wiring]]
 
 ## Notes
 

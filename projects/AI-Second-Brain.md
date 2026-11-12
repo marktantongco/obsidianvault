@@ -22,12 +22,12 @@ Set up a complete multi-agent AI development environment with shared knowledge b
 ### CLI Tools (6)
 | Tool | Version | Status |
 |------|---------|--------|
-| [[OpenCode]] | v1.17.15 | Installed |
-| [[MiMo Code]] | v0.1.5 | Installed |
-| [[Claude Code]] | v2.1.205 | Installed |
-| [[OpenAI Codex]] | v0.143.0 | Installed |
-| [[Hermes Agent]] | v0.18.2 | Installed |
-| [[Grok]] | v0.2.93 | Installed |
+| [[concepts/OpenCode]] | v1.17.15 | Installed |
+| [[concepts/MiMo Code]] | v0.1.5 | Installed |
+| [[concepts/Claude Code]] | v2.1.205 | Installed |
+| [[concepts/OpenAI Codex]] | v0.143.0 | Installed |
+| [[concepts/Hermes Agent]] | v0.18.2 | Installed |
+| [[concepts/Grok]] | v0.2.93 | Installed |
 
 ### Desktop Apps (2)
 | App | Location | Status |
@@ -88,6 +88,6 @@ Set up a complete multi-agent AI development environment with shared knowledge b
 - `~/.codex/.env` — OpenAI API key
 
 ## Related
-- [[AI Agents]]
-- [[Development Workflow]]
-- [[Obsidian Wiki]]
+- [[concepts/AI Agents]]
+- [[concepts/Development Workflow]]
+- [[concepts/Obsidian Wiki]]

@@ -72,9 +72,9 @@ wiki-capture --quick "Important discovery"
 ```
 
 ## Related
-- [[AI Agents]]
-- [[Development Workflow]]
-- [[MCP Servers]]
+- [[concepts/AI Agents]]
+- [[concepts/Development Workflow]]
+- [[concepts/MCP Servers]]
 
 ## Related
-- [[multi-agent-obsidian-wiki-synergy]] · [[skills/multi-agent-vault-wiring]] · [[references/obsidian-claude-memory-framework]]
+- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[skills/multi-agent-vault-wiring]] · [[references/obsidian-claude-memory-framework]]

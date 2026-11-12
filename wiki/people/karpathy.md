@@ -10,10 +10,10 @@ summary: AI researcher; described the LLM-maintained markdown wiki pattern inste
 
 # Andrej Karpathy
 
-Stub — referenced by [[compounding-memory]] for the "LLM maintains a plain-markdown wiki" pattern.
+Stub — referenced by [[wiki/concepts/compounding-memory]] for the "LLM maintains a plain-markdown wiki" pattern.
 
 ## Links
-[[compounding-memory]] · [[AI CLI Memory Integration]]
+[[wiki/concepts/compounding-memory]] · [[06_STATE/AI CLI Memory Integration]]
 
 ## Notes
 ### 2026-11-12 — source: _raw/_archived/2026-11-12-claude-memory-compounding-guide.md

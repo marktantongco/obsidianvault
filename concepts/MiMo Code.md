@@ -75,6 +75,6 @@ MIMO_API_KEY=sk-...
 ```
 
 ## Related
-- [[Freebuff]] — Proxy manager that includes mimo-unified
-- [[AI Agents]] — Agent ecosystem overview
-- [[OpenCode]] — OpenCode CLI agent
+- [[concepts/Freebuff]] — Proxy manager that includes mimo-unified
+- [[concepts/AI Agents]] — Agent ecosystem overview
+- [[concepts/OpenCode]] — OpenCode CLI agent

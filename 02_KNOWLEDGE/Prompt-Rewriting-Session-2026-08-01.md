@@ -214,7 +214,7 @@ These rewritten prompts serve as:
 
 ## Related
 
-- [[Multi-Agent-Task-Execution-Framework]] — System configuration
+- [[06_STATE/Multi-Agent-Task-Execution-Framework]] — System configuration
 - [[06_STATE/Persistent-System-Operating-Instructions-v5.1|Persistent System Operating Instructions v5.1]] — Core operating protocol
 - [[references/Wiki-Capture-System-Instructions]] — Knowledge preservation workflow
 **Result**: [[references/Obsidian-Markdown-System-Instructions]] — Note syntax reference

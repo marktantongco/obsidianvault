@@ -120,6 +120,6 @@ export OPENAI_API_KEY=your-key
 ```
 
 ## Related
-- [[JCode]] — The jcode ecosystem (daemon, proxy, web dashboard)
-- [[MiMo Code]] — MIMO CLI tool
-- [[OpenCode]] — OpenCode CLI agent
+- [[concepts/JCode]] — The jcode ecosystem (daemon, proxy, web dashboard)
+- [[concepts/MiMo Code]] — MIMO CLI tool
+- [[concepts/OpenCode]] — OpenCode CLI agent

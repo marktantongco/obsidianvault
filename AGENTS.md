@@ -191,7 +191,7 @@ What happened / was decided. Short, dated, append-only.
 ```
 
 ### Job 2 — Answer (`.claude/commands/ask.md`)
-Read `AGENTS.md` + `00-INDEX.md` first (fallback `index.md`/`hot.md`) → pick 2–5 candidate pages and read only those → follow links as needed → answer with citations ([[wikilinks]]/paths). If not covered, state that explicitly and suggest capturing to `_raw/inbox/`.
+Read `AGENTS.md` + `00-INDEX.md` first (fallback `index.md`/`hot.md`) → pick 2–5 candidate pages and read only those → follow links as needed → answer with citations ([[concepts/wikilinks]]/paths). If not covered, state that explicitly and suggest capturing to `_raw/inbox/`.
 
 ### Job 3 — Lint (`.claude/commands/lint.md`)
 Audit for: orphan pages, stubs older than 14 days, broken wikilinks, unresolved `> [!contradiction]` callouts, and index drift. Report checklist with evidence; do not auto-fix without confirmation. Start with `.claude/scripts/check-links.py --summary`; it must exit 0.

@@ -158,6 +158,6 @@ Key configuration sections:
 | `[features]` | Memory, swarm, mermaid toggles |
 
 ## Related
-- [[Freebuff]] — Proxy manager ecosystem
-- [[OpenCode]] — OpenCode CLI agent
-- [[MiMo Code]] — MIMO CLI tool
+- [[concepts/Freebuff]] — Proxy manager ecosystem
+- [[concepts/OpenCode]] — OpenCode CLI agent
+- [[concepts/MiMo Code]] — MIMO CLI tool

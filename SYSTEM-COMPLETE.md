@@ -102,20 +102,20 @@ The multi-agent AI development environment has been successfully installed and c
 - [[PLUGIN-SETUP]] — Obsidian plugin guide
 
 ### Project Documentation
-- [[AI-Second-Brain]] — Main project page
-- [[Cross-Agent-Workflow-Test]] — Workflow test plan
+- [[projects/AI-Second-Brain]] — Main project page
+- [[projects/Cross-Agent-Workflow-Test]] — Workflow test plan
 
 ### Wiki Pages
-- [[AI Agents]] — Core concepts
-- [[OpenCode]] — Terminal agent
-- [[Hermes Agent]] — Orchestrator
-- [[Claude Code]] — Code reviewer
-- [[MiMo Code]] — Xiaomi assistant
-- [[OpenAI Codex]] — Code generator
-- [[Grok]] — xAI assistant
-- [[Obsidian Wiki]] — Knowledge system
-- [[Development Workflow]] — Multi-agent process
-- [[MCP Servers]] — Tool protocol
+- [[concepts/AI Agents]] — Core concepts
+- [[concepts/OpenCode]] — Terminal agent
+- [[concepts/Hermes Agent]] — Orchestrator
+- [[concepts/Claude Code]] — Code reviewer
+- [[concepts/MiMo Code]] — Xiaomi assistant
+- [[concepts/OpenAI Codex]] — Code generator
+- [[concepts/Grok]] — xAI assistant
+- [[concepts/Obsidian Wiki]] — Knowledge system
+- [[concepts/Development Workflow]] — Multi-agent process
+- [[concepts/MCP Servers]] — Tool protocol
 
 ---
 

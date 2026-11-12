@@ -67,7 +67,7 @@ opencode / claude / codex / lmstudio / hermes
 
 ## Related
 
-- [[AI CLI Memory Integration]]
+- [[06_STATE/AI CLI Memory Integration]]
 - [[AGENTS]]
 
 ## Verified

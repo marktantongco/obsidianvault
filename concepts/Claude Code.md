@@ -78,7 +78,7 @@ ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 ## Related
-- [[AI Agents]] — Agent ecosystem overview
-- [[Hermes Agent]] — Hermes orchestration
-- [[OpenCode]] — OpenCode worker agent
-- [[JCode]] — jcode AI stack
+- [[concepts/AI Agents]] — Agent ecosystem overview
+- [[concepts/Hermes Agent]] — Hermes orchestration
+- [[concepts/OpenCode]] — OpenCode worker agent
+- [[concepts/JCode]] — jcode AI stack

@@ -40,5 +40,5 @@ This approach survives plugin upgrades since the plugin config is separate from 
 MCP tools are automatically available to agents when configured. They follow the same permission model as built-in tools.
 
 ## Related
-- [[AI Agents]]
-- [[Development Workflow]]
+- [[concepts/AI Agents]]
+- [[concepts/Development Workflow]]

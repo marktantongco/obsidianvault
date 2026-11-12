@@ -88,6 +88,6 @@ codex -p "Write a React component"
 Codex's OpenAI API key can be shared with jcode through the external auth source mechanism, allowing jcode to use the same key without duplicating configuration.
 
 ## Related
-- [[AI Agents]] — Agent ecosystem overview
-- [[JCode]] — jcode can reuse Codex auth
-- [[OpenCode]] — OpenCode CLI agent
+- [[concepts/AI Agents]] — Agent ecosystem overview
+- [[concepts/JCode]] — jcode can reuse Codex auth
+- [[concepts/OpenCode]] — OpenCode CLI agent

@@ -88,10 +88,10 @@ hermes "Remind me to stand up every hour"
 ```
 
 ## Related
-- [[AI Agents]] — Agent ecosystem overview
-- [[OpenCode]] — OpenCode worker agent
-- [[Claude Code]] — Claude Code reviewer
-- [[JCode]] — jcode AI stack
+- [[concepts/AI Agents]] — Agent ecosystem overview
+- [[concepts/OpenCode]] — OpenCode worker agent
+- [[concepts/Claude Code]] — Claude Code reviewer
+- [[concepts/JCode]] — jcode AI stack
 - [[skills/agent-setup-gotchas]] — install/runtime failures
 
 ## Notes

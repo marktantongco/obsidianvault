@@ -91,10 +91,10 @@ Skills are symlinked from `~/.agents/skills/` and include:
 - **jcode**: Shares agentic-stack memory at `~/ai-workspace/.agent/`
 
 ## Related
-- [[AI Agents]] — Agent ecosystem overview
-- [[JCode]] — jcode AI coding stack
-- [[Hermes Agent]] — Hermes orchestrator
-- [[Claude Code]] — Claude Code reviewer
+- [[concepts/AI Agents]] — Agent ecosystem overview
+- [[concepts/JCode]] — jcode AI coding stack
+- [[concepts/Hermes Agent]] — Hermes orchestrator
+- [[concepts/Claude Code]] — Claude Code reviewer
 - [[skills/agent-setup-gotchas]] — config-schema and install failures
 
 ## Notes

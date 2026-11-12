@@ -45,10 +45,10 @@ Research → Plan → Implement → Review → Verify
 - Update wiki with findings
 
 ## Tools
-- [[OpenCode]] for code execution
-- [[Claude Code]] for review
-- [[Hermes Agent]] for orchestration
-- [[Obsidian Wiki]] for knowledge persistence
+- [[concepts/OpenCode]] for code execution
+- [[concepts/Claude Code]] for review
+- [[concepts/Hermes Agent]] for orchestration
+- [[concepts/Obsidian Wiki]] for knowledge persistence
 
 ## Best Practices
 1. Start with research and planning
@@ -58,6 +58,6 @@ Research → Plan → Implement → Review → Verify
 5. Use wiki-capture to save findings
 
 ## Related
-- [[AI Agents]]
-- [[MCP Servers]]
-- [[Obsidian Wiki]]
+- [[concepts/AI Agents]]
+- [[concepts/MCP Servers]]
+- [[concepts/Obsidian Wiki]]

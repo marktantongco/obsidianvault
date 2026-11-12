@@ -13,7 +13,7 @@ summary: Map of Content for concepts in the compounding wiki.
 Index of `[[wiki/concepts/*]]` pages.
 
 ## Concepts
-- [[compounding-memory]] — active — raw → wiki → index memory that compounds; index-first retrieval, weekly lint.
+- [[wiki/concepts/compounding-memory]] — active — raw → wiki → index memory that compounds; index-first retrieval, weekly lint.
 
 ## Related maps
 - [[00-INDEX]]

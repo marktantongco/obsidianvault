@@ -62,6 +62,6 @@ AI agents are autonomous systems that can perceive their environment, make decis
 - Symlinked to all agents
 
 ## Related
-- [[Development Workflow]]
-- [[MCP Servers]]
-- [[Obsidian Wiki]]
+- [[concepts/Development Workflow]]
+- [[concepts/MCP Servers]]
+- [[concepts/Obsidian Wiki]]
