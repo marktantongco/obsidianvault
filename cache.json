@@ -258,10 +258,10 @@
     "mtime": "2026-08-03T05:17:46.946Z"
   },
   "references/obsidian-claude-memory-framework.md": {
-    "sha": "8217024e46c805476bc5550d39472a6c8de6408a",
+    "sha": "d91d77ffa953b31472fa9dcb6a55b22076995452",
     "title": "Obsidian + Claude Memory Framework (source)",
-    "summary": "Karpathy-style wiki protocol for Claude Code — raw immutable layer, wiki compile layer, CLAUDE.md schema.",
-    "mtime": "2026-08-03T05:17:46.946Z"
+    "summary": "Karpathy-style compounding memory for Claude Code/Obsidian — immutable raw inputs, maintained wiki knowledge, index cache, ingest/ask/lint loop.",
+    "mtime": "2026-11-12T15:59:45.689Z"
   },
   "skills/free-china-proxy-ops.md": {
     "sha": "2ca42547bbb059c623a1d3ef0e92a21374f75767",
