@@ -155,11 +155,40 @@ Adaptation of the Karpathy-style "compounding memory" pattern (see `references/o
 ### Layers (mapped to this vault)
 - **Raw (immutable):** `_raw/` and `_raw/inbox/` (drop zone). Processed originals move to `_raw/_archived/` and are marked `processed: true` with a processed date. Never edit archived/raw originals; add corrective notes instead.
 - **Compiled knowledge:** domain folders `concepts/`, `entities/`, `projects/`, `journal/`, `skills/`, `references/`, `synthesis/` and v7.6 buckets `01_WORK/`–`06_STATE/` (use the best-matching existing location per conventions).
-- **Output:** deliverables live under `output/` (see `output/README.md`); create one-way, then link back into canonical pages (`projects/`, `journal/`, domain folder).
-- **Output:** deliverables in appropriate project/work locations (e.g. `01_WORK/`, `projects/`, or task-specific outputs) linked back to source/wiki pages.
+- **Output:** deliverables live under `output/` (see `output/README.md`) — one-way: write there, then link the deliverable back into the canonical page (`projects/`, `journal/`, or the domain folder).
 
 ### Job 1 — Ingest (`.claude/commands/ingest.md`)
 For each unprocessed raw file: identify type/entity → match existing page (title/`aliases`) → append dated subsection to `## Notes` (never overwrite; use `> [!contradiction]` callout when conflicting) or create a new page with required frontmatter → add `[[wikilinks]]` and create stubs for missing targets → update `index.md` and/or `00-INDEX.md`, and `hot.md`/`log.md` as appropriate → move raw to `_raw/_archived/`, mark processed, update `.manifest.json` → regenerate/refine `00-INDEX.md` from frontmatter. Work one file at a time; report per-file changes. Prefer `obsidian` MCP tools.
+
+#### Ingest checklist (operational detail)
+1. Read the file; classify it (person, project, decision, concept, session, source).
+2. Find the owning page: `wiki/` first, then the canonical folder matching the type (`concepts/`, `entities/`, `projects/`, `journal/`, `skills/`, `references/`, `synthesis/`) and the v7.6 buckets — match on title **and** `aliases`.
+3. Existing page → append a dated `## Notes` subsection; never rewrite history; conflicting claim → `> [!contradiction]` with both dates.
+4. No page → create it in the canonical folder (see *Where pages go*); `wiki/people/` and `wiki/decisions/` are the only wiki-owned types.
+5. Link every entity mentioned; stub the missing targets (`status: stub`) rather than leaving a dead link.
+6. Add the new/updated page to its `wiki/_moc/<domain>.md`.
+7. Move the raw to `_raw/_archived/` (never delete) — `mark-processed.py` stamps `processed: true` / `processed_at:`.
+8. Refresh the `## Wiki (compounding layer)` section of `00-INDEX.md`; leave the vault-wide sections to the index pass, and treat `index.md` / `hot.md` / `log.md` as generated (never hand-edit).
+9. `python3 .claude/scripts/mark-processed.py _raw/_archived/<file> --created <pages> --updated <pages>` → canonical `.manifest.json`; the `.claude/inbox-manifest.json` file is only the `diff-inbox.sh` mtime cursor.
+
+Page frontmatter (wiki-owned types and new canonical pages):
+```markdown
+---
+type: project          # person | project | decision | concept | session
+status: active         # active | stub | archived
+tags: []
+aliases: []
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+summary: One line the index can reuse without reading the page.
+---
+
+# Title
+
+## Notes
+### YYYY-MM-DD — source: _raw/_archived/<file>.md
+What happened / was decided. Short, dated, append-only.
+```
 
 ### Job 2 — Answer (`.claude/commands/ask.md`)
 Read `AGENTS.md` + `00-INDEX.md` first (fallback `index.md`/`hot.md`) → pick 2–5 candidate pages and read only those → follow links as needed → answer with citations ([[wikilinks]]/paths). If not covered, state that explicitly and suggest capturing to `_raw/inbox/`.
