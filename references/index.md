@@ -16,9 +16,9 @@ This directory holds 3 reference documents — consolidated frameworks, external
 
 | Reference | Description |
 |-----------|-------------|
-| [[references/ai-skills-consolidated-framework\|AI Skills Consolidated Framework]] | ~67 agent skills across 8 domains, consolidated reference |
-| [[references/free-china-proxy-research\|Free China Proxy Research]] | Research and evaluation of free Chinese proxy providers |
-| [[references/obsidian-claude-memory-framework\|Obsidian Claude Memory Framework]] | Karpathy-style wiki protocol for agent memory |
+| [[references/ai-skills-consolidated-framework]] | ~67 agent skills across 8 domains, consolidated reference |
+| [[references/free-china-proxy-research]] | Research and evaluation of free Chinese proxy providers |
+| [[references/obsidian-claude-memory-framework]] | Karpathy-style wiki protocol for agent memory |
 
 ## Related Buckets
 - [[02_KNOWLEDGE/index|02_KNOWLEDGE]] — Parent knowledge bucket

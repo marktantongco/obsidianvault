@@ -3,21 +3,20 @@ title: _raw — Staging & Raw Captures
 category: raw
 tags: [staging, raw-captures, index]
 purpose: "Inbox-style directory for raw note captures before they're processed into permanent vault pages"
-summary: "Staging directory with 2 active raw captures and 5 archived notes. Raw captures are unprocessed inbound notes; archived notes have been superseded by permanent vault pages."
+summary: "Inbox empty as of 2026-11-13 (both legacy captures ingested). Archived notes have been superseded by permanent vault pages."
 lifecycle: active
 tier: peripheral
 ---
 
 # _raw — Staging & Raw Captures
 
-This directory serves as the vault's **inbox** — raw captures and unprocessed notes that haven't been distilled into permanent concept, entity, or skill pages.
+This directory serves as the vault's **inbox** — raw captures and unprocessed notes that haven't been distilled into permanent concept, entity, or skill pages. Inbox is empty; processed notes live in `_raw/_archived/`.
 
 ## Active Raw Captures
 
 | Note | Date | Status |
 |------|------|--------|
-| [[_raw/2026-07-09-multi-agent-setup-gotchas\|Multi-Agent Setup Gotchas]] | 2026-07-09 | 📥 Unprocessed |
-| [[_raw/2026-07-13-opencode-free-model-config\|OpenCode Free Model Config]] | 2026-07-13 | 📥 Unprocessed |
+| — | — | Inbox empty — both legacy captures ingested 2026-11-13 |
 
 ## Archived Notes
 

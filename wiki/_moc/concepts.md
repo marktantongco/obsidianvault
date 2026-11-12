@@ -14,3 +14,9 @@ Index of `[[wiki/concepts/*]]` pages.
 
 ## Concepts
 - [[compounding-memory]] — active — raw → wiki → index memory that compounds; index-first retrieval, weekly lint.
+
+## Related maps
+- [[00-INDEX]]
+- [[wiki/_moc/people|People MOC]]
+- [[wiki/_moc/projects|Projects MOC]]
+- [[wiki/_moc/decisions|Decisions MOC]]

@@ -122,6 +122,11 @@ await skills.execute('owl-agent', 'fetch', {
 await skills.execute('owl-agent', 'stats')
 ```
 
+## Related
+- [[entities/Owl-Agent|Owl-Agent]]
+- [[02_KNOWLEDGE/owl-agent-obsidian-skills-session|OWL-AGENT & Obsidian Skills Integration]]
+- [[06_STATE/AI CLI Memory Integration|AI CLI Memory Integration]]
+
 ## kiro-cli Integration
 
 ### Agent Definition
@@ -413,7 +418,7 @@ All 13 bugs in the original v4.2 source have been corrected in `owl_agent_v4_fix
 | **MAJOR** | 4 | TokenBucket lock ordering; proxy collection timeout 1s→5s; variable shadowing fixed |
 | **MINOR** | 5 | Unused imports removed; `HTTP_CLIENT_OK` gates early-exit; sync I/O scoped to `__init__` only |
 
-### Merged into [[OWL-DNS-v5.1]]
+### Merged into OWL-DNS-v5.1 ^[inferred: no canonical note yet]
 
 All useful features have been merged upstream into `owl-dns v5.1`:
 

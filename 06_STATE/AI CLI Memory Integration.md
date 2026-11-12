@@ -23,6 +23,8 @@ Map of how AI CLI tools (OpenCode, Claude Code, Hermes) share this vault as dura
 
 ## Skills (shared via `~/.agents/skills`)
 
+See [[06_STATE/configs/obsidian-mcp-wiring|Obsidian MCP Wiring]] for vault/MCP bridge details.
+
 - `obsidian-markdown`, `obsidian-bases`, `obsidian-cli`, `json-canvas`, `defuddle`, `knap` (kepano/obsidian-skills)
 - `obsidian-vault-curator` (hermes-obsidian-self-organizing-vault)
 - Symlinked into `~/.claude/skills`, `~/.hermes/skills`, `~/.opencode/skills`.

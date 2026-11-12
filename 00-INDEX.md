@@ -44,6 +44,9 @@ updated: 2026-11-13
 - Synthesis: [[synthesis/agentic-stack-obsidian-wiki-performance|Agentic-Stack + Obsidian-Wiki System Performance]], [[synthesis/Synthesis-React-RSC-Performance|Synthesis-React-RSC-Performance]]
 - Journal: recent sessions in `journal/` (see `index.md`/`hot.md`)
 
+## Output
+- [[output/README|output/README]] — finished deliverables (one-way, link back to canonical pages)
+
 ## Raw / Inbox
 - [[_raw/_archived/2026-11-12-claude-memory-compounding-guide|Compounding Memory Guide (source)]] — `processed: true` (2026-11-12) → [[wiki/concepts/compounding-memory|compounding-memory]]
 - [[_raw/_archived/2026-07-09-multi-agent-setup-gotchas|Multi-Agent Setup Gotchas (source)]] — `processed: true` (2026-11-13) → [[skills/agent-setup-gotchas|agent-setup-gotchas]]
@@ -51,4 +54,4 @@ updated: 2026-11-13
 - Inbox empty: `bash .claude/scripts/diff-inbox.sh` returns nothing.
 
 ## Orphans (needs linking)
-- (re-run `/lint` to refresh after edits)
+- none — `wiki/_moc/*` pages are linked from `index.md` and each other

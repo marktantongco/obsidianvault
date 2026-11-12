@@ -16,12 +16,12 @@ This directory holds 6 reusable agent skills — self-contained instructions for
 
 | Skill | Purpose |
 |-------|---------|
-| [[skills/git-sync-strategy\|Git Sync Strategy]] | Desktop git sync: 10min commit, 30min push, conflict handling |
-| [[skills/mobile-sync-termux\|Mobile Sync (Termux)]] | Termux-based mobile vault sync via cron |
-| [[skills/multi-agent-vault-wiring\|Multi-Agent Vault Wiring]] | Cross-agent vault integration and MCP config wiring |
-| [[skills/wiki-compound-loop\|Wiki Compound Loop]] | Wiki-based knowledge compounding workflow |
-| [[skills/free-china-proxy-ops\|Free China Proxy Ops]] | Free China proxy operations and maintenance |
-| [[skills/gpaste-gnome-wayland\|GPaste GNOME Wayland]] | GPaste clipboard manager setup for Wayland |
+| [[skills/git-sync-strategy]] | Desktop git sync: 10min commit, 30min push, conflict handling |
+| [[skills/mobile-sync-termux]] | Termux-based mobile vault sync via cron |
+| [[skills/multi-agent-vault-wiring]] | Cross-agent vault integration and MCP config wiring |
+| [[skills/wiki-compound-loop]] | Wiki-based knowledge compounding workflow |
+| [[skills/free-china-proxy-ops]] | Free China proxy operations and maintenance |
+| [[skills/gpaste-gnome-wayland]] | GPaste clipboard manager setup for Wayland |
 
 ## Related Buckets
 - [[06_STATE/index|06_STATE]] — Configs and schema used by these skills

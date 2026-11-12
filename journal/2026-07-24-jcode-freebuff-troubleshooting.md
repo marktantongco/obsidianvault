@@ -96,6 +96,7 @@ Found duplicate `<div class="arch-svg-container">` tags in `/home/ubuntu/ai-work
 
 ## Related
 
+- [[journal/2026-07-24-freebuff-features-audit-session|2026-07-24 Freebuff Features Audit Session]] — Complementary audit of freebuff-proxy
 - [[concepts/Freebuff|Freebuff]] — Unified proxy manager
 - [[concepts/JCode|JCode]] — jcode ecosystem
 - [[concepts/OpenCode|OpenCode]] — Terminal AI coding agent

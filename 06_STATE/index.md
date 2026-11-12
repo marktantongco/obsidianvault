@@ -45,4 +45,4 @@ This bucket holds configuration files, environment definitions, and runtime stat
 
 ### Migrated 2026-08-03 (layout reconciliation)
 - [[Multi-Agent-Task-Execution-Framework]] — Multi-agent orchestration configuration framework.
-- [[Persistent-System-Operating-Instructions-v5.1]] — Persistent SMP v5.1 system operating instructions.
+- [[06_STATE/Persistent-System-Operating-Instructions-v5.1|Persistent System Operating Instructions v5.1]] — Persistent SMP v5.1 system operating instructions.

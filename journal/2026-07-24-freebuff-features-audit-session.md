@@ -64,8 +64,8 @@ tier: core
 **Findings**:
 - **54 broken wikilinks** across **12 files**
 - Primary issues:
-  - **Index files** (`concepts/index.md`, `entities/index.md`, `skills/index.md`, etc.) — 42 broken links where index pages reference pages using `[[bucket/Page Name]]` format but path resolution fails on some patterns
-  - **`templates/Daily Note.md`** — placeholder template link `[[{{date:YYYY-MM-DD}}]]` (expected, not a real issue)
+  - **Index files** (`concepts/index.md`, `entities/index.md`, `skills/index.md`, etc.) — 42 broken links where index pages reference pages using ``bucket/Page Name`` format but path resolution fails on some patterns
+  - **`templates/Daily Note.md`** — placeholder template link ``{{date:YYYY-MM-DD}}`` (expected, not a real issue)
   - **`06_STATE/configs/poznote-capture-schema.md`** — has `[[wikilinks]]` used as a code reference
   - **`AGENTS.md`** — multiple issues
   - **`journal/index.md`**, **`projects/index.md`**, **`references/index.md`**, **`synthesis/index.md`** — all have broken index links

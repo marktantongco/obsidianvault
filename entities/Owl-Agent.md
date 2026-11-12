@@ -87,12 +87,14 @@ Owl-Agent is a **production-grade, self-optimising HTTP client** that combines 5
 ### Integrations
 | Tool | Integration |
 |------|-------------|
-| [[concepts/OpenCode\|OpenCode]] | `~/.owl-agent/owl-agent.skill.json` |
+| [[concepts/OpenCode]] | `~/.owl-agent/owl-agent.skill.json` |
 | Cline (MCP) | `~/.owl-agent/mcp-server.py` |
 | Cursor | `~/.owl-agent/commands.json` |
 | Warp | `~/.owl-agent/warp-agent.yaml` |
-| [[concepts/Claude Code\|Claude Code]] | `~/.claude/skills/owl-agent/` |
+| [[concepts/Claude Code]] | `~/.claude/skills/owl-agent/` |
 | Codex | CLI alias via `~/.owl-agent/run.sh` |
+
+**Related docs:** [[02_KNOWLEDGE/OWL-AGENT-v4.2|OWL-AGENT v4.2]] · [[02_KNOWLEDGE/owl-agent-obsidian-skills-session|OWL-AGENT & Obsidian Skills Integration]]
 
 ## Architecture
 

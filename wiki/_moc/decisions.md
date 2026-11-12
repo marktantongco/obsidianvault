@@ -14,3 +14,9 @@ Index of `[[wiki/decisions/*]]` pages.
 
 ## Decisions
 - _none yet_
+
+## Related maps
+- [[00-INDEX]]
+- [[wiki/_moc/concepts|Concepts MOC]]
+- [[wiki/_moc/people|People MOC]]
+- [[wiki/_moc/projects|Projects MOC]]

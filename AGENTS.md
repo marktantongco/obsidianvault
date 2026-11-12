@@ -155,6 +155,7 @@ Adaptation of the Karpathy-style "compounding memory" pattern (see `references/o
 ### Layers (mapped to this vault)
 - **Raw (immutable):** `_raw/` and `_raw/inbox/` (drop zone). Processed originals move to `_raw/_archived/` and are marked `processed: true` with a processed date. Never edit archived/raw originals; add corrective notes instead.
 - **Compiled knowledge:** domain folders `concepts/`, `entities/`, `projects/`, `journal/`, `skills/`, `references/`, `synthesis/` and v7.6 buckets `01_WORK/`–`06_STATE/` (use the best-matching existing location per conventions).
+- **Output:** deliverables live under `output/` (see `output/README.md`); create one-way, then link back into canonical pages (`projects/`, `journal/`, domain folder).
 - **Output:** deliverables in appropriate project/work locations (e.g. `01_WORK/`, `projects/`, or task-specific outputs) linked back to source/wiki pages.
 
 ### Job 1 — Ingest (`.claude/commands/ingest.md`)

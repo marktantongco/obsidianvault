@@ -16,9 +16,9 @@ This directory tracks 3 active projects — the main AI second brain build, cros
 
 | Project | Status | Description |
 |---------|--------|-------------|
-| [[projects/AI-Second-Brain\|AI-Second-Brain]] | Active | Main project: multi-agent AI development environment |
-| [[projects/Cross-Agent-Workflow-Test\|Cross-Agent-Workflow-Test]] | Active | Test plan for multi-agent workflow coordination |
-| [[projects/agent-version-tracker\|Agent Version Tracker]] | Active | Tracks agent versions, capabilities, and tool support |
+| [[projects/AI-Second-Brain]] | Active | Main project: multi-agent AI development environment |
+| [[projects/Cross-Agent-Workflow-Test]] | Active | Test plan for multi-agent workflow coordination |
+| [[projects/agent-version-tracker]] | Active | Tracks agent versions, capabilities, and tool support |
 
 ## Related Buckets
 - [[01_WORK/index|01_WORK]] — Parent work bucket containing active tasks

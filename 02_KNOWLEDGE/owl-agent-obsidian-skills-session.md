@@ -16,6 +16,8 @@ tier: 1
 
 ## Status: Complete
 
+**Related:** [[02_KNOWLEDGE/OWL-AGENT-v4.2|OWL-AGENT v4.2]] · [[entities/Owl-Agent|Owl-Agent]] · [[concepts/Obsidian Wiki|Obsidian Wiki]]
+
 All major deliverables for this session are done and verified.
 
 ### What was built

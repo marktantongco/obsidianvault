@@ -26,5 +26,5 @@ doxa/librarium → OpenCode → wiki-ingest → cross-linker → wiki-synthesize
 ## Related
 - [[02_KNOWLEDGE/React-Server-Components-2026|React Server Components in 2026]]
 - [[02_KNOWLEDGE/React-Performance-Patterns|React Performance Patterns]]
-- [[Research Methodology]]
-- [[Code-KB Mapping]]
+- Research Methodology ^[inferred: no canonical note yet]
+- Code-KB Mapping ^[inferred: no canonical note yet]

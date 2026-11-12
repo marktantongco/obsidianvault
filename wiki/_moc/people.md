@@ -14,3 +14,9 @@ Index of `[[wiki/people/*]]` pages. Add links here when people pages are created
 
 ## People
 - [[Karpathy]] — stub — origin of the LLM-maintained markdown wiki pattern.
+
+## Related maps
+- [[00-INDEX]]
+- [[wiki/_moc/concepts|Concepts MOC]]
+- [[wiki/_moc/projects|Projects MOC]]
+- [[wiki/_moc/decisions|Decisions MOC]]

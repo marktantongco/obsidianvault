@@ -16,12 +16,12 @@ tier: core
 
 | Date | Session | Summary | Tier |
 |------|---------|---------|------|
-| 2026-07-09 | [[journal/2026-07-09-multi-agent-wiki-compound\|Multi-Agent Wiki Compound]] | Setup refresh, @ai ingest, multi-agent capture; history sources empty on disk. | peripheral |
-| 2026-07-13 | [[journal/2026-07-13-second-brain-integration-session\|Second Brain Integration]] | Full second brain integration across 7 AI agents. Deployed v5.1.1 prompt, rewrote scripts, restructured vault. | core |
-| 2026-07-14 | [[journal/2026-07-14-system-admin-tool-installs\|MCP Cleanup & Tool Installs]] | Cleaned memory-heavy MCPs, disabled Docker, fixed apt 403, installed FreeHive + 5 AI tools. | core |
-| 2026-07-21 | [[journal/2026-07-21-freebuff-vault-enrichment-session\|Vault Enrichment (Freebuff)]] | Created 5 concept pages, thickened 6 entity stubs, promoted sync config to skill. | core |
+| 2026-07-09 | [[journal/2026-07-09-multi-agent-wiki-compound]] | Setup refresh, @ai ingest, multi-agent capture; history sources empty on disk. | peripheral |
+| 2026-07-13 | [[journal/2026-07-13-second-brain-integration-session]] | Full second brain integration across 7 AI agents. Deployed v5.1.1 prompt, rewrote scripts, restructured vault. | core |
+| 2026-07-14 | [[journal/2026-07-14-system-admin-tool-installs]] | Cleaned memory-heavy MCPs, disabled Docker, fixed apt 403, installed FreeHive + 5 AI tools. | core |
+| 2026-07-21 | [[journal/2026-07-21-freebuff-vault-enrichment-session]] | Created 5 concept pages, thickened 6 entity stubs, promoted sync config to skill. | core |
 
-| 2026-07-30 | [[journal/2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup\|Kiro MCP Fix & Bedrock Config]] | Fixed kiro-cli MCP fetch; Agentic Firewall; Claude Code Bedrock configuration. | core |
+| 2026-07-30 | [[journal/2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup]] | Fixed kiro-cli MCP fetch; Agentic Firewall; Claude Code Bedrock configuration. | core |
 
 ## Related Buckets
 
