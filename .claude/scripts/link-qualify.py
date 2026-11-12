@@ -170,6 +170,8 @@ def main():
     ap.add_argument("--stub-dir", default="concepts", help="folder for new stubs (default: concepts)")
     ap.add_argument("--root", default=str(pathlib.Path(__file__).resolve().parents[2]))
     ap.add_argument("--paths", nargs="*", help="limit to these files")
+    ap.add_argument("--check", action="store_true",
+                    help="CI mode: exit 1 if any link needs qualifying or the guard fails")
     ap.add_argument("--include-generated", action="store_true",
                     help="also rewrite index.md / hot.md / log.md, which the Action regenerates")
     a = ap.parse_args()
@@ -229,8 +231,25 @@ def main():
     flagged = sum(len(plan[k]) for k in ("ambiguous", "missing-qualified"))
     print(f"{'links changed':18} {changed:4}   left as is (flagged): {flagged}"
           f"   files touched: {written}   stubs created: {created}")
+    if a.check:
+        a.apply = False
     if generated and not a.include_generated:
         print(f"skipped {len(generated)} generated file(s) (index.md/hot.md/log.md); --include-generated to rewrite them")
+
+    needs = changed + flagged + (len(stubs) if not a.no_stub else 0)
+    if a.check:
+        import subprocess
+        guard = pathlib.Path(__file__).with_name("check-links.py")
+        r = subprocess.run([sys.executable, str(guard), "--summary", str(root)],
+                           capture_output=True, text=True)
+        print(r.stdout.strip())
+        if r.returncode != 0:
+            print("CHECK: FAIL (guard)")
+            sys.exit(1)
+        if needs:
+            print(f"CHECK: FAIL ({needs} link(s) need qualifying)")
+            sys.exit(1)
+        print("CHECK: PASS")
     print("mode:", "APPLY" if a.apply else "DRY-RUN (nothing written)")
     return 0
 
