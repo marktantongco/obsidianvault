@@ -194,7 +194,15 @@ What happened / was decided. Short, dated, append-only.
 Read `AGENTS.md` + `00-INDEX.md` first (fallback `index.md`/`hot.md`) → pick 2–5 candidate pages and read only those → follow links as needed → answer with citations ([[wikilinks]]/paths). If not covered, state that explicitly and suggest capturing to `_raw/inbox/`.
 
 ### Job 3 — Lint (`.claude/commands/lint.md`)
-Audit for: orphan pages, stubs older than 14 days, broken wikilinks, unresolved `> [!contradiction]` callouts, and index drift. Report checklist with evidence; do not auto-fix without confirmation.
+Audit for: orphan pages, stubs older than 14 days, broken wikilinks, unresolved `> [!contradiction]` callouts, and index drift. Report checklist with evidence; do not auto-fix without confirmation. Start with `.claude/scripts/check-links.py --summary`; it must exit 0.
+
+### Link rewriting — never linkify by substitution
+A substring linkifier produced this vault's worst damage: it rewrote bare page names wherever they appeared, so `~/.opencode/skills/` became `~/.[[concepts/OpenCode|opencode]]/skills/` and `[[skills/git-sync-strategy]]` became `[[skills/git-[[06_STATE/configs/sync-strategy|sync-strategy]]]]`. Do not run one. When fixing links by hand:
+
+- Rewrite only **complete `[[…]]` tokens** — never replace a name inside text, a path, a URL, or a code span.
+- Inside a table cell, escape the alias pipe: `[[concepts/Page\|Page]]`, or drop the alias when it equals the filename.
+- A missing target gets a stub (`lifecycle: stub`), never a de-link to `^[inferred: no canonical note yet]`.
+- Before and after any link pass run `.claude/scripts/check-links.py`; nested links, unescaped table pipes, welded paths and de-linked targets all make it exit 1.
 
 ### Where pages go (no duplicates)
 Canonical folders win: concept → `concepts/`, entity → `entities/`, project → `projects/`, session → `journal/`, how-to → `skills/`, distilled source → `references/`, cross-source conclusion → `synthesis/`. `wiki/` holds only types without a canonical home (`wiki/people/`, `wiki/decisions/`). Appending a dated `## Notes` entry to the canonical page beats creating a parallel page.
