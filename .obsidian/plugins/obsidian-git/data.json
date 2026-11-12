@@ -18,5 +18,6 @@
   "disablePopups": false,
   "listChangedFilesInMessageBody": true,
   "updateSubmodules": false,
-  "syncOnBoot": true
+  "syncOnBoot": true,
+  "autoPushInterval": 10
 }
