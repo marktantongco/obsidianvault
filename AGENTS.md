@@ -203,6 +203,7 @@ A substring linkifier produced this vault's worst damage: it rewrote bare page n
 - Inside a table cell, escape the alias pipe: `[[concepts/Page\|Page]]`, or drop the alias when it equals the filename.
 - A missing target gets a stub (`lifecycle: stub`), never a de-link to `^[inferred: no canonical note yet]`.
 - Before and after any link pass run `.claude/scripts/check-links.py`; nested links, unescaped table pipes, welded paths and de-linked targets all make it exit 1.
+- Qualify links at scale with `.claude/scripts/link-qualify.py` (dry run first, `--apply` to write). It rewrites only whole `[[…]]` tokens outside code, escapes table pipes, creates stubs for missing targets, leaves ambiguous names alone, and skips the generated `index.md`/`hot.md`/`log.md`.
 
 ### Where pages go (no duplicates)
 Canonical folders win: concept → `concepts/`, entity → `entities/`, project → `projects/`, session → `journal/`, how-to → `skills/`, distilled source → `references/`, cross-source conclusion → `synthesis/`. `wiki/` holds only types without a canonical home (`wiki/people/`, `wiki/decisions/`). Appending a dated `## Notes` entry to the canonical page beats creating a parallel page.
