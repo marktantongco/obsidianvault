@@ -75,5 +75,24 @@ updated: 2026-11-12T15:59:45.689Z
 - [[projects/AI-Second-Brain|AI Second Brain]]
 - [[projects/Cross-Agent-Workflow-Test|Cross-Agent Workflow Test]]
 
+## Knowledge (02_KNOWLEDGE)
+- [[02_KNOWLEDGE/Freebuff-CLI-Memory-Optimization|Freebuff CLI — Memory Optimization & Resource Limits]] — Research into freebuff CLI (~1.99 GB RSS) with resource-limit mitigations.
+- [[02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug|Kiro CLI Pool-Proxy — Architecture & 403 Debug]] — Pool-proxy architecture and 403/auth debugging notes for Kiro CLI.
+- [[02_KNOWLEDGE/OWL-AGENT-v4.2|OWL-AGENT v4.2]] — Self-optimising proxy HTTP client: quality scoring, adaptive rate limiting, Prometheus metrics, OpenCode/kiro/Obsidian integration.
+- [[02_KNOWLEDGE/Prompt-Rewriting-Session-2026-08-01|Prompt Rewriting Session — AI System Instructions]] — Session synthesizing rewrites of multi-agent, persistent system, wiki-capture, and Obsidian markdown prompts.
+- [[02_KNOWLEDGE/React-Performance-Optimization-2026|React Performance Optimization Best Practices 2026]] — RSC-first, client-boundary, bundling, rendering, and React 19 performance findings.
+- [[02_KNOWLEDGE/React-Performance-Patterns|React Performance Patterns]] — Rendering strategies and bundle optimization patterns for React.
+- [[02_KNOWLEDGE/React-Server-Components-2026|React Server Components in 2026]] — RSC model, hydration, bundle impact, and client/server comparison.
+- [[02_KNOWLEDGE/owl-agent-obsidian-skills-session|OWL-AGENT and Obsidian Skills Integration]] — Session log for OWL-AGENT v4.2 deployment and obsidian-skills/worktree/wiki alignment.
+
+## State (06_STATE)
+- [[06_STATE/AI CLI Memory Integration|AI CLI Memory Integration]] — Map of shared vault memory, MCP/skills/proxy wiring across OpenCode, Claude Code, Hermes, Codex, Pi, LM Studio.
+- [[06_STATE/Multi-Agent-Task-Execution-Framework|Multi-Agent Task Execution Framework]] — Framework for agent orchestration, skill discovery, and parallel execution.
+- [[06_STATE/Persistent-System-Operating-Instructions-v5.1|Persistent System Operating Instructions v5.1]] — Core operating principles and agentic workflow/depth instructions.
+- [[06_STATE/configs/obsidian-mcp-wiring|Obsidian MCP Wiring]] — How the vault is exposed to AI clients via stdio bridge to `obsidian-local-rest-api`.
+- [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Frontmatter schema and field definitions for Poznote capture pipeline.
+- [[06_STATE/configs/second-brain-skill|LifeOS SecondBrain Skill Config]] — Config bridging Obsidian vault paths to LifeOS Memory v7.6.
+- [[06_STATE/configs/sync-strategy|Sync & Conflict Strategy]] — Git/Termux sync cadence and conflict-resolution rules.
+
 ## Special
-- [[hot]] · [[log]] · [[AGENTS]]
+- [[hot]] · [[log]] · [[AGENTS]] · [[00-INDEX]] · [[_raw/inbox/2026-11-12-claude-memory-compounding-guide|Compounding Memory Guide (source)]]

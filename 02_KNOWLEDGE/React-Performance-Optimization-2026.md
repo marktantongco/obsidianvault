@@ -42,7 +42,7 @@ Based on multi-provider research (Brave Search + Perplexity Sonar Pro), the top 
 ## Related Notes
 - [[02_KNOWLEDGE/React-Server-Components-2026|React Server Components in 2026]]
 - [[synthesis/Synthesis-React-RSC-Performance|Synthesis: React RSC and Performance Patterns]]
-- [[Next.js Performance Patterns]]
+- Next.js Performance Patterns ^[inferred: no canonical note yet]
 
 ## Pipeline Traceability
 ```

@@ -266,8 +266,8 @@ npx skills find research
 ## Related Guides
 
 - [[Persistent-System-Operating-Instructions-v5.1]] - AI operating system
-- [[Wiki-Capture-System-Instructions]] - Knowledge capture
-- [[AI-Agent-Development-Guide]] - Agent development
+- Wiki-Capture-System-Instructions ^[inferred: no canonical note yet] - Knowledge capture
+- AI-Agent-Development-Guide ^[inferred: no canonical note yet] - Agent development
 
 ---
 

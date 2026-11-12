@@ -9,5 +9,6 @@
   "nativeMenus": true,
   "enabledCssSnippets": [
     "toc-sidebar"
-  ]
+  ],
+  "showRibbon": true
 }

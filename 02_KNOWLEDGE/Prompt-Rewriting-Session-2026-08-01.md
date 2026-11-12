@@ -45,7 +45,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 - Added execution order with sequential steps and parallel opportunities
 - Created deliverables checklist
 
-**Result**: [[Multi-Agent-Task-Execution-Framework]]
+**Result**: [[06_STATE/Multi-Agent-Task-Execution-Framework|Multi-Agent Task Execution Framework]]
 
 ---
 
@@ -72,7 +72,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 - Show reasoning
 - Depth before speed
 
-**Result**: [[Persistent-System-Operating-Instructions-v5.1]]
+**Result**: [[06_STATE/Persistent-System-Operating-Instructions-v5.1|Persistent System Operating Instructions v5.1]]
 
 ---
 
@@ -94,7 +94,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 - **Quick mode** (`--quick`): <60s staging to `_raw/` directory
 - **Full mode**: Complete wiki page with cross-links, index updates
 
-**Result**: [[Wiki-Capture-System-Instructions]]
+**Result**: Wiki-Capture-System-Instructions ^[inferred: no canonical note yet]
 
 ---
 
@@ -112,7 +112,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 - Added explicit rules for edge cases (block IDs, foldable callouts)
 - Made property templates concrete and copy-pasteable
 
-**Result**: [[Obsidian-Markdown-System-Instructions]]
+**Result**: Obsidian-Markdown-System-Instructions ^[inferred: no canonical note yet]
 
 ---
 

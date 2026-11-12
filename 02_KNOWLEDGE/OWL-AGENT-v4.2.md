@@ -26,7 +26,7 @@ A self-optimising proxy HTTP client with intelligent routing and adaptive rate l
 > - **AdaptiveRateLimiter** — dynamic per-domain request rate adjustment
 > - **RedisStore** — optional persistent state sharing across instances
 
-The system uses a [[ProxyPoolManager]] to discover and rotate through 50+ proxy sources.
+The system uses a **ProxyPoolManager** to discover and rotate through 50+ proxy sources.
 
 ## Features
 
@@ -41,9 +41,9 @@ The system uses a [[ProxyPoolManager]] to discover and rotate through 50+ proxy 
 ## Integration
 
 Works with:
-- [[OpenCode]] — CLI and subagent support
-- [[kiro-cli]] — agent integration
-- [[Obsidian]] — skill for scraping and saving notes
+- [[concepts/OpenCode|OpenCode]] — CLI and subagent support
+- [[02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug|kiro-cli]] — agent integration
+- [[concepts/Obsidian Wiki|Obsidian]] — skill for scraping and saving notes
 
 ## Prometheus Monitoring
 

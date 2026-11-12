@@ -52,7 +52,7 @@ Map of how AI CLI tools (OpenCode, Claude Code, Hermes) share this vault as dura
 
 ## Platform integration (2026-11-09)
 
-See also: [[Skills Hub]], [[OWL-AGENT Proxy Defense Stack]].
+See also: [[references/ai-skills-consolidated-framework|Skills Hub / AI Skills Framework]], [[entities/Owl-Agent|OWL-AGENT Proxy Defense Stack]].
 
 ### MCP parity — 6 shared servers
 
