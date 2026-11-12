@@ -13,4 +13,4 @@ summary: Map of Content for people in the compounding wiki.
 Index of `[[wiki/people/*]]` pages. Add links here when people pages are created or updated.
 
 ## People
-- _none yet_
+- [[Karpathy]] — stub — origin of the LLM-maintained markdown wiki pattern.

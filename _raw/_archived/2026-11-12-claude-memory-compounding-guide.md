@@ -9,7 +9,8 @@ source: conversation
 confidence: 0.95
 created: 2026-11-12
 updated: 2026-11-12
-processed: false
+processed: true
+processed_at: 2026-11-12
 ---
 
 # Giving Claude Code a Memory That Compounds Instead of Resets
