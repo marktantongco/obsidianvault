@@ -180,12 +180,12 @@ Applied optimizations (v4.2):
 
 ## Related
 
-- [[skills/[[skills/free-china-proxy-ops|free-china-proxy-ops]]]] — China proxy operations skill
+- [[skills/free-china-proxy-ops]] — China proxy operations skill
 - [[SYSTEM-INSTALLATION-STATUS]] — System installation status
 - [[entities/DeepSeek]] — China LLM provider
 - [[entities/SiliconFlow]] — China AI inference hub
 - [[entities/Zhipu-GLM]] — Zhipu AI GLM APIs
-- [[concepts/[[concepts/MiMo Code|MiMo Code]]]] — MiMoCode agent
+- [[concepts/MiMo Code]] — MiMoCode agent
 - [[concepts/OpenCode]] — OpenCode CLI
 - [[concepts/Claude Code]] — Claude Code agent
 - [[concepts/MCP Servers]] — MCP server integration

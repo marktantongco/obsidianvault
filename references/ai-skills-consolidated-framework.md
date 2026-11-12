@@ -33,4 +33,4 @@ Merged ~140 raw skill entries into 67 unique skills (strategy, design, engineeri
 - Use as a catalogue when adding agent skills; prefer wiki `skills/` pages for local procedures.
 
 ## Related
-- [[concepts/[[concepts/AI Agents|AI Agents]]]] · [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]] · [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]]
+- [[concepts/AI Agents]] · [[skills/multi-agent-vault-wiring]] · [[concepts/Obsidian Wiki]]

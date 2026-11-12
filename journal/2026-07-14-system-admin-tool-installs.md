@@ -125,4 +125,4 @@ tier: core
 - [[concepts/MCP Servers]]
 - [[concepts/FreeHive]]
 - [[concepts/OpenCode]]
-- [[skills/[[entities/GPaste|gpaste]]-gnome-wayland]]
+- [[skills/gpaste-gnome-wayland]]

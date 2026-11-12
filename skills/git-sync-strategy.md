@@ -31,7 +31,7 @@ confidence: 0.85
 
 ## Overview
 
-This skill covers git-based sync for the Obsidian vault across multiple devices. The vault uses [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]|Obsidian Git plugin]] for automated sync on desktop and either the plugin or Termux cron on mobile.
+This skill covers git-based sync for the Obsidian vault across multiple devices. The vault uses [[concepts/Obsidian Wiki|Obsidian Git plugin]] for automated sync on desktop and either the plugin or Termux cron on mobile.
 
 The canonical sync rules are defined in `06_STATE/configs/sync-strategy.md`. This skill provides step-by-step setup and operational commands.
 

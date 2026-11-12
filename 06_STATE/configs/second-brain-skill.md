@@ -102,4 +102,4 @@ Feed a vault entry into the [[concepts/LifeOS Algorithm|LifeOS Algorithm]] loop 
 
 - [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Inbox capture pipeline
 - [[06_STATE/configs/sync-strategy|Sync Strategy]] — Mobile-desktop sync configuration
-- [[references/ai-skills-consolidated-framework|[[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework]]]] — Skill taxonomy
+- [[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework]] — Skill taxonomy

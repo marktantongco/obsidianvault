@@ -43,7 +43,7 @@ SiliconFlow is a China-based AI inference hub providing hosted access to a broad
 - **Free tier**: Yes — limited access to small open-source models
 - **Models hosted**: Qwen series, LLaMA variants, GLM series, Yi, DeepSeek, and 50+ others
 - **Reachability**: Generally reachable direct from non-CN networks
-- **Proxy strategy**: Direct-first per [[skills/[[skills/free-china-proxy-ops|free-china-proxy-ops]]]]
+- **Proxy strategy**: Direct-first per [[skills/free-china-proxy-ops]]
 
 ## Related
 

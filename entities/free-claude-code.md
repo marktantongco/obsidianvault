@@ -75,7 +75,7 @@ fcc-server
 
 ## Related
 
-- [[concepts/[[concepts/FreeHive|FreeHive]]]] — Primary AI gateway (free-claude-code is an alternative approach)
+- [[concepts/FreeHive]] — Primary AI gateway (free-claude-code is an alternative approach)
 - [[entities/ai-wanderer]] — Another free-tier proxy router
 - [[concepts/Claude Code]] — The commercial tool this emulates
 - [[concepts/OpenAI Codex]] — The commercial tool this emulates

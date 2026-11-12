@@ -193,5 +193,5 @@ Direct. Conversational (one person). Confident + provisional. Short sentences. P
 - [[concepts/AI Agents]] — The agents governed by this prompt
 - [[concepts/LifeOS Algorithm]] — Task routing based on cognitive tier matching
 - [[concepts/Hermes Agent]] — Orchestrator that applies prompt routing
-- [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]]] — Project context
-- [[synthesis/[[synthesis/agentic-stack-obsidian-wiki-performance|agentic-stack-obsidian-wiki-performance]]]] — System assessment
+- [[projects/AI-Second-Brain]] — Project context
+- [[synthesis/agentic-stack-obsidian-wiki-performance]] — System assessment

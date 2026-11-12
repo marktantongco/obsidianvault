@@ -45,6 +45,6 @@ Mobile captures are quick notes (Poznote-style). Desktop edits are deep work.
 
 ## Related
 
-- [[skills/[[skills/mobile-sync-termux|mobile-sync-termux]]|Mobile Sync Termux]] — Termux-based sync setup
+- [[skills/mobile-sync-termux|Mobile Sync Termux]] — Termux-based sync setup
 - [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Inbox capture workflow
-- [[skills/git-sync-strategy|[[skills/git-sync-strategy|Git Sync Strategy]]]] — Commit and push rules
+- [[skills/git-sync-strategy|Git Sync Strategy]] — Commit and push rules

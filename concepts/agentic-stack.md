@@ -119,7 +119,7 @@ The agentic-stack's `memory.md` is read after the vault's `AGENTS.md` and `hot.m
 
 ## Compose Rules
 
-Per [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]] and the [[journal/2026-07-13-second-brain-integration-session|July 13 session]]:
+Per [[skills/multi-agent-vault-wiring]] and the [[journal/2026-07-13-second-brain-integration-session|July 13 session]]:
 
 - `.agent/` = session memory, lessons, permissions
 - Vault = durable distilled knowledge
@@ -144,7 +144,7 @@ The agentic-stack is not aware of LifeOS Pulse — they are complementary: agent
 
 ## Health Assessment
 
-Per [[synthesis/[[synthesis/agentic-stack-obsidian-wiki-performance|agentic-stack-obsidian-wiki-performance]]|system performance assessment]] (2026-07-09):
+Per [[synthesis/agentic-stack-obsidian-wiki-performance|system performance assessment]] (2026-07-09):
 
 - **Status**: Healthy
 - **Performance scales** with capture/ingest habit, not install alone
@@ -158,4 +158,4 @@ Per [[synthesis/[[synthesis/agentic-stack-obsidian-wiki-performance|agentic-stac
 - [[skills/multi-agent-vault-wiring]] — How agents connect to the vault
 - [[synthesis/agentic-stack-obsidian-wiki-performance]] — System performance assessment
 - [[concepts/AI Agents]] — All agents that symlink to agentic-stack
-- [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]]] — Project context
+- [[projects/AI-Second-Brain]] — Project context

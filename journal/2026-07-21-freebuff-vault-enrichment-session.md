@@ -64,15 +64,15 @@ The vault had strong plumbing documentation (agent installs, configs, session lo
 | [[entities/DeepSeek]] | 1-line stub | API pricing ($0.14/1M), reachability, proxy strategy |
 | [[entities/SiliconFlow]] | 1-line stub | 50+ hosted models, free tier, API endpoint, proxy |
 | [[entities/Zhipu-GLM]] | 1-line stub | GLM-4-Flash/V-Flash permanent free tiers, rate limits |
-| [[entities/[[entities/Owl-Agent|Owl-Agent]]]] | 1-line stub | v4.1 features, 4 CN proxy sources, 20–40% success metrics |
-| [[entities/[[entities/GPaste|GPaste]]]] | 1-line stub | gpaste-2 setup, Super+Shift+V shortcut, CLI, extension conflict |
+| [[entities/Owl-Agent]] | 1-line stub | v4.1 features, 4 CN proxy sources, 20–40% success metrics |
+| [[entities/GPaste]] | 1-line stub | gpaste-2 setup, Super+Shift+V shortcut, CLI, extension conflict |
 | [[entities/CopyQ]] | 1-line stub | Qt-based, disabled autostart, Wayland replacement context |
 
 ### Skill Page Promoted
 
 | From | To | Content |
 |------|----|---------|
-| `06_STATE/configs/[[06_STATE/configs/sync-strategy|sync-strategy]].md` | `skills/git-sync-strategy.md` | Step-by-step initial setup, per-device cadence commands, conflict resolution walkthrough, recovery procedures |
+| `06_STATE/configs/sync-strategy.md` | `skills/git-sync-strategy.md` | Step-by-step initial setup, per-device cadence commands, conflict resolution walkthrough, recovery procedures |
 
 ### Index Updated
 

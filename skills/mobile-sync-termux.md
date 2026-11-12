@@ -33,7 +33,7 @@ confidence: 0.7
 
 This skill covers syncing the Obsidian vault on Android devices using Termux. It's designed for mobile capture sessions (quick notes via Poznote-style `_raw/` drops) where the vault needs to push to and pull from the remote git repository.
 
-The canonical sync cadence and conflict strategies are defined in [[skills/git-[[06_STATE/configs/sync-strategy|sync-strategy]]]]. This skill focuses specifically on the Termux/Android setup.
+The canonical sync cadence and conflict strategies are defined in [[skills/git-sync-strategy]]. This skill focuses specifically on the Termux/Android setup.
 
 ---
 
@@ -221,6 +221,6 @@ git config --global credential.helper store
 ## Related
 
 - [[skills/git-sync-strategy]] — Full git sync strategy with desktop, mobile plugin, and conflict rules
-- [[concepts/[[concepts/poznote-pipeline|poznote-pipeline]]]] — Capture pipeline that mobile feeds into
+- [[concepts/poznote-pipeline]] — Capture pipeline that mobile feeds into
 - [[06_STATE/configs/sync-strategy]] — Canonical sync config
-- [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]] — The vault being synced
+- [[concepts/Obsidian Wiki]] — The vault being synced

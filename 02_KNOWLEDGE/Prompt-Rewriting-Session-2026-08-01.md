@@ -94,7 +94,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 - **Quick mode** (`--quick`): <60s staging to `_raw/` directory
 - **Full mode**: Complete wiki page with cross-links, index updates
 
-**Result**: Wiki-Capture-System-Instructions ^[inferred: no canonical note yet]
+**Result**: [[references/Wiki-Capture-System-Instructions]]
 
 ---
 
@@ -112,7 +112,7 @@ This session focused on optimizing three major AI system prompts for persistent 
 - Added explicit rules for edge cases (block IDs, foldable callouts)
 - Made property templates concrete and copy-pasteable
 
-**Result**: Obsidian-Markdown-System-Instructions ^[inferred: no canonical note yet]
+**Result**: [[references/Obsidian-Markdown-System-Instructions]]
 
 ---
 
@@ -216,8 +216,8 @@ These rewritten prompts serve as:
 
 - [[Multi-Agent-Task-Execution-Framework]] — System configuration
 - [[06_STATE/Persistent-System-Operating-Instructions-v5.1|Persistent System Operating Instructions v5.1]] — Core operating protocol
-- Wiki-Capture-System-Instructions ^[inferred: no canonical note yet] — Knowledge preservation workflow
-**Result**: Obsidian-Markdown-System-Instructions ^[inferred: no canonical note yet] — Note syntax reference
+- [[references/Wiki-Capture-System-Instructions]] — Knowledge preservation workflow
+**Result**: [[references/Obsidian-Markdown-System-Instructions]] — Note syntax reference
 
 ---
 

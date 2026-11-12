@@ -29,7 +29,7 @@ All major deliverables for this session are done and verified.
 | CLI (fetch / stats / bench) | ✅ | `~/.owl-agent/run.sh` |
 | Podman deployment | ✅ | `~/.owl-agent/podman-compose.yml` |
 | kiro-cli agent `owl-scraper` | ✅ | `~/.kiro/agents/owl-scraper.json` |
-| Obsidian skills (5) | ✅ | `~/.[[concepts/OpenCode|opencode]]/skills/obsidian-skills/` |
+| Obsidian skills (5) | ✅ | `~/.opencode/skills/obsidian-skills/` |
 | Vault wiki + worktree | ✅ | `~/obsidianvault/` + `~/obsidianvault-worktree/` |
 
 ---

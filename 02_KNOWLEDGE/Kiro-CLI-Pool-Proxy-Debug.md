@@ -118,7 +118,7 @@ comments yet; not merged, not closed. Action needed: request review from
 
 ## Sources
 
-- `[[concepts/OpenCode|opencode]]://ses_03c73d3c3ffelzHaSEov3k2G1K` (Reverse engineer pool-proxy)
+- `opencode://ses_03c73d3c3ffelzHaSEov3k2G1K` (Reverse engineer pool-proxy)
 - `opencode://ses_03c75d623ffewZf22YfpXIFnRE` (Reverse engineer kiro proxy)
 - `opencode://ses_04130bd30ffer8ksOS4f1Cl33E` (OpenCode debug config — fix &
   verification)

@@ -41,7 +41,7 @@ Assessment of how `~/.agent` (agentic-stack), Ar9av `obsidian-wiki`, and `/home/
 - Single vault for all CLIs prevents knowledge silos.
 
 ## Related
-- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]] · [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]] · [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]]]
+- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[skills/multi-agent-vault-wiring]] · [[concepts/Obsidian Wiki]] · [[projects/AI-Second-Brain]]
 
 ## Session notes (promoted 2026-07-09)
 

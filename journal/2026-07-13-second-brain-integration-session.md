@@ -133,5 +133,5 @@ obsidianvault/
 - [[concepts/Grok]]
 - [[concepts/MiMo Code]]
 - [[concepts/multi-agent-obsidian-wiki-synergy]]
-- [[projects/[[projects/AI-Second-Brain|AI-Second-Brain]]]]
-- [[synthesis/[[synthesis/agentic-stack-obsidian-wiki-performance|agentic-stack-obsidian-wiki-performance]]]]
+- [[projects/AI-Second-Brain]]
+- [[synthesis/agentic-stack-obsidian-wiki-performance]]

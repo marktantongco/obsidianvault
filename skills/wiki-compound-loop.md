@@ -33,7 +33,7 @@ confidence: 0.9
 
 This skill defines the **knowledge compounding loop** — the core workflow that converts ephemeral session output into durable, queryable vault knowledge. Without this loop, the vault stays thin. With it, each session builds on the last.
 
-First identified in [[synthesis/[[synthesis/agentic-stack-obsidian-wiki-performance|agentic-stack-obsidian-wiki-performance]]]]: *"vault stayed thin until: `obsidian-wiki setup` → status → `@ai` text ingest → session capture."*
+First identified in [[synthesis/agentic-stack-obsidian-wiki-performance]]: *"vault stayed thin until: `obsidian-wiki setup` → status → `@ai` text ingest → session capture."*
 
 The loop is tightly integrated with [[concepts/poznote-pipeline|the Poznote capture pipeline]] and the [[concepts/LifeOS Algorithm|LifeOS Algorithm]] routing system.
 
@@ -136,8 +136,8 @@ The loop can be partially automated:
 | [[concepts/agentic-stack]] | Session memory layer — feeds into quick captures |
 | [[concepts/LifeOS Algorithm]] | Routes capture classification tasks to appropriate agent tier |
 | [[concepts/Obsidian Wiki]] | The vault — destination for promoted knowledge |
-| [[skills/git-[[06_STATE/configs/sync-strategy|sync-strategy]]]] | Syncs captured knowledge across devices |
-| [[06_STATE/configs/[[06_STATE/configs/poznote-capture-schema|poznote-capture-schema]]]] | Defines the capture frontmatter schema |
+| [[skills/git-sync-strategy]] | Syncs captured knowledge across devices |
+| [[06_STATE/configs/poznote-capture-schema]] | Defines the capture frontmatter schema |
 
 ## Trap to Avoid
 

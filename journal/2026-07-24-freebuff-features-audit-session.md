@@ -88,5 +88,5 @@ tier: core
 
 - [[journal/index]]
 - [[tags/index]]
-- [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]]
-- [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]]
+- [[concepts/Obsidian Wiki]]
+- [[skills/multi-agent-vault-wiring]]

@@ -96,6 +96,6 @@ export BEDROCK_API_KEY="<REDACTED-rotate-key>"
 ---
 
 ## Related
-- [[concepts/[[concepts/MCP Servers|MCP Servers]]|MCP Servers]]
+- [[concepts/MCP Servers]]
 - [[concepts/Claude Code|Claude Code]]
-- [[concepts/[[concepts/agentic-stack|agentic-stack]]|agentic-stack]]
+- [[concepts/agentic-stack]]

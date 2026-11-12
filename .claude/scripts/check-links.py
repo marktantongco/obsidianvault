@@ -45,16 +45,18 @@ def scan(paths, max_examples):
             continue
         rel = p.relative_to(ROOT) if p.is_relative_to(ROOT) else p
         for i, line in enumerate(text.splitlines(), 1):
-            n = len(NESTED.findall(line))
+            # examples quoted inside inline code are documentation, not damage
+            nocode = re.sub(r"`[^`\n]*`", "", line)
+            n = len(NESTED.findall(nocode))
             if n:
                 hits["nested"].extend([f"{rel}:{i}: {line.strip()[:120]}"] * n)
-            if line.strip().startswith("|"):
-                t = sum(1 for m in TABLE_LINK.finditer(line) if re.search(r"(?<!\\)\|", m.group(1)))
+            if nocode.strip().startswith("|"):
+                t = sum(1 for m in TABLE_LINK.finditer(nocode) if re.search(r"(?<!\\)\|", m.group(1)))
                 if t:
                     hits["table"].extend([f"{rel}:{i}: {line.strip()[:120]}"] * t)
             if welded_in_span(line):
                 hits["welded"].append(f"{rel}:{i}: {line.strip()[:120]}")
-            d = len(DELINKED.findall(line))
+            d = len(DELINKED.findall(nocode))
             if d:
                 hits["delinked"].extend([f"{rel}:{i}: {line.strip()[:120]}"] * d)
     return hits

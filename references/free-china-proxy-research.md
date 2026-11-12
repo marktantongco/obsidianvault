@@ -35,4 +35,4 @@ Free vs paid China proxy landscape for OrcaFlow-style China AI API access.
 - Prefer direct; only proxy blocked providers; never global HTTP_PROXY.
 
 ## Related
-- [[skills/[[skills/free-china-proxy-ops|free-china-proxy-ops]]]] · [[entities/[[entities/SiliconFlow|SiliconFlow]]]] · [[entities/[[entities/Zhipu-GLM|Zhipu-GLM]]]]
+- [[skills/free-china-proxy-ops]] · [[entities/SiliconFlow]] · [[entities/Zhipu-GLM]]

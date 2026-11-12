@@ -44,7 +44,7 @@ updated: 2026-07-09T10:44:46Z
 - Do not fork a second vault per agent
 
 ## Related
-- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[concepts/[[concepts/Obsidian Wiki|Obsidian Wiki]]]] · [[concepts/[[concepts/AI Agents|AI Agents]]]]
+- [[concepts/multi-agent-obsidian-wiki-synergy]] · [[concepts/Obsidian Wiki]] · [[concepts/AI Agents]]
 
 ## Session notes (promoted 2026-07-09)
 

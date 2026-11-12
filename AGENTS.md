@@ -197,7 +197,7 @@ Read `AGENTS.md` + `00-INDEX.md` first (fallback `index.md`/`hot.md`) → pick 2
 Audit for: orphan pages, stubs older than 14 days, broken wikilinks, unresolved `> [!contradiction]` callouts, and index drift. Report checklist with evidence; do not auto-fix without confirmation. Start with `.claude/scripts/check-links.py --summary`; it must exit 0.
 
 ### Link rewriting — never linkify by substitution
-A substring linkifier produced this vault's worst damage: it rewrote bare page names wherever they appeared, so `~/.opencode/skills/` became `~/.[[concepts/OpenCode|opencode]]/skills/` and `[[skills/git-sync-strategy]]` became `[[skills/git-[[06_STATE/configs/sync-strategy|sync-strategy]]]]`. Do not run one. When fixing links by hand:
+A substring linkifier produced this vault's worst damage: it rewrote bare page names wherever they appeared — inside filesystem paths, inside longer words, and inside links that were already complete, producing nested links and table rows split by an unescaped pipe. Do not run one. When fixing links by hand:
 
 - Rewrite only **complete `[[…]]` tokens** — never replace a name inside text, a path, a URL, or a code span.
 - Inside a table cell, escape the alias pipe: `[[concepts/Page\|Page]]`, or drop the alias when it equals the filename.

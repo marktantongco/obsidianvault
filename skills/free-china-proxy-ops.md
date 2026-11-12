@@ -40,8 +40,8 @@ China AI providers (GLM, MiniMax, DeepSeek, Kimi, [[entities/SiliconFlow|Silicon
 - Success 20–40%, latency 1.5–10s, uptime often <24h per IP.
 
 ## Related
-- [[entities/[[entities/Owl-Agent|Owl-Agent]]]]
-- [[entities/[[entities/Zhipu-GLM|Zhipu-GLM]]]]
+- [[entities/Owl-Agent]]
+- [[entities/Zhipu-GLM]]
 - [[entities/SiliconFlow]]
 - [[concepts/multi-agent-obsidian-wiki-synergy]]
 

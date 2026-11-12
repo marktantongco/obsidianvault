@@ -77,4 +77,4 @@ wiki-capture --quick "Important discovery"
 - [[MCP Servers]]
 
 ## Related
-- [[multi-agent-obsidian-wiki-synergy]] · [[skills/[[skills/multi-agent-vault-wiring|multi-agent-vault-wiring]]]] · [[references/[[references/obsidian-claude-memory-framework|obsidian-claude-memory-framework]]]]
+- [[multi-agent-obsidian-wiki-synergy]] · [[skills/multi-agent-vault-wiring]] · [[references/obsidian-claude-memory-framework]]

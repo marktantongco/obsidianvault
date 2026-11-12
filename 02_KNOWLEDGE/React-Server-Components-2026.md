@@ -30,8 +30,8 @@ React Server Components (RSC) allow rendering components on the server without s
 
 ## Related Notes
 - [[02_KNOWLEDGE/React-Performance-Patterns|React Performance Patterns]]
-- Next.js 15 Features ^[inferred: no canonical note yet]
-- Fullstack Optimization ^[inferred: no canonical note yet]
+- [[concepts/Next.js 15 Features]]
+- [[concepts/Fullstack Optimization]]
 
 ## Sources
 - [React Docs - Server Components](https://react.dev/reference/rsc/server-components) (https://react.dev/reference/react/server)

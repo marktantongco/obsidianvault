@@ -17,5 +17,5 @@ aliases: [React Optimization, React Perf]
 3. Server components for heavy logic
 
 ## Related
-- Fullstack Optimization ^[inferred: no canonical note yet]
-- Performance Engineering ^[inferred: no canonical note yet]
+- [[concepts/Fullstack Optimization]]
+- [[concepts/Performance Engineering]]

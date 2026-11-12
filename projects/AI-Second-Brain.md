@@ -51,7 +51,7 @@ Set up a complete multi-agent AI development environment with shared knowledge b
 ### Unified Memory
 | Component | Location | Status |
 |-----------|----------|--------|
-| [[concepts/agentic-stack|agentic-stack]] | `~/ai-workspace/.agent/` | Created |
+| [[concepts/agentic-stack\|agentic-stack]] | `~/ai-workspace/.agent/` | Created |
 | Symlinks | All agents | Linked |
 
 ### Skills

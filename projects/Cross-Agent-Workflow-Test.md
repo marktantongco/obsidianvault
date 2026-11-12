@@ -90,7 +90,7 @@ The vault now has comprehensive documentation of all 7 agents and their routing 
 | **Expected** | Task flows through agents, results saved to wiki |
 | **Status** | ⏳ **NOT RUN** |
 | **Context** | The full handoff pipeline is architected in `hermes_router.py` with the LifeOS Algorithm E1→E5 routing matrix. |
-| **Blockers** | Requires Tests 3–5 to complete first. Additionally, [[concepts/Grok|Grok]] and Antigravity are not yet wired into hermes_router dispatch (Claude Code currently handles both E4 and E5 tiers). |
+| **Blockers** | Requires Tests 3–5 to complete first. Additionally, [[concepts/Grok\|Grok]] and Antigravity are not yet wired into hermes_router dispatch (Claude Code currently handles both E4 and E5 tiers). |
 
 ---
 

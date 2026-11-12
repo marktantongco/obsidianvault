@@ -44,6 +44,6 @@ lifecycle_changed: 2026-07-30
 - Corrected default AWS region to `us-east-1` for Bedrock SDK integration.
 
 ## Related
-- [[synthesis/[[synthesis/kiro-cli-mcp-fetch-fix-and-bedrock-config|kiro-cli-mcp-fetch-fix-and-bedrock-config]]|Kiro CLI MCP Fetch Repair, Agentic Firewall, and Claude Code Bedrock Setup]]
+- [[synthesis/kiro-cli-mcp-fetch-fix-and-bedrock-config|Kiro CLI MCP Fetch Repair, Agentic Firewall, and Claude Code Bedrock Setup]]
 - [[concepts/MCP Servers|MCP Servers]]
 - [[concepts/Claude Code|Claude Code]]

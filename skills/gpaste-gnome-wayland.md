@@ -40,7 +40,7 @@ systemctl --user enable --now org.gnome.GPaste.service
 | Super+Shift+H | Preferences |
 
 ## Related
-- [[entities/GPaste]] · [[entities/[[entities/CopyQ|CopyQ]]]] · [[concepts/[[concepts/Development Workflow|Development Workflow]]]]
+- [[entities/GPaste]] · [[entities/CopyQ]] · [[concepts/Development Workflow]]
 
 ## Session notes (promoted 2026-07-09)
 

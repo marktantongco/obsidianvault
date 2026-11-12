@@ -52,7 +52,7 @@ sudo apt install gpaste-2 gnome-shell-extension-gpaste
 ```
 
 ### Custom Shortcut (Super+Shift+V)
-Per [[skills/gpaste-gnome-wayland|[[skills/gpaste-gnome-wayland|GPaste on GNOME Wayland]]]]:
+Per [[skills/gpaste-gnome-wayland|GPaste on GNOME Wayland]]:
 
 1. GNOME Settings → Keyboard → View and Customize Shortcuts
 2. Custom Shortcuts → Add

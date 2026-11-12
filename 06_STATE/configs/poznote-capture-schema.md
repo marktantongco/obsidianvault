@@ -87,4 +87,4 @@ Files dropped in `~/poznote-inbox/` are processed by the pipeline:
 
 - [[06_STATE/configs/second-brain-skill|Second Brain Skill]] — Companion AI skill configuration
 - [[06_STATE/configs/sync-strategy|Sync Strategy]] — Mobile-desktop sync pipeline
-- [[skills/[[skills/wiki-compound-loop|wiki-compound-loop]]|Wiki Compound Loop]] — Capture pipeline automation
+- [[skills/wiki-compound-loop|Wiki Compound Loop]] — Capture pipeline automation

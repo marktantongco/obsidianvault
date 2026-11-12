@@ -64,7 +64,7 @@ Created during the [[journal/2026-07-13-second-brain-integration-session|July 13
 | **hermes_router.py** | `second-brain/scripts/hermes_router.py` | Task classifier + dispatcher. Routes tasks by tier. |
 | **lifeos_client.py** | `second-brain/scripts/lifeos_client.py` | Pulse API client. Connects to LifeOS daemon at port 31337. |
 | **hermes** (bash) | `second-brain/scripts/hermes` | Bash wrapper for CLI invocation. |
-| **Skill config** | `06_STATE/configs/[[06_STATE/configs/second-brain-skill|second-brain-skill]].md` | Declares triggers, tools, and vault mapping. |
+| **Skill config** | `06_STATE/configs/second-brain-skill.md` | Declares triggers, tools, and vault mapping. |
 
 ---
 
