@@ -2,6 +2,8 @@
 description: Ingest unprocessed raw notes into the compounding wiki (vault CLAUDE.md protocol)
 ---
 
+Hold the writer lock while editing: `vault-lock acquire ingest` (or wrap the whole run in `vault-lock run ingest -- …`) and release when done. Exit 3 means another session is writing — wait or defer, do not edit anyway.
+
 Process every unprocessed file in `_raw/inbox/` (and any unprocessed legacy captures directly in `_raw/`, excluding `_raw/index.md` and `_raw/_archived/`) per the **Ingest** job in the vault root `CLAUDE.md`.
 
 Work one file at a time. After each file, state: file processed, pages created, pages updated, links added.

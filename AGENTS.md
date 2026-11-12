@@ -202,6 +202,22 @@ Canonical folders win: concept → `concepts/`, entity → `entities/`, project 
 ### Command surface
 `/ingest`, `/ask`, `/lint` exist for both clients: `.claude/commands/*.md` (Claude Code) and `.opencode/command/*.md` (OpenCode). Check exposure with `bash .claude/scripts/check-commands.sh` (OpenCode resolves per directory via `opencode api GET /api/command -H "x-opencode-directory: <dir>"`, and a cold server returns an empty list — the script retries).
 
+### Writer discipline (single-writer guard)
+More than one session edits this vault, and they race: edits interleave, and a later `git add -A` sweeps another session's half-finished work into the wrong commit. Take the mutex before changing content.
+
+```bash
+vault-lock run <purpose> -- <cmd...>   # acquire, run, always release (preferred)
+vault-lock acquire ingest && … ; vault-lock release
+vault-lock guard                       # session start: holder, dirty files, ahead/behind
+vault-lock status --json
+```
+
+- **Exit 3 means someone else is writing.** Wait or defer the work; do not edit anyway.
+- The lock lives in `.git/vault-writer.{lock,state,log}` — per clone, not per remote. It coordinates sessions on this machine; the phone and the daily Action are outside its scope.
+- It expires after `VAULT_LOCK_TTL` (default 1800s), so a killed session cannot wedge the vault; `vault-lock touch` extends it for long jobs.
+- Set `VAULT_WRITER_ID` to a session id (e.g. `opencode:ses_abc`) so `.git/vault-writer.log` names who did what.
+- Obsidian's auto-commit and the daily Action only *commit* / regenerate; they never take the lock. That is why agents must never `git add -A` — stage the paths you touched.
+
 ### Conventions (compounding)
 - Append-only `## Notes` with dated entries citing raw sources; preserve provenance.
 - Keep `00-INDEX.md` compact (frontmatter-derived, one-line summaries) as retrieval cache; `index.md` remains the curated map.
