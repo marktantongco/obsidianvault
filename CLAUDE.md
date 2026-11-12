@@ -13,7 +13,7 @@ When asked to process `_raw/inbox/` (or `/ingest`), for each unprocessed file:
 5. Add `[[wikilinks]]` to every other entity mentioned (person, project, concept). Create stub pages for entities that don't have one yet (title + `status: stub` frontmatter only).
 6. Update the relevant `wiki/_moc/<domain>.md` (Map of Content): add a link to any new or updated page.
 7. Move the raw file to `_raw/_archived/` (processed, not deleted) and add/update frontmatter: `processed: true` and `processed_at: YYYY-MM-DD` (and `superseded_by: [[path/to/page]]` when distilled into an existing canonical page).
-8. Regenerate `00-INDEX.md` by walking frontmatter across `wiki/` (do not re-read full page bodies).
+8. Refresh the `## Wiki (compounding layer)` section of `00-INDEX.md` by walking frontmatter across `wiki/` (do not re-read full page bodies). `00-INDEX.md` is a **shared** vault-wide cache: leave its other sections (`Projects`, `Concepts`, `Knowledge`, `State`, `Skills/References`, `Raw / Inbox`) as the index pass wrote them, and only correct entries your own ingest made stale.
 9. Update `.claude/inbox-manifest.json` for each processed file so change detection stays accurate.
 
 > **Legacy coexistence:** `_raw/` is the vault's existing staging area (see `_raw/index.md`). New drops for this compounding workflow go in `_raw/inbox/`. Unprocessed captures already sitting directly in `_raw/` may be ingested the same way, then archived to `_raw/_archived/` per existing practice.
@@ -69,7 +69,7 @@ What happened, decided, or learned. Short. Dated. Append-only.
 - To read/write this vault from agents, the Obsidian MCP (`vault_read`, `vault_write`, `vault_append`, `vault_patch`, `search_simple`, …) is available (see `AGENTS.md` / `obsidian-memory` skill).
 
 ## 00-INDEX.md format
-Regenerate by scanning `wiki/` frontmatter (type, status, title, summary/first line):
+Refresh your section by scanning `wiki/` frontmatter (type, status, title, summary/first line). The vault-wide index also carries the other buckets, owned by the index pass — edit only what your ingest changed:
 
 ```markdown
 # Index — last regenerated YYYY-MM-DD
