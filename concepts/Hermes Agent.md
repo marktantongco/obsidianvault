@@ -3,7 +3,7 @@ title: Hermes Agent
 tags: [hermes, orchestrator, agents, nous-research]
 type: concept
 created: 2026-07-09
-updated: 2026-07-24
+updated: 2026-11-13
 lifecycle: verified
 tier: core
 source: project
@@ -92,3 +92,9 @@ hermes "Remind me to stand up every hour"
 - [[OpenCode]] — OpenCode worker agent
 - [[Claude Code]] — Claude Code reviewer
 - [[JCode]] — jcode AI stack
+- [[skills/agent-setup-gotchas]] — install/runtime failures
+
+## Notes
+
+- **2026-07-09 — interpreter pin.** `pip install hermes-agent` requires Python `>=3.11,<3.14`; a 3.14 system Python fails outright. Install editable into a 3.11 venv (`cd ~/.hermes/hermes-agent && python3.11 -m venv .venv && .venv/bin/pip install -e .`). Detail: [[skills/agent-setup-gotchas]].
+- **2026-11-13 — config is stricter than it looks.** A duplicate key inside `config.yaml` (e.g. two `provider`/`base_url` entries under `model:`) makes Hermes fall back to defaults while `hermes mcp list` still prints a plausible server table. `hermes config check` is the detector; last-wins parsing decides which copy is shadowed.

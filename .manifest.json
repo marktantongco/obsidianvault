@@ -2,7 +2,7 @@
   "version": "2026.7.2",
   "vault": "/home/x1/obsidianvault",
   "created": "2026-07-09T10:31:00Z",
-  "last_updated": "2026-08-03T03:44:08Z",
+  "last_updated": "2026-11-12T17:35:45Z",
   "sources": {
     "/home/x1/Downloads/@ai/free-china-proxy-research.md": {
       "ingested_at": "2026-07-09T09:58:13Z",
@@ -395,10 +395,48 @@
       "pages_updated": [
         "02_KNOWLEDGE/Kiro-CLI-Pool-Proxy-Debug.md"
       ]
+    },
+    "_raw/_archived/2026-07-09-multi-agent-setup-gotchas.md": {
+      "ingested_at": "2026-11-12T17:35:44Z",
+      "last_ingested": "2026-11-12T17:35:44.963266+00:00",
+      "size_bytes": 3808,
+      "modified_at": "2026-11-07T11:40:45Z",
+      "content_hash": "621359e5d84669d35f3ce4ef6ad145af0a769dc22bdca80beed00f0e1e998ee4",
+      "source_type": "conversation",
+      "project": "ai-second-brain",
+      "processed": true,
+      "pages_created": [
+        "skills/agent-setup-gotchas.md"
+      ],
+      "pages_produced": [
+        "skills/agent-setup-gotchas.md"
+      ],
+      "pages_updated": [
+        "concepts/Hermes Agent.md"
+      ]
+    },
+    "_raw/_archived/2026-07-13-opencode-free-model-config.md": {
+      "ingested_at": "2026-11-12T17:35:45Z",
+      "last_ingested": "2026-11-12T17:35:45.015710+00:00",
+      "size_bytes": 2968,
+      "modified_at": "2026-11-07T11:40:45Z",
+      "content_hash": "af285d278eabc8db25ad16b81c8c485611955ab20a8e59f27ecc3f241cd2d261",
+      "source_type": "conversation",
+      "project": "ai-second-brain",
+      "processed": true,
+      "pages_created": [
+        "skills/agent-setup-gotchas.md"
+      ],
+      "pages_produced": [
+        "skills/agent-setup-gotchas.md"
+      ],
+      "pages_updated": [
+        "concepts/OpenCode.md"
+      ]
     }
   },
   "stats": {
-    "total_sources_ingested": 18,
+    "total_sources_ingested": 20,
     "total_pages": 52,
     "total_projects": 2,
     "last_full_rebuild": null

@@ -166,6 +166,12 @@ Read `AGENTS.md` + `00-INDEX.md` first (fallback `index.md`/`hot.md`) → pick 2
 ### Job 3 — Lint (`.claude/commands/lint.md`)
 Audit for: orphan pages, stubs older than 14 days, broken wikilinks, unresolved `> [!contradiction]` callouts, and index drift. Report checklist with evidence; do not auto-fix without confirmation.
 
+### Where pages go (no duplicates)
+Canonical folders win: concept → `concepts/`, entity → `entities/`, project → `projects/`, session → `journal/`, how-to → `skills/`, distilled source → `references/`, cross-source conclusion → `synthesis/`. `wiki/` holds only types without a canonical home (`wiki/people/`, `wiki/decisions/`). Appending a dated `## Notes` entry to the canonical page beats creating a parallel page.
+
+### Command surface
+`/ingest`, `/ask`, `/lint` exist for both clients: `.claude/commands/*.md` (Claude Code) and `.opencode/command/*.md` (OpenCode). Check exposure with `bash .claude/scripts/check-commands.sh` (OpenCode resolves per directory via `opencode api GET /api/command -H "x-opencode-directory: <dir>"`, and a cold server returns an empty list — the script retries).
+
 ### Conventions (compounding)
 - Append-only `## Notes` with dated entries citing raw sources; preserve provenance.
 - Keep `00-INDEX.md` compact (frontmatter-derived, one-line summaries) as retrieval cache; `index.md` remains the curated map.

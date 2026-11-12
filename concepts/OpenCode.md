@@ -3,7 +3,7 @@ title: OpenCode
 tags: [opencode, coding, cli, terminal-agent]
 type: concept
 created: 2026-07-09
-updated: 2026-07-24
+updated: 2026-11-13
 lifecycle: verified
 tier: core
 source: project
@@ -95,3 +95,11 @@ Skills are symlinked from `~/.agents/skills/` and include:
 - [[JCode]] — jcode AI coding stack
 - [[Hermes Agent]] — Hermes orchestrator
 - [[Claude Code]] — Claude Code reviewer
+- [[skills/agent-setup-gotchas]] — config-schema and install failures
+
+## Notes
+
+- **2026-07-13 — free-model routing policy.** All 11 agents in `oh-my-openagent.json` and the agent fallback chains in `opencode.jsonc` were repointed at free-tier models so no agent defaults to a paid model (paid ids demoted to last-resort fallback). Standing user preference, verbatim: *"do not use models from nvidia or google only free models from 'opencode zen' free"*. Sources: `_raw/_archived/2026-07-13-opencode-free-model-config.md`, [[concepts/oh-my-openagent]].
+- **2026-11-13 — policy re-verified against the Zen surface.** Free ids observed live: `big-pickle`, `mimo-v2.6-flash-free`, `deepseek-v4.1-flash-free`, `glm-5.3-flash-free`, `longcat-2.5-free`, `iceman-free`, `inkling-2-small-free`, `beam-free`, `flint-40b-free`, `nemotron-3.5-super-lightning-free`, `minimax-m3.1-flash-free`. The 2026-07 list (`nemotron-nano-9b-v2`, `gemma-4-31b-it`, `gemma-4-27b-it`, `lfm-2.5-1.2b`) no longer exists, so that table is historical only. Local routing goes through `owl-router` on `127.0.0.1:8080` (provider `owl-local`, model `owl-local/flint-40b-free`); the Zen free tier is metered per egress block and answers `FreeUsageLimitError` once exhausted, which the patched ingress falls back to local Ollama for.
+
+> [!contradiction] This page's header claims **v1.17.16**, config `~/opencode.json`, and `~/.opencode/skills/` (recorded 2026-07-24). As of 2026-11-13 the installed build is **v2.2.2**, the only config is **`~/.config/opencode/opencode.json`** (a project-level `.opencode/opencode.json` overrides it), and skills load from `~/.agents/skills/`. Trust the 2026-11 dated claims; the older block is kept as history.

@@ -8,15 +8,25 @@ You are the maintainer of this knowledge base. Two jobs:
 When asked to process `_raw/inbox/` (or `/ingest`), for each unprocessed file:
 1. Read the file. Identify its type: person, project, decision, concept, or meeting.
 2. Search `wiki/` for an existing page with the same entity (check title + `aliases` in frontmatter). Also check relevant v7.6 buckets (`01_WORK/`, `02_KNOWLEDGE/`, `04_RELATIONSHIP/`, `concepts/`, `entities/`, `journal/`, `projects/`) for an existing canonical page to avoid duplicates — prefer linking/updating the canonical page (or noting it) over creating a conflicting duplicate.
-3. If a match exists in `wiki/`: append a new dated subsection under `## Notes` on that page. **Never overwrite existing content.** Update `updated:` in frontmatter.
-4. If no match exists: create a new page in `wiki/<type-plural>/` (people, projects, decisions, concepts; meetings → `wiki/projects/` or `wiki/concepts/` as appropriate) using the wiki template below.
+3. If a match exists in `wiki/` **or in a canonical page**, append a new dated subsection under `## Notes` on that page. **Never overwrite existing content.** Update `updated:` in frontmatter. Canonical pages win: a fact about OpenCode belongs in `concepts/OpenCode.md` with a `## Notes` entry, not in a second `wiki/` page.
+4. If no match exists, create the page in the **canonical folder for its type**: concept → `concepts/`, tool/service/organisation → `entities/`, working project → `projects/`, session log → `journal/`, how-to/runbook → `skills/`, distilled source → `references/`, cross-source conclusion → `synthesis/`. Only types with no canonical home live under `wiki/` (`wiki/people/`, `wiki/decisions/`). Two pages for one entity is a defect, not a backup.
 5. Add `[[wikilinks]]` to every other entity mentioned (person, project, concept). Create stub pages for entities that don't have one yet (title + `status: stub` frontmatter only).
 6. Update the relevant `wiki/_moc/<domain>.md` (Map of Content): add a link to any new or updated page.
 7. Move the raw file to `_raw/_archived/` (processed, not deleted) and add/update frontmatter: `processed: true` and `processed_at: YYYY-MM-DD` (and `superseded_by: [[path/to/page]]` when distilled into an existing canonical page).
 8. Refresh the `## Wiki (compounding layer)` section of `00-INDEX.md` by walking frontmatter across `wiki/` (do not re-read full page bodies). `00-INDEX.md` is a **shared** vault-wide cache: leave its other sections (`Projects`, `Concepts`, `Knowledge`, `State`, `Skills/References`, `Raw / Inbox`) as the index pass wrote them, and only correct entries your own ingest made stale.
-9. Update `.claude/inbox-manifest.json` for each processed file so change detection stays accurate.
+9. Record the ingest with one call per file: `python3 .claude/scripts/mark-processed.py _raw/_archived/<file> --created <pages> --updated <pages>`. That writes the canonical `.manifest.json` (`sources[<path>]`, `stats`, `last_updated`), stamps `processed: true` / `processed_at:` into the raw's frontmatter, and refreshes the `.claude/inbox-manifest.json` mtime cursor that `diff-inbox.sh` reads. `.manifest.json` is the ledger; the cursor file is derived — never add a third place to track ingests.
 
 > **Legacy coexistence:** `_raw/` is the vault's existing staging area (see `_raw/index.md`). New drops for this compounding workflow go in `_raw/inbox/`. Unprocessed captures already sitting directly in `_raw/` may be ingested the same way, then archived to `_raw/_archived/` per existing practice.
+
+## Command surface (/ingest, /ask, /lint)
+Both clients read the same three jobs from their own directory — `.claude/commands/*.md` (Claude Code) and `.opencode/command/*.md` (OpenCode v2.2.2). Keep the bodies identical when editing. Verify exposure with:
+
+```bash
+bash .claude/scripts/check-commands.sh        # PASS/FAIL per command per client
+bash .claude/scripts/check-commands.sh --all  # full list the client can see
+```
+
+OpenCode resolves commands **per directory** (`opencode api GET /api/command -H "x-opencode-directory: <dir>"`): the vault's commands exist only when the request names the vault, and a cold server answers with an empty list before it has loaded config — hence the retry loop in the script. Claude Code has no listing surface; the script parses `.claude/commands/`.
 
 ## Job 2: Answer
 When asked a question (or `/ask`):

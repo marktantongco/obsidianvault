@@ -39,14 +39,16 @@ updated: 2026-11-13
 - [[06_STATE/configs/sync-strategy|Sync & Conflict Strategy]] — git/Termux sync & conflict rules
 
 ## Skills / References / Synthesis / Journal
-- Skills: [[skills/wiki-compound-loop|Wiki Knowledge Compounding Loop]], [[skills/multi-agent-vault-wiring|Multi-Agent Vault Wiring]], [[skills/free-china-proxy-ops|Free China Proxy Operations]] (see `skills/`)
+- Skills: [[skills/wiki-compound-loop|Wiki Knowledge Compounding Loop]], [[skills/multi-agent-vault-wiring|Multi-Agent Vault Wiring]], [[skills/free-china-proxy-ops|Free China Proxy Operations]], [[skills/agent-setup-gotchas|Agent Setup Gotchas]] (see `skills/`)
 - References: [[references/obsidian-claude-memory-framework|Obsidian + Claude Memory Framework (source)]], [[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework (source)]]
 - Synthesis: [[synthesis/agentic-stack-obsidian-wiki-performance|Agentic-Stack + Obsidian-Wiki System Performance]], [[synthesis/Synthesis-React-RSC-Performance|Synthesis-React-RSC-Performance]]
 - Journal: recent sessions in `journal/` (see `index.md`/`hot.md`)
 
 ## Raw / Inbox
 - [[_raw/_archived/2026-11-12-claude-memory-compounding-guide|Compounding Memory Guide (source)]] — `processed: true` (2026-11-12) → [[wiki/concepts/compounding-memory|compounding-memory]]
-- `_raw/2026-07-09-multi-agent-setup-gotchas`, `_raw/2026-07-13-opencode-free-model-config` — legacy captures, still unprocessed
+- [[_raw/_archived/2026-07-09-multi-agent-setup-gotchas|Multi-Agent Setup Gotchas (source)]] — `processed: true` (2026-11-13) → [[skills/agent-setup-gotchas|agent-setup-gotchas]]
+- [[_raw/_archived/2026-07-13-opencode-free-model-config|OpenCode Free Model Config (source)]] — `processed: true` (2026-11-13) → notes in [[concepts/OpenCode|OpenCode]]
+- Inbox empty: `bash .claude/scripts/diff-inbox.sh` returns nothing.
 
 ## Orphans (needs linking)
 - (re-run `/lint` to refresh after edits)

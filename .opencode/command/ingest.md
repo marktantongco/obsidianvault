@@ -6,6 +6,6 @@ Process every unprocessed file in `_raw/inbox/` (and any unprocessed legacy capt
 
 Work one file at a time. After each file, state: file processed, pages created, pages updated, links added.
 
-Move each processed raw file to `_raw/_archived/`, mark `processed: true` and `processed_at: YYYY-MM-DD` in its frontmatter, regenerate `00-INDEX.md` from `wiki/` frontmatter, and record it in `.claude/inbox-manifest.json` with `python3 .claude/scripts/mark-processed.py _raw/_archived/<file>`.
+Move each processed raw file to `_raw/_archived/`, then run `python3 .claude/scripts/mark-processed.py _raw/_archived/<file> --created <pages> --updated <pages>` — it writes the canonical `.manifest.json` entry, stamps `processed: true`/`processed_at` into the raw's frontmatter, and refreshes the `.claude/inbox-manifest.json` cursor used by `diff-inbox.sh`. Finish by refreshing the `## Wiki (compounding layer)` section of `00-INDEX.md` (leave the vault-wide sections to the index pass).
 
 Prefer the Obsidian MCP write tools when available; fall back to direct file edits only if the REST endpoint is down. Do not summarize the whole batch until finished.
