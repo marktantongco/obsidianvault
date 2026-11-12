@@ -145,3 +145,29 @@ Deploy as system instructions. Silent Protocol invisible. Output shows Response 
 - [[SYSTEM-ACTIVATION]] — Step-by-step guide to activate all system components
 - [[SYSTEM-COMPLETE]] — Overview of installed components and pending items
 - [[SYSTEM-INSTALLATION-STATUS]] — Detailed installation status of every component
+
+---
+
+## Claude Memory Protocol (Compounding, coexists with v7.6)
+
+Adaptation of the Karpathy-style "compounding memory" pattern (see `references/obsidian-claude-memory-framework.md`, source `_raw/inbox/2026-11-12-claude-memory-compounding-guide.md`). This **coexists** with existing v7.6 buckets, `index.md`/`hot.md`/`log.md`, `_raw/`, `.manifest.json`, and Obsidian MCP/Git sync — it does not replace them.
+
+### Layers (mapped to this vault)
+- **Raw (immutable):** `_raw/` and `_raw/inbox/` (drop zone). Processed originals move to `_raw/_archived/` and are marked `processed: true` with a processed date. Never edit archived/raw originals; add corrective notes instead.
+- **Compiled knowledge:** domain folders `concepts/`, `entities/`, `projects/`, `journal/`, `skills/`, `references/`, `synthesis/` and v7.6 buckets `01_WORK/`–`06_STATE/` (use the best-matching existing location per conventions).
+- **Output:** deliverables in appropriate project/work locations (e.g. `01_WORK/`, `projects/`, or task-specific outputs) linked back to source/wiki pages.
+
+### Job 1 — Ingest (`.claude/commands/ingest.md`)
+For each unprocessed raw file: identify type/entity → match existing page (title/`aliases`) → append dated subsection to `## Notes` (never overwrite; use `> [!contradiction]` callout when conflicting) or create a new page with required frontmatter → add `[[wikilinks]]` and create stubs for missing targets → update `index.md` and/or `00-INDEX.md`, and `hot.md`/`log.md` as appropriate → move raw to `_raw/_archived/`, mark processed, update `.manifest.json` → regenerate/refine `00-INDEX.md` from frontmatter. Work one file at a time; report per-file changes. Prefer `obsidian` MCP tools.
+
+### Job 2 — Answer (`.claude/commands/ask.md`)
+Read `AGENTS.md` + `00-INDEX.md` first (fallback `index.md`/`hot.md`) → pick 2–5 candidate pages and read only those → follow links as needed → answer with citations ([[wikilinks]]/paths). If not covered, state that explicitly and suggest capturing to `_raw/inbox/`.
+
+### Job 3 — Lint (`.claude/commands/lint.md`)
+Audit for: orphan pages, stubs older than 14 days, broken wikilinks, unresolved `> [!contradiction]` callouts, and index drift. Report checklist with evidence; do not auto-fix without confirmation.
+
+### Conventions (compounding)
+- Append-only `## Notes` with dated entries citing raw sources; preserve provenance.
+- Keep `00-INDEX.md` compact (frontmatter-derived, one-line summaries) as retrieval cache; `index.md` remains the curated map.
+- Use `.claude/scripts/diff-inbox.sh` / `.manifest.json` to avoid reprocessing; treat raw as immutable.
+- Obsidian Git auto-sync and mobile sync remain authoritative for versioning/propagation.
