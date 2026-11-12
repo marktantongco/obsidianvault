@@ -42,10 +42,10 @@
     "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/Hermes Agent.md": {
-    "sha": "7e786aaf104796430c71fd60d0a877b31c4eb52d",
+    "sha": "e367d7fcb517a65b08722a35f907e9e51935bdcd",
     "title": "Hermes Agent",
     "summary": "",
-    "mtime": "2026-07-27T09:28:17.791Z"
+    "mtime": "2026-11-12T18:03:08.715Z"
   },
   "concepts/JCode.md": {
     "sha": "0f6b85f987e78f10a0d2b8823c064d289dfc1afb",
@@ -84,10 +84,10 @@
     "mtime": "2026-07-27T09:28:17.791Z"
   },
   "concepts/OpenCode.md": {
-    "sha": "c6548c33e27d8f7064773adf3ba10fd447052f5e",
+    "sha": "d63272095c4b381c83c06f440cf2a3c5597c2199",
     "title": "OpenCode",
     "summary": "",
-    "mtime": "2026-07-27T09:28:17.791Z"
+    "mtime": "2026-11-12T18:03:08.715Z"
   },
   "concepts/agentic-stack.md": {
     "sha": "fd85c4d362f3fad88c6d08a210914b108a9ee932",
@@ -144,10 +144,10 @@
     "mtime": "2026-08-03T05:17:46.946Z"
   },
   "entities/Owl-Agent.md": {
-    "sha": "5206bd9c28c2829d3400daffcd0e56a6868a5c72",
+    "sha": "825b55d02a89fb0e454332f97630b67344a97829",
     "title": "Owl-Agent",
     "summary": "",
-    "mtime": "2026-08-03T05:17:46.946Z"
+    "mtime": "2026-11-12T18:03:08.715Z"
   },
   "entities/SiliconFlow.md": {
     "sha": "b87a03d2f27692719355b462c8b9739c99c60363",
@@ -210,16 +210,16 @@
     "mtime": "2026-08-03T05:17:46.946Z"
   },
   "journal/2026-07-24-freebuff-features-audit-session.md": {
-    "sha": "d412a73520f38ba85556a5be08bd7a5e1b735986",
+    "sha": "f967b62e14d10fa4e8100cb34ec8663e58631df8",
     "title": "2026-07-24-freebuff-features-audit-session",
     "summary": "",
-    "mtime": "2026-08-03T05:17:46.946Z"
+    "mtime": "2026-11-12T18:03:08.715Z"
   },
   "journal/2026-07-24-jcode-freebuff-troubleshooting.md": {
-    "sha": "efd5feaea9e60efd1b7c13f52294b72dc136073a",
+    "sha": "a056562374c7ae57a1f5518f88bd82aec5f88e1a",
     "title": "JCode and Freebuff Troubleshooting Session",
     "summary": "",
-    "mtime": "2026-08-03T05:17:46.946Z"
+    "mtime": "2026-11-12T18:03:08.715Z"
   },
   "journal/2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup.md": {
     "sha": "ecb39466a10e6db99626c224cdbba92e0157af66",
@@ -258,10 +258,16 @@
     "mtime": "2026-08-03T05:17:46.946Z"
   },
   "references/obsidian-claude-memory-framework.md": {
-    "sha": "d91d77ffa953b31472fa9dcb6a55b22076995452",
+    "sha": "050e5e72edffc5e0d3a534e6d0d1a9254cd6093f",
     "title": "Obsidian + Claude Memory Framework (source)",
     "summary": "Karpathy-style compounding memory for Claude Code/Obsidian — immutable raw inputs, maintained wiki knowledge, index cache, ingest/ask/lint loop.",
-    "mtime": "2026-11-12T15:59:45.689Z"
+    "mtime": "2026-11-12T18:03:08.715Z"
+  },
+  "skills/agent-setup-gotchas.md": {
+    "sha": "1d280f2e5064fa09bea885bf1dbf9ee8cb9c019b",
+    "title": "Agent Setup Gotchas",
+    "summary": "The six failures that eat a multi-agent setup session — GitHub 429s on plugin assets, PEP 668, missing git-remote-https, half-installed Obsidian plugins, Hermes' Python pin, and OpenCode's strict config schema — each with the workaround that actually worked.",
+    "mtime": "2026-11-12T18:03:08.715Z"
   },
   "skills/free-china-proxy-ops.md": {
     "sha": "2ca42547bbb059c623a1d3ef0e92a21374f75767",
@@ -300,10 +306,10 @@
     "mtime": "2026-08-03T05:17:46.946Z"
   },
   "synthesis/Synthesis-React-RSC-Performance.md": {
-    "sha": "b07229cd15d6530ec9d5e0e8398fd45bf941a7b8",
+    "sha": "85c99c4aaca2346177892834169b3cac9e78e191",
     "title": "Synthesis-React-RSC-Performance",
     "summary": "",
-    "mtime": "2026-08-03T05:44:42.516Z"
+    "mtime": "2026-11-12T18:03:08.715Z"
   },
   "synthesis/agentic-stack-obsidian-wiki-performance.md": {
     "sha": "e45244a42e5a27f8d5d41d26eb1c30ee6b1875a6",
