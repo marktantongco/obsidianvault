@@ -10,7 +10,7 @@ relationships:
   - target: "[[concepts/multi-agent-obsidian-wiki-synergy]]"
     type: related_to
 sources:
-  - "_raw/inbox/2026-11-12-claude-memory-compounding-guide.md"
+  - "_raw/_archived/2026-11-12-claude-memory-compounding-guide.md"
   - /home/x1/Downloads/@ai/obsidian-claude-code-memory-framework.md
 summary: "Karpathy-style compounding memory for Claude Code/Obsidian — immutable raw inputs, maintained wiki knowledge, index cache, ingest/ask/lint loop."
 provenance: {extracted: 0.95, inferred: 0.05, ambiguous: 0.0}
@@ -35,7 +35,7 @@ Compounding markdown "brain" for Claude Code: avoid per-session resets by accumu
 - **Coexistence in this vault:** aligns with `AGENTS.md`, `index.md`/`00-INDEX.md`, `hot.md`/`log.md`, `_raw/` + `_raw/_archived/`, `.manifest.json`, v7.6 buckets (`01_WORK`–`06_STATE`) and domain folders (`concepts/`, `entities/`, `projects/`, `journal/`, `skills/`, `references/`, `synthesis/`), `.claude/commands/`, and Obsidian MCP/Git sync.
 
 ## Full Source
-- Captured guide: [[_raw/inbox/2026-11-12-claude-memory-compounding-guide]] (immutable; `processed: false` until ingested/archived per protocol).
+- Captured guide: [[_raw/_archived/2026-11-12-claude-memory-compounding-guide|Compounding Memory Guide (source)]] (`processed: true`, 2026-11-12).
 
 ## Notes
 ### 2026-11-12 — integrated into vault (coexist)

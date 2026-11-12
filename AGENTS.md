@@ -150,7 +150,7 @@ Deploy as system instructions. Silent Protocol invisible. Output shows Response 
 
 ## Claude Memory Protocol (Compounding, coexists with v7.6)
 
-Adaptation of the Karpathy-style "compounding memory" pattern (see `references/obsidian-claude-memory-framework.md`, source `_raw/inbox/2026-11-12-claude-memory-compounding-guide.md`). This **coexists** with existing v7.6 buckets, `index.md`/`hot.md`/`log.md`, `_raw/`, `.manifest.json`, and Obsidian MCP/Git sync — it does not replace them.
+Adaptation of the Karpathy-style "compounding memory" pattern (see `references/obsidian-claude-memory-framework.md`, source `_raw/_archived/2026-11-12-claude-memory-compounding-guide.md`). This **coexists** with existing v7.6 buckets, `index.md`/`hot.md`/`log.md`, `_raw/`, `.manifest.json`, and Obsidian MCP/Git sync — it does not replace them.
 
 ### Layers (mapped to this vault)
 - **Raw (immutable):** `_raw/` and `_raw/inbox/` (drop zone). Processed originals move to `_raw/_archived/` and are marked `processed: true` with a processed date. Never edit archived/raw originals; add corrective notes instead.
