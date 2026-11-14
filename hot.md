@@ -1,18 +1,18 @@
 ---
 title: Hot Cache
-updated: 2026-11-14T01:00:43.211Z
+updated: 2026-11-14T07:19:36Z
 ---
 
 # Hot Cache
 
 ## Recent Activity
-- 2026-11-12 [[concepts/Hermes Agent|Hermes Agent]] — 
-- 2026-11-12 [[concepts/OpenCode|OpenCode]] — 
-- 2026-11-12 [[entities/Owl-Agent|Owl-Agent]] — 
-- 2026-11-12 [[journal/2026-07-24-freebuff-features-audit-session|2026-07-24-freebuff-features-audit-session]] — 
-- 2026-11-12 [[journal/2026-07-24-jcode-freebuff-troubleshooting|JCode and Freebuff Troubleshooting Session]] — 
-- 2026-11-12 [[references/obsidian-claude-memory-framework|Obsidian + Claude Memory Framework (source)]] — Karpathy-style compounding memory for Claude Code/Obsidian — immutable raw inputs, maintained wiki knowledge, index cache, ingest/ask/lint loop.
-- 2026-11-12 [[skills/agent-setup-gotchas|Agent Setup Gotchas]] — The six failures that eat a multi-agent setup session — GitHub 429s on plugin assets, PEP 668, missing git-remote-https, half-installed Obsidian plugins, Hermes' Python pin, and OpenCode's strict config schema — each with the workaround that actually worked.
-- 2026-11-12 [[synthesis/Synthesis-React-RSC-Performance|Synthesis-React-RSC-Performance]] — 
-- 2026-08-03 [[concepts/LifeOS Algorithm|LifeOS Algorithm]] — 
-- 2026-08-03 [[concepts/Obsidian Wiki|Obsidian Wiki]] — 
+- 2026-11-13 [[AGENTS|Vault Agent Conventions]] — Updated note.
+- 2026-11-13 [[06_STATE/configs/obsidian-mcp-wiring|Obsidian MCP Wiring]] — How the Obsidian vault is exposed to every AI client on this machine as one MCP server, and why a stdio bridge sits in front of it.
+- 2026-11-13 [[00-INDEX|00 Index (Cache)]] — Updated note.
+- 2026-11-13 [[CLAUDE|CLAUDE]] — Updated note.
+- 2026-11-13 [[entities/Owl-Agent|Owl-Agent]] — Updated note.
+- 2026-11-13 [[_raw/_archived/2026-07-13-opencode-free-model-config|2026-07-13-opencode-free-model-config]] — Updated note.
+- 2026-11-13 [[_raw/_archived/2026-07-09-multi-agent-setup-gotchas|Multi-Agent AI Setup: Gotchas and Workarounds]] — Key issues encountered during multi-agent AI setup: GitHub rate limiting, Python PEP 668, git-remote-https missing, and plugin installation failures.
+- 2026-11-13 [[concepts/Hermes Agent|Hermes Agent]] — Updated note.
+- 2026-11-13 [[concepts/OpenCode|OpenCode]] — Updated note.
+- 2026-11-13 [[journal/2026-07-24-jcode-freebuff-troubleshooting|JCode and Freebuff Troubleshooting Session]] — Updated note.
