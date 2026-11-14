@@ -11,7 +11,7 @@
 #                from their own dir, so the bodies must stay in sync (see CLAUDE.md).
 set -uo pipefail
 VAULT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-WANT=(ingest ask lint)
+WANT=(ingest ask lint obsidian-autosave)
 ALL=0; [ "${1:-}" = "--all" ] && ALL=1
 
 echo "vault: $VAULT"
