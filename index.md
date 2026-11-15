@@ -1,20 +1,22 @@
 ---
 title: Wiki Index
-updated: 2026-11-14T07:19:36Z
+updated: 2026-11-15T07:31:39Z
 ---
 
 # Wiki Index
 
-*Last updated: 2026-11-14T07:19:36Z*
+*Last updated: 2026-11-15T07:31:39Z*
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
 - [[concepts/AI Agents|AI Agents]]
 - [[concepts/Antigravity Agent|Antigravity Agent]]
 - [[concepts/Claude Code|Claude Code]]
+- [[concepts/Code-KB Mapping|Code-KB Mapping]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
 - [[concepts/Development Workflow|Development Workflow]]
 - [[concepts/Freebuff|Freebuff]]
 - [[concepts/FreeHive|FreeHive]]
+- [[concepts/Fullstack Optimization|Fullstack Optimization]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
 - [[concepts/Grok|Grok]]
 - [[concepts/Hermes Agent|Hermes Agent]]
 - [[concepts/index|Concepts — Agent Systems & Architecture]]
@@ -23,11 +25,16 @@ updated: 2026-11-14T07:19:36Z
 - [[concepts/MCP Servers|MCP Servers]]
 - [[concepts/MiMo Code|MiMo Code]]
 - [[concepts/multi-agent-obsidian-wiki-synergy|Multi-Agent Obsidian Wiki Synergy]] — How Ar9av/obsidian-wiki, the shared vault, and every CLI agent share one brain via config + symlinks.
+- [[concepts/Next.js 15 Features|Next.js 15 Features]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
+- [[concepts/Next.js Performance Patterns|Next.js Performance Patterns]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
 - [[concepts/Obsidian Wiki|Obsidian Wiki]]
 - [[concepts/oh-my-openagent|oh-my-openagent]]
 - [[concepts/OpenAI Codex|OpenAI Codex]]
 - [[concepts/OpenCode|OpenCode]]
+- [[concepts/OWL-DNS-v5.1|OWL-DNS-v5.1]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
+- [[concepts/Performance Engineering|Performance Engineering]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
 - [[concepts/poznote-pipeline|Poznote Capture Pipeline]]
+- [[concepts/Research Methodology|Research Methodology]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
 - [[concepts/system-prompt-v5-1-1|System Prompt v5.1.1]]
 - [[concepts/wikilinks|Wikilinks — Cross-Reference Convention]] — Obsidian wikilink syntax for cross-referencing pages in the vault.
 
@@ -65,10 +72,13 @@ updated: 2026-11-14T07:19:36Z
 - [[skills/wiki-compound-loop|Wiki Knowledge Compounding Loop]]
 
 ## References
+- [[references/AI-Agent-Development-Guide|AI-Agent-Development-Guide]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
 - [[references/ai-skills-consolidated-framework|AI Skills Consolidated Framework (source)]] — Deduped catalog of ~67 agent skills across 8 domains plus 5-layer routing taxonomy.
 - [[references/free-china-proxy-research|Free China Proxy Research (source)]] — Source research on free CN proxies for GLM/MiniMax/DeepSeek; hybrid free+paid recommendation.
 - [[references/index|References — External Research & Frameworks]]
 - [[references/obsidian-claude-memory-framework|Obsidian + Claude Memory Framework (source)]] — Karpathy-style compounding memory for Claude Code/Obsidian — immutable raw inputs, maintained wiki knowledge, index cache, ingest/ask/lint loop.
+- [[references/Obsidian-Markdown-System-Instructions|Obsidian-Markdown-System-Instructions]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
+- [[references/Wiki-Capture-System-Instructions|Wiki-Capture-System-Instructions]] — Stub for a target that pages already linked to; created during the 2026-11-13 link repair.
 
 ## Synthesis
 - [[synthesis/agentic-stack-obsidian-wiki-performance|Agentic-Stack + Obsidian-Wiki System Performance]] — Plumbing is A− (shared vault, 12 agents, 36 skills); knowledge fill was early until this compound pass.
