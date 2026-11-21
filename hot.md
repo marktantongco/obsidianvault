@@ -1,6 +1,6 @@
 ---
 title: Hot Cache
-updated: 2026-11-20T08:03:25Z
+updated: 2026-11-21T07:57:50Z
 ---
 
 # Hot Cache
@@ -8,11 +8,11 @@ updated: 2026-11-20T08:03:25Z
 ## Recent Activity
 - 2026-11-15 [[AGENTS|Vault Agent Conventions]] — Updated note.
 - 2026-11-15 [[SYSTEM-COMPLETE|System Complete]] — Updated note.
-- 2026-11-15 [[06_STATE/Persistent-System-Operating-Instructions-v5.1|Persistent System Operating Instructions v5.1]] — Updated note.
-- 2026-11-15 [[06_STATE/Multi-Agent-Task-Execution-Framework|Multi-Agent Task Execution Framework - AI Development System]] — Updated note.
-- 2026-11-15 [[06_STATE/configs/obsidian-mcp-wiring|Obsidian MCP Wiring]] — How the Obsidian vault is exposed to every AI client on this machine as one MCP server, and why a stdio bridge sits in front of it.
-- 2026-11-15 [[06_STATE/configs/second-brain-skill|LifeOS SecondBrain Skill Config]] — Updated note.
-- 2026-11-15 [[06_STATE/configs/sync-strategy|Sync & Conflict Strategy]] — Updated note.
-- 2026-11-15 [[06_STATE/configs/poznote-capture-schema|Poznote Capture Schema]] — Frontmatter schema and field definitions for the Poznote capture pipeline. Defines required/optional fields, classification rules, and file naming conventions.
-- 2026-11-15 [[concepts/MCP Servers|MCP Servers]] — Updated note.
-- 2026-11-15 [[concepts/Grok|Grok]] — Updated note.
+- 2026-11-15 [[journal/2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup|2026-07-30-kiro-mcp-agentic-firewall-bedrock-setup]] — Updated note.
+- 2026-11-15 [[journal/2026-07-21-freebuff-vault-enrichment-session|2026-07-21-freebuff-vault-enrichment-session]] — Updated note.
+- 2026-11-15 [[journal/2026-07-24-freebuff-features-audit-session|2026-07-24-freebuff-features-audit-session]] — Updated note.
+- 2026-11-15 [[journal/2026-07-14-system-admin-tool-installs|2026-07-14-system-admin-tool-installs]] — Updated note.
+- 2026-11-15 [[journal/2026-07-13-second-brain-integration-session|2026-07-13-second-brain-integration-session]] — Updated note.
+- 2026-11-15 [[02_KNOWLEDGE/OWL-AGENT-v4.2|OWL-AGENT v4.2]] — Updated note.
+- 2026-11-15 [[02_KNOWLEDGE/Prompt-Rewriting-Session-2026-08-01|Prompt Rewriting Session - AI System Instructions]] — Updated note.
+- 2026-11-15 [[02_KNOWLEDGE/React-Performance-Optimization-2026|React-Performance-Optimization-2026]] — Updated note.
