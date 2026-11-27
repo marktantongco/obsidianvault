@@ -1,11 +1,11 @@
 ---
 title: Wiki Index
-updated: 2026-11-26T09:08:51Z
+updated: 2026-11-27T09:25:09Z
 ---
 
 # Wiki Index
 
-*Last updated: 2026-11-26T09:08:51Z*
+*Last updated: 2026-11-27T09:25:09Z*
 
 ## Concepts
 - [[concepts/agentic-stack|agentic-stack]]
